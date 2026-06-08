@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>建築史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=Barlow+Condensed:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blueprint:    #040C1C;
+    --bp-mid:       #081830;
+    --bp-rich:      #102040;
+    --bp-line:      #2A5080;
+    --bp-pale:      #D0E4F8;
+    --copper:       #A05820;
+    --copper-lt:    #C87830;
+    --copper-glow:  #E0A040;
+    --copper-pale:  #FBF0DC;
+    --concrete:     #6A7078;
+    --concrete-lt:  #9AA0A8;
+    --steel:        #3A5068;
+    --steel-lt:     #6080A0;
+    --ivory:        #F6F4F0;
+    --ivory-dark:   #EAE6DC;
+    --ink:          #10080C;
+    --ink-mid:      #28201C;
+    --ink-light:    #605850;
+    --gray:         #989088;
+    --silver:       #B8B4A8;
+    --shadow:       rgba(4,12,28,0.18);
+    --grid-line:    rgba(42,80,128,0.12);
+    --warm-red:     #8C1C18;
+    --warm-red-lt:  #B82820;
+    --moss:         #2A4020;
+    --moss-lt:      #486030;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--blueprint);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  /* blueprint grid lines */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(42,80,128,0.18) 39px, rgba(42,80,128,0.18) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(42,80,128,0.18) 39px, rgba(42,80,128,0.18) 40px),
+      radial-gradient(ellipse at 20% 60%, rgba(160,88,32,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(224,160,64,0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--copper-glow);
+    border: 1px solid rgba(224,160,64,0.38);
+    padding: 4px 16px; border-radius: 1px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem,8vw,6rem);
+    font-weight: 700; line-height: 1.05; margin-bottom: 1rem;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    background: linear-gradient(135deg, #fff 20%, var(--copper-glow) 65%, var(--copper-lt) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 560px; margin: 0 auto 3rem;
+    font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--copper-glow); display: block; letter-spacing: 0.05em; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--bp-mid); color: var(--copper-glow);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 1px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(224,160,64,0.18);
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem,3.5vw,2.6rem); color: var(--ink); font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; }
+  .bg-warm  { background: var(--ivory-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 2px;
+    border: 1px solid var(--grid-line);
+    border-left: 4px solid var(--copper-lt);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--blueprint);
+    border-radius: 2px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(224,160,64,0.1);
+    position: relative; overflow: hidden;
+  }
+  .dark-panel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(42,80,128,0.12) 29px, rgba(42,80,128,0.12) 30px),
+      repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(42,80,128,0.12) 29px, rgba(42,80,128,0.12) 30px);
+    pointer-events: none;
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; position: relative; z-index:1; }
+  .dp-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; color: var(--copper-glow); font-weight: 700; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.04em; position: relative; z-index:1; }
+
+  /* ─── BUILDING CARDS ─── */
+  .bldg-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; position:relative; z-index:1; }
+  .bldg-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--copper-lt);
+    border-radius: 0 0 2px 2px;
+    padding: 1rem 1.1rem;
+  }
+  .bc-name   { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; color: var(--copper-glow); font-weight: 700; margin-bottom: 0.15rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .bc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .bc-style  { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--concrete-lt); margin-bottom: 0.35rem; }
+  .bc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .bc-fact   { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(224,160,64,0.62); }
+
+  /* ─── ARCHITECT CARDS ─── */
+  .arch-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; position:relative; z-index:1; }
+  .arch-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--copper-lt);
+    border-radius: 0 2px 2px 0;
+    padding: 1rem 1.1rem;
+  }
+  .ac-name   { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; color: var(--copper-glow); font-weight: 700; margin-bottom: 0.15rem; text-transform: uppercase; letter-spacing: 0.02em; }
+  .ac-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .ac-move   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--steel-lt); margin-bottom: 0.35rem; }
+  .ac-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .ac-quote  { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(224,160,64,0.55); font-style: italic; }
+
+  /* ─── STRUCTURE CARDS (style overview) ─── */
+  .style-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .style-card {
+    background: var(--blueprint); color: #fff;
+    border-radius: 2px; padding: 1.5rem;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(224,160,64,0.1);
+  }
+  .style-card::after {
+    content: attr(data-num);
+    position: absolute; bottom: -0.3rem; right: 0.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 4rem; font-weight: 700; opacity: 0.06; line-height: 1;
+    color: var(--copper-glow);
+    letter-spacing: -0.05em;
+  }
+  .sc-era   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--copper-glow); display: block; margin-bottom: 0.4rem; }
+  .sc-name  { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--copper-glow); display: block; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .sc-body  { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .sc-key   { margin-top: 0.6rem; font-size: 0.72rem; color: rgba(224,160,64,0.62); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--copper-lt), var(--copper-lt), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--copper-lt);
+    border: 3px solid var(--ivory); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--copper-lt); z-index: 2;
+  }
+  .tl-dot.red   { background: var(--warm-red-lt); box-shadow: 0 0 0 2px var(--warm-red-lt); }
+  .tl-dot.steel { background: var(--steel-lt);    box-shadow: 0 0 0 2px var(--steel-lt); }
+  .tl-dot.moss  { background: var(--moss-lt);     box-shadow: 0 0 0 2px var(--moss-lt); }
+  .tl-dot.glow  { background: var(--copper-glow); box-shadow: 0 0 0 2px var(--copper-glow); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid var(--grid-line);
+    border-radius: 2px; padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--copper); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid var(--grid-line);
+    border-left: 4px solid var(--bp-line);
+    border-radius: 0 2px 2px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; text-transform: none; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--bp-line); background: rgba(42,80,128,0.07); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--steel-lt); }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--ivory-dark); border-radius: 2px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--copper-lt); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; color: var(--ink); margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--blueprint); border-radius: 2px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(224,160,64,0.1); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-glow); border-bottom: 1px solid rgba(224,160,64,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--copper-glow); font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.03em; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--blueprint); border-radius: 2px; padding: 2.5rem; color: #fff; border: 1px solid rgba(224,160,64,0.1); position: relative; overflow: hidden; }
+  .test-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(42,80,128,0.1) 29px, rgba(42,80,128,0.1) 30px),
+      repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(42,80,128,0.1) 29px, rgba(42,80,128,0.1) 30px);
+    pointer-events: none;
+  }
+  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--copper-lt); padding: 1rem 1.25rem; border-radius: 0 2px 2px 0; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--copper-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--blueprint); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(224,160,64,0.12); }
+  .footer-icon { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; display: block; margin-bottom: 0.5rem; color: var(--copper-glow); letter-spacing: 0.1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.13</div>
+  <h1>建築史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">パルテノン神殿からザハ・ハディド、安藤忠雄まで——人類が「空間」に込めてきた3000年の思想と権力を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 26世紀</span><span class="hero-stat-lbl">ピラミッドの建設</span></div>
+    <div><span class="hero-stat-num">3000年</span><span class="hero-stat-lbl">建築の歴史</span></div>
+    <div><span class="hero-stat-num">12の様式</span><span class="hero-stat-lbl">時代を映す石と鉄の言語</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">空間体験の深さ</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 建築史を学ぶ意味 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">建築史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「キレイな建物」の先へ——権力・技術・思想を「読む」ための技術</p>
+  </div>
+  <div class="style-grid">
+    <div class="style-card" data-num="I">
+      <span class="sc-era">Power</span>
+      <span class="sc-name">権力の最大の見える化</span>
+      <p class="sc-body">ピラミッド・パルテノン・ヴェルサイユ・摩天楼——建築は「誰が最も強いか」を物理的に示してきた。高さ・材料・装飾の豊かさが権力の直接の翻訳。世界一高いビルを競うのは今も変わらない本能。</p>
+    </div>
+    <div class="style-card" data-num="II">
+      <span class="sc-era">Technology</span>
+      <span class="sc-name">技術革新の歴史</span>
+      <p class="sc-body">アーチ（ローマ）→尖塔アーチ（ゴシック）→鉄骨（産業革命）→コンクリート→ガラスカーテンウォール——建築史は材料と構造技術の革新史でもある。新しい材料は新しい様式を生み出した。</p>
+    </div>
+    <div class="style-card" data-num="III">
+      <span class="sc-era">Philosophy</span>
+      <span class="sc-name">空間に込められた思想</span>
+      <p class="sc-body">「形は機能に従う」「神聖な比例」「光と影の建築」——建築家は常に哲学を空間で表現してきた。建物は「立体化した思想」であり、入った人を変容させる力を持つ。</p>
+    </div>
+    <div class="style-card" data-num="IV">
+      <span class="sc-era">Everyday Life</span>
+      <span class="sc-name">最も身近な芸術</span>
+      <p class="sc-body">絵画は美術館に行かないと会えないが、建築は毎日すれ違う。通勤路の駅・商業ビル・神社・住宅——全て建築家の判断が込められた「読める空間」。建築史を知ると毎日の風景が変わる。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「建築って絵画より圧倒的に政治的なんよ。ヴェルサイユ宮殿はルイ14世の絶対権力の物理的表現で、建物に入った人間が自動的に"王の偉大さ"を感じるよう計算されて設計されてる。今の高層ビル群も同じで、高さが力の誇示。空間はずっと私たちを操作してる」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代建築 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">古代建築 — 神・王・永遠性の追求</h2>
+    <p class="section-desc">BC 2600年〜AD 5世紀。ピラミッドからローマ帝国まで——建築の「文法」が生まれた</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Ancient Architecture · BC 2600〜AD 476</div>
+    <div class="dp-title">「永遠に残る」という意志——全ての古代建築の動力</div>
+    <div class="bldg-row">
+      <div class="bldg-card">
+        <div class="bc-name">エジプトのピラミッド</div>
+        <div class="bc-dates">BC 2600〜2500年 · ギザ</div>
+        <div class="bc-style">ファラオの陵墓・永遠性の象徴</div>
+        <div class="bc-body">クフ王のピラミッドは高さ146m・底辺230m・推定230万個の石を使用。今から4600年前、重機なしでどう建てたかは今も完全には解明されていない（スロープ説・内部スパイラル説など）。「永遠の命」を信じた文明が「永遠の建物」を作った。</div>
+        <div class="bc-fact">→ 4600年後も世界7不思議として残る</div>
+      </div>
+      <div class="bldg-card">
+        <div class="bc-name">パルテノン神殿</div>
+        <div class="bc-dates">BC 447〜432年 · アテネ</div>
+        <div class="bc-style">ドーリア式・黄金比・視覚補正</div>
+        <div class="bc-body">完璧に見えるが実は直線が一本もない——全ての柱がわずかに内傾きし、床は中央がわずかに盛り上がり、柱は上部がやや細くなる（エンタシス）。「人間の目の錯覚を補正する」ために意図的に歪ませた究極の精密設計。アテネ民主政の権威と誇りを体現。</div>
+        <div class="bc-fact">→ 直線ゼロ——全てが視覚補正のための曲線</div>
+      </div>
+      <div class="bldg-card">
+        <div class="bc-name">コロッセウム</div>
+        <div class="bc-dates">AD 72〜80年 · ローマ</div>
+        <div class="bc-style">ローマ建築・アーチ・コンクリート</div>
+        <div class="bc-body">収容人数5万〜8万人。アーチとローマン・コンクリートによる革命的構造。5万人が7〜8分でスムーズに退場できるよう80ものゲートが設計された（現代のスタジアム設計と同じ原理）。「パンとサーカス」——民衆を娯楽で統治する政治の道具でもあった。</div>
+        <div class="bc-fact">→ 現代スタジアム設計の原型——2000年前に完成</div>
+      </div>
+      <div class="bldg-card">
+        <div class="bc-name">パンテオン</div>
+        <div class="bc-dates">AD 125年頃 · ローマ</div>
+        <div class="bc-style">ドーム建築・完璧な比例</div>
+        <div class="bc-body">直径43.3mのドームは1400年以上世界最大を誇った（今も鉄筋なしの無補強コンクリートドームとして世界最大）。頂部のオキュラス（円形の穴、直径8.9m）から光が差し込む——天空に開いた「神の目」。内部空間は球体が完全に内接する比例美。</div>
+        <div class="bc-fact">→ 鉄筋なし・1900年後も現役で使われている</div>
+      </div>
+      <div class="bldg-card">
+        <div class="bc-name">ローマ建築の遺産</div>
+        <div class="bc-dates">BC 2世紀〜AD 4世紀</div>
+        <div class="bc-style">アーチ・ヴォールト・コンクリート・道路</div>
+        <div class="bc-body">ローマが世界に与えた3大建築技術——①アーチ（石を積んで穴を作る構造革命）②ローマン・コンクリート（火山灰とライムの混合物で海水でも硬化する驚異の材料）③水道橋（重力だけで数十kmを流れる土木工学）。近代建築はこれらの再発見から始まった。</div>
+        <div class="bc-fact">→ アーチ・コンクリート・水道橋——全ての近代インフラの原点</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 中世〜ルネサンス ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">中世〜ルネサンス — 神の家から人間の建築へ</h2>
+    <p class="section-desc">5〜17世紀。ロマネスク・ゴシック・ルネサンス・バロックの変容</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+    <div class="life-step">
+      <div class="ls-icon">⛪</div>
+      <div>
+        <div class="ls-title">ロマネスク（11〜12世紀）——「要塞のような神の家」</div>
+        <div class="ls-body">厚い石壁・小さな窓・丸アーチ・重厚な塔が特徴。「要塞のような教会」——外敵から守る機能も。大きな窓を作れないため内部は暗く神秘的。ピサ大聖堂・モン・サン＝ミッシェルが代表。ロマネスクの「暗さ」へのゴシックの「光の建築」への反動が次の革命を準備した。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🏰</div>
+      <div>
+        <div class="ls-title">ゴシック（12〜15世紀）——「石で作った光の芸術」</div>
+        <div class="ls-body">尖頭アーチ（ポインテッド・アーチ）・リブ・ヴォールト・フライング・バットレスという3つの技術革新が「壁を窓に置き換えた」。壁から荷重を逃がすフライングバットレスがあるから薄い壁と大きな窓が可能に。シャルトル・ノートルダム・ケルン大聖堂——「神は光である」というキリスト教神学を建築で実現した。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🏛</div>
+      <div>
+        <div class="ls-title">ルネサンス建築（15〜17世紀）——ギリシャ・ローマの復活</div>
+        <div class="ls-body">ブルネレスキがフィレンツェ大聖堂のドームを設計（1436年竣工）——古代ローマのパンテオンを研究して800年ぶりに大ドームを実現。ヴィトルウィウスの建築書を再発見し「ウェルニタス（美）・フィルミタス（強度）・ウティリタス（機能）」の三原則を確立。人間の体の比例（ウィトルウィウス的人体図）が建築の比例の基準に。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">👑</div>
+      <div>
+        <div class="ls-title">バロック建築（17〜18世紀）——権力と感情の劇場</div>
+        <div class="ls-body">ヴェルサイユ宮殿（1682年）がバロック建築の頂点。「鏡の間」——73mの廊下に357枚の鏡・357個の窓が向かい合い、太陽が反射して「太陽王（ルイ14世）」を演出する計算された空間装置。ベルニーニのサン・ピエトロ広場（ローマ）——楕円形の広場が「神の腕で信者を包む」コロナータ（列柱廊）の設計意図。感情を揺さぶる曲線・豪華な装飾・劇的な光が特徴。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 近代タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">近代〜現代建築タイムライン</h2>
+    <p class="section-desc">産業革命から現代まで——「形は機能に従う」という革命と、その後の反乱</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1851年</div>
+        <div class="tl-event">水晶宮（クリスタル・パレス）——鉄とガラスの革命</div>
+        <div class="tl-desc">ロンドン万博のためにジョセフ・パクストンが設計した鉄骨＋ガラスの巨大温室（長さ563m）。建設期間わずか17週間。「鉄とガラスが建築の主役になれる」という宣言。近代建築の幕開け——石の時代から鉄の時代へ。のちのスカイスクレイパー・駅舎・ガラス張り建築の原型。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏗</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1889年</div>
+        <div class="tl-event">エッフェル塔——醜悪から象徴へ</div>
+        <div class="tl-desc">パリ万博のための仮設鉄塔、高さ324m。当初は「醜悪な鉄のかまぼこ板」と激しく批判されモーパッサンは「あそこが唯一塔が見えない場所」としてエッフェル塔内のレストランで食事したという逸話が。竣工20年後に解体予定が、無線通信アンテナとして有用になり残存。今や「パリ」の代名詞。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🗼</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+      <div class="tl-year">1900年代〜1920年代</div>
+        <div class="tl-event">アール・ヌーヴォーとアール・デコ</div>
+        <div class="tl-desc">アール・ヌーヴォー——「自然の有機的曲線」を建築に。ガウディのサグラダ・ファミリア（1882年着工）・グエル公園。アール・デコ——幾何学的装飾・垂直線・金属光沢の摩天楼スタイル。クライスラービル（1930）・エンパイアステートビル（1931）。「近代化の喜び」を装飾で祝う最後の時代。</div>
+      </div>
+      <div class="tl-dot steel"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌿</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1919〜1933年</div>
+        <div class="tl-event">バウハウス——「形は機能に従う」の宣言</div>
+        <div class="tl-desc">ヴァルター・グロピウスがドイツ・デッサウに設立した「建築と美術の総合学校」。「良いデザインは全ての人に届くべき」——装飾を排し、機能だけを残す近代デザインの聖地。ミース・ファン・デル・ローエ・カンディンスキー・クレーが教壇に。ナチスに閉鎖されアメリカへ亡命し戦後の現代デザインを席巻。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⬜</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1920〜1960年代</div>
+        <div class="tl-event">近代建築の三巨人——ル・コルビュジエ・ライト・ミース</div>
+        <div class="tl-desc">ル・コルビュジエ「住宅は住むための機械」——ピロティ・屋上庭園・自由な平面・水平連続窓・自由なファサードの近代建築5原則。フランク・ロイド・ライト——「有機建築」・落水荘（岩の上に突き出たキャンティレバー）。ミース「Less is More」——ガラスと鉄骨の超ミニマル・ファンズワース邸。</div>
+      </div>
+      <div class="tl-dot steel"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏢</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1960〜1970年代</div>
+        <div class="tl-event">ブルータリズム——コンクリートの美学</div>
+        <div class="tl-desc">コンクリートを隠さず打ち放しで見せる「ブルータリズム（粗野な様式）」。ル・コルビュジエのチャンディーガル・マルセイユのユニテ・ダビタシオン、磯崎新・黒川紀章の日本メタボリズム。「機械的均質化への反動」として圧倒的な個性と物質性を追求。賛否両論だが今は再評価が進んでいる。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏗</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1980年代〜</div>
+        <div class="tl-event">ポストモダン建築——装飾の復活とパロディ</div>
+        <div class="tl-desc">「Less is More」への反動として「Less is Bore（退屈だ）」とヴェンチューリが反論。歴史的様式の断片を引用・パロディ化するポストモダン。AT&Tビル（現ソニービル）のペディメント頂上にチッペンデール家具のような装飾——「機能主義の時代には絶対に許されなかった遊び」。好き嫌いが最も分かれる建築様式。</div>
+      </div>
+      <div class="tl-dot moss"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏛</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1990年代〜現在</div>
+        <div class="tl-event">解体主義・デジタル建築・サステナビリティ</div>
+        <div class="tl-desc">ザハ・ハディド——コンピュータ設計による流体的曲線・既存の「安定した形」の全面否定。ビルバオのグッゲンハイム（ゲーリー）が観光業を一変させた「ビルバオ効果」。現在はBIM・パラメトリックデザイン・3Dプリンタが設計革命。カーボンニュートラル・バイオフィリックデザイン（自然との共生）が主流概念に。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌿</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 20世紀の建築家 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">20世紀の建築の巨人たち</h2>
+    <p class="section-desc">「形は機能に従う」から「形は感動を生む」へ——時代を変えた10人</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">The Masters · 20世紀の建築家</div>
+    <div class="dp-title">この10人の思想を知ると「なぜその建物はそうなっているか」がわかる</div>
+    <div class="arch-row">
+      <div class="arch-card">
+        <div class="ac-name">ル・コルビュジエ</div>
+        <div class="ac-dates">1887〜1965 · スイス→フランス</div>
+        <div class="ac-move">近代建築の父</div>
+        <div class="ac-body">「住宅は住むための機械」——感情的な装飾を全て排除し機能性を最大化。近代建築5原則を宣言。サヴォア邸・チャンディーガル・ユニテ・ダビタシオン。プリツカー賞（建築のノーベル賞）が作られる前に死んだため唯一受賞できなかった最重要建築家。</div>
+        <div class="ac-quote">「建築は光の中で積み上げられた大きさ・素材・形の巧みで情熱的な遊びである」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">フランク・ロイド・ライト</div>
+        <div class="ac-dates">1867〜1959 · アメリカ</div>
+        <div class="ac-move">有機建築・プレイリースタイル</div>
+        <div class="ac-body">「有機建築」——建物と自然が一体化すべき。落水荘（1935）——岩の上を流れる滝の上にキャンティレバーで張り出す驚異の住宅。グッゲンハイム美術館（ニューヨーク）——螺旋のスロープが展示空間。91歳まで設計し続けた「終わらない創造性」。</div>
+        <div class="ac-quote">「自然はけっして間違った設計をしない」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">ミース・ファン・デル・ローエ</div>
+        <div class="ac-dates">1886〜1969 · ドイツ→アメリカ</div>
+        <div class="ac-move">ミニマリズム・「Less is More」</div>
+        <div class="ac-body">ガラスと鉄骨のみによる究極の透明・軽量・均質な建築。バルセロナ・パビリオン・ファンズワース邸・シーグラムビル（ニューヨーク）。「Less is More（少ないほど豊か）」——現代の超高層ガラスビル全ての精神的原型。日本のミニマリズム空間にも影響。</div>
+        <div class="ac-quote">「God is in the details（神は細部に宿る）」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">アントニ・ガウディ</div>
+        <div class="ac-dates">1852〜1926 · スペイン</div>
+        <div class="ac-move">アール・ヌーヴォー・有機建築</div>
+        <div class="ac-body">「直線は人間のもの、曲線は神のもの」。サグラダ・ファミリア（1882年〜未完）——カタテナリー曲線（鎖を垂らした形の逆=最も合理的なアーチ）を逆さに使った構造的かつ装飾的な奇跡。路面電車に轢かれて死亡した時、身元を誰も確認できなかったほど質素な服だった。</div>
+        <div class="ac-quote">「独創性とは起源に立ち戻ることだ」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">丹下健三</div>
+        <div class="ac-dates">1913〜2005 · 日本</div>
+        <div class="ac-move">日本近代建築の父</div>
+        <div class="ac-body">1964年東京オリンピックの代々木第一体育館（吊り屋根構造）・広島平和記念資料館・東京都庁。「伝統と近代の統合」——日本の建築文化を世界に通じる近代建築の言語に翻訳。磯崎新・黒川紀章・槇文彦・安藤忠雄という後続世代の育ての親（直接・間接に）。</div>
+        <div class="ac-quote">「建築は時代の表現である」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">安藤忠雄</div>
+        <div class="ac-dates">1941〜 · 大阪</div>
+        <div class="ac-move">打ち放しコンクリート・光の建築</div>
+        <div class="ac-body">独学で建築を習得（大学出ていない）。「光の教会」（大阪・茨木）——壁に十字の隙間から光が差し込む完璧な空間詩。「住吉の長屋」——雨が降れば傘なしに廊下を渡れない不便な住宅だが「不便さを通じて自然と向き合う」という哲学。プリツカー賞1995年。</div>
+        <div class="ac-quote">「少ない言葉で、多くを語れ」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">レンゾ・ピアノ</div>
+        <div class="ac-dates">1937〜 · イタリア</div>
+        <div class="ac-move">ハイテク建築</div>
+        <div class="ac-body">「ポンピドゥー・センター（1977）」——設備配管・エアコン・エスカレーターを外に出した「建物の内側と外側を逆にした建築」で建築史を塗り替えた（リチャード・ロジャースと共同設計）。現在は「ニューヨーク・タイムズ」本社・大阪梅田スカイビル（建築監修）など。1998年プリツカー賞。</div>
+        <div class="ac-quote">「建築は人々の生活に触れる最も社会的な芸術だ」</div>
+      </div>
+      <div class="arch-card">
+        <div class="ac-name">ザハ・ハディド</div>
+        <div class="ac-dates">1950〜2016 · イラク→イングランド</div>
+        <div class="ac-move">解体主義・パラメトリック</div>
+        <div class="ac-body">イラク人女性建築家として差別と闘いながら建築の「不可能」に挑み続けた。コンピュータ設計による流動的・彫刻的な形——東京オリンピック新国立競技場の当初案（コスト問題で白紙）で日本でも話題に。2004年女性初のプリツカー賞。「どんな曲線も可能だ——コンピュータがあれば」。</div>
+        <div class="ac-quote">「私の建築に直線はない。直線は人間の発明であり、自然にはない」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 日本建築 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">日本建築の独自性</h2>
+    <p class="section-desc">伊勢神宮から隈研吾まで——「間」「縁側」「借景」という西洋にない空間言語</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">⛩</div>
+      <div>
+        <div class="ls-title">伊勢神宮——「永遠のリセット」という建築哲学</div>
+        <div class="ls-body">20年ごとに全ての社殿を建て直す「式年遷宮」。「永遠に新しいものが最も古い建築」という逆説。西洋建築が「石に永遠性を刻む」のに対し、日本は「木を更新することで永遠性を保つ」。技術の継承・木材の再利用・自然との共存という思想が1300年以上続く。神明造という最古の様式が今も変わらない。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🎋</div>
+      <div>
+        <div class="ls-title">「間（ま）」と「縁側」——西洋にない空間概念</div>
+        <div class="ls-body">「間（ま）」——空間・時間・人間関係の「あいだ」を示す日本語の概念。建築では「内でも外でもない空間（縁側）」の重視として現れる。縁側は内部（家）と外部（庭）の境界を溶かす中間領域——西洋建築には対応する概念がない。「借景」（庭の外の山を庭に取り込む視覚的手法）も日本独自。ル・コルビュジエは日本建築を研究したという記録がある。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🍵</div>
+      <div>
+        <div class="ls-title">茶室と「わびさびの建築」</div>
+        <div class="ls-body">千利休が完成させた茶室は「人間が最大限に縮小された空間」——にじり口（膝をついて入る30cm四方の入口）で身分差を消す。壁の歪みは意図的——完璧な空間は「死んでいる」とし、不完全さに美を見る「わびの美学」を空間化。2畳の茶室に宇宙を込めるミニマリズムは安藤忠雄・隈研吾に直接繋がる。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🌿</div>
+      <div>
+        <div class="ls-title">隈研吾（1954〜）——「負ける建築」と自然素材の復権</div>
+        <div class="ls-body">ザハ後に東京五輪メインスタジアムを担当。「コンクリートに勝とうとするな」——木材・石・竹などの自然素材を細かく分割して使い「自然に溶け込む建築」を追求。「建築が主役を張るのをやめ、場所に負けることで場所の魅力を引き出す」という「負ける建築」哲学。ミースの「Less is More」に対するアジア的回答。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">建築史の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——建築を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">黄金比 <span class="concept-en">Golden Ratio</span></div>
+      <div class="concept-body">約1:1.618という比率——パルテノン神殿・ノートルダム大聖堂・ル・コルビュジエの「モデュロール」まで多数の建築に見出される「最も美しい比例」とされる。ただし「どこでも黄金比が見える」のは人間が探したがるバイアスという批判もあり、科学的には議論が続く。</div>
+      <div class="concept-izakaya">「黄金比って名刺の縦横比・スマホの縦横比・パルテノン神殿の柱の比率に使われてるらしいんだけど、実は"見つけようとすれば何にでも見える"という批判もある。脳が見たいものを見てるだけかもという話——でも美しい比率というのは確かで、デザインの基準として今も使われてる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">「形は機能に従う」<span class="concept-en">Form Follows Function</span></div>
+      <div class="concept-body">アメリカの建築家ルイス・サリヴァン（1896年）が提唱した近代建築の根本原則。装飾は廃し、用途から形を導け——バウハウス・ル・コルビュジエ・ミースに受け継がれた。「機能しない美しさは嘘だ」。ポストモダンはこれに反発し「Less is Bore（退屈だ）」と宣言した。</div>
+      <div class="concept-izakaya">「"形は機能に従う"っていう近代建築の大原則があってさ、それで20世紀のビルは全部同じガラスの箱になった。で、70年代に"それって退屈じゃない？"という反乱が起きてポストモダン建築が生まれた。デザインって振り子運動で、ミニマリズムが続くと装飾への回帰が来る」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">「Less is More」vs「Less is Bore」<span class="concept-en">Minimalism Debate</span></div>
+      <div class="concept-body">ミース「Less is More——少ないほど豊か」に対しロバート・ヴェンチューリ「Less is Bore——少ないほど退屈」という反論。前者は装飾を全て排除した透明なモダニズム、後者は歴史・装飾・複雑さを再評価するポストモダニズムの宣言。現代建築はこの二つの間で揺れ続けている。</div>
+      <div class="concept-izakaya">「ミニマリズムとポストモダンの論争って、ミースの"装飾ゼロのガラス箱"vs ヴェンチューリの"装飾あっていいじゃん"という対立で、今もインテリアデザインから製品デザインまで続いてる。アップルはミース派、任天堂はヴェンチューリ派に近い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">フライング・バットレス <span class="concept-en">Flying Buttress</span></div>
+      <div class="concept-body">ゴシック大聖堂の外側に飛び出した「飛び梁」——壁の横荷重を建物の外に逃がすことで薄い壁と大きな窓を実現した12世紀の構造革命。「光の建築」を可能にした技術的奇跡。今も鉄筋コンクリートにより同じ原理が使われている。ゴシック建築の外観を特徴づける「空を飛ぶアーチ」。</div>
+      <div class="concept-izakaya">「フライング・バットレスって建物の外に出てる謎の出っ張りだけど、あれが壁を薄くするための構造技術なの。あれがあるからゴシック大聖堂の壁が全部ステンドグラスになれる。建物の外に骨格が出てる——それをポンピドゥー・センターで設備全部外に出すというアイデアに1000年後に繋がる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">プリツカー賞 <span class="concept-en">Pritzker Prize</span></div>
+      <div class="concept-body">1979年創設の建築界の「ノーベル賞」。ハイアット財団が授与。安藤忠雄（1995）・槇文彦（1993）・伊東豊雄（2013）・坂茂（2014）・妹島和世（2010）と日本人受賞者が多い——日本建築が世界的に高く評価されていることの証左。年齢制限なし・存命中のみ受賞可。</div>
+      <div class="concept-izakaya">「プリツカー賞って建築のノーベル賞なんだけど、日本人が8人受賞していて国別最多なんよ。アメリカ・ヨーロッパに次ぐ世界3位の受賞者数——日本建築が世界でそれだけ独自の価値を持っているということ。安藤忠雄の"光の教会"が世界的に評価されてる理由は"禅と現代建築の融合"という唯一無二性」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ビルバオ効果 <span class="concept-en">Bilbao Effect</span></div>
+      <div class="concept-body">1997年、フランク・ゲーリー設計のグッゲンハイム美術館ビルバオがスペインの錆びた工業都市を世界的観光地に変えた現象。「建築一棟が都市を変える」という証明。以降、世界中の都市が「ビルバオ効果を目指してスター建築家に"アイコン建築"を依頼する」競争が始まった。</div>
+      <div class="concept-izakaya">「ビルバオって聞いたことない人が多いけど、ゲーリーの美術館が来てから毎年100万人以上が来る観光地になった。建築一つで都市の経済が変わった——これをビルバオ効果という。東京の国立競技場も同じ発想で、観光地になれるかがスター建築家選定の理由のひとつ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">パラメトリックデザイン <span class="concept-en">Parametric Design</span></div>
+      <div class="concept-body">コンピュータアルゴリズムを使って無数のパラメーター（変数）から最適な形を生成する設計手法。ザハ・ハディドが代表。「手では描けなかった形を可能にする」——従来の直線・曲線の制約から解放された完全に自由な形態。3Dプリンタと組み合わせで建築・プロダクト・ファッションに波及。</div>
+      <div class="concept-izakaya">「ザハ・ハディドの建物ってなんであんなにウネウネしてるかというと、コンピュータで"こういう条件を満たす最適解"を計算させると自然にああなるんよ。人間が鉛筆で書ける形の限界を超えた——CADを超えてAIが建築を設計する時代になると、また革命的な形が生まれる可能性がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">サステナブル建築 <span class="concept-en">Sustainable Architecture</span></div>
+      <div class="concept-body">建築が環境に与える負荷を最小化する設計思想。建物は世界のCO₂排出の38%を占める——空調・照明・建設材料を含めて。パッシブデザイン（自然換気・採光の最大活用）・CLT（直交集成板木材）・屋上緑化・バイオフィリックデザイン（自然との共生）。「持続可能な建築」は今後50年の最大テーマ。</div>
+      <div class="concept-izakaya">「建築って世界のCO₂排出の4割近くを占めてる——電力・輸送より多い。だからサステナブル建築が今の最大テーマ。面白いのは木造建築の見直し——鉄筋コンクリートより木の方がCO₂少ない場合もある。日本の伝統的な木造建築が"最先端のサステナブル建築"として再評価されてる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">公共空間と民主主義 <span class="concept-en">Public Space & Democracy</span></div>
+      <div class="concept-body">古代ギリシャのアゴラ（広場）・ローマのフォルム——民主的議論が行われた公共空間が民主主義の物理的基盤。現代では「誰でも使えるパブリックスペース」の減少が民主主義の衰退と連動するという議論が。商業施設の「擬似公共空間」・監視カメラ・ホームレス対策設備（反ホームレス建築）——空間設計が誰を包含し誰を排除するかを決定している。</div>
+      <div class="concept-izakaya">「反ホームレス建築って知ってる？ 公園のベンチに手すりをつけて横になれないようにしたり、屋根下に棘を置いたり——これ全部建築家・デザイナーが意図的に設計してる。建築って空間を通じて"誰を歓迎し誰を排除するか"を決める権力を持ってる。ベンチひとつが政治的な話」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">光の建築 <span class="concept-en">Architecture of Light</span></div>
+      <div class="concept-body">光を建築の主要な設計要素として扱う考え方。ゴシックのステンドグラス・パンテオンのオキュラス・安藤忠雄の光の十字架・ルイス・カーンの「デザインとは光の素材を影に変えることだ」——「光を呼び込む設計」が建築の精神的次元を担う。「日本の建築家の光の使い方は世界最高」という評価が多い。</div>
+      <div class="concept-izakaya">「安藤忠雄の"光の教会"って、壁に十字形の隙間を作ってそこから光が差し込むだけなのに圧倒的な宗教的感動がある。2400万円で建てた小さな教会が世界中の建築家が訪れる聖地になった。光をコントロールするだけで空間が変わる——これが建築の最も安価で最も深い手法」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 建築様式比較表 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Blueprint</span>
+    <h2 class="section-title">建築史 様式 完全比較表</h2>
+    <p class="section-desc">技術・思想・形式・代表建築を一覧で掌握する</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>様式</th>
+          <th>時代</th>
+          <th>核心の特徴</th>
+          <th>構造技術</th>
+          <th>代表建築</th>
+          <th>何への反動か</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>古代エジプト</td>
+          <td>BC 2600〜30年</td>
+          <td>永遠性・神権政治・幾何学的純粋性</td>
+          <td>石積み・傾斜壁</td>
+          <td>ピラミッド・スフィンクス</td>
+          <td>（建築の出発点）</td>
+        </tr>
+        <tr>
+          <td>古代ギリシャ</td>
+          <td>BC 700〜146年</td>
+          <td>人間的比例・均整・視覚補正</td>
+          <td>梁・柱・石積み</td>
+          <td>パルテノン神殿</td>
+          <td>エジプトの神権的巨大さ</td>
+        </tr>
+        <tr>
+          <td>古代ローマ</td>
+          <td>BC 509〜AD 476年</td>
+          <td>実用性・公共性・規模</td>
+          <td>アーチ・ドーム・コンクリート</td>
+          <td>コロッセウム・パンテオン</td>
+          <td>ギリシャの「美のみ」</td>
+        </tr>
+        <tr>
+          <td>ゴシック</td>
+          <td>12〜15世紀</td>
+          <td>垂直性・光・精神的崇高さ</td>
+          <td>フライング・バットレス・尖頭アーチ</td>
+          <td>ノートルダム・ケルン大聖堂</td>
+          <td>ロマネスクの暗く重厚な空間</td>
+        </tr>
+        <tr>
+          <td>ルネサンス</td>
+          <td>15〜17世紀</td>
+          <td>比例・対称・人間中心主義</td>
+          <td>ドーム・ペンデンティヴ・古典的秩序</td>
+          <td>フィレンツェ大聖堂・サン・ピエトロ</td>
+          <td>ゴシックの「非人間的な崇高さ」</td>
+        </tr>
+        <tr>
+          <td>バロック</td>
+          <td>17〜18世紀</td>
+          <td>劇的・動的・感情的・豪華絢爛</td>
+          <td>複雑な平面・湾曲した壁面</td>
+          <td>ヴェルサイユ・サン・ピエトロ広場</td>
+          <td>ルネサンスの「静的な均整」</td>
+        </tr>
+        <tr>
+          <td>アール・ヌーヴォー</td>
+          <td>1890〜1910年代</td>
+          <td>有機的曲線・植物モチーフ・総合芸術</td>
+          <td>鉄・ガラス・タイル</td>
+          <td>サグラダ・ファミリア・グエル公園</td>
+          <td>産業革命の機械的均質化</td>
+        </tr>
+        <tr>
+          <td>モダニズム</td>
+          <td>1920〜1960年代</td>
+          <td>機能性・合理性・装飾の排除</td>
+          <td>鉄筋コンクリート・鉄骨・ガラス</td>
+          <td>サヴォア邸・シーグラムビル</td>
+          <td>折衷的歴史主義の装飾過多</td>
+        </tr>
+        <tr>
+          <td>ブルータリズム</td>
+          <td>1950〜1970年代</td>
+          <td>打ち放しコンクリート・圧倒的物質性</td>
+          <td>コンクリート・モジュール</td>
+          <td>ユニテ・ダビタシオン・国立代々木</td>
+          <td>モダニズムの「軽さ・透明性」</td>
+        </tr>
+        <tr>
+          <td>解体主義</td>
+          <td>1980年代〜現在</td>
+          <td>断片化・衝突・流動性・非線形</td>
+          <td>コンピュータ設計・複雑な鉄骨</td>
+          <td>グッゲンハイム・ビルバオ・CCTV</td>
+          <td>ポストモダンの「遊び」「引用」の表面性</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--copper-glow);">建築史の鉄則：</strong>全ての様式は「前の様式への反動」として生まれる。ゴシックはロマネスクの暗さへの反動、モダニズムは装飾の過剰への反動、ポストモダンはモダニズムの無機的単調さへの反動——宗教・哲学・美術・音楽・文学と全く同じ「反抗の連鎖」が建築史を動かしている。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Site Visit</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">建築史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「ゴシック建築ってなんであんな高くて細いの？」</div>
+      <div class="test-q-text">ヨーロッパ旅行の話・大聖堂の話になったとき</div>
+      <div class="test-a">「神に近づくために"高さ"を追求したのがゴシックで、技術的にはフライング・バットレスという外壁に飛び出た支え梁のおかげで壁を薄くできた。薄い壁は全部ステンドグラスにできる——"神は光だ"という神学を建築で実現した。シャルトル大聖堂のステンドグラスの青は当時金より高かったラピスラズリから作られた顔料で、いかに"神の家"に投資されたかがわかる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「安藤忠雄ってなんですごいの？」</div>
+      <div class="test-q-text">建築・デザインの話になったとき</div>
+      <div class="test-a">「まず大学行ってないのにプリツカー賞取った唯一の建築家という点がすごい。でも本当にすごいのは"光の教会"——コンクリートの箱に十字形の隙間を作っただけで、入った瞬間に宗教的な感動が来る空間を作った。2400万円の小さな建物が世界中から建築家が訪れる聖地に。"素材は最低限、体験は最大に"という哲学が安藤建築の核心。茶室の美学の現代版とも言える。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「バウハウスって何？」</div>
+      <div class="test-q-text">デザイン・ブランドの話になったとき</div>
+      <div class="test-a">「1919年ドイツに作られた"建築と美術の総合学校"で、今のプロダクトデザイン・グラフィックデザイン・UI/UXデザインの全ての精神的祖先。"良いデザインは全ての人に届くべき"という思想から、装飾を排した機能的なものを大量生産できるよう設計した。ナチスに閉鎖されてアメリカに亡命し、戦後のIBMやアップルのデザイン思想の源泉に。アップルのミニマルデザインは1000%バウハウスの子供。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なんで東京ってあんなにごちゃごちゃしてるの？」</div>
+      <div class="test-q-text">都市・街並みの話になったとき</div>
+      <div class="test-a">「ヨーロッパが"都市計画で空間を均一に管理"するのに対し、東京は江戸時代から"自然発生的な有機的成長"の都市。関東大震災・東京大空襲で何度も焼け野原になるたびにランダムに再建されてきた。建築の高さ制限・用途地域規制はあるけど敷地形状・デザインへの制約は欧州より弱い。ごちゃごちゃに見えるのは個人の最適化の積み重ね——コペンハーゲンの美しさとは全く異なる"集積の美"とも言える。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「なんで現代建築って難解なの？」</div>
+      <div class="test-q-text">美術館・公共建築の話になったとき</div>
+      <div class="test-a">「ゴシックの信者はステンドグラスの聖書物語を"読めた"。近代以降の建築は"何を表現してるか"の共通文法がない——だから難解に感じる。でも実はひとつの問いをするだけで全部解ける——"この空間は私に何を感じさせようとしてるか"。安藤は"厳粛さ"、ゲーリーは"驚き"、ミースは"静寂"、ガウディは"神への感謝"を目指してた。形の好みより"体験の設計意図"を読む習慣が鍵。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「AI時代に建築家は生き残れるの？」</div>
+      <div class="test-q-text">テクノロジーと仕事の未来の話になったとき</div>
+      <div class="test-a">「設計の一部はAIが高速化してる——構造計算・法規チェック・BIM（建物情報モデリング）はAIの得意領域。でも"なぜこの場所にこの建物が必要か""この空間で人間にどう感じてほしいか"という問いはAIに答えられない。安藤忠雄の光の十字架は"コンクリートの箱に隙間を作る"だけで実現できるが、それを思いつく問いの源泉は人間の経験・死・孤独・信仰への洞察——これがAIに代替されるのはまだ先だと思う。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">Architecture</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史・音楽史・文学史・建築史。知の十一角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42;">"Architecture is frozen music." — Friedrich Schelling</p>
+</div>
+
+</body>
+</html>

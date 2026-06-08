@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本文学史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sumi-deep:    #080608;   /* 墨・深 */
+    --sumi-mid:     #120E10;
+    --sumi-rich:    #1E1818;
+    --sepia:        #8A6840;   /* セピア */
+    --sepia-lt:     #B89060;
+    --sepia-glow:   #D8B070;
+    --sepia-pale:   #F8F0DC;
+    --washi:        #F4EED8;   /* 和紙 */
+    --washi-dark:   #EAE0C0;
+    --beni:         #8C1830;   /* 紅 */
+    --beni-lt:      #B83050;
+    --ai-deep:      #182040;   /* 藍 */
+    --ai-mid:       #283868;
+    --ai-light:     #4870B8;
+    --midori:       #1C3820;   /* 緑 */
+    --midori-lt:    #306840;
+    --midori-glow:  #50A060;
+    --ink:          #0C0808;
+    --ink-mid:      #2A1E18;
+    --ink-light:    #685848;
+    --gray:         #9A9080;
+    --silver:       #C0B8A0;
+    --shadow:       rgba(8,6,8,0.18);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--washi);
+    color: var(--ink);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--sumi-deep);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 55%, rgba(140,24,48,0.28) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 25%, rgba(138,104,64,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(24,32,64,0.35) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '文';
+    position: absolute;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 30rem; font-weight: 700;
+    opacity: 0.04; line-height: 1;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    color: var(--sepia-glow);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sepia-glow);
+    border: 1px solid rgba(216,176,112,0.4);
+    padding: 4px 16px; border-radius: 1px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+    font-weight: 700; line-height: 1.15; margin-bottom: 1rem;
+    background: linear-gradient(160deg, #fff 20%, var(--sepia-glow) 65%, var(--beni-lt) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.48);
+    max-width: 560px; margin: 0 auto 3rem; font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--sepia-glow); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--sumi-mid); color: var(--sepia-glow);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 1px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(138,104,64,0.2);
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; }
+  .bg-warm  { background: var(--washi-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 2px;
+    border: 1px solid rgba(8,6,8,0.1);
+    border-left: 4px solid var(--beni);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--sumi-deep);
+    border-radius: 2px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(138,104,64,0.12);
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 1.25rem; }
+
+  /* ─── ERA BANDS ─── */
+  .era-band { border-radius: 2px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: #fff; }
+  .eb-kodai  { background: linear-gradient(135deg, #080608, #140A10); }
+  .eb-heian  { background: linear-gradient(135deg, #080612, #100E28); }
+  .eb-chuse  { background: linear-gradient(135deg, #080808, #141010); }
+  .eb-edo    { background: linear-gradient(135deg, #0C0808, #1C1008); }
+  .eb-kindai { background: linear-gradient(135deg, #06080C, #0E1420); }
+  .eb-sengo  { background: linear-gradient(135deg, #060808, #0C1210); }
+  .eb-label  { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.3rem; }
+  .eb-title  { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 0.3rem; }
+  .eb-period { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  .eb-row    { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 0.75rem; }
+  .eb-card   { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; padding: 0.9rem; }
+  .ebc-title { font-family: 'Noto Serif JP', serif; font-size: 0.92rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 0.15rem; font-style: italic; }
+  .ebc-auth  { font-size: 0.62rem; color: var(--silver); margin-bottom: 0.35rem; }
+  .ebc-key   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--midori-glow); margin-bottom: 0.35rem; }
+  .ebc-body  { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .ebc-quote { margin-top: 0.5rem; font-size: 0.72rem; color: rgba(216,176,112,0.55); font-style: italic; border-left: 2px solid rgba(216,176,112,0.3); padding-left: 0.45rem; }
+
+  /* ─── WRITER CARDS ─── */
+  .writer-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; }
+  .writer-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--sepia-lt);
+    border-radius: 0 0 2px 2px;
+    padding: 1rem 1.1rem;
+  }
+  .wc-name   { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 0.15rem; }
+  .wc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .wc-move   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--midori-glow); margin-bottom: 0.35rem; }
+  .wc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .wc-quote  { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(216,176,112,0.55); font-style: italic; border-left: 2px solid rgba(216,176,112,0.3); padding-left: 0.5rem; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--sepia-lt), var(--sepia-lt), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--sepia-lt);
+    border: 3px solid var(--washi); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--sepia-lt); z-index: 2;
+  }
+  .tl-dot.beni   { background: var(--beni-lt);    box-shadow: 0 0 0 2px var(--beni-lt); }
+  .tl-dot.ai     { background: var(--ai-light);   box-shadow: 0 0 0 2px var(--ai-light); }
+  .tl-dot.midori { background: var(--midori-lt);  box-shadow: 0 0 0 2px var(--midori-lt); }
+  .tl-dot.glow   { background: var(--sepia-glow); box-shadow: 0 0 0 2px var(--sepia-glow); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid rgba(8,6,8,0.1); border-radius: 2px;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--sepia); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid rgba(8,6,8,0.1);
+    border-left: 4px solid var(--beni);
+    border-radius: 0 2px 2px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--beni); background: rgba(140,24,48,0.06); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--beni-lt); }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--sumi-deep); border-radius: 2px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(138,104,64,0.12); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia-glow); border-bottom: 1px solid rgba(138,104,64,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--sepia-glow); font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 700; font-style: italic; white-space: nowrap; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--washi-dark); border-radius: 2px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--sepia-lt); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--sumi-deep); border-radius: 2px; padding: 2.5rem; color: #fff; border: 1px solid rgba(138,104,64,0.12); }
+  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--sepia-lt); padding: 1rem 1.25rem; border-radius: 0 2px 2px 0; margin-bottom: 1rem; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--sepia-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--sumi-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(138,104,64,0.12); }
+  .footer-icon { font-family: 'Noto Serif JP', serif; font-size: 2rem; display: block; margin-bottom: 0.5rem; color: var(--sepia-glow); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.19</div>
+  <h1>日本文学史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">万葉集・源氏物語から夏目漱石・川端康成・村上春樹まで——1300年の「書く」という行為の歴史。日本語と日本人の魂を形作った作品群を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">8世紀</span><span class="hero-stat-lbl">万葉集・古事記の成立</span></div>
+    <div><span class="hero-stat-num">1000年頃</span><span class="hero-stat-lbl">源氏物語——世界最古の長編小説</span></div>
+    <div><span class="hero-stat-num">2名</span><span class="hero-stat-lbl">ノーベル文学賞（川端・大江）</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">今も生まれ続ける物語</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 日本文学史とは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">日本文学史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「読む」ことが「日本人を理解する」ことに直結する——1300年の魂の記録</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-bottom:1.5rem;">
+    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">Language</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">日本語の豊かさの源泉</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">「もののあはれ」「わびさび」「いき」——日本語にしか訳せない感情語の多くは文学の中で生まれ磨かれた。万葉仮名からひらがな・カタカナへの変遷が日本語表現の可能性を広げた歴史。</p>
+    </div>
+    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">World Record</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">世界最古の長編小説</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">「源氏物語」（1000〜1008年頃）はドン・キホーテより600年早い。紫式部という女性が「かな文字」という日本独自の文字で書いた——世界文学の原点のひとつが日本から生まれた事実。</p>
+    </div>
+    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">Gender</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">女性が作った黄金時代</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">平安文学の頂点——源氏物語（紫式部）・枕草子（清少納言）・土佐日記影響下の女性文学——は女性が担った。男性が漢文を書く時代に女性がかな文字で書いた「非公式な文学」が後世の最高峰になった逆説。</p>
+    </div>
+    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">Global</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">世界に発信される文学</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">川端康成（1968年）・大江健三郎（1994年）のノーベル文学賞。村上春樹の50以上の言語への翻訳。カズオ・イシグロ（日本生まれ）の2017年受賞——日本文学は今や世界文学の主要な声のひとつ。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「日本文学史って世界史上でも特殊で、1000年前に女性が世界初の長編小説を書いた国なんよ。しかもかな文字という"非公式な女性文字"で書いたから残った——男性の公式文章（漢文）は記録として残りにくかった。歴史的偶然が最高の文学を残した」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜奈良 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">古代〜奈良——日本語文学の誕生</h2>
+    <p class="section-desc">7〜8世紀。文字を獲得した日本が最初に残した言葉の記録</p>
+  </div>
+  <div class="era-band eb-kodai">
+    <div class="eb-label">Ancient Literature · 上代文学</div>
+    <div class="eb-title">漢字という外来文字で日本語を書く試行錯誤——万葉仮名の発明</div>
+    <div class="eb-period">7〜8世紀。国家の形成と同時に「日本の言葉を書き残す」という事業が始まった</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-title">古事記</div>
+        <div class="ebc-auth">712年 · 太安万侶編</div>
+        <div class="ebc-key">日本最古の文学作品</div>
+        <div class="ebc-body">「天地初めて発けし時」——天地創造から推古天皇まで。日本最古の文学作品。「ヤマトタケル」「オオクニヌシ」「因幡の白兎」などの神話・伝説を収録。漢字の音を借りて日本語の音を表す「万葉仮名」の初期的使用。</div>
+        <div class="ebc-quote">「高天原に坐す神の名は天之御中主神」（冒頭）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">万葉集</div>
+        <div class="ebc-auth">8世紀後半 · 大伴家持編（諸説あり）</div>
+        <div class="ebc-key">4500首・日本最古の歌集</div>
+        <div class="ebc-body">天皇・貴族から防人・農民まで幅広い階層の4500首を収録した最古の和歌集。「令和」の元号の典拠となった梅花の歌序文。「ますらをぶり（男性的・力強い）」の歌風。額田王・柿本人麻呂・大伴家持——古代日本の感情が生のまま残る。</div>
+        <div class="ebc-quote">「春過ぎて 夏来たるらし 白たへの 衣ほしたり 天の香具山」（持統天皇）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">日本書紀</div>
+        <div class="ebc-auth">720年 · 舎人親王編</div>
+        <div class="ebc-key">漢文正史・対外的歴史書</div>
+        <div class="ebc-body">古事記と同時期の「正史」。古事記が「国内向け・和文的」なのに対し、日本書紀は「対外向け・漢文正式体裁」。中国・朝鮮に向けた「日本という国家の正当性の主張」という政治的文書としての性格を持つ。二書の比較が古代日本の自己認識を理解する鍵。</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">土佐日記</div>
+        <div class="ebc-auth">935年頃 · 紀貫之</div>
+        <div class="ebc-key">最初の日記文学・かな文字の革命</div>
+        <div class="ebc-body">男性の紀貫之が「女性のふりをしてかな文字で書いた」最初の仮名日記文学。「男もすなる日記といふものを、女もしてみむとてするなり」という有名な書き出し。かな文字による「内面表現」の可能性を開いた革命的作品。後の女性文学の土台に。</div>
+        <div class="ebc-quote">「男もすなる日記といふものを、女もしてみむとてするなり」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 平安文学 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">平安文学——世界に誇る黄金時代</h2>
+    <p class="section-desc">9〜12世紀。かな文字が「日本文学」を生んだ——女性たちの圧倒的な創造力</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Heian Literature · 平安文学の黄金期</div>
+    <div class="dp-title">「かな文字」という革命が女性に解放した表現の世界——世界文学の原点</div>
+    <div class="writer-row">
+      <div class="writer-card">
+        <div class="wc-name">紫式部</div>
+        <div class="wc-dates">970〜1020年頃 · 平安京</div>
+        <div class="wc-move">源氏物語・もののあはれ</div>
+        <div class="wc-body">「源氏物語（1000〜1008年頃）」——光源氏を主人公に数十年・数十人の人物が交錯する54帖の大作。「もののあはれ」の最高表現。心理描写の深さは近代小説と比較されるほど。世界最古の長編小説のひとつとして今も世界中で翻訳・研究される。</div>
+        <div class="wc-quote">「世の中に たえて桜の なかりせば 春の心は のどけからまし」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">清少納言</div>
+        <div class="wc-dates">966〜1025年頃 · 平安京</div>
+        <div class="wc-move">枕草子・をかし</div>
+        <div class="wc-body">「枕草子（993〜1002年頃）」——「春はあけぼの」の書き出しで有名な随筆。「をかし（知的・批評的・面白い）」という美意識の体現。宮廷生活の観察眼が鋭く、現代エッセイの原型とも。紫式部との対比——「しみじみ感動する文学」vs「知的に面白がる文学」。</div>
+        <div class="wc-quote">「春はあけぼの。やうやう白くなりゆく山ぎは、少し明かりて…」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">在原業平（伊勢物語）</div>
+        <div class="wc-dates">825〜880年 · 平安京</div>
+        <div class="wc-move">歌物語・色好み</div>
+        <div class="wc-body">「伊勢物語（10世紀前半成立）」——「昔、男ありけり」という書き出しで始まる和歌を中心とした恋愛物語集。在原業平をモデルとする「昔男」の恋愛遍歴。日本最古の「歌物語」というジャンルを確立。「和歌＋物語」という形式は後の日本文学の基本パターンに。</div>
+        <div class="wc-quote">「から衣 きつつなれにし つましあれば はるばるきぬる 旅をしぞ思ふ」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">古今和歌集</div>
+        <div class="wc-dates">905年 · 紀貫之ら編</div>
+        <div class="wc-move">勅撰和歌集・仮名序</div>
+        <div class="wc-body">醍醐天皇の命による最初の勅撰（天皇命令で編まれた）和歌集。紀貫之の「仮名序」——「やまとうたは、人の心を種として、よろづの言の葉とぞなれりける」。和歌の定義と理念を確立した文学宣言。以後21の勅撰和歌集が編まれる伝統が始まる。</div>
+        <div class="wc-quote">「やまとうたは、人の心を種として…」（仮名序冒頭）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">和泉式部・菅原孝標女</div>
+        <div class="wc-dates">10〜11世紀</div>
+        <div class="wc-move">日記文学・恋愛文学</div>
+        <div class="wc-body">和泉式部日記——情熱的な恋愛の記録。菅原孝標女「更級日記」——「源氏物語」に熱狂した少女の成長と失望の記録（「本が読みたくて」という文学への純粋な欲望が現代人に親しみやすい）。平安女流日記文学の豊かな層。</div>
+        <div class="wc-quote">「源氏の物語、一の巻よりして、皆見せたまへ」（更級日記）</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 中世〜江戸 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">中世〜江戸——無常・武士・庶民文学の展開</h2>
+    <p class="section-desc">12〜19世紀。戦乱・禅・平和が生んだ多彩な文学形式</p>
+  </div>
+  <div class="era-band eb-chuse">
+    <div class="eb-label">Medieval Literature · 中世文学</div>
+    <div class="eb-title">「諸行無常」——平家物語が刻んだ日本人の無常観</div>
+    <div class="eb-period">鎌倉〜室町時代。戦乱の時代が文学に「はかなさと悲劇」の美学を刻んだ</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-title">平家物語</div>
+        <div class="ebc-auth">13世紀成立（作者不詳）</div>
+        <div class="ebc-key">軍記物語・諸行無常の文学</div>
+        <div class="ebc-body">「祇園精舎の鐘の声、諸行無常の響きあり」——源平の争乱を描く軍記物語の最高峰。琵琶法師が語り広めた「語り文学」。平家の滅亡を「盛者必衰の理」として描く仏教的無常観。能「敦盛」——若武者の死が武士道文学の原型に。</div>
+        <div class="ebc-quote">「祇園精舎の鐘の声、諸行無常の響きあり」</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">方丈記</div>
+        <div class="ebc-auth">1212年 · 鴨長明</div>
+        <div class="ebc-key">日本三大随筆・無常の美文</div>
+        <div class="ebc-body">「ゆく河の流れは絶えずして、しかも、もとの水にあらず」——火事・地震・飢饉を体験した隠者の記録。「方丈（1丈四方=約3畳の庵）」での孤独な生活の記録。枕草子・徒然草と並ぶ「日本三大随筆」のひとつ。ミニマリズム文学の先祖。</div>
+        <div class="ebc-quote">「ゆく河の流れは絶えずして、しかも、もとの水にあらず」</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">徒然草</div>
+        <div class="ebc-auth">14世紀 · 吉田兼好</div>
+        <div class="ebc-key">日本三大随筆・人生論</div>
+        <div class="ebc-body">「つれづれなるままに、日暮らし、硯に向かひて」——無聊（することなし）をかこちながら書いた随筆。人生・死・自然・社会への洞察が243段に。「花は盛りに」——満開の花より散り際、月より雨夜に隠れた月を愛でる——もののあはれとわびの美学の古典的定義。</div>
+        <div class="ebc-quote">「花は盛りに、月は隈なきをのみ見るものかは」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="era-band eb-edo">
+    <div class="eb-label">Edo Literature · 江戸文学</div>
+    <div class="eb-title">庶民の文学——井原西鶴・松尾芭蕉・近松門左衛門</div>
+    <div class="eb-period">17〜19世紀。260年の平和が「武士でも貴族でもない庶民の文学」を生んだ</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-title">奥の細道</div>
+        <div class="ebc-auth">1694年 · 松尾芭蕉</div>
+        <div class="ebc-key">俳諧紀行文・俳句の完成</div>
+        <div class="ebc-body">「月日は百代の過客にして——」。東北・北陸への旅を俳句と散文で綴った紀行文学の最高峰。「古池や 蛙飛び込む 水の音」「夏草や 兵どもが 夢の跡」——17音に宇宙を込める芭蕉俳句の精神。「軽み」「さび」「細み」の美学。</div>
+        <div class="ebc-quote">「夏草や 兵どもが 夢の跡」</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">好色一代男</div>
+        <div class="ebc-auth">1682年 · 井原西鶴</div>
+        <div class="ebc-key">浮世草子・庶民小説の誕生</div>
+        <div class="ebc-body">7歳から60歳まで3742人の女性と恋愛した「世之介」の物語。庶民の性・金・恋愛を赤裸々に描いた「浮世草子」という新ジャンルの誕生。漢文・和歌の「高雅な文学」でなく「庶民の日常の言葉で書く」という革命。日本近代小説の祖先のひとつ。</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">曽根崎心中</div>
+        <div class="ebc-auth">1703年 · 近松門左衛門</div>
+        <div class="ebc-key">人形浄瑠璃・心中文学</div>
+        <div class="ebc-body">「義理と人情」の板挟みで心中を選んだ若い男女の悲劇。実際の心中事件を元に書いた「世話物（現代劇）」。「この世の名残、夜も名残」——美しい道行きの文章が日本語の最高峰のひとつ。「文楽（人形浄瑠璃）」の最高傑作として今も上演される。</div>
+        <div class="ebc-quote">「この世の名残、夜も名残、死に行く身をたとふれば——」</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-title">東海道中膝栗毛</div>
+        <div class="ebc-auth">1802〜1809年 · 十返舎一九</div>
+        <div class="ebc-key">滑稽本・江戸のコメディ</div>
+        <div class="ebc-body">弥次さん・喜多さんの東海道珍道中。「弥次喜多」は今も「ドタバタ旅行コンビ」の代名詞。「笑い」を前面に出した「滑稽本」というジャンル——お笑い文学の元祖。江戸庶民の旅への憧れと娯楽文学の頂点。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 明治〜大正 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">明治〜大正——「近代文学」の誕生</h2>
+    <p class="section-desc">1868〜1926年。西洋文学との出会いが「個人」を発見した</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Meiji-Taisho Literature · 明治・大正文学</div>
+    <div class="dp-title">「言文一致」という革命——話し言葉で小説を書くことが「近代文学」を生んだ</div>
+    <div class="writer-row">
+      <div class="writer-card">
+        <div class="wc-name">夏目漱石</div>
+        <div class="wc-dates">1867〜1916 · 東京</div>
+        <div class="wc-move">近代小説の父・自己本位</div>
+        <div class="wc-body">ロンドン留学で「西洋の個人主義」と格闘し「則天去私（自己を捨て天に従う）」「自己本位」という概念を提唱。「吾輩は猫である」「坊っちゃん」「こころ」「三四郎」「それから」「門」——明治の近代化に翻弄される知識人の内面を描き続けた。1984〜2004年の千円札の顔。</div>
+        <div class="wc-quote">「智に働けば角が立つ。情に棹させば流される」（草枕冒頭）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">森鴎外</div>
+        <div class="wc-dates">1862〜1922 · 島根→東京</div>
+        <div class="wc-move">ロマン主義・歴史小説</div>
+        <div class="wc-body">陸軍軍医総監という公的地位と作家活動を両立した「エリートの文学者」。ドイツ留学体験を元にした「舞姫」。晩年は「高瀬舟」「阿部一族」など歴史小説に。「かのように（als ob）」——理想を「あたかも真実であるかのように」生きるという哲学的態度。</div>
+        <div class="wc-quote">「余は今まで嘘をついた事がない」（舞姫）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">芥川龍之介</div>
+        <div class="wc-dates">1892〜1927 · 東京</div>
+        <div class="wc-move">新思潮派・短編の芸術</div>
+        <div class="wc-body">「羅生門」「藪の中」「地獄変」「河童」——短編小説の完成者。「人間のエゴイズム・芸術と道徳の矛盾・存在の不安」を鋭く描く。「ぼんやりとした不安」という言葉を残して35歳で服毒自殺。「芥川賞（純文学の最高峰）」は彼の名前から。</div>
+        <div class="wc-quote">「僕の将来に対する唯ぼんやりとした不安」（遺書より）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">二葉亭四迷</div>
+        <div class="wc-dates">1864〜1909 · 東京</div>
+        <div class="wc-move">言文一致運動・「浮雲」</div>
+        <div class="wc-body">「浮雲（1887）」——日本最初の近代小説と言われる。「言文一致（話し言葉で小説を書く）」という革命を実践。それ以前の小説は雅文体・漢文調。「です・ます・だ」体の小説が当たり前になった出発点。翻訳家としてもツルゲーネフ・ドストエフスキーを日本に紹介。</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">樋口一葉</div>
+        <div class="wc-dates">1872〜1896 · 東京</div>
+        <div class="wc-move">女性文学・「たけくらべ」</div>
+        <div class="wc-body">24歳で肺結核で夭折した天才女性作家。「たけくらべ」「にごりえ」「十三夜」——貧困・女性の抑圧・吉原を舞台にした社会的文学。現在の五千円札の肖像。漱石・鴎外ら男性文壇に囲まれた明治期に「女性の視点」を確立した。</div>
+        <div class="wc-quote">→ 現在の五千円札の顔——24歳で逝った天才</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">昭和〜現代文学タイムライン</h2>
+    <p class="section-desc">戦争・戦後・高度成長・現代——日本文学が問い続けた「個人と社会」</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1920〜30年代</div>
+        <div class="tl-event">プロレタリア文学と私小説の時代</div>
+        <div class="tl-desc">「小林多喜二（蟹工船）」——貧困・労働搾取を描いたプロレタリア文学。特高警察に拷問・虐殺された。一方「私小説（わたくしもの）」——自分の実体験を告白的に書く日本独自のジャンルが確立。「赤裸々な自己暴露」が文学の誠実さの証明とされた——西洋文学とは異なる日本的な自意識。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">✊</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1940〜1945年</div>
+        <div class="tl-event">戦時下の文学——抵抗と協力の間で</div>
+        <div class="tl-desc">「谷崎潤一郎（細雪）」——戦時下に軍部に反発するように美しい大阪上流社会を描いた。「戦意高揚文学」への協力を求められた作家たちの葛藤。「火野葦平」「石川達三」は従軍文学賞受賞。「なぜ文学者は戦争に協力したか・抵抗できたか」は戦後も問われ続ける問い。</div>
+      </div>
+      <div class="tl-dot beni"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📜</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1947〜1950年代</div>
+        <div class="tl-event">無頼派・戦後文学——廃墟からの出発</div>
+        <div class="tl-desc">「太宰治（人間失格・斜陽）」——「恥の多い生涯を送って来ました」という冒頭で始まる人間失格。「坂口安吾（堕落論）」——「堕落せよ、生きよ」という戦後への宣言。敗戦後の虚無・自由・再生を文学で問うた「無頼派」。太宰は1948年玉川上水で情死（39歳）。</div>
+      </div>
+      <div class="tl-dot ai"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌊</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1968年</div>
+        <div class="tl-event">川端康成——日本初のノーベル文学賞</div>
+        <div class="tl-desc">「雪国（国境の長いトンネルを抜けると雪国であった）」「伊豆の踊子」「山の音」。「日本的美学」——はかなさ・無常・自然美を繊細な文体で表現。ストックホルムでの受賞講演「美しい日本の私」は日本美意識の国際的宣言。1972年に自殺（理由不明）。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏆</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1970年</div>
+        <div class="tl-event">三島由紀夫の自決——昭和文学の終焉</div>
+        <div class="tl-desc">「金閣寺」「仮面の告白」「豊饒の海」四部作の作家・三島由紀夫が自衛隊市ヶ谷駐屯地で割腹自殺（45歳）。「美と死の一致」を追求した文学者の最後の実践として世界を震撼させた。ノーベル文学賞の最有力候補だった。「昭和文学の最大の事件」として今も語られる。</div>
+      </div>
+      <div class="tl-dot beni"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🗡</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1994年</div>
+        <div class="tl-event">大江健三郎——戦後文学とヒロシマの証言</div>
+        <div class="tl-desc">「個人的な体験」「万延元年のフットボール」「ヒロシマ・ノート」。障害を持った息子との共存を軸に「戦後日本の個人と歴史の関係」を問い続けた。受賞講演「あいまいな日本の私」——川端の「美しい日本の私」に対置した戦後民主主義の宣言。2023年逝去。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🕊</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1987年〜現在</div>
+        <div class="tl-event">村上春樹の世界展開——J文学の国際化</div>
+        <div class="tl-desc">「ノルウェイの森（1987）」が270万部のベストセラーに。「海辺のカフカ」「1Q84」——50以上の言語に翻訳された世界で最も読まれる日本の作家。「ロスジェネの孤独」「喪失と再生」を普遍的テーマに昇華。毎年ノーベル文学賞の最有力候補として話題に——受賞できない理由もまた文学的考察の対象に。</div>
+      </div>
+      <div class="tl-dot midori"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌍</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 戦後〜現代の作家 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">戦後〜現代の重要作家たち</h2>
+    <p class="section-desc">多様化する日本文学——純文学・大衆文学・女性文学・世界文学へ</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">📚</div>
+      <div>
+        <div class="ls-title">松本清張・司馬遼太郎——大衆文学の頂点</div>
+        <div class="ls-body">松本清張「砂の器」「点と線」——社会派推理小説の父。犯罪の背後にある社会問題・格差・地方と中央の矛盾を描いた。司馬遼太郎「竜馬がゆく」「坂の上の雲」——幕末・明治を舞台にした歴史小説で「司馬史観」と呼ばれる独自の日本観を形成。日本人の歴史認識に最も影響を与えた作家のひとつ。「NHKの大河ドラマの半分は司馬原作」と言われる。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">✨</div>
+      <div>
+        <div class="ls-title">吉本ばなな・山田詠美——1980〜90年代の女性文学革命</div>
+        <div class="ls-body">吉本ばなな「キッチン（1987）」——「死」「再生」「家族」をポップな文体で描き世代を超えたベストセラーに。国際的にも高く評価され30以上の言語に翻訳。山田詠美——性愛・人種差別・身体性を直接的に描いた女性文学の革命者。1980〜90年代、女性作家が日本文学の中心に躍り出た時代の象徴。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🌐</div>
+      <div>
+        <div class="ls-title">カズオ・イシグロ——日本生まれのノーベル文学賞作家</div>
+        <div class="ls-body">長崎生まれ・イギリス育ち。「わたしを離さないで」「日の名残り」「わたしたちが孤児だったころ」——英語で書きながら「記憶・時間・喪失・自己欺瞞」というテーマを追求。2017年ノーベル文学賞受賞。「日本的な感性（間・余白・言わないこと）」と「英語の小説形式」の融合が世界で評価された——「最も日本的な英語作家」。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🎌</div>
+      <div>
+        <div class="ls-title">現代文学の多様化——東野圭吾・小川洋子・川上未映子</div>
+        <div class="ls-body">東野圭吾「容疑者Xの献身」「白夜行」——ロジックと感情が融合したエンタテインメント文学が日中韓・アジアで圧倒的人気に。小川洋子「博士の愛した数式」——数学・記憶・人間関係の詩的な小説。川上未映子「乳と卵」「ヘヴン」——身体・言語・暴力を現代的文体で描く純文学。日本文学が「娯楽」と「芸術」の二極で世界に発信される時代へ。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VIII</span>
+    <h2 class="section-title">日本文学の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——日本文学を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">私小説 <span class="concept-en">Shishosetsu / I-Novel</span></div>
+      <div class="concept-body">作者自身の実体験・内面を告白的に描く日本独自の小説形式。大正期に確立。「芸術的誠実さ＝自己暴露」という日本文学独特の価値観。葛西善蔵・志賀直哉「城の崎にて」・太宰治「人間失格」が代表。「欧米の小説は虚構を磨く、私小説は告白で勝負する」という対比で語られるジャンル。</div>
+      <div class="concept-izakaya">「私小説って日本にしかないジャンルで、作家が自分の実体験（失恋・借金・不倫・病気）を告白的に書く小説。欧米では「虚構の完成度」が文学的価値だが、私小説は「どれだけ恥を晒せるか」が価値になる逆転。太宰治の自死的な私小説群が「日本文学の特殊性」の象徴」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">言文一致 <span class="concept-en">Genbun Itchi</span></div>
+      <div class="concept-body">明治期の「話し言葉と書き言葉を統一する」文学改革運動。それ以前の文章は雅文体・漢文調・候文——日常会話とかけ離れた形式文語だった。二葉亭四迷「浮雲（1887）」が最初の実践。「だ・である体」の小説の誕生。現代の日本語小説の言語的基盤を作った革命。</div>
+      <div class="concept-izakaya">「言文一致って明治の革命で、今の普通の小説の書き方はこの時に確立された。江戸時代の文章は"候（そうろう）体"で日常会話と全く違う書き言葉だった。二葉亭四迷がロシア文学の自然な語り口を参考に"話し言葉で書く"を実践した——今普通に小説を読めるのはこの革命のおかげ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">無常観と文学 <span class="concept-en">Mujo / Impermanence</span></div>
+      <div class="concept-body">仏教の「諸行無常（全ての存在は変化し消滅する）」という世界観が日本文学の底流に流れる。「平家物語」の冒頭から松尾芭蕉の俳句、川端康成の小説まで——「はかなさを美として受け入れる」態度が日本文学の一貫したテーマ。「もののあはれ」の哲学的根拠でもある。</div>
+      <div class="concept-izakaya">「日本文学に通底するテーマって問われたら"無常"で。平家物語の"祇園精舎の鐘の声"から始まり、芭蕉の俳句・川端の小説まで"移ろうものへの愛惜"が底流にある。"失われるから美しい"という感性——これが日本文学を世界で"uniquely Japanese"と感じさせる核心」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">純文学 vs 大衆文学 <span class="concept-en">Literary vs Popular</span></div>
+      <div class="concept-body">「芸術性を重視する純文学」と「娯楽性を重視する大衆文学」の二項対立——「芥川賞（純文学）」vs「直木賞（大衆文学）」という賞の二極化に象徴される。ただしこの境界は常に曖昧で批判される。村上春樹・東野圭吾は両方の読者を持つ。現代では「面白い小説こそが文学」という考えが主流に。</div>
+      <div class="concept-izakaya">「芥川賞と直木賞って同じ菊池寛が作ったのに"純文学"と"大衆文学"で分けた日本特有の賞制度。芥川賞は文体や芸術性、直木賞はエンタメ性重視——でも村上春樹は芥川賞を取ってないし、東野圭吾は直木賞作家だけど純文学作家より文学的と言う人もいる。境界線は常に問い直される」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">和歌から俳句へ <span class="concept-en">Waka to Haiku</span></div>
+      <div class="concept-body">和歌（5-7-5-7-7の31音）→連歌（上の句・下の句を複数人で繋ぐ）→俳諧（連歌の前句）→俳句（前句独立、17音）という日本詩の進化。芭蕉が「俳句」を芸術に高め、正岡子規が近代的「俳句」という用語を確立（1895年頃）。「17音に宇宙を込める」という圧縮の美学は世界中に「haiku」として広まった。</div>
+      <div class="concept-izakaya">「俳句ってなんで世界でhaikuとして広まったかというと、17音という制約の中で"一瞬の感覚"を永遠に刻む技術が独自すぎるから。芭蕉の"古池や"は日本語17音だけど英訳すると何十語も必要になる——翻訳で失われるものが多いのに、それでも世界中で俳句を作る人がいる不思議な普遍性」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">死と文学 <span class="concept-en">Death & Literature</span></div>
+      <div class="concept-body">日本の著名作家の自死率の高さは世界的にも異例——芥川龍之介・太宰治・川端康成・三島由紀夫・有島武郎・北村透谷……。「美しい死」「芸術としての死」への特殊な関係。「葉隠」的な「完全に生きることは完全に死ぬことと同義」という倫理的美学との共鳴。</div>
+      <div class="concept-izakaya">「日本の近代作家の自死率って異常に高くて、芥川・太宰・川端・三島が全員自分で死を選んでる。偶然じゃなく"死と美の結びつき"という日本的感性——"生きながら美の極点に達した後の自然な完成"として死を美化する伝統がある。これは外国の文学者にはほぼ見られない特殊なパターン」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">「坊っちゃん」と反近代 <span class="concept-en">Anti-Modernism</span></div>
+      <div class="concept-body">夏目漱石「坊っちゃん（1906）」——「親譲りの無鉄砲」な江戸っ子教師が西洋化する四国の学校で正義を貫く物語。「近代化への抵抗・素朴な倫理の優位」というテーマ。漱石の反近代主義——「西洋の近代は日本に合わない」という危機感が「則天去私（自己を捨て天に従う）」という境地に結実した。</div>
+      <div class="concept-izakaya">「漱石って近代化を全力で進める時代に"でも本当に幸せになってるの？"と問い続けた作家で、ロンドン留学で神経衰弱になって帰国した。"自己本位"——西洋の個人主義を真似するのでなく自分の頭で考えよという宣言。明治の知識人の悩みが今も刺さるのは近代化の矛盾が現代も続いてるから」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">「人間失格」と自己嫌悪の文学 <span class="concept-en">Self-Loathing Literature</span></div>
+      <div class="concept-body">太宰治「人間失格（1948）」——「恥の多い生涯を送って来ました」という冒頭。「人間として生きることへの根本的な失格感」を告白した私小説の極致。太宰の死後も若者に読み続けられ、累計1000万部以上。「自分だけが人間失格だと思っていたら、みんな人間失格だった」という逆説的共感の構造。</div>
+      <div class="concept-izakaya">「人間失格がなぜ今も読まれるかというと、"自分だけ人間として欠陥がある"という感覚を言語化した最初の小説で、読んだ人が"わかる"と感じるから。SNS時代の"自己肯定感の低さ"と完全に共鳴する。太宰が1948年に書いた文章が2020年代に最も共感される——人間の根本的な不安は変わらない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ノーベル文学賞と日本 <span class="concept-en">Nobel Prize in Literature</span></div>
+      <div class="concept-body">川端康成（1968年）・大江健三郎（1994年）が受賞。カズオ・イシグロ（日本生まれ、2017年）。村上春樹は毎年最有力候補として話題になるが未受賞。「なぜ春樹は取れないか」——スウェーデン・アカデミーの選考基準（政治的コミットメント重視）vs春樹の「脱政治的な内面文学」という構造的相性の悪さが指摘される。</div>
+      <div class="concept-izakaya">「川端と大江のノーベル受賞講演が面白くて、川端は"美しい日本の私"と日本美学を讃え、大江は"あいまいな日本の私"と戦後民主主義の立場から川端に異議を唱えた——同じ賞の受賞スピーチが20年後に反論になってるの面白い。二人の対立が昭和文学の対立そのもの」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">村上春樹の「喪失」テーマ <span class="concept-en">Murakami's Theme of Loss</span></div>
+      <div class="concept-body">村上春樹作品を貫くテーマ——「喪失・孤独・記憶・魔法的な現実」。「ノルウェイの森」の直子の死・「海辺のカフカ」の父との関係・「1Q84」の分断された世界——全作品が「失ったものをどう受け入れるか」という問いの変奏。「超えられない喪失を抱えながら生きること」という現代的実存主義。</div>
+      <div class="concept-izakaya">「村上春樹の小説って全部"大切な人か何かを失って、それでも生きていく"話なんよ。ノルウェイの森の直子・ねじまき鳥の妻・1Q84の青豆——全員失う。バブル世代に書かれたのに"何も持てない感覚"が刺さったのは、高度成長の終わりと重なってたから。失われた時代の文学としての村上春樹」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 時代別比較表 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special</span>
+    <h2 class="section-title">日本文学史 時代別 完全比較表</h2>
+    <p class="section-desc">文学形式・代表作・時代の問い——1300年を一覧で把握する</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>時代</th>
+          <th>主な形式</th>
+          <th>代表作・作者</th>
+          <th>時代の核心の問い</th>
+          <th>文体の特徴</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>古代（奈良）</td>
+          <td>神話・和歌・漢詩</td>
+          <td>古事記・万葉集・日本書紀</td>
+          <td>日本とは何か・神々と人間の関係</td>
+          <td>万葉仮名（漢字の音借用）</td>
+        </tr>
+        <tr>
+          <td>平安</td>
+          <td>物語・日記・随筆・和歌</td>
+          <td>源氏物語（紫式部）・枕草子（清少納言）</td>
+          <td>愛・美・もののあはれとは何か</td>
+          <td>かな文字・やまとことば・雅文体</td>
+        </tr>
+        <tr>
+          <td>中世</td>
+          <td>軍記物語・随筆・能・連歌</td>
+          <td>平家物語・方丈記（鴨長明）・徒然草（兼好）</td>
+          <td>無常・死・隠遁の意味とは何か</td>
+          <td>和漢混交文・語り文学</td>
+        </tr>
+        <tr>
+          <td>江戸</td>
+          <td>俳諧・浮世草子・浄瑠璃・滑稽本・読本</td>
+          <td>奥の細道（芭蕉）・好色一代男（西鶴）・曽根崎心中（近松）</td>
+          <td>庶民の喜怒哀楽・義理と人情</td>
+          <td>平易な口語・娯楽的文体</td>
+        </tr>
+        <tr>
+          <td>明治</td>
+          <td>近代小説・詩（新体詩）</td>
+          <td>浮雲（二葉亭）・吾輩は猫（漱石）・舞姫（鴎外）</td>
+          <td>西洋化と自己同一性・近代とは何か</td>
+          <td>言文一致（だ・である体）の確立</td>
+        </tr>
+        <tr>
+          <td>大正〜昭和前期</td>
+          <td>私小説・短編・プロレタリア文学</td>
+          <td>羅生門（芥川）・蟹工船（小林多喜二）</td>
+          <td>芸術と道徳・社会矛盾・自己とは何か</td>
+          <td>告白的・内省的・実験的</td>
+        </tr>
+        <tr>
+          <td>戦後</td>
+          <td>無頼派・社会派・純文学</td>
+          <td>人間失格（太宰）・雪国（川端）・金閣寺（三島）</td>
+          <td>敗戦・廃墟・生きることの意味</td>
+          <td>各作家の個性的文体・実験的構造</td>
+        </tr>
+        <tr>
+          <td>現代（1970〜）</td>
+          <td>現代小説・エンタメ・世界文学</td>
+          <td>ノルウェイの森（春樹）・キッチン（ばなな）・容疑者X（東野）</td>
+          <td>孤独・喪失・アイデンティティ・グローバル化</td>
+          <td>口語的・ポップ・国際的・多様</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">最終章</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">日本文学史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「源氏物語って本当に世界初の小説なの？」</div>
+      <div class="test-q-text">文学・読書の話になったとき</div>
+      <div class="test-a">「"世界最古の長編小説"候補という方が正確で、確実に"最初"とは言えないけど有力。ポイントは①1000〜1008年頃という年代の古さ（ドン・キホーテより600年早い）②「小説」の定義——心理描写・複数の人物・時間の経過・社会の描写を全て満たしている③女性の紫式部が書いたこと——当時男性は漢文を書くべき時代に、女性が"非公式な"かな文字で書いたから残った逆説が面白い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「芥川賞と直木賞ってどう違うの？」</div>
+      <div class="test-q-text">本や文学の話になったとき</div>
+      <div class="test-a">「同じ菊池寛という作家が1935年に設立した賞で、芥川龍之介と直木三十五という親友の二人を記念して。芥川賞は新人・中堅の「純文学（芸術性重視）」、直木賞は中堅以上の「大衆文学（娯楽性重視）」——でもこの境界は常に曖昧。村上春樹は芥川賞を取ってないし、東野圭吾は直木賞作家だけど純文学的とも言われる。"どっちが格上"と聞かれたら芥川賞——でも読者数は直木賞作家の方が圧倒的に多い逆転がある。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「人間失格ってなんでいつも読まれてるの？」</div>
+      <div class="test-q-text">太宰治・日本文学の話になったとき</div>
+      <div class="test-a">「"恥の多い生涯を送って来ました"という一文が全てで、"自分だけが人間として欠陥があって周りに合わせて生きてる"という感覚——これが普遍的すぎる。SNS時代に"人と比べて自分だけ"感が増幅されてる現代に特に刺さる。面白いのは太宰自身は実際には人気者で友人も多かった——"欠陥感"は客観的な事実でなく内面の感受性の問題なんよ。1948年の小説が毎年100万部近く売れてる異常さがある。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「夏目漱石ってなんでそんなに評価されるの？」</div>
+      <div class="test-q-text">近代文学・日本文化の話になったとき</div>
+      <div class="test-a">「漱石の凄さは"明治の近代化の矛盾を最初に文学で言語化した"点。ロンドン留学で神経衰弱になって帰国——西洋の個人主義が日本人に合わないことを身体で知った。"智に働けば角が立つ、情に棹させば流される"——近代社会の選択肢を全部提示してどれも否定した。「こころ」の"先生"という人物は"明治の個人主義がどう人を孤独にするか"の完璧な寓話。今読んでも刺さるのは近代化の矛盾が終わっていないから。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「三島由紀夫ってどんな人だったの？」</div>
+      <div class="test-q-text">日本文化・昭和史の話になったとき</div>
+      <div class="test-a">「天才的な文学者・ボディビルダー・右翼活動家・自衛隊私兵の隊長——全部同一人物。「金閣寺」「仮面の告白」「潮騒」「豊饒の海」四部作は世界文学レベルの傑作。45歳でノーベル文学賞の最有力候補だったのに自衛隊に乗り込んで割腹自殺。"美と死の一致"を生涯追求した——「葉隠」的な"最美の死"を現実に実践した。文学として全て作品が証言しているのに、最後は作品より自身の肉体を使って表現した人。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「村上春樹はなんで世界で読まれるの？」</div>
+      <div class="test-q-text">現代文学の話になったとき</div>
+      <div class="test-a">「春樹作品の普遍性は"喪失・孤独・記憶"というテーマにある——どこの文化でもこれは共鳴する。文体的には日本文学の"説明しすぎない・余白を残す"間の美学が、翻訳されても残る稀有な作家。あとジャズ・映画・料理という西洋文化への参照が多いから欧米読者に入りやすい。逆に言うと"日本的すぎない日本文学"だから世界で売れる——川端康成や大江健三郎が海外で"難解"と言われるのと対照的。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">言葉</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術・音楽・文学・建築・心理学・社会学・テクノロジー・日本美意識・武士道・日本文学。知の十七角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42;">「月日は百代の過客にして、行きかふ年もまた旅人なり。— 松尾芭蕉『奥の細道』」</p>
+</div>
+
+</body>
+</html>

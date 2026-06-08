@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キリスト教の歴史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-deep: #0F2A4A;
+    --blue-mid: #1B4F8A;
+    --blue-light: #3A7CC0;
+    --blue-pale: #D6E8F8;
+    --blue-ghost: #EDF4FC;
+    --gold: #B8922A;
+    --gold-light: #E5BC6A;
+    --gold-pale: #FBF5E2;
+    --crimson: #8B1A1A;
+    --crimson-light: #C23B3B;
+    --white: #FFFFFF;
+    --paper: #F8F5EF;
+    --paper-dark: #EEE8D8;
+    --ink: #1A1310;
+    --ink-mid: #3D3020;
+    --ink-light: #7A6A58;
+    --gray: #9A9080;
+    --shadow: rgba(15,42,74,0.12);
+    --silver: #C0C8D4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #0A1E36 0%, #1B3A6B 60%, #0F2A4A 100%);
+    color: #fff;
+    text-align: center;
+    padding: 4.5rem 2rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '✝';
+    position: absolute;
+    font-size: 30rem;
+    opacity: 0.04;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(229,188,106,0.5);
+    padding: 4px 16px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff, var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    display: block;
+  }
+  .hero-stat-lbl {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4rem 0; }
+
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    background: var(--blue-mid);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .section-desc {
+    font-size: 0.92rem;
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+  }
+
+  /* JESUS CARD */
+  .jesus-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) {
+    .jesus-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+  .portrait-box {
+    background: var(--blue-deep);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: #fff;
+  }
+  .portrait-symbol {
+    font-size: 4.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .portrait-name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    display: block;
+  }
+  .portrait-name-en {
+    font-size: 0.72rem;
+    color: var(--silver);
+    letter-spacing: 0.1em;
+  }
+  .life-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--paper-dark);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .life-step-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .life-step-title { font-weight: 700; font-size: 0.88rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .life-step-body { font-size: 0.8rem; color: var(--ink-light); line-height: 1.6; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--blue-light), var(--blue-light), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    transform: translateX(-50%);
+    width: 14px; height: 14px;
+    background: var(--blue-light);
+    border: 3px solid var(--paper);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--blue-light);
+    z-index: 2;
+  }
+  .tl-dot.red { background: var(--crimson); box-shadow: 0 0 0 2px var(--crimson); }
+  .tl-dot.gold { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .tl-card {
+    width: calc(50% - 2.5rem);
+    background: #fff;
+    border: 1px solid rgba(27,79,138,0.15);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .tl-year { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--blue-light); font-weight: 700; margin-bottom: 0.25rem; letter-spacing: 0.05em; }
+  .tl-event { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .tl-desc { font-size: 0.8rem; color: var(--ink-light); line-height: 1.6; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji { left: -2.2rem; }
+
+  /* TRINITY */
+  .trinity-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+  .trinity-node {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .trinity-circle {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto 0.75rem;
+    border: 2px solid;
+  }
+  .tc-gold { background: rgba(184,146,42,0.1); border-color: var(--gold); }
+  .tc-blue { background: rgba(27,79,138,0.1); border-color: var(--blue-mid); }
+  .tc-crimson { background: rgba(139,26,26,0.1); border-color: var(--crimson); }
+  .trinity-jp { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); display: block; }
+  .trinity-en { font-size: 0.65rem; color: var(--gray); letter-spacing: 0.1em; }
+  .trinity-desc { font-size: 0.78rem; color: var(--ink-light); max-width: 110px; }
+  .trinity-arrow { font-size: 1.5rem; color: var(--blue-light); opacity: 0.4; align-self: center; }
+
+  /* BIBLE */
+  .bible-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) { .bible-grid { grid-template-columns: 1fr; } }
+  .bible-book {
+    background: var(--blue-deep);
+    color: #fff;
+    border-radius: 8px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .bible-book::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+  }
+  .bb-gold::after { background: var(--gold); }
+  .bb-blue::after { background: var(--blue-light); }
+  .bible-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.4rem; }
+  .bible-title { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; color: var(--gold-light); font-weight: 700; margin-bottom: 0.75rem; }
+  .bible-desc { font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+  .bible-books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+  .bb-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* DENOMINATIONS */
+  .denom-bg {
+    background: var(--blue-deep);
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: #fff;
+  }
+  .denom-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .denom-node-wrap { text-align: center; }
+  .denom-node {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    padding: 0.65rem 1.1rem;
+    min-width: 90px;
+  }
+  .dn-name { font-size: 0.88rem; font-weight: 700; color: var(--gold-light); }
+  .dn-year { font-size: 0.62rem; color: var(--silver); margin-top: 2px; }
+  .denom-arrow { font-size: 1.4rem; color: rgba(255,255,255,0.25); }
+  .denom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .denom-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.1rem;
+  }
+  .denom-name { font-family: 'Noto Serif JP', serif; font-size: 1rem; color: var(--gold-light); font-weight: 700; margin-bottom: 0.2rem; }
+  .denom-region { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue-pale); margin-bottom: 0.5rem; }
+  .denom-desc { font-size: 0.77rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+
+  /* COMMANDMENTS */
+  .cmd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.75rem;
+  }
+  .cmd-card {
+    background: #fff;
+    border: 1px solid rgba(27,79,138,0.15);
+    border-top: 3px solid var(--blue-mid);
+    border-radius: 0 0 8px 8px;
+    padding: 1rem 1.1rem;
+    text-align: center;
+  }
+  .cmd-num { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--blue-pale); display: block; line-height: 1; }
+  .cmd-text { font-size: 0.8rem; color: var(--ink); font-weight: 700; margin: 0.4rem 0 0.3rem; }
+  .cmd-note { font-size: 0.72rem; color: var(--ink-light); }
+
+  /* CONCEPTS */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff;
+    border: 1px solid rgba(27,79,138,0.15);
+    border-left: 4px solid var(--blue-mid);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .concept-en { font-size: 0.62rem; color: var(--gray); font-family: sans-serif; font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.6; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--blue-mid); background: rgba(27,79,138,0.07); border-radius: 4px; padding: 0.4rem 0.6rem; }
+
+  /* SPREAD */
+  .spread-bg {
+    background: var(--blue-deep);
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: #fff;
+  }
+  .spread-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 1rem;
+  }
+  .spread-node {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  .spread-inner {
+    background: rgba(229,188,106,0.12);
+    border: 1px solid rgba(229,188,106,0.35);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    min-width: 80px;
+  }
+  .sc { font-size: 0.83rem; font-weight: 700; color: var(--gold-light); }
+  .se { font-size: 0.62rem; color: var(--silver); margin-top: 2px; }
+  .sa { font-size: 1.2rem; color: rgba(255,255,255,0.25); padding: 0 0.3rem; align-self: center; }
+
+  /* IZAKAYA TEST */
+  .test-bg { background: var(--blue-deep); border-radius: 10px; padding: 2.5rem; color: #fff; }
+  .test-q {
+    background: rgba(0,0,0,0.25);
+    border-left: 3px solid var(--blue-light);
+    padding: 1rem 1.25rem;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 1rem;
+  }
+  .test-q-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--blue-pale); margin-bottom: 0.3rem; }
+  .test-q-text { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a { font-size: 0.8rem; color: rgba(255,255,255,0.65); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* FOOTER */
+  .footer { background: var(--blue-deep); color: var(--silver); text-align: center; padding: 2rem; font-size: 0.77rem; }
+  .footer-cross { font-size: 2rem; color: var(--gold-light); display: block; margin-bottom: 0.5rem; }
+
+  .bg-warm { background: var(--paper-dark); }
+  .bg-white { background: #fff; }
+  .bg-ghost { background: var(--blue-ghost); }
+
+  .tip-bar {
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid rgba(27,79,138,0.18);
+    padding: 0.85rem 1.1rem;
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.2</div>
+  <h1>キリスト教の歴史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">世界最大の宗教を、今夜のネタにする。</p>
+  <div class="hero-stats">
+    <div>
+      <span class="hero-stat-num">24億</span>
+      <span class="hero-stat-lbl">世界の信者数（最大）</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">1世紀</span>
+      <span class="hero-stat-lbl">誕生の時代</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">3大教派</span>
+      <span class="hero-stat-lbl">カトリック・正教会・プロテスタント</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">約40,000</span>
+      <span class="hero-stat-lbl">世界の宗派の数</span>
+    </div>
+  </div>
+</div>
+
+<!-- JESUS -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">始まりはイエス・キリストから</h2>
+    <p class="section-desc">ユダヤ教の改革運動から始まった、ひとりの人物の生涯</p>
+  </div>
+  <div class="jesus-grid">
+    <div class="portrait-box">
+      <span class="portrait-symbol">✝</span>
+      <span class="portrait-name-jp">イエス・キリスト</span>
+      <span class="portrait-name-en">Jesus Christ</span>
+      <div style="margin-top:1rem; font-size:0.78rem; color:var(--silver); line-height:1.9;">
+        <div>📍 ベツレヘム（現パレスチナ）</div>
+        <div>📅 BC 4年頃 — AD 30年頃</div>
+        <div>✡ ユダヤ人</div>
+        <div style="margin-top:0.75rem; color:var(--gold-light); font-size:0.83rem;">
+          「キリスト」＝ギリシャ語で<br>「油を注がれた者」（メシア）<br>
+          「イエス」はヘブライ語「救う」
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="life-step">
+        <div class="life-step-icon">⭐</div>
+        <div>
+          <div class="life-step-title">誕生と幼少期（BC 4年頃）</div>
+          <div class="life-step-body">ベツレヘムにてマリアとヨセフの子として誕生。東方の博士が星に導かれ訪れる（「クリスマス」の起源）。エジプトへの避難後、ナザレで大工の子として成長。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">🕊️</div>
+        <div>
+          <div class="life-step-title">バプテスマと宣教開始（30歳頃）</div>
+          <div class="life-step-body">洗礼者ヨハネからヨルダン川でバプテスマを受ける。40日間の荒野での断食・誘惑の後、ガリラヤ地方で宣教を開始。12人の弟子（使徒）を選ぶ。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">🫓</div>
+        <div>
+          <div class="life-step-title">奇跡と教えの3年間</div>
+          <div class="life-step-body">病の癒し・水の上を歩く・水をワインに変える・5千人への食事など多くの奇跡。山上の垂訓（マタイ5〜7章）で「敵を愛せよ」「貧しき者は幸いなり」などを説く。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">✝</div>
+        <div>
+          <div class="life-step-title">逮捕・磔刑・復活（AD 30年頃）</div>
+          <div class="life-step-body">弟子ユダに裏切られローマ総督ピラトに引き渡される。ゴルゴタの丘で十字架刑。3日後に復活（「イースター」の起源）し弟子たちの前に現れる。これがキリスト教信仰の核心。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TRINITY -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">三位一体 — キリスト教最大の神学概念</h2>
+    <p class="section-desc">「父・子・聖霊は別々でありながら唯一の神」という逆説</p>
+  </div>
+  <div class="trinity-wrap">
+    <div class="trinity-node">
+      <div class="trinity-circle tc-gold">
+        <span style="font-size:2rem;">☁️</span>
+      </div>
+      <span class="trinity-jp">父なる神</span>
+      <span class="trinity-en">GOD THE FATHER</span>
+      <p class="trinity-desc">万物の創造主。旧約聖書の「ヤハウェ」。イスラエルの神</p>
+    </div>
+    <div class="trinity-arrow">⇔</div>
+    <div class="trinity-node">
+      <div class="trinity-circle tc-blue">
+        <span style="font-size:2rem;">✝</span>
+      </div>
+      <span class="trinity-jp">子なる神</span>
+      <span class="trinity-en">GOD THE SON</span>
+      <p class="trinity-desc">イエス・キリスト。神が人間の姿をとった「受肉」の存在</p>
+    </div>
+    <div class="trinity-arrow">⇔</div>
+    <div class="trinity-node">
+      <div class="trinity-circle tc-crimson">
+        <span style="font-size:2rem;">🕊️</span>
+      </div>
+      <span class="trinity-jp">聖霊</span>
+      <span class="trinity-en">HOLY SPIRIT</span>
+      <p class="trinity-desc">信者の内に宿る神の霊。教会を通じて働く目に見えない神の力</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「三位一体って、水・氷・水蒸気みたいなもので、形は違うけど同じH₂Oって説明されるけど、実は神学的には正確じゃないらしい。325年のニケア公会議で決定したドグマで、今でもキリスト教神学最大の謎のひとつ。」
+  </div>
+</div>
+</section>
+
+<!-- BIBLE -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">聖書とは何か</h2>
+    <p class="section-desc">世界で最も読まれた本の構造を理解する</p>
+  </div>
+  <div class="bible-grid">
+    <div class="bible-book bb-gold">
+      <div class="bible-label">OLD TESTAMENT</div>
+      <div class="bible-title">旧約聖書</div>
+      <div class="bible-desc">ユダヤ教の聖典をキリスト教が引き継いだもの。「旧い契約（律法）」を意味する。神が人類（アダム・エバ）を創造し、アブラハムを選び、モーゼを通じてイスラエルの民を導く物語。全39巻。</div>
+      <div class="bible-books-list">
+        <span class="bb-tag">創世記</span>
+        <span class="bb-tag">出エジプト記</span>
+        <span class="bb-tag">詩篇</span>
+        <span class="bb-tag">イザヤ書</span>
+        <span class="bb-tag">ダニエル書</span>
+        <span class="bb-tag">ほか34書</span>
+      </div>
+    </div>
+    <div class="bible-book bb-blue">
+      <div class="bible-label">NEW TESTAMENT</div>
+      <div class="bible-title">新約聖書</div>
+      <div class="bible-desc">イエス・キリストの生涯と初期教会の記録。「新しい契約（恵み）」を意味する。4つの福音書・使徒行伝・パウロの手紙・黙示録などで構成。全27巻。実はイエス自身は何も書いていない。</div>
+      <div class="bible-books-list">
+        <span class="bb-tag">マタイによる福音書</span>
+        <span class="bb-tag">ヨハネ福音書</span>
+        <span class="bb-tag">使徒行伝</span>
+        <span class="bb-tag">ローマ書</span>
+        <span class="bb-tag">ヨハネの黙示録</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem; background:var(--paper-dark); border-radius:8px; padding:1.25rem 1.5rem; font-size:0.82rem; color:var(--ink-light);">
+    📖 <strong>聖書の成立：</strong>旧約はヘブライ語（一部アラム語）、新約はギリシャ語で書かれた。正典の確定は4世紀末（カルタゴ会議）。現在の聖書に含まれる書物はここで決まった。日本語訳は1887年の「明治元訳」から始まり、現在は「新共同訳」「聖書協会共同訳」などがある。
+  </div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">キリスト教2000年の歴史タイムライン</h2>
+    <p class="section-desc">小さなユダヤ教改革運動が、いかに世界宗教になったか</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">AD 30年頃</div>
+        <div class="tl-event">イエスの磔刑・復活・聖霊降臨</div>
+        <div class="tl-desc">イエス死後50日目のペンテコステに聖霊が弟子たちに降臨。ペテロらが伝道を開始。エルサレムに最初の教会共同体が誕生。まだキリスト教という名称はなかった。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🕊️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">50〜60年代</div>
+        <div class="tl-event">パウロの宣教旅行と手紙</div>
+        <div class="tl-desc">もともとキリスト教迫害者だったパウロが回心し、ローマ帝国全土を巡る宣教旅行を3回敢行。新約聖書の3分の1を占める彼の手紙（書簡）が神学の基礎を作る。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">✉️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">64〜313年</div>
+        <div class="tl-event">ローマ帝国による迫害の時代</div>
+        <div class="tl-desc">ネロ帝によるキリスト教徒迫害を皮切りに約250年間、ローマで弾圧が続く。コロッセウムでの殉教、地下墓地（カタコンベ）での礼拝。殉教者の血が「教会の種」となり信者が増加。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🔥</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">313年</div>
+        <div class="tl-event">ミラノ勅令 — 公認宗教へ</div>
+        <div class="tl-desc">コンスタンティヌス帝がミラノ勅令で信仰の自由を宣言。392年にはテオドシウス帝がローマ帝国の国教に制定。わずか3世紀で迫害された宗教から帝国の宗教に逆転。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">👑</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">325年</div>
+        <div class="tl-event">ニケア公会議 — 三位一体の確立</div>
+        <div class="tl-desc">コンスタンティヌス帝が召集した最初の公会議。「イエスは神か人か」という論争に決着。「父と子は同質（ホモウシオス）」という三位一体論が正統とされ、アリウス派は異端に。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📜</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1054年</div>
+        <div class="tl-event">東西教会の大分裂（シスマ）</div>
+        <div class="tl-desc">ローマ・カトリック（西）とコンスタンティノープルの東方正教会（東）が相互破門。教皇の権威・聖霊論の解釈・礼拝言語（ラテン語 vs ギリシャ語）をめぐる対立が原因。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1095〜1291年</div>
+        <div class="tl-event">十字軍遠征</div>
+        <div class="tl-desc">ローマ教皇ウルバヌス2世の呼びかけでエルサレム奪還のため7回の遠征が行われる。軍事的にはほぼ失敗。ユダヤ人・ムスリムへの虐殺を伴い、後世に深刻な負の遺産を残す。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚔️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1517年</div>
+        <div class="tl-event">宗教改革 — プロテスタントの誕生</div>
+        <div class="tl-desc">マルティン・ルターが95か条の論題をヴィッテンベルク教会の扉に張り出す。免罪符販売・腐敗したカトリック教会を批判。「聖書のみ」「信仰のみ」を旗印にプロテスタント諸派が誕生。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📌</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">15〜19世紀</div>
+        <div class="tl-event">大航海時代とキリスト教の世界拡大</div>
+        <div class="tl-desc">スペイン・ポルトガルの海外進出に伴い南米・アジア・アフリカへ宣教師が派遣される。日本にはザビエルが1549年に伝来。植民地支配とキリスト教布教が不可分に絡み合った時代。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⛵</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">20〜21世紀</div>
+        <div class="tl-event">近代化・エキュメニズム・グローバル化</div>
+        <div class="tl-desc">第2バチカン公会議（1962〜65）でカトリックが大幅に現代化。諸教派の協力（エキュメニズム）運動。欧米では世俗化が進む一方、アフリカ・アジアで信者数は増加。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌍</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- DENOMINATIONS -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">キリスト教の三大教派</h2>
+    <p class="section-desc">なぜこんなに宗派が分かれたのか、そのロジックを理解する</p>
+  </div>
+  <div class="denom-bg">
+    <div style="text-align:center; font-size:0.72rem; color:var(--silver); margin-bottom:1.5rem; letter-spacing:0.1em;">SCHISM TIMELINE</div>
+    <div class="denom-flow">
+      <div class="denom-node-wrap">
+        <div class="denom-node" style="border-color:rgba(229,188,106,0.5);">
+          <div class="dn-name">初期キリスト教</div>
+          <div class="dn-year">1〜4世紀</div>
+        </div>
+      </div>
+      <div class="denom-arrow">→</div>
+      <div class="denom-node-wrap">
+        <div class="denom-node">
+          <div class="dn-name">カトリック教会</div>
+          <div class="dn-year">確立 4〜5世紀</div>
+        </div>
+      </div>
+      <div class="denom-arrow">→</div>
+      <div>
+        <div class="denom-node-wrap" style="margin-bottom:0.5rem;">
+          <div class="denom-node">
+            <div class="dn-name">東方正教会</div>
+            <div class="dn-year">分裂 1054年</div>
+          </div>
+        </div>
+        <div class="denom-node-wrap">
+          <div class="denom-node">
+            <div class="dn-name">プロテスタント</div>
+            <div class="dn-year">分裂 1517年〜</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="denom-grid">
+      <div class="denom-card">
+        <div class="denom-name">カトリック教会</div>
+        <div class="denom-region">Catholic · 世界13億人</div>
+        <div class="denom-desc">ローマ教皇を頂点とする階層的組織。「伝統・聖書・マギステリウム（教導権）」の三本柱。7つの秘跡（洗礼・聖餐・堅信・告解・婚姻・叙階・病者の塗油）。バチカン市国が総本山。</div>
+      </div>
+      <div class="denom-card">
+        <div class="denom-name">東方正教会</div>
+        <div class="denom-region">Orthodox · ロシア・ギリシャ・東欧</div>
+        <div class="denom-desc">コンスタンティノープル総主教を名誉首位とするが、実質は各国独立の「自頭教会」形式。ビザンティン様式の荘厳な典礼・イコン（聖画像）崇敬が特徴。ローマ教皇の権威を認めない。</div>
+      </div>
+      <div class="denom-card">
+        <div class="denom-name">プロテスタント</div>
+        <div class="denom-region">Protestant · 英米・北欧・韓国など</div>
+        <div class="denom-desc">「聖書のみ（Sola Scriptura）」「信仰のみ（Sola Fide）」「恵みのみ（Sola Gratia）」が三原則。ルター派・改革派・英国国教会・バプテスト・メソジストなど無数の宗派に分岐。</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.65);">
+      💡 <strong style="color:var(--gold-light);">一言で違いを言うと：</strong>カトリック＝「教皇の権威と伝統を大事にする」 正教会＝「古い典礼様式と東ローマの伝統を守る」 プロテスタント＝「聖書だけを根拠に、個人が神と直接向き合う」
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SPREAD -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">日本とキリスト教の歴史</h2>
+    <p class="section-desc">渡来から禁教、そして現代まで — 意外と波乱万丈な500年</span>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="life-step-icon">⛵</div>
+      <div>
+        <div class="life-step-title">1549年 — フランシスコ・ザビエル伝来</div>
+        <div class="life-step-body">イエズス会のザビエルが鹿児島に上陸。日本初のキリスト教（カトリック）伝道。「南蛮人の宗教」として好奇心をもって迎えられ、戦国大名の中にもキリシタン大名が現れる（大友宗麟・高山右近など）。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">📈</div>
+      <div>
+        <div class="life-step-title">1580年代 — キリシタンの最盛期</div>
+        <div class="life-step-body">信者数は推定30〜40万人に達したとも言われる。織田信長はキリスト教を容認（仏教勢力への対抗から）。長崎は当初イエズス会の管轄地とされるほどの影響力。</div>
+      </div>
+    </div>
+    <div class="life-step" style="background:#fff5f5;">
+      <div class="life-step-icon">🚫</div>
+      <div>
+        <div class="life-step-title" style="color:var(--crimson);">1597〜1868年 — 禁教・弾圧の時代</div>
+        <div class="life-step-body">豊臣秀吉が26聖人殉教を命じ、江戸幕府が鎖国とともにキリスト教を全面禁止。踏み絵・棄教強制・殉教が続く約270年。しかし長崎・五島・天草には「隠れキリシタン」が信仰を守り続けた。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">🕊️</div>
+      <div>
+        <div class="life-step-title">1873年〜 — 信教の自由と現代</div>
+        <div class="life-step-body">明治政府が禁教令を撤廃。カトリック・プロテスタント・正教会が活動再開。現在日本のキリスト教人口は約190万人（約1.5%）と少数だが、明治近代化・教育・医療に多大な影響を与えた。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- KEY CONCEPTS -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">知っておくべきキリスト教の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定される9つのキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">原罪 <span class="concept-en">ORIGINAL SIN</span></div>
+      <div class="concept-body">アダムとエバが神に背いたことで人類が受け継いだ「罪の性質」。生まれながらに神から切り離されている状態。洗礼によってのみ清められる。</div>
+      <div class="concept-izakaya">「キリスト教の原罪って、アダムとイブがリンゴ食べた話。あれで人類全員が罪びとになった、という考えが全教義の出発点」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">救済・贖罪 <span class="concept-en">SALVATION / ATONEMENT</span></div>
+      <div class="concept-body">イエスが十字架で死んだことで、人類の罪が代わりに「贖われた（購い取られた）」という教義。これがキリスト教信仰の中核。イエスの死が「身代わり」。</div>
+      <div class="concept-izakaya">「キリスト教って、イエスが身代わりに死んでくれたから、信じれば救われるって話。究極の"肩代わり"を神の子がやった、という構造」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">恵み・グレース <span class="concept-en">GRACE</span></div>
+      <div class="concept-body">人間の行いではなく、神から一方的に与えられる救いの力。「行いによって救われる」か「恵みのみ」かは宗教改革の最大論点だった。</div>
+      <div class="concept-izakaya">「カトリックとプロテスタントの核心の違いって、善行を積めば救われるか（カトリック）、信仰だけで救われるか（プロテスタント）、という論争なんよ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">終末論 <span class="concept-en">ESCHATOLOGY</span></div>
+      <div class="concept-body">歴史はやがて終わりを迎え、キリストが再臨し最後の審判が行われるという終末観。ヨハネの黙示録が描く「ハルマゲドン」「獣の数字666」の源泉。</div>
+      <div class="concept-izakaya">「ハルマゲドンって聖書の黙示録から来た言葉。キリスト教には世界の終わりとキリストの再来、最後の審判というフィナーレがある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">聖礼典・秘跡 <span class="concept-en">SACRAMENT</span></div>
+      <div class="concept-body">目に見える儀式を通して神の恵みが与えられるとする行為。洗礼と聖餐（カトリックでは7つ）。プロテスタントはこの2つのみ認める。</div>
+      <div class="concept-izakaya">「教会でのパンとワインの儀式（聖餐）って、カトリックはイエスの体と血に本当になる（変質）って考えるけど、プロテスタントは象徴だって言う。これも分裂の原因のひとつ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">予定説 <span class="concept-en">PREDESTINATION</span></div>
+      <div class="concept-body">カルヴァンが提唱。誰が救われるかは神によってあらかじめ決定されている、という過激な神学。プロテスタント資本主義（勤勉・禁欲）の精神的基盤になったとウェーバーは分析。</div>
+      <div class="concept-izakaya">「カルヴァンの予定説って、救われる人間は最初から決まってるという考え。でも自分が選ばれてると信じるため一生懸命働いた。これが資本主義の精神の起源という有名な議論がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">煉獄 <span class="concept-en">PURGATORY</span></div>
+      <div class="concept-body">カトリック独自の概念。天国と地獄の中間にある「清めの場所」。死後ここで罪が浄化される。プロテスタントはこの概念を認めない。免罪符はここの期間短縮が目的だった。</div>
+      <div class="concept-izakaya">「免罪符って、煉獄にいる期間をお金で短縮する証書。これが腐敗しきってルターが怒ったのが宗教改革の引き金。お金で天国行けますって言ってたわけ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">復活 <span class="concept-en">RESURRECTION</span></div>
+      <div class="concept-body">イエスが死後3日目に肉体をもってよみがえった出来事。キリスト教信仰の中心核。パウロは「もしキリストが復活しなかったなら、我々の信仰は空虚だ」と断言。</div>
+      <div class="concept-izakaya">「キリスト教って霊魂不滅じゃなく肉体の復活を信じる宗教。イエスが幽霊じゃなく実体として復活した、という話。これを信じるかどうかが信仰の決定的ポイント」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">愛（アガペー） <span class="concept-en">AGAPĒ</span></div>
+      <div class="concept-body">ギリシャ語で無条件・無差別の神の愛を意味する。「敵を愛せよ」はこの概念の核心。エロス（情欲的愛）やフィリア（友愛）と区別される、キリスト教独特の愛の概念。</div>
+      <div class="concept-izakaya">「アガペーって、条件なく与え続ける愛のこと。見返りを求めず敵すら愛する、というイエスの教えは当時の常識からすると相当ラジカルだった」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TEN COMMANDMENTS -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">BONUS</span>
+    <h2 class="section-title">十戒 — 旧約のベースルール</h2>
+    <p class="section-desc">モーゼがシナイ山で神から授かったとされる10のルール</p>
+  </div>
+  <div class="cmd-grid">
+    <div class="cmd-card">
+      <span class="cmd-num">I</span>
+      <div class="cmd-text">唯一神のみを拝め</div>
+      <div class="cmd-note">他の神を持つな</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">II</span>
+      <div class="cmd-text">偶像を作るな</div>
+      <div class="cmd-note">像を礼拝するな</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">III</span>
+      <div class="cmd-text">神の名をみだりに唱えるな</div>
+      <div class="cmd-note">OMG連発は厳禁</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">IV</span>
+      <div class="cmd-text">安息日を守れ</div>
+      <div class="cmd-note">日曜は休む（礼拝する）</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">V</span>
+      <div class="cmd-text">父母を敬え</div>
+      <div class="cmd-note">親孝行は神の命令</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">VI</span>
+      <div class="cmd-text">殺すな</div>
+      <div class="cmd-note">生命の尊重</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">VII</span>
+      <div class="cmd-text">姦淫するな</div>
+      <div class="cmd-note">婚姻の純潔</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">VIII</span>
+      <div class="cmd-text">盗むな</div>
+      <div class="cmd-note">財産の尊重</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">IX</span>
+      <div class="cmd-text">偽証するな</div>
+      <div class="cmd-note">嘘をつくな</div>
+    </div>
+    <div class="cmd-card">
+      <span class="cmd-num">X</span>
+      <div class="cmd-text">隣人のものを欲しがるな</div>
+      <div class="cmd-note">妬み・貪欲を禁ず</div>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「十戒ってユダヤ教・キリスト教・イスラム教（三大アブラハムの宗教）が全部共有してる基本ルール。殺すな・盗むな・嘘つくなって、実は3宗教の共通土台なんよ」
+  </div>
+</div>
+</section>
+
+<!-- IZAKAYA TEST -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">「ここまで読んだあなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「カトリックとプロテスタントって何が違うの？」</div>
+      <div class="test-q-text">クリスマスや結婚式の話になったとき</div>
+      <div class="test-a">「一番わかりやすい違いは、カトリックには教皇がいてプロテスタントにはいない、ということ。あと教会の内装がカトリックは豪華でプロテスタントはシンプル。根本は、カトリックは教会の伝統を重視して、プロテスタントは"聖書だけが権威"と言い切ったのが500年前の宗教改革。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「十字軍って悪いことだったの？」</div>
+      <div class="test-q-text">歴史の話になったとき</div>
+      <div class="test-a">「当時の価値観では"聖地奪還"という正義の戦争だった。でも実際はユダヤ人虐殺・民間人殺戮の連続で、今の基準では完全にアウト。現代のイスラム世界との関係にも影響し続けてて、ヨハネ・パウロ2世が2000年に公式謝罪した。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「なぜイエスはユダヤ人なのにユダヤ教じゃないの？」</div>
+      <div class="test-q-text">宗教の疑問が出たとき</div>
+      <div class="test-a">「イエス自身はユダヤ人でユダヤ教の改革者として活動してた。ユダヤ教との最大の違いは"イエスをメシア（救世主）と信じるかどうか"。ユダヤ教は"まだメシアは来ていない"と言い、キリスト教は"もう来た"と言う。これで分かれた。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なぜキリスト教とイスラム教は仲が悪いの？」</div>
+      <div class="test-q-text">中東情勢の話になったとき</div>
+      <div class="test-a">「実は神学的に近親者。イスラム教はキリスト教・ユダヤ教と同じ"アブラハムの神"を信じる兄弟宗教。対立はむしろ聖地エルサレムや政治・歴史的経緯によるもの。イスラム教はイエスを「偉大な預言者」として尊重するが「神の子」とは認めない、その違いが核心。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「日本人ってクリスマス祝うのに信者じゃないのはなぜ？」</div>
+      <div class="test-q-text">年末になったとき定番の疑問</div>
+      <div class="test-a">「日本人は宗教をコンテンツとして消費するのが得意という説がある（笑）。クリスマスもバレンタインも文化として輸入された。日本のキリスト教人口は約1.5%なのにクリスマス参加率は9割超え。この柔軟さ自体が「日本人の宗教観」のひとつの答えかもしれない。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-cross">✝</span>
+  <p>仏教編と合わせれば、今夜の宗教トークは無敵だ。</p>
+  <p style="margin-top:0.4rem; opacity:0.5;">「神は愛なり。— ヨハネ第一の手紙 4:8」</p>
+</div>
+
+</body>
+</html>

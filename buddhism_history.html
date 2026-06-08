@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仏教の歴史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9963A;
+    --gold-light: #F0CC7A;
+    --gold-pale: #FBF0D4;
+    --ink: #1C1410;
+    --ink-mid: #3D2E1F;
+    --ink-light: #6B5240;
+    --jade: #2A7A5C;
+    --jade-light: #4FAF87;
+    --crimson: #8B2020;
+    --paper: #FAF5E8;
+    --paper-dark: #F0E8D0;
+    --gray-warm: #9B8B78;
+    --shadow: rgba(28,20,16,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--gold-pale);
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '☸';
+    position: absolute;
+    font-size: 28rem;
+    opacity: 0.04;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    line-height: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 4px 16px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(250,245,232,0.6);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+  }
+  .hero-stat-lbl {
+    font-size: 0.75rem;
+    color: rgba(250,245,232,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .section-desc {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    margin: 0.5rem 0;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding: 1rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--gold), var(--gold), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .tl-item.right {
+    flex-direction: row-reverse;
+  }
+  .tl-item.right .tl-card {
+    text-align: right;
+  }
+  .tl-dot {
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border: 3px solid var(--paper);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--gold);
+    z-index: 2;
+  }
+  .tl-card {
+    width: calc(50% - 2.5rem);
+    background: #fff;
+    border: 1px solid rgba(201,150,58,0.2);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 12px var(--shadow);
+    position: relative;
+  }
+  .tl-year {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+  }
+  .tl-event {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .tl-desc {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+  .tl-emoji {
+    position: absolute;
+    top: 1rem;
+    font-size: 1.5rem;
+  }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji { left: -2.2rem; }
+
+  /* FOUNDER CARD */
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) {
+    .founder-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+  .founder-portrait {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    color: var(--gold-pale);
+  }
+  .founder-symbol {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .founder-name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    display: block;
+  }
+  .founder-name-en {
+    font-size: 0.75rem;
+    color: var(--gray-warm);
+    letter-spacing: 0.1em;
+  }
+
+  /* FOUR TRUTHS */
+  .truth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .truth-card {
+    background: var(--ink);
+    color: var(--gold-pale);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .truth-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: -0.5rem;
+    right: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 4rem;
+    opacity: 0.08;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .truth-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .truth-san {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--gray-warm);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .truth-meaning {
+    font-size: 0.82rem;
+    color: rgba(250,245,232,0.75);
+  }
+
+  /* EIGHTFOLD PATH */
+  .path-wheel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .path-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--paper-dark);
+    border: 1px solid rgba(201,150,58,0.3);
+    border-radius: 24px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  .path-dot {
+    width: 8px; height: 8px;
+    background: var(--jade);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* SPREAD MAP */
+  .spread-bg {
+    background: var(--ink);
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: var(--gold-pale);
+  }
+  .spread-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .spread-node {
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+  .spread-node-inner {
+    background: rgba(201,150,58,0.15);
+    border: 1px solid rgba(201,150,58,0.4);
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    min-width: 80px;
+  }
+  .spread-country {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .spread-era {
+    font-size: 0.65rem;
+    color: var(--gray-warm);
+    margin-top: 2px;
+  }
+  .spread-arrow {
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.5;
+    padding: 0 0.25rem;
+  }
+  .school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .school-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,150,58,0.2);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .school-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .school-region {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--jade-light);
+    margin-bottom: 0.5rem;
+  }
+  .school-desc {
+    font-size: 0.78rem;
+    color: rgba(250,245,232,0.65);
+    line-height: 1.5;
+  }
+
+  /* JAPAN SECTION */
+  .japan-bg {
+    background: linear-gradient(135deg, #1a0a0a, #2D1010);
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: var(--gold-pale);
+  }
+  .japan-schools {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  .japan-school {
+    background: rgba(201,150,58,0.1);
+    border: 1px solid rgba(201,150,58,0.25);
+    border-radius: 6px;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  .japan-school-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    display: block;
+    font-weight: 700;
+  }
+  .japan-school-era {
+    font-size: 0.65rem;
+    color: var(--gray-warm);
+    margin: 3px 0;
+    display: block;
+  }
+  .japan-school-key {
+    font-size: 0.75rem;
+    color: rgba(250,245,232,0.7);
+  }
+
+  /* KEY CONCEPTS */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .concept-card {
+    background: #fff;
+    border: 1px solid rgba(201,150,58,0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .concept-san {
+    font-size: 0.65rem;
+    color: var(--gray-warm);
+    font-family: sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+  .concept-body {
+    font-size: 0.83rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+  .concept-izakaya {
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--jade);
+    background: rgba(42,122,92,0.08);
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+  }
+
+  /* TRIRATNA */
+  .three-jewels {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+  .jewel {
+    text-align: center;
+    width: 140px;
+  }
+  .jewel-gem {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 0.75rem;
+  }
+  .jewel-gold { background: var(--gold); }
+  .jewel-jade { background: var(--jade); }
+  .jewel-crimson { background: var(--crimson); }
+  .jewel-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+  }
+  .jewel-san {
+    font-size: 0.65rem;
+    color: var(--gray-warm);
+    letter-spacing: 0.1em;
+  }
+  .jewel-desc {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    margin-top: 0.25rem;
+  }
+
+  /* IZAKAYA TEST */
+  .test-bg {
+    background: var(--ink-mid);
+    border-radius: 10px;
+    padding: 2.5rem;
+    color: var(--gold-pale);
+  }
+  .test-q {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.25rem;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 1rem;
+  }
+  .test-q-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .test-q-text {
+    font-size: 0.9rem;
+    color: var(--gold-pale);
+    margin-bottom: 0.5rem;
+  }
+  .test-a {
+    font-size: 0.82rem;
+    color: rgba(250,245,232,0.7);
+    padding-left: 0.5rem;
+  }
+  .test-a::before { content: '💡 '; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    color: var(--gray-warm);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+  }
+  .footer-dharma {
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* SECTION ALT BG */
+  .bg-warm { background: var(--paper-dark); }
+  .bg-white { background: #fff; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ</div>
+  <h1>仏教の歴史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">2500年の叡智を、今夜のネタにする。</p>
+  <div class="hero-stats">
+    <div>
+      <span class="hero-stat-num">5億</span>
+      <span class="hero-stat-lbl">世界の信者数</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">BC 5世紀</span>
+      <span class="hero-stat-lbl">誕生の時代</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">3大宗派</span>
+      <span class="hero-stat-lbl">上座・大乗・金剛乗</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">13宗派</span>
+      <span class="hero-stat-lbl">日本の主要宗派</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">始まりは一人の王子から</h2>
+    <p class="section-desc">すべての出発点、ブッダの生涯を5分で把握する</p>
+  </div>
+  <div class="founder-grid">
+    <div class="founder-portrait">
+      <span class="founder-symbol">☸</span>
+      <span class="founder-name-jp">ゴータマ・シッダールタ</span>
+      <span class="founder-name-en">Siddhartha Gautama</span>
+      <div style="margin-top:1rem; font-size:0.8rem; color:var(--gray-warm); line-height:1.8;">
+        <div>📍 ルンビニー（現ネパール）</div>
+        <div>📅 BC 563頃 — BC 483頃</div>
+        <div>👑 釈迦族の王子</div>
+        <div style="margin-top:0.75rem; color:var(--gold); font-size:0.85rem;">
+          「ブッダ」＝目覚めた者<br>
+          「釈迦」＝釈迦族の聖者
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="display:flex; gap:1rem; align-items:flex-start; background:var(--paper-dark); border-radius:8px; padding:1rem;">
+          <div style="font-size:2rem; flex-shrink:0;">🏰</div>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--ink);">誕生と青年期</div>
+            <div style="font-size:0.82rem; color:var(--ink-light);">カピラヴァストゥ国の王子として生まれる。贅沢な宮殿生活を送るが、城外で「老・病・死・修行者」の四つの光景（四門出遊）に衝撃を受ける。29歳で出家。</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start; background:var(--paper-dark); border-radius:8px; padding:1rem;">
+          <div style="font-size:2rem; flex-shrink:0;">🌳</div>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--ink);">菩提樹下の悟り</div>
+            <div style="font-size:0.82rem; color:var(--ink-light);">6年の苦行ののち、ガヤー（現ブッダガヤー）の菩提樹の下で瞑想。35歳で悟りを開く（成道）。この瞬間、「ブッダ（目覚めた者）」となる。BC 528年頃。</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start; background:var(--paper-dark); border-radius:8px; padding:1rem;">
+          <div style="font-size:2rem; flex-shrink:0;">🗣️</div>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--ink);">初転法輪と45年の布教</div>
+            <div style="font-size:0.82rem; color:var(--ink-light);">バーラーナシー（鹿野苑）で初めての説法（初転法輪）。その後45年間、弟子たちと共に北インドを歩き回り教えを広める。</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:flex-start; background:var(--paper-dark); border-radius:8px; padding:1rem;">
+          <div style="font-size:2rem; flex-shrink:0;">🕯️</div>
+          <div>
+            <div style="font-weight:700; font-size:0.9rem; color:var(--ink);">涅槃（入滅）</div>
+            <div style="font-size:0.82rem; color:var(--ink-light);">80歳でクシナガラにて入滅。最後の言葉は「諸行は無常なり。不放逸（怠るな）を心がけよ」。この日が「涅槃会」（2月15日）として現代も祀られる。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- THREE JEWELS -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">仏教の三大柱「三宝」</h2>
+    <p class="section-desc">まずここを押さえれば、あとは全部展開できる</p>
+  </div>
+  <div class="three-jewels">
+    <div class="jewel">
+      <div class="jewel-gem jewel-gold">☸</div>
+      <span class="jewel-jp">仏（ブッダ）</span>
+      <span class="jewel-san">BUDDHA</span>
+      <p class="jewel-desc">目覚めた者。ゴータマ・シッダールタその人、そして将来現れる仏たち</p>
+    </div>
+    <div class="jewel">
+      <div class="jewel-gem jewel-jade" style="color:#fff; font-size:1.5rem;">法</div>
+      <span class="jewel-jp">法（ダルマ）</span>
+      <span class="jewel-san">DHARMA</span>
+      <p class="jewel-desc">ブッダの教え。宇宙の真理そのもの。経典に記された一切の教え</p>
+    </div>
+    <div class="jewel">
+      <div class="jewel-gem jewel-crimson" style="color:#fff; font-size:1.5rem;">僧</div>
+      <span class="jewel-jp">僧（サンガ）</span>
+      <span class="jewel-san">SANGHA</span>
+      <p class="jewel-desc">教えを実践する修行者の共同体。出家僧侶から現代の信者まで</p>
+    </div>
+  </div>
+  <div style="text-align:center; padding:1rem; background:#fff; border-radius:8px; border:1px solid rgba(201,150,58,0.2);">
+    <p style="font-size:0.85rem; color:var(--ink-light);">🍺 <strong>居酒屋ポイント：</strong>「仏教って、仏・法・僧の三宝が基本でさ。仏は悟った人、法は教え、僧はコミュニティ。今で言えば創業者・ビジョン・会社みたいな感じ」</p>
+  </div>
+</div>
+</section>
+
+<!-- FOUR NOBLE TRUTHS -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">四諦 — 苦しみの構造と解法</h2>
+    <p class="section-desc">ブッダの「最初の説法」の核心。論理が美しすぎる</p>
+  </div>
+  <div class="truth-grid">
+    <div class="truth-card" data-num="1">
+      <span class="truth-jp">苦諦</span>
+      <span class="truth-san">DUKKHA-SACCA</span>
+      <p class="truth-meaning">生は苦である。生・老・病・死・愛別離苦・怨憎会苦・求不得苦・五蘊盛苦という「八苦」がある。これを正直に認めることがスタート。</p>
+    </div>
+    <div class="truth-card" data-num="2">
+      <span class="truth-jp">集諦</span>
+      <span class="truth-san">SAMUDAYA-SACCA</span>
+      <p class="truth-meaning">苦しみには「原因」がある。欲望（渇愛）と執着が苦の根本。「もっと欲しい」「失いたくない」という心が苦を生む。</p>
+    </div>
+    <div class="truth-card" data-num="3">
+      <span class="truth-jp">滅諦</span>
+      <span class="truth-san">NIRODHA-SACCA</span>
+      <p class="truth-meaning">苦しみは「滅せられる」。渇愛を断てば苦は消える。これが涅槃（ニルヴァーナ）の状態。苦の解放は可能だという希望。</p>
+    </div>
+    <div class="truth-card" data-num="4">
+      <span class="truth-jp">道諦</span>
+      <span class="truth-san">MAGGA-SACCA</span>
+      <p class="truth-meaning">具体的な「道」がある。その道が「八正道」。苦を滅するための実践的な8つのプログラムとして提示される。</p>
+    </div>
+  </div>
+  <div style="margin-top:2rem;">
+    <div style="text-align:center; margin-bottom:1rem; font-size:0.85rem; color:var(--ink-light);">八正道 — 苦しみを滅するための8つの実践</div>
+    <div class="path-wheel">
+      <div class="path-item"><div class="path-dot"></div>正見（正しく見る）</div>
+      <div class="path-item"><div class="path-dot"></div>正思惟（正しく考える）</div>
+      <div class="path-item"><div class="path-dot"></div>正語（正しく語る）</div>
+      <div class="path-item"><div class="path-dot"></div>正業（正しく行動する）</div>
+      <div class="path-item"><div class="path-dot"></div>正命（正しく生活する）</div>
+      <div class="path-item"><div class="path-dot"></div>正精進（正しく努力する）</div>
+      <div class="path-item"><div class="path-dot"></div>正念（正しく念じる）</div>
+      <div class="path-item"><div class="path-dot"></div>正定（正しく瞑想する）</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">仏教2500年の歴史タイムライン</h2>
+    <p class="section-desc">ブッダの死後、教えはいかに変容し世界へ広がったか</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">BC 5世紀頃</div>
+        <div class="tl-event">ブッダ誕生・成道・入滅</div>
+        <div class="tl-desc">ゴータマ・シッダールタが北インドで活動。入滅後すぐ、弟子500人が王舎城（ラージャガハ）に集まり教えを編纂。これが「第一結集」。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌱</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">BC 3世紀</div>
+        <div class="tl-event">アショーカ王の後援と仏教の拡大</div>
+        <div class="tl-desc">マウリヤ朝のアショーカ王がカリンガ戦争の惨状に悔悟し仏教に帰依。全インドに石柱を建て、スリランカ・ギリシアにまで使節を派遣。仏教が「国際宗教」へ。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏛️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">BC 1世紀〜AD 1世紀</div>
+        <div class="tl-event">上座部・大乗の分裂</div>
+        <div class="tl-desc">厳格な戒律を守る「上座部（テーラワーダ）」と、すべての衆生の救済を目指す「大乗（マハーヤーナ）」が分岐。大乗は上座部を「小乗」と批判的に呼んだ。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1〜3世紀</div>
+        <div class="tl-event">大乗仏教の隆盛・ナーガールジュナ</div>
+        <div class="tl-desc">「龍樹（ナーガールジュナ）」が「空（くう）」の哲学を体系化。「すべての存在は固有の実体を持たない」という中観哲学は、現代哲学にも影響を与え続ける。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📚</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">4〜6世紀</div>
+        <div class="tl-event">シルクロードと東アジアへの伝播</div>
+        <div class="tl-desc">中央アジア・中国へと仏教が伝わる。鳩摩羅什（クマーラジーヴァ）が長安で大規模な経典翻訳を行う。中国で「禅（チャン）」「浄土」などが独自発展。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🛤️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">552年（または538年）</div>
+        <div class="tl-event">日本への仏教伝来</div>
+        <div class="tl-desc">百済の聖明王から欽明天皇へ仏像・経典が贈られる（公伝）。蘇我氏と物部氏が受容をめぐり対立。聖徳太子（厩戸皇子）が積極的に導入し国家宗教の礎を築く。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⛩️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">7〜11世紀</div>
+        <div class="tl-event">チベット仏教（密教・金剛乗）の成立</div>
+        <div class="tl-desc">インド後期密教がチベットに伝わり、独自の「ヴァジュラヤーナ（金剛乗）」が発展。ダライ・ラマ制度はこの流れの集大成。複雑な儀礼・マントラ・観想法が特徴。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏔️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">12〜13世紀</div>
+        <div class="tl-event">インドでの仏教消滅・日本鎌倉仏教の誕生</div>
+        <div class="tl-desc">イスラム勢力のインド侵入でナーランダー大学が焼かれ、仏教は発祥地インドでほぼ消滅。一方、日本では法然・親鸞・道元・日蓮らが鎌倉仏教を創立、民衆に広がる。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌸</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">19〜20世紀</div>
+        <div class="tl-event">近代仏教・西洋への伝播</div>
+        <div class="tl-desc">スリランカ仏教復興運動（アナガーリカ・ダルマパーラ）や鈴木大拙による禅の西洋紹介。チベット問題を機にダライ・ラマ14世が国際的存在に。「マインドフルネス」ブームへ。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌍</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- SPREAD -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">仏教の世界拡散マップ</h2>
+    <p class="section-desc">2500年をかけてアジア全土、そして世界へ</p>
+  </div>
+  <div class="spread-bg">
+    <div style="text-align:center; font-size:0.75rem; color:var(--gray-warm); margin-bottom:1.5rem; letter-spacing:0.1em;">TRANSMISSION ROUTE</div>
+    <div class="spread-flow">
+      <div class="spread-node">
+        <div class="spread-node-inner">
+          <div class="spread-country">🇮🇳 インド</div>
+          <div class="spread-era">BC 5世紀〜</div>
+        </div>
+      </div>
+      <div class="spread-arrow">→</div>
+      <div class="spread-node">
+        <div class="spread-node-inner">
+          <div class="spread-country">🇱🇰 スリランカ</div>
+          <div class="spread-era">BC 3世紀〜</div>
+        </div>
+      </div>
+      <div class="spread-arrow">→</div>
+      <div class="spread-node">
+        <div class="spread-node-inner">
+          <div class="spread-country">🇹🇭 東南アジア</div>
+          <div class="spread-era">1〜5世紀〜</div>
+        </div>
+      </div>
+      <div class="spread-arrow">→</div>
+      <div class="spread-node">
+        <div class="spread-node-inner">
+          <div class="spread-country">🇨🇳 中国</div>
+          <div class="spread-era">1世紀〜</div>
+        </div>
+      </div>
+      <div class="spread-arrow">→</div>
+      <div class="spread-node">
+        <div class="spread-node-inner">
+          <div class="spread-country">🇰🇷 朝鮮</div>
+          <div class="spread-era">4世紀〜</div>
+        </div>
+      </div>
+      <div class="spread-arrow">→</div>
+      <div class="spread-node">
+        <div class="spread-node-inner">
+          <div class="spread-country">🇯🇵 日本</div>
+          <div class="spread-era">6世紀〜</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(201,150,58,0.2); padding-top:1.5rem;">
+      <div style="text-align:center; font-size:0.75rem; color:var(--gray-warm); margin-bottom:1rem; letter-spacing:0.1em;">3 MAJOR BRANCHES</div>
+      <div class="school-grid">
+        <div class="school-card">
+          <div class="school-name">上座部仏教</div>
+          <div class="school-region">Theravāda · 南伝</div>
+          <div class="school-desc">スリランカ・タイ・ミャンマー・カンボジアに伝わる。最古の戒律を厳格に守る。「パーリ語経典」が正典。「小乗」と呼ばれたが、これは大乗側の蔑称で現在は使わない。</div>
+        </div>
+        <div class="school-card">
+          <div class="school-name">大乗仏教</div>
+          <div class="school-region">Mahāyāna · 北伝</div>
+          <div class="school-desc">中国・日本・韓国・ベトナムへ。「すべての衆生を救う」という菩薩行を重視。日本の仏教はほぼ大乗。禅・浄土・天台・真言などの多様な宗派が生まれた。</div>
+        </div>
+        <div class="school-card">
+          <div class="school-name">金剛乗仏教</div>
+          <div class="school-region">Vajrayāna · チベット系</div>
+          <div class="school-desc">チベット・モンゴルに広がる。密教（タントラ）の実践を重視。マントラ・印（ムドラー）・曼荼羅・観想法が特徴。ダライ・ラマはこの系統のリーダー。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- JAPAN -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">日本仏教の宗派マップ</h2>
+    <p class="section-desc">なぜ日本の仏教はこんなにバリエーションがあるのか</p>
+  </div>
+  <div class="japan-bg">
+    <p style="font-size:0.82rem; color:rgba(250,245,232,0.6); margin-bottom:1.5rem;">日本仏教の宗派は「いつ・何が一番大事か」で違いを理解できる。鎌倉時代が宗派乱立の最大の転換点。</p>
+    <div class="japan-schools">
+      <div class="japan-school">
+        <span class="japan-school-name">南都六宗</span>
+        <span class="japan-school-era">奈良時代（8c）</span>
+        <span class="japan-school-key">国家鎮護・学問仏教</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">天台宗</span>
+        <span class="japan-school-era">平安（805）最澄</span>
+        <span class="japan-school-key">法華経・総合仏教の母</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">真言宗</span>
+        <span class="japan-school-era">平安（816）空海</span>
+        <span class="japan-school-key">密教・即身成仏</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">浄土宗</span>
+        <span class="japan-school-era">鎌倉（1175）法然</span>
+        <span class="japan-school-key">念仏・他力本願</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">浄土真宗</span>
+        <span class="japan-school-era">鎌倉（1224）親鸞</span>
+        <span class="japan-school-key">悪人正機・絶対他力</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">臨済宗</span>
+        <span class="japan-school-era">鎌倉（1191）栄西</span>
+        <span class="japan-school-key">禅・公案・武士に広まる</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">曹洞宗</span>
+        <span class="japan-school-era">鎌倉（1227）道元</span>
+        <span class="japan-school-key">只管打坐・ひたすら座禅</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">日蓮宗</span>
+        <span class="japan-school-era">鎌倉（1253）日蓮</span>
+        <span class="japan-school-key">法華経・南無妙法蓮華経</span>
+      </div>
+      <div class="japan-school">
+        <span class="japan-school-name">時宗</span>
+        <span class="japan-school-era">鎌倉（1274）一遍</span>
+        <span class="japan-school-key">踊念仏・遊行</span>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.3); border-radius:6px; padding:1rem; font-size:0.82rem; color:rgba(250,245,232,0.7);">
+      💡 <strong style="color:var(--gold);">宗派の覚え方：</strong>「どうすれば救われるか」の答えが違う。念仏を唱える（浄土系）、座禅を組む（禅系）、お経を唱える（日蓮系）、密教的修行（真言・天台）。全部「悟りへの道」だが、アプローチが異なる。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- KEY CONCEPTS -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">知っておくべき仏教の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定される9つのキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">無常 <span class="concept-san">ANICCA</span></div>
+      <div class="concept-body">すべてのものは変化し続け、永遠に変わらないものは何もない。「諸行無常」は平家物語の冒頭にも登場。</div>
+      <div class="concept-izakaya">「諸行無常って知ってる？ 仏教の根本で、変わらないものは何もないって考え方。会社の栄枯盛衰も全部これ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">縁起 <span class="concept-san">PRATĪTYASAMUTPĀDA</span></div>
+      <div class="concept-body">すべての存在は他との関係の中でのみ生じる。「独立した自己」は幻想で、すべてはつながり合っている。</div>
+      <div class="concept-izakaya">「縁起って偶然じゃなくて、全部つながってるって話。今日ここで飲んでるのも縁起（笑）」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">空（くう） <span class="concept-san">ŚŪNYATĀ</span></div>
+      <div class="concept-body">すべての存在には固有の実体（自性）がない。龍樹が体系化。「空」は「虚無」ではなく、「固定的実体がない」こと。</div>
+      <div class="concept-izakaya">「仏教の空って怖い概念で、自分も含めて全ての固定した実体はないって話。量子力学とも通じる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">業（ごう） <span class="concept-san">KARMA</span></div>
+      <div class="concept-body">行為とその結果の因果法則。「自業自得」はここから来る。良い行いは良い結果を、悪い行いは悪い結果を生む。</div>
+      <div class="concept-izakaya">「カルマって仏教語。業ってやつで、自分の行いが全部未来に返ってくるという考え。自業自得のこと」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">涅槃 <span class="concept-san">NIRVĀṆA</span></div>
+      <div class="concept-body">欲望・執着が消滅した安らぎの状態。「吹き消された」を意味する語源。死後の概念ではなく、生きながら達成可能。</div>
+      <div class="concept-izakaya">「ニルヴァーナって欲望が消えた状態のこと。ロックバンドの名前にもなってるけど、本来は究極の平和って意味」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">菩薩 <span class="concept-san">BODHISATTVA</span></div>
+      <div class="concept-body">悟りを目指しながら、他の衆生を救うために活動する存在。観音・文殊・地蔵など多数。大乗仏教の理想像。</div>
+      <div class="concept-izakaya">「菩薩って自分だけ悟るんじゃなく、みんなを救いながら悟りを目指す存在。地蔵さんも観音さんも菩薩です」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">般若波羅蜜 <span class="concept-san">PRAJÑĀPĀRAMITĀ</span></div>
+      <div class="concept-body">「悟りに至る智慧の完成」。般若心経はこの教えの精髄。「色即是空 空即是色」が有名。</div>
+      <div class="concept-izakaya">「般若心経の『色即是空』って、形あるものは実体がないって意味。カッコいい言葉だけど哲学的に深い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">輪廻 <span class="concept-san">SAṂSĀRA</span></div>
+      <div class="concept-body">死後、業に従い別の生に生まれ変わるサイクル。仏教の目標は輪廻からの解脱（涅槃）。インド思想共通の概念。</div>
+      <div class="concept-izakaya">「輪廻って生まれ変わりのこと。仏教の目的は実はこのループから抜け出すこと。悟ればリセットされる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">中道 <span class="concept-san">MAJJHIMĀ PAṬIPADĀ</span></div>
+      <div class="concept-body">快楽主義にも苦行主義にも偏らない道。ブッダが苦行を断念した後に到達した実践原理。偏りのないバランス。</div>
+      <div class="concept-izakaya">「ブッダって苦行めちゃくちゃやったんだけど途中でやめた。快楽も苦行も極端はダメ、中道が一番って悟ったわけ」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- IZAKAYA TEST -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">「ここまで読んだあなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「お葬式でお坊さんが来るけど、そもそも仏教って何？」</div>
+      <div class="test-q-text">友人に聞かれたとき</div>
+      <div class="test-a">「約2500年前にインドで悟りを開いたブッダが始めた宗教。核心は『苦しみには原因があり、その原因を断てば解放される』という話。自己啓発の元祖みたいなもんだよ。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「浄土宗と浄土真宗ってどう違うの？」</div>
+      <div class="test-q-text">お墓参りの話になったとき</div>
+      <div class="test-a">「法然が浄土宗を作って、弟子の親鸞がさらに徹底したのが浄土真宗。法然は『念仏を唱えよ』と言ったが、親鸞は『信じるだけで救われる』とさらに大胆に。浄土真宗の僧侶が結婚できるのも親鸞が妻帯したため。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「禅って何？」</div>
+      <div class="test-q-text">マインドフルネスやZENが話題になったとき</div>
+      <div class="test-a">「中国で生まれた仏教の一派で、座禅・公案（答えのない問い）などを通じて直接悟りを体験しようとする。日本の武士道・茶道・能・俳句など文化の多くに影響している。Appleのスティーブ・ジョブズも禅に傾倒していた。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「インドで生まれた宗教なのになぜインドに仏教徒が少ないの？」</div>
+      <div class="test-q-text">「そういえば…」となったとき</div>
+      <div class="test-a">「12〜13世紀のイスラム勢力のインド侵入で、最大の仏教大学ナーランダーが焼かれ僧侶が虐殺・追放された。ヒンドゥー教への吸収も進んだ。発祥の地で消えた宗教が周辺国で生き続けた、というのは歴史の皮肉だよね。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「カルマって信じる？」</div>
+      <div class="test-q-text">スピリチュアルな話になったとき</div>
+      <div class="test-a">「仏教の業（カルマ）は単なる運命論じゃなくて、自分の行いが未来の自分を作るという因果則の話。"自業自得"の語源がこれ。良い行動を積み重ねれば人格が変わる、という現代の行動科学とも一致してる部分がある。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-dharma">☸</span>
+  <p>この資料で、あなたの今夜の仏教トークは完璧だ。</p>
+  <p style="margin-top:0.4rem; opacity:0.5;">「一切皆苦。されど、知ることで苦は和らぐ」</p>
+</div>
+
+</body>
+</html>

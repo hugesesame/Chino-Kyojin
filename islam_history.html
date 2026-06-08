@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イスラム教の歴史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep:  #0B2E1A;
+    --green-mid:   #165C32;
+    --green-light: #2A9152;
+    --green-pale:  #D4EFE0;
+    --green-ghost: #EEF8F2;
+    --gold:        #B8872A;
+    --gold-light:  #E5B84A;
+    --gold-pale:   #FBF4DC;
+    --ivory:       #FAF7EF;
+    --ivory-dark:  #EDE7D0;
+    --ink:         #151210;
+    --ink-mid:     #3A2C1C;
+    --ink-light:   #6E5A3E;
+    --gray:        #9A9080;
+    --silver:      #B8C0B4;
+    --crimson:     #8B1A1A;
+    --shadow:      rgba(11,46,26,0.13);
+    --teal:        #0F7878;
+    --teal-light:  #1AADAD;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--green-deep);
+    color:#fff;
+    text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:'☽';
+    position:absolute;
+    font-size:34rem;
+    opacity:0.04;
+    top:48%; left:50%;
+    transform:translate(-50%,-50%);
+    line-height:1;
+    pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block;
+    font-size:0.68rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    border:1px solid rgba(229,184,74,0.45);
+    padding:4px 16px;
+    border-radius:2px;
+    margin-bottom:1.5rem;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem);
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:1rem;
+    background:linear-gradient(135deg,#ffffff,var(--gold-light));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero-sub {
+    font-size:1rem;
+    color:rgba(255,255,255,0.5);
+    max-width:520px;
+    margin:0 auto 2.5rem;
+    font-weight:300;
+  }
+  .hero-stats {
+    display:flex;
+    justify-content:center;
+    gap:3rem;
+    flex-wrap:wrap;
+  }
+  .hero-stat-num {
+    font-family:'Cinzel',serif;
+    font-size:2rem;
+    color:var(--gold-light);
+    display:block;
+  }
+  .hero-stat-lbl {
+    font-size:0.72rem;
+    color:rgba(255,255,255,0.42);
+    letter-spacing:0.08em;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block;
+    background:var(--green-mid);
+    color:#fff;
+    font-size:0.65rem;
+    font-weight:700;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    padding:4px 14px;
+    border-radius:2px;
+    margin-bottom:0.75rem;
+  }
+  .section-title {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(1.5rem,3vw,2.2rem);
+    color:var(--ink);
+    font-weight:700;
+  }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+
+  /* ─── PROPHET CARD ─── */
+  .prophet-grid {
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:2rem;
+    align-items:start;
+  }
+  @media(max-width:640px){
+    .prophet-grid{ grid-template-columns:1fr; }
+    .timeline::before{ left:1.5rem; }
+    .tl-item,.tl-item.right{ flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card{ width:100%; text-align:left; }
+    .tl-dot{ left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji{ display:none; }
+  }
+  .portrait-box {
+    background:var(--green-deep);
+    border-radius:8px;
+    padding:2rem 1.5rem;
+    text-align:center;
+    color:#fff;
+  }
+  .portrait-symbol { font-size:4rem; display:block; margin-bottom:0.75rem; }
+  .portrait-name-jp {
+    font-family:'Noto Serif JP',serif;
+    font-size:1.4rem;
+    color:var(--gold-light);
+    display:block;
+  }
+  .portrait-name-en { font-size:0.72rem; color:var(--silver); letter-spacing:0.1em; }
+  .life-step {
+    display:flex; gap:1rem; align-items:flex-start;
+    background:var(--ivory-dark);
+    border-radius:8px; padding:1rem; margin-bottom:0.75rem;
+  }
+  .life-step-icon { font-size:1.8rem; flex-shrink:0; }
+  .life-step-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .life-step-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:'';
+    position:absolute;
+    left:50%; top:0; bottom:0;
+    width:2px;
+    background:linear-gradient(to bottom,transparent,var(--green-light),var(--green-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item {
+    display:flex; align-items:flex-start;
+    gap:1.5rem; margin-bottom:2.5rem; position:relative;
+  }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem;
+    transform:translateX(-50%);
+    width:14px; height:14px;
+    background:var(--green-light);
+    border:3px solid var(--ivory);
+    border-radius:50%;
+    box-shadow:0 0 0 2px var(--green-light);
+    z-index:2;
+  }
+  .tl-dot.gold   { background:var(--gold);    box-shadow:0 0 0 2px var(--gold); }
+  .tl-dot.red    { background:var(--crimson); box-shadow:0 0 0 2px var(--crimson); }
+  .tl-dot.teal   { background:var(--teal);    box-shadow:0 0 0 2px var(--teal); }
+  .tl-card {
+    width:calc(50% - 2.5rem);
+    background:#fff;
+    border:1px solid rgba(22,92,50,0.14);
+    border-radius:6px;
+    padding:1.25rem 1.5rem;
+    box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--green-light); font-weight:700; margin-bottom:0.25rem; letter-spacing:0.05em; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+
+  /* ─── FIVE PILLARS ─── */
+  .pillar-wrap {
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
+    gap:0.75rem;
+    flex-wrap:wrap;
+    margin:1.5rem 0;
+  }
+  .pillar {
+    flex:1; min-width:130px; max-width:170px;
+    background:var(--green-deep);
+    color:#fff;
+    border-radius:8px;
+    padding:1.5rem 1rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .pillar::after {
+    content:attr(data-n);
+    position:absolute;
+    bottom:-0.5rem; right:0.4rem;
+    font-family:'Cinzel',serif;
+    font-size:4rem;
+    opacity:0.08;
+    color:var(--gold-light);
+    line-height:1;
+  }
+  .pillar-icon  { font-size:2rem; display:block; margin-bottom:0.5rem; }
+  .pillar-jp    { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; display:block; margin-bottom:0.2rem; }
+  .pillar-ar    { font-size:0.62rem; letter-spacing:0.08em; color:var(--silver); display:block; margin-bottom:0.6rem; }
+  .pillar-body  { font-size:0.77rem; color:rgba(255,255,255,0.7); line-height:1.5; }
+
+  /* ─── QURAN ─── */
+  .quran-bg {
+    background:var(--green-deep);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+  }
+  @media(max-width:600px){ .quran-bg{ grid-template-columns:1fr; } }
+  .quran-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .quran-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--gold-light); font-weight:700; margin-bottom:0.75rem; }
+  .quran-desc  { font-size:0.8rem; color:rgba(255,255,255,0.7); line-height:1.7; }
+  .quran-tag-wrap { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+  .q-tag {
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:3px;
+    padding:2px 8px;
+    font-size:0.72rem;
+    color:rgba(255,255,255,0.6);
+  }
+
+  /* ─── SUNNI / SHIA ─── */
+  .split-bg {
+    background:var(--green-deep);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+  }
+  .split-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.5rem;
+    margin-top:1.5rem;
+  }
+  @media(max-width:600px){ .split-grid{ grid-template-columns:1fr; } }
+  .split-card {
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:8px;
+    padding:1.5rem;
+  }
+  .split-name   { font-family:'Noto Serif JP',serif; font-size:1.15rem; color:var(--gold-light); font-weight:700; margin-bottom:0.25rem; }
+  .split-pct    { font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-light); display:block; margin:0.5rem 0; }
+  .split-region { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal-light); margin-bottom:0.75rem; }
+  .split-desc   { font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.6; }
+
+  /* ─── SPREAD ─── */
+  .spread-bg {
+    background:var(--green-deep);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+  }
+  .spread-row {
+    display:flex; align-items:center;
+    justify-content:center; flex-wrap:wrap;
+    gap:0; margin-bottom:1rem;
+  }
+  .spread-inner {
+    background:rgba(229,184,74,0.1);
+    border:1px solid rgba(229,184,74,0.32);
+    border-radius:6px;
+    padding:0.6rem 1rem;
+    min-width:80px; text-align:center;
+    margin:0.35rem;
+  }
+  .sc  { font-size:0.85rem; font-weight:700; color:var(--gold-light); }
+  .se  { font-size:0.62rem; color:var(--silver); margin-top:2px; }
+  .sa  { font-size:1.3rem; color:rgba(255,255,255,0.22); padding:0 0.3rem; align-self:center; }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff;
+    border:1px solid rgba(22,92,50,0.14);
+    border-left:4px solid var(--green-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem;
+    box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-ar   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.06em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--green-mid); background:rgba(22,92,50,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* ─── COMPARISON TABLE ─── */
+  .compare-bg {
+    background:var(--green-deep);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+  }
+  .compare-table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.82rem;
+    margin-top:1rem;
+  }
+  .compare-table th {
+    padding:0.6rem 0.8rem;
+    text-align:left;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .compare-table td {
+    padding:0.65rem 0.8rem;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    color:rgba(255,255,255,0.72);
+    vertical-align:top;
+  }
+  .compare-table tr:last-child td { border-bottom:none; }
+  .compare-table td:first-child { color:var(--gold-light); font-weight:700; white-space:nowrap; }
+
+  /* ─── JAPAN / WORLD ─── */
+  .world-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+  }
+  .world-card {
+    background:#fff;
+    border:1px solid rgba(22,92,50,0.14);
+    border-radius:8px;
+    padding:1.1rem;
+    box-shadow:0 2px 8px var(--shadow);
+  }
+  .wc-flag  { font-size:1.6rem; display:block; margin-bottom:0.4rem; }
+  .wc-name  { font-weight:700; font-size:0.9rem; color:var(--ink); margin-bottom:0.2rem; }
+  .wc-pct   { font-family:'Cinzel',serif; font-size:1.4rem; color:var(--green-mid); display:block; margin-bottom:0.3rem; }
+  .wc-desc  { font-size:0.77rem; color:var(--ink-light); line-height:1.5; }
+
+  /* ─── IZAKAYA TEST ─── */
+  .test-bg { background:var(--green-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q {
+    background:rgba(0,0,0,0.25);
+    border-left:3px solid var(--green-light);
+    padding:1rem 1.25rem;
+    border-radius:0 6px 6px 0;
+    margin-bottom:1rem;
+  }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--green-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── TIP BAR ─── */
+  .tip-bar {
+    background:#fff;
+    border-radius:6px;
+    border:1px solid rgba(22,92,50,0.16);
+    padding:0.85rem 1.1rem;
+    font-size:0.82rem;
+    color:var(--ink-light);
+    margin-top:1.5rem;
+    text-align:center;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--green-deep); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-crescent { font-size:2rem; color:var(--gold-light); display:block; margin-bottom:0.5rem; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.3</div>
+  <h1>イスラム教の歴史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">世界で最も急成長中の宗教を、今夜のネタにする。</p>
+  <div class="hero-stats">
+    <div>
+      <span class="hero-stat-num">19億</span>
+      <span class="hero-stat-lbl">世界の信者数</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">7世紀</span>
+      <span class="hero-stat-lbl">誕生の時代</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">2大宗派</span>
+      <span class="hero-stat-lbl">スンニ派・シーア派</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">57カ国</span>
+      <span class="hero-stat-lbl">イスラム協力機構加盟国</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PROPHET ═══════════ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">始まりはムハンマドから</h2>
+    <p class="section-desc">「預言者」という概念と、イスラム教誕生の経緯を理解する</p>
+  </div>
+  <div class="prophet-grid">
+    <div class="portrait-box">
+      <span class="portrait-symbol">☽</span>
+      <span class="portrait-name-jp">ムハンマド</span>
+      <span class="portrait-name-en">Muḥammad ibn ʿAbd Allāh</span>
+      <div style="margin-top:1rem; font-size:0.78rem; color:var(--silver); line-height:1.9;">
+        <div>📍 メッカ（現サウジアラビア）</div>
+        <div>📅 570年頃 — 632年</div>
+        <div>🐪 クライシュ族（商人の家系）</div>
+        <div style="margin-top:0.75rem; color:var(--gold-light); font-size:0.82rem; line-height:1.7;">
+          イスラム教では「神の姿を描いてはならない」のと同様、<strong style="color:var(--gold-light);">ムハンマドの肖像画も禁じられている</strong>。「最後にして最大の預言者」だが、あくまで人間。<br>神（アッラー）ではない。
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="life-step">
+        <div class="life-step-icon">👶</div>
+        <div>
+          <div class="life-step-title">誕生と青年期（570年頃）</div>
+          <div class="life-step-body">メッカのクライシュ族に生まれる。幼少期に父・母・祖父を相次いで失い孤児に。叔父アブー・ターリブのもとで育ち、キャラバン隊の商人として働く。誠実さから「アル＝アミーン（信頼できる者）」と呼ばれた。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">📖</div>
+        <div>
+          <div class="life-step-title">最初の啓示 — ヒラー山の洞窟（610年）</div>
+          <div class="life-step-body">40歳のとき、ヒラー山の洞窟で瞑想中に天使ジブリール（ガブリエル）が現れ「読め（イクラ）！」と命じる。これがクルアーン最初の啓示。以後23年間にわたり断続的に啓示を受け続ける。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">🚶</div>
+        <div>
+          <div class="life-step-title">ヒジュラ（聖遷）— メディナへの移住（622年）</div>
+          <div class="life-step-body">メッカの多神教支配者からの迫害を逃れ、信者たちとメディナへ移住。この「ヒジュラ（聖遷）」がイスラム暦元年の起点。メディナで最初のイスラム共同体（ウンマ）を建設し、政治・軍事指導者としても活躍。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">🕌</div>
+        <div>
+          <div class="life-step-title">メッカ無血征服と完成（630〜632年）</div>
+          <div class="life-step-body">630年、10,000人の軍勢でメッカを無血征服。カアバ神殿の偶像を破壊し一神教の聖地に。632年、「告別の巡礼」で教えを完成させ、同年63歳で病死。後継者（カリフ）問題が後の大分裂を生む。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ FIVE PILLARS ═══════════ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">イスラム五柱 — 信仰の五つの義務</h2>
+    <p class="section-desc">すべてのムスリムが実践すべき5つの行為。ここが全ての基盤</p>
+  </div>
+  <div class="pillar-wrap">
+    <div class="pillar" data-n="1">
+      <span class="pillar-icon">🗣️</span>
+      <span class="pillar-jp">信仰告白</span>
+      <span class="pillar-ar">SHAHĀDA</span>
+      <p class="pillar-body">「アッラーのほかに神はなく、ムハンマドはその使徒である」と証言すること。これを真剣に唱えれば入信したことになる。</p>
+    </div>
+    <div class="pillar" data-n="2">
+      <span class="pillar-icon">🧎</span>
+      <span class="pillar-jp">礼拝</span>
+      <span class="pillar-ar">ṢALĀT</span>
+      <p class="pillar-body">1日5回（夜明け・昼・午後・日没・夜）メッカの方角（キブラ）に向かって礼拝。モスクのミナレットからアザーン（礼拝の呼びかけ）が響く。</p>
+    </div>
+    <div class="pillar" data-n="3">
+      <span class="pillar-icon">💰</span>
+      <span class="pillar-jp">喜捨</span>
+      <span class="pillar-ar">ZAKĀT</span>
+      <p class="pillar-body">年に一度、資産の2.5%を貧者・旅人・債務者などに施す義務。社会的弱者への再分配制度。自発的な慈善（サダカ）とは別の「義務的喜捨」。</p>
+    </div>
+    <div class="pillar" data-n="4">
+      <span class="pillar-icon">🌙</span>
+      <span class="pillar-jp">断食</span>
+      <span class="pillar-ar">ṢAWM</span>
+      <p class="pillar-body">ラマダーン月（イスラム暦第9月）の1ヶ月間、日の出から日没まで飲食・喫煙・性行為を断つ。日没後は「イフタール」で断食明け。精神的鍛錬と連帯感が目的。</p>
+    </div>
+    <div class="pillar" data-n="5">
+      <span class="pillar-icon">🕌</span>
+      <span class="pillar-jp">巡礼</span>
+      <span class="pillar-ar">ḤAJJ</span>
+      <p class="pillar-body">体力・経済力が許す限り一生に一度、メッカへの大巡礼を行う義務。毎年200万人以上が世界中から集結。カアバ神殿を7周する「タワーフ」が中心儀礼。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「ムスリムって1日5回礼拝するって知ってた？ スマホのアプリで礼拝時刻を管理してる人も多い。ラマダーンは1ヶ月断食だけど、日没後は逆においしいものを食べる時間でもある、みたいな楽しみ方もあるらしい」
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ QURAN ═══════════ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">クルアーン（コーラン）とハディース</h2>
+    <p class="section-desc">聖典の構造を知れば、イスラム法の仕組みが見えてくる</p>
+  </div>
+  <div class="quran-bg">
+    <div>
+      <div class="quran-label">PRIMARY SOURCE</div>
+      <div class="quran-title">クルアーン（コーラン）</div>
+      <div class="quran-desc">「朗誦されるもの」を意味する。神がムハンマドに啓示した言葉を直接記録したもの。全114章（スーラ）構成。アラビア語原典が唯一の正典とされ、翻訳は「クルアーンの解説」とみなされる。暗唱（ハーフィズ）は大変名誉なこと。</div>
+      <div class="quran-tag-wrap">
+        <span class="q-tag">全114章（スーラ）</span>
+        <span class="q-tag">6,236節（アーヤ）</span>
+        <span class="q-tag">アラビア語が唯一正典</span>
+        <span class="q-tag">神の直接の言葉</span>
+      </div>
+    </div>
+    <div>
+      <div class="quran-label">SECONDARY SOURCE</div>
+      <div class="quran-title">ハディース（伝承）</div>
+      <div class="quran-desc">ムハンマドの言行録。クルアーンの補完・解釈に使われる。膨大な数のハディースの真偽を検証する「ハディース学」が発展。クルアーン＋ハディースが「シャリーア（イスラム法）」の根拠になる。</div>
+      <div class="quran-tag-wrap">
+        <span class="q-tag">ムハンマドの言行</span>
+        <span class="q-tag">6大ハディース集</span>
+        <span class="q-tag">真偽の伝承研究</span>
+        <span class="q-tag">シャリーアの根拠</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem; background:var(--ivory-dark); border-radius:8px; padding:1.25rem 1.5rem; font-size:0.82rem; color:var(--ink-light);">
+    ⚖️ <strong>シャリーア（イスラム法）とは：</strong>クルアーン・ハディース・法学者の解釈などをもとにした包括的な生活規範。礼拝方法・食事制限（ハラール）・婚姻・相続・契約から刑事罰まで幅広く規定する。「政教一致」の原型であり、近代国家との緊張関係の根源でもある。
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ TIMELINE ═══════════ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">イスラム教1400年の歴史タイムライン</h2>
+    <p class="section-desc">啓示から帝国の繁栄、そして現代の葛藤まで</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">610年</div>
+        <div class="tl-event">最初の啓示 — イスラム教の誕生</div>
+        <div class="tl-desc">ムハンマド40歳。ヒラー山の洞窟で天使ジブリールから最初の啓示を受ける。当初は迫害を恐れ秘密裏に布教。妻ハディージャが最初の信者となる。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📖</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">622年</div>
+        <div class="tl-event">ヒジュラ — イスラム共同体の誕生</div>
+        <div class="tl-desc">メッカからメディナへの聖遷（ヒジュラ）。イスラム暦の元年に定められる。メディナで最初のイスラム都市国家（ウンマ）を建設。ユダヤ・キリスト教徒を含む「メディナ憲章」を起草。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌙</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">632年</div>
+        <div class="tl-event">ムハンマド死去 — 正統カリフ時代</div>
+        <div class="tl-desc">ムハンマドが後継者を指名せず死去。アブー・バクル・ウマル・ウスマーン・アリーが「正統カリフ」として継承。わずか30年でペルシア・エジプト・シリアを征服、急速に拡大。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚔️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">656〜661年</div>
+        <div class="tl-event">第一次内乱 — スンニ・シーア分裂の原点</div>
+        <div class="tl-desc">第4代カリフ・アリーが暗殺され後継争いが起きる。「カリフはムハンマドの血縁者（アリーの子孫）でなければならない」と主張するのがシーア派の起源。661年ウマイヤ朝が成立し権力掌握。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">8〜13世紀</div>
+        <div class="tl-event">イスラム黄金時代 — 世界最先端の文明</div>
+        <div class="tl-desc">アッバース朝（750〜1258年）の下でバグダードが世界の知的中心に。数学（アルゴリズム・代数学）・天文学・医学・哲学が飛躍的発展。ギリシャ哲学をアラビア語に翻訳し欧州に伝えたのもイスラム世界。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🔬</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1095〜1291年</div>
+        <div class="tl-event">十字軍との対決とサラディン</div>
+        <div class="tl-desc">ヨーロッパのキリスト教徒がエルサレム奪還を掲げ遠征。1187年、イスラムの英雄サラーフッディーン（サラディン）がエルサレムを奪還。敵をも称える騎士道的な振る舞いは西洋でも賞賛された。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🛡️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1258年</div>
+        <div class="tl-event">モンゴルによるバグダード陥落</div>
+        <div class="tl-desc">フラグ率いるモンゴル軍がバグダードを壊滅。図書館・病院・運河が破壊され「知恵の館（バイト・アル＝ヒクマ）」も消失。イスラム世界最大の知的中心が一夜で灰燼に帰した。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🔥</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1299〜1922年</div>
+        <div class="tl-event">オスマン帝国 — 600年の大帝国</div>
+        <div class="tl-desc">トルコ系オスマン朝がアナトリアから勃興。1453年コンスタンティノープルを陥落させ東ローマ帝国を滅ぼす。最盛期には三大陸・30以上の国・人口5千万人を支配。第一次大戦後1922年に崩壊。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏰</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">20世紀〜現在</div>
+        <div class="tl-event">植民地からの独立・現代イスラム</div>
+        <div class="tl-desc">英仏による中東分割支配（サイクス・ピコ協定）後、各国が独立。1979年イラン・イスラム革命。1948年イスラエル建国とパレスチナ問題。冷戦後の「文明の衝突」論・9.11・中東の春など激動が続く。</div>
+      </div>
+      <div class="tl-dot teal"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌍</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ SUNNI / SHIA ═══════════ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">スンニ派 vs シーア派 — 世界最大の宗教分裂</h2>
+    <p class="section-desc">1400年前の後継者争いが、今も中東の地政学を動かしている</p>
+  </div>
+  <div class="split-bg">
+    <div style="text-align:center; font-size:0.8rem; color:rgba(255,255,255,0.55); margin-bottom:0.5rem;">分裂の起点：第4代カリフ、アリー暗殺（661年）</div>
+    <div class="split-grid">
+      <div class="split-card">
+        <div class="split-name">スンニ派（スンナ派）</div>
+        <span class="split-pct">約85〜90%</span>
+        <div class="split-region">Sunnī · サウジアラビア・エジプト・トルコ・インドネシアなど</div>
+        <div class="split-desc">「スンナ（慣行）」に従う人々。カリフはムハンマドの家系でなくてもよく、共同体の合意で選ばれるべきと主張。現在の多数派。ワッハーブ主義（サウジ国教）・スーフィー（神秘主義）など多様な傾向を内包する。</div>
+      </div>
+      <div class="split-card">
+        <div class="split-name">シーア派</div>
+        <span class="split-pct">約10〜15%</span>
+        <div class="split-region">Shīʿa · イラン・イラク・レバノン・バハレーンなど</div>
+        <div class="split-desc">「アリーの党（シーア・アリー）」を意味する。指導者（イマーム）はムハンマドの娘婿アリーとその子孫でなければならないと主張。680年のカルバラーの悲劇（フセイン殉教）を今も毎年追悼する。イランはシーア派国家。</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      💡 <strong style="color:var(--gold-light);">サウジ（スンニ）vs イラン（シーア）：</strong>現代中東の代理戦争の多くがこの対立軸に沿っている。イエメン内戦・シリア内戦・レバノン政治もこの文脈で読み解ける。「テロ組織ISIS」はスンニ過激派で、シーアを「異端」とみなし激しく弾圧した。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ SPREAD ═══════════ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">イスラム教の世界拡散と現在</h2>
+    <p class="section-desc">中東から全世界へ — そして日本のイスラムの現状</p>
+  </div>
+  <div class="spread-bg">
+    <div style="text-align:center; font-size:0.72rem; color:var(--silver); margin-bottom:1.5rem; letter-spacing:0.1em;">WORLD DISTRIBUTION</div>
+    <div class="world-grid" style="margin-bottom:2rem;">
+      <div class="world-card">
+        <span class="wc-flag">🇮🇩</span>
+        <div class="wc-name">インドネシア</div>
+        <span class="wc-pct">2.3億人</span>
+        <div class="wc-desc">世界最大のイスラム人口。中東でなく東南アジアに最多。</div>
+      </div>
+      <div class="world-card">
+        <span class="wc-flag">🇵🇰</span>
+        <div class="wc-name">パキスタン</div>
+        <span class="wc-pct">2.3億人</span>
+        <div class="wc-desc">インドからの独立時にイスラム国家として建国（1947年）。</div>
+      </div>
+      <div class="world-card">
+        <span class="wc-flag">🇮🇳</span>
+        <div class="wc-name">インド</div>
+        <span class="wc-pct">2.1億人</span>
+        <div class="wc-desc">ヒンドゥー教国だが世界3位のムスリム人口を抱える。</div>
+      </div>
+      <div class="world-card">
+        <span class="wc-flag">🇸🇦</span>
+        <div class="wc-name">サウジアラビア</div>
+        <span class="wc-pct">聖地の国</span>
+        <div class="wc-desc">メッカ・メディナを擁する「2大聖地の守護者」。石油収入でワッハーブ主義を世界輸出。</div>
+      </div>
+      <div class="world-card">
+        <span class="wc-flag">🇯🇵</span>
+        <div class="wc-name">日本</div>
+        <span class="wc-pct">約23万人</span>
+        <div class="wc-desc">在日外国人ムスリムが大半。全国に100以上のモスク。ハラール食・礼拝室の整備が進む。</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem; font-size:0.82rem; color:rgba(255,255,255,0.62);">
+      🕌 <strong style="color:var(--gold-light);">「中東＝イスラム」は誤解：</strong>世界のムスリムの約80%は中東以外に住む。中東はイスラム発祥の地だが、人口的には南アジア・東南アジアが圧倒的多数。「イスラム＝アラブ」でもなく、アラブ人はムスリム全体の約20%にすぎない。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ CONCEPTS ═══════════ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">知っておくべきイスラム教の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定される9つのキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">アッラー <span class="concept-ar">ALLĀH</span></div>
+      <div class="concept-body">「神」を意味するアラビア語。唯一絶対の神（タウヒード＝唯一神論）であり、創造主。「アッラーは神の名前」ではなく「アラビア語で神を意味する語」。アラビア語のキリスト教徒も神のことをアッラーと呼ぶ。</div>
+      <div class="concept-izakaya">「アッラーって特別な神様の名前じゃなくて、アラビア語で"神"そのものの意味。英語のGodと一緒。ユダヤ・キリスト・イスラムは全員同じ神を信じてる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ジハード <span class="concept-ar">JIHĀD</span></div>
+      <div class="concept-body">「奮闘・努力」を意味する語。「大ジハード（自己の内なる悪との闘い）」と「小ジハード（外の敵との武力闘争）」がある。本来は自己改善の精神的営みが中心。「聖戦」という訳は著しく誤解を招く。</div>
+      <div class="concept-izakaya">「ジハードって聖戦って訳されるけど、本来は"奮闘努力"という意味。自己の欲望と戦う内的ジハードの方が大事とされてる。過激派が武力闘争にのみ使うのは本来の意味からの逸脱」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ハラール <span class="concept-ar">ḤALĀL</span></div>
+      <div class="concept-body">「許されたもの」を意味する。食事の禁忌が有名（豚肉・アルコール禁止）。逆に禁じられたものは「ハラーム」。食肉は「ビスミッラー（神の御名において）」と唱えながら屠殺する必要がある。</div>
+      <div class="concept-izakaya">「ハラールって最近よく聞くけど、イスラム法で許可された食品のこと。豚肉とお酒は禁止。2020年代は日本でもハラール認証の飲食店が増えてて、インバウンド対策にもなってる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ウンマ <span class="concept-ar">UMMA</span></div>
+      <div class="concept-body">イスラム教共同体全体を指す概念。民族・国籍・言語を超えた「ムスリムの連帯」。理念的にはウンマは一つの共同体。これがイスラムの「政教一致」的傾向の根拠にもなる。</div>
+      <div class="concept-izakaya">「ウンマってイスラムの超国家的共同体。ムスリムは世界中どこへ行っても同じ礼拝・同じ聖典・同じ言語（アラビア語）で繋がってる。ある種の最初のグローバルネットワーク」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">イスラム黄金時代 <span class="concept-ar">GOLDEN AGE</span></div>
+      <div class="concept-body">8〜13世紀、バグダードを中心にアラビア数字・代数学（algebra）・アルゴリズム（algorithm）・光学・医学などが花開いた時代。現代科学の多くがこの時代のイスラム学者を源泉に持つ。</div>
+      <div class="concept-izakaya">「アルゴリズムってIT用語、実はイスラム数学者のフワーリズミー（Al-Khwarizmi）の名前が語源。代数学（algebra）もアラビア語のal-jabrから。現代文明の基礎にイスラム黄金時代がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">カリフ制 <span class="concept-ar">CALIPHATE</span></div>
+      <div class="concept-body">ムハンマドの「代理人」として政治・宗教の両権力を持つ指導者制度。正統カリフ4人→ウマイヤ朝→アッバース朝→オスマン帝国と継承。1924年にアタテュルクが廃止。ISISは2014年に復活宣言したが崩壊。</div>
+      <div class="concept-izakaya">「ISIS（イスラム国）がカリフ制を宣言したのは、1924年に廃止されたイスラムの"皇帝制度"を復活させるという主張だった。実現すれば世界中のムスリムを統治する権威を主張できる、という政治的野望でもあった」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">スーフィズム <span class="concept-ar">ṢŪFISM</span></div>
+      <div class="concept-body">イスラム神秘主義。祈りや音楽・舞踏（セマー）を通じて神との直接合一を目指す。「旋回僧侶（ダービッシュ）」が有名。詩人ルーミーはスーフィーの最高峰。過激派からは批判を受ける。</div>
+      <div class="concept-izakaya">「スーフィズムってイスラムの神秘主義。くるくる回る「旋回僧侶」が有名で、回ることで神と合一する瞑想法。ルーミーの詩は現代でも英語圏で最も売れる詩集のひとつ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">アブラハムの宗教 <span class="concept-ar">ABRAHAMIC FAITHS</span></div>
+      <div class="concept-body">ユダヤ教・キリスト教・イスラム教の総称。三宗教が共有する始祖がアブラハム（イブラーヒーム）。同じ神を信じ、モーゼ・イエスもイスラムでは「偉大な預言者」として尊重される。</div>
+      <div class="concept-izakaya">「ユダヤ・キリスト・イスラムって実は"兄弟宗教"で、三つまとめてアブラハムの宗教って呼ぶ。イスラムはイエスを神の子じゃなく偉大な預言者として尊重してる。敵対してるイメージあるけど神学的には近親者」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">インシャーアッラー <span class="concept-ar">IN SHĀʾ ALLĀH</span></div>
+      <div class="concept-body">「神が望むなら（もし神の御心に適えば）」を意味する日常的な表現。将来のことを語るときに必ず使う。クルアーンで「神の意志なしに明日のことを語るな」と命じられていることに基づく。</div>
+      <div class="concept-izakaya">「インシャーアッラーって"神が望むなら"という意味で、ムスリムが未来のことを話すときに必ず言う言葉。"明日また会いましょう、インシャーアッラー"みたいに。謙虚に神の意志に委ねる姿勢が染み込んでる」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 3 RELIGIONS COMPARE ═══════════ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">三大宗教「アブラハムの宗教」比較表</h2>
+    <p class="section-desc">Vol.1〜3を制覇した今だからこそ理解できる、決定的な比較</p>
+  </div>
+  <div class="compare-bg">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>ユダヤ教</th>
+          <th>キリスト教</th>
+          <th>イスラム教</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>創始者</td>
+          <td>モーゼ（法律の与え主）</td>
+          <td>イエス・キリスト</td>
+          <td>ムハンマド</td>
+        </tr>
+        <tr>
+          <td>聖典</td>
+          <td>タナハ（トーラーほか）</td>
+          <td>聖書（旧約＋新約）</td>
+          <td>クルアーン＋ハディース</td>
+        </tr>
+        <tr>
+          <td>イエスの位置づけ</td>
+          <td>ただの人（偽預言者）</td>
+          <td>神の子・救世主</td>
+          <td>偉大な預言者（神ではない）</td>
+        </tr>
+        <tr>
+          <td>ムハンマドの位置づけ</td>
+          <td>認めない</td>
+          <td>認めない</td>
+          <td>最後の預言者</td>
+        </tr>
+        <tr>
+          <td>メシア観</td>
+          <td>まだ来ていない</td>
+          <td>すでに来た（イエス）</td>
+          <td>最後の審判前に再来</td>
+        </tr>
+        <tr>
+          <td>救いの方法</td>
+          <td>律法の遵守</td>
+          <td>イエスへの信仰</td>
+          <td>信仰＋善行（五柱の実践）</td>
+        </tr>
+        <tr>
+          <td>聖地</td>
+          <td>エルサレム（嘆きの壁）</td>
+          <td>エルサレム（聖墳墓教会）</td>
+          <td>メッカ・メディナ・エルサレム</td>
+        </tr>
+        <tr>
+          <td>安息日・礼拝日</td>
+          <td>土曜日（シャバット）</td>
+          <td>日曜日</td>
+          <td>金曜日（ジュムア礼拝）</td>
+        </tr>
+        <tr>
+          <td>信者数</td>
+          <td>約1,500万人</td>
+          <td>約24億人</td>
+          <td>約19億人</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.6);">
+      💡 三宗教の聖地が全て「エルサレム」に集中していることが中東問題の核心。特に「神殿の丘」は、ユダヤ教の最聖地・イスラム教の第三聖地（アル＝アクサー・モスク）が文字通り同じ場所に存在するという世界史上最もホットなスポット。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ IZAKAYA TEST ═══════════ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">三大宗教を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「イスラムって怖い宗教なの？」</div>
+      <div class="test-q-text">テロのニュースが流れたとき定番の疑問</div>
+      <div class="test-a">「19億人いる宗教の一部過激派を全体に当てはめるのは乱暴な話で、仏教にも"仏教テロ"はある。イスラムの基本教義は平和・助け合い・謙虚さ。クルアーンに"一人を殺すことは全人類を殺すことだ"という言葉すらある。歴史的にはキリスト教世界の方が宗教戦争・魔女裁判・植民地支配で圧倒的に多くを殺してきた。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「スンニとシーアって何が違うの？」</div>
+      <div class="test-q-text">中東のニュースになったとき</div>
+      <div class="test-a">「1400年前にムハンマドが死んで、後継者を誰にするかで揉めた。「誰でもOK」がスンニ派で「血縁者必須」がシーア派。今でもサウジ（スンニ）vsイラン（シーア）の代理戦争がイエメンやシリアで続いてる。宗教問題に見えて実は政治・地政学の話でもある。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「なぜムスリムは豚肉を食べないの？」</div>
+      <div class="test-q-text">食事やグルメの話になったとき</div>
+      <div class="test-a">「クルアーンで明確に禁じられてる。衛生的な理由説・宗教的区別化説・砂漠の気候に豚が向かない説など諸説ある。宗教的には"神が禁じたから禁じる"というシンプルな服従の問題。豚肉以外にも血・死骸・適切に屠殺されていない肉もNG。アルコールも完全禁止。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なんでイスラムは女性に厳しいの？」</div>
+      <div class="test-q-text">ヒジャブや女性問題の話になったとき</div>
+      <div class="test-a">「ヒジャブ（頭部を覆う布）の義務づけは国や宗派によって全然違う。強制するイラン・サウジから完全自由のトルコまで様々。クルアーン本文は男女両方に「慎み深くあれ」と命じてて、女性への一方的な抑圧ではない。むしろ7世紀アラビアでは相続権・婚姻拒否権を女性に与えた改革的な側面もあった。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「アルゴリズムとイスラムって関係あるの？」</div>
+      <div class="test-q-text">IT・テクノロジーの話になったとき、仕込みネタ</div>
+      <div class="test-a">「めちゃくちゃある（笑）。アルゴリズムは9世紀バグダードの数学者フワーリズミーの名前から。代数学（algebra）もアラビア語のal-jabrから。コーヒーはイエメン発祥。ゼロの概念普及もイスラム世界経由。今のデジタル文明はイスラム黄金時代の知的遺産の上に成り立ってる。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <span class="footer-crescent">☽</span>
+  <p>仏教・キリスト教・イスラム教。三大宗教を制覇した。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「アッラーが望めば（インシャーアッラー）、この知識が今夜役に立つ」</p>
+</div>
+
+</body>
+</html>

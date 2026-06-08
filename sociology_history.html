@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社会学史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,300;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --urban-deep:   #060C0E;
+    --urban-mid:    #0C1820;
+    --urban-rich:   #142030;
+    --teal-dark:    #063830;
+    --teal-mid:     #0C6050;
+    --teal-light:   #18A080;
+    --teal-glow:    #30C8A0;
+    --teal-pale:    #D0F4EC;
+    --ember:        #A04010;
+    --ember-lt:     #D06020;
+    --ember-glow:   #F08030;
+    --ember-pale:   #FBF0E0;
+    --slate:        #304858;
+    --slate-lt:     #507090;
+    --ruby:         #901828;
+    --ruby-lt:      #C03040;
+    --moss:         #284018;
+    --moss-lt:      #488030;
+    --ivory:        #F6F8F6;
+    --ivory-dark:   #E8ECE8;
+    --ink:          #080C0A;
+    --ink-mid:      #1C2820;
+    --ink-light:    #506050;
+    --gray:         #889888;
+    --silver:       #B0C0B0;
+    --shadow:       rgba(6,12,14,0.18);
+    --grid:         rgba(24,160,128,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'IBM Plex Sans', 'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--urban-deep);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 55%, rgba(6,56,48,0.4) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 25%, rgba(160,64,16,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(48,72,88,0.3) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  /* city grid overlay */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, transparent 79px, var(--grid) 79px, var(--grid) 80px),
+      repeating-linear-gradient(0deg, transparent 0, transparent 79px, var(--grid) 79px, var(--grid) 80px);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--teal-glow);
+    border: 1px solid rgba(48,200,160,0.35);
+    padding: 4px 16px; border-radius: 2px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700; line-height: 1.05; margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, #fff 20%, var(--teal-glow) 65%, var(--ember-glow) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 580px; margin: 0 auto 3rem; font-weight: 300; font-style: italic;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'IBM Plex Sans', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--teal-glow); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--urban-mid); color: var(--teal-glow);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 2px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(48,200,160,0.2);
+  }
+  .section-title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; font-style: italic; }
+  .bg-warm  { background: var(--ivory-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 3px;
+    border: 1px solid rgba(12,24,32,0.1);
+    border-left: 4px solid var(--teal-mid);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--urban-deep);
+    border-radius: 4px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(48,200,160,0.1);
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.3rem; color: var(--teal-glow); font-weight: 700; margin-bottom: 1.25rem; }
+
+  /* ─── SOCIOLOGIST CARDS ─── */
+  .soc-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; }
+  .soc-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--teal-light);
+    border-radius: 0 0 4px 4px;
+    padding: 1rem 1.1rem;
+  }
+  .sc-name   { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; color: var(--teal-glow); font-weight: 700; margin-bottom: 0.15rem; }
+  .sc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .sc-school { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ember-glow); margin-bottom: 0.35rem; }
+  .sc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .sc-key    { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(48,200,160,0.62); }
+
+  /* ─── THEORY CARDS ─── */
+  .theory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .theory-card {
+    background: var(--urban-deep); color: #fff;
+    border-radius: 4px; padding: 1.5rem;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(48,200,160,0.1);
+  }
+  .theory-card::after {
+    content: attr(data-sym);
+    position: absolute; bottom: -0.3rem; right: 0.5rem;
+    font-size: 3.5rem; opacity: 0.07; line-height: 1;
+    color: var(--teal-glow); font-family: 'IBM Plex Sans', sans-serif; font-weight: 700;
+  }
+  .th-tag  { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--teal-glow); display: block; margin-bottom: 0.4rem; }
+  .th-name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; color: var(--teal-glow); font-weight: 700; display: block; margin-bottom: 0.4rem; }
+  .th-body { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .th-rep  { margin-top: 0.6rem; font-size: 0.72rem; color: rgba(240,128,48,0.65); }
+
+  /* ─── SCHOOL BANDS ─── */
+  .school-band { border-radius: 4px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: #fff; }
+  .sb-classic { background: linear-gradient(135deg, #060C08, #0C2010); }
+  .sb-chicago { background: linear-gradient(135deg, #06080C, #0C1828); }
+  .sb-frank   { background: linear-gradient(135deg, #0C0606, #201010); }
+  .sb-french  { background: linear-gradient(135deg, #080408, #1A0A20); }
+  .sb-label  { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.3rem; }
+  .sb-title  { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.15rem; color: var(--teal-glow); font-weight: 700; margin-bottom: 0.3rem; }
+  .sb-period { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  .sb-row    { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.75rem; }
+  .sb-card   { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.9rem; }
+  .sbc-name  { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; color: var(--teal-glow); font-weight: 700; margin-bottom: 0.15rem; }
+  .sbc-dates { font-size: 0.6rem; color: var(--silver); margin-bottom: 0.35rem; }
+  .sbc-key   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ember-glow); margin-bottom: 0.35rem; }
+  .sbc-body  { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+  .sbc-quote { margin-top: 0.5rem; font-size: 0.72rem; color: rgba(48,200,160,0.5); font-style: italic; border-left: 2px solid rgba(48,200,160,0.3); padding-left: 0.45rem; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--teal-light), var(--teal-light), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--teal-light);
+    border: 3px solid var(--ivory); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--teal-light); z-index: 2;
+  }
+  .tl-dot.ember { background: var(--ember-lt);  box-shadow: 0 0 0 2px var(--ember-lt); }
+  .tl-dot.ruby  { background: var(--ruby-lt);   box-shadow: 0 0 0 2px var(--ruby-lt); }
+  .tl-dot.slate { background: var(--slate-lt);  box-shadow: 0 0 0 2px var(--slate-lt); }
+  .tl-dot.glow  { background: var(--teal-glow); box-shadow: 0 0 0 2px var(--teal-glow); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid rgba(12,24,32,0.1); border-radius: 4px;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--teal-mid); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid rgba(12,24,32,0.1);
+    border-left: 4px solid var(--teal-mid);
+    border-radius: 0 4px 4px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--teal-dark); background: rgba(12,96,80,0.07); border-radius: 3px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--teal-light); }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--ivory-dark); border-radius: 4px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--teal-light); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--urban-deep); border-radius: 4px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(48,200,160,0.1); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-glow); border-bottom: 1px solid rgba(48,200,160,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--teal-glow); font-weight: 700; white-space: nowrap; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--urban-deep); border-radius: 4px; padding: 2.5rem; color: #fff; border: 1px solid rgba(48,200,160,0.1); position: relative; overflow: hidden; }
+  .test-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, transparent 79px, rgba(48,200,160,0.04) 79px, rgba(48,200,160,0.04) 80px),
+      repeating-linear-gradient(0deg, transparent 0, transparent 79px, rgba(48,200,160,0.04) 79px, rgba(48,200,160,0.04) 80px);
+    pointer-events: none;
+  }
+  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--teal-light); padding: 1rem 1.25rem; border-radius: 0 4px 4px 0; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--teal-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--urban-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(48,200,160,0.12); }
+  .footer-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; color: var(--teal-glow); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.15</div>
+  <h1>社会学史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">デュルケムの「アノミー」からボードリヤールの「シミュラークル」、SNS時代の「流動する近代」まで——「社会とは何か」を問い続けた200年の記録。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">1838年</span><span class="hero-stat-lbl">コントが「社会学」を命名</span></div>
+    <div><span class="hero-stat-num">3大理論</span><span class="hero-stat-lbl">機能主義・葛藤論・相互作用論</span></div>
+    <div><span class="hero-stat-num">200年</span><span class="hero-stat-lbl">「社会」を科学した歴史</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">まだ解けない社会問題</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 社会学とは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">社会学とはどういう学問か</h2>
+    <p class="section-desc">「個人の行動」と「社会の構造」をつなぐ橋——ニュースの「なぜ」を答える道具</p>
+  </div>
+  <div class="theory-grid">
+    <div class="theory-card" data-sym="①">
+      <span class="th-tag">Question</span>
+      <span class="th-name">「当たり前」を疑う学問</span>
+      <p class="th-body">なぜ自殺率は国によって違うのか。なぜ貧困は世代を超えるのか。なぜ「普通」という概念は時代で変わるのか——「自然に見えることが実は社会的に構築されている」を暴く。</p>
+    </div>
+    <div class="theory-card" data-sym="②">
+      <span class="th-tag">Bridge</span>
+      <span class="th-name">個人と社会構造の橋渡し</span>
+      <p class="th-body">「私が貧しいのは怠け者だから」か「貧困を生む社会構造があるから」か——個人の「問題」を社会の「問題」として見直す想像力。C・W・ミルズが「社会学的想像力」と呼んだ視点転換。</p>
+    </div>
+    <div class="theory-card" data-sym="③">
+      <span class="th-tag">Power</span>
+      <span class="th-name">権力と不平等の解剖</span>
+      <p class="th-body">誰が「ルール」を作るのか。何が「文化」として正当化されるのか。ブルデューの「文化資本」・フーコーの「権力＝知識」——見えない支配の仕組みを可視化する。</p>
+    </div>
+    <div class="theory-card" data-sym="④">
+      <span class="th-tag">Now</span>
+      <span class="th-name">現代社会の診断書</span>
+      <p class="th-body">少子化・格差拡大・SNS孤立・民主主義の後退——今起きていることを「社会構造の問題」として分析するとき、社会学の語彙は現代を読む最強の道具になる。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「社会学って一言で言うと"当たり前を当たり前と思わない練習"なんよ。"なぜ日本では残業が美徳なのか""なぜ男はこうあるべきという規範があるのか"——社会学的に考えると全部"誰かが作って、社会が再生産してるルール"に見えてくる。知ると少し自由になれる感じがする」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古典社会学 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">古典社会学の四巨人</h2>
+    <p class="section-desc">19世紀末〜20世紀初頭。産業革命・革命・近代化に衝撃を受けた思想家たち</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Founding Fathers · 社会学の父たち</div>
+    <div class="dp-title">「なぜ近代社会はこんなにも混乱しているのか」——4人の異なる答え</div>
+    <div class="soc-row">
+      <div class="soc-card">
+        <div class="sc-name">オーギュスト・コント</div>
+        <div class="sc-dates">1798〜1857 · フランス</div>
+        <div class="sc-school">社会学の命名者</div>
+        <div class="sc-body">1838年「社会学（Sociologie）」という言葉を作った。「社会も自然科学と同じように法則的に研究できる（実証主義）」——神学的→形而上学的→実証的という人類の思想発展3段階を提唱。「社会静学（秩序）」と「社会動学（進歩）」の二軸が今も社会学の基本枠組み。</div>
+        <div class="sc-key">→「社会学」という言葉そのものの発明者</div>
+      </div>
+      <div class="soc-card">
+        <div class="sc-name">エミール・デュルケーム</div>
+        <div class="sc-dates">1858〜1917 · フランス</div>
+        <div class="sc-school">社会学的実証主義の確立</div>
+        <div class="sc-body">「自殺論（1897）」——自殺という最も個人的な行為を「社会的統合度・規制度」の関数として統計的に分析。個人的に見える現象が社会構造によって規定されることを示した社会学史上最重要の実証研究。「アノミー（規範の崩壊状態）」「集合意識」「社会的事実」概念を確立。</div>
+        <div class="sc-key">→「アノミー」は今も現代社会分析の基本概念</div>
+      </div>
+      <div class="soc-card">
+        <div class="sc-name">マックス・ウェーバー</div>
+        <div class="sc-dates">1864〜1920 · ドイツ</div>
+        <div class="sc-school">理解社会学・官僚制論</div>
+        <div class="sc-body">「プロテスタンティズムの倫理と資本主義の精神（1905）」——カルヴァン派の禁欲・勤勉という宗教的倫理が資本主義の精神的基盤になったと論じた。「官僚制（Bürokratie）」の分析——合理的支配の純粋型として徹底した規則・階層・記録で運営される組織形態。「鉄の檻」——資本主義と官僚制が人間の自由を拘束する構造。</div>
+        <div class="sc-key">→「官僚制」「プロテスタンティズムと資本主義」</div>
+      </div>
+      <div class="soc-card">
+        <div class="sc-name">カール・マルクス</div>
+        <div class="sc-dates">1818〜1883 · ドイツ</div>
+        <div class="sc-school">唯物史観・階級論</div>
+        <div class="sc-body">厳密には社会学者でないが社会学に最大の影響を与えた思想家。「土台（経済的生産関係）が上部構造（法・政治・文化・宗教）を決定する」——唯物論的社会観。「階級闘争」「疎外」「商品フェティシズム」。批判理論・文化社会学・権力論の根底にある。</div>
+        <div class="sc-key">→ 社会学の批判的潮流の根本的源泉</div>
+      </div>
+      <div class="soc-card">
+        <div class="sc-name">ゲオルク・ジンメル</div>
+        <div class="sc-dates">1858〜1918 · ドイツ</div>
+        <div class="sc-school">形式社会学・都市社会学</div>
+        <div class="sc-body">「社会化の形式（Form der Vergesellschaftung）」——社会は個人間の相互作用のパターン（形式）として研究できる。「見知らぬ人（Stranger）」「大都市と精神生活」——都市生活が人間心理に与える影響（刺激過多→無関心→感情的距離）を分析した最初の都市社会学者。貨幣の哲学も。</div>
+        <div class="sc-key">→ 都市社会学・相互作用論の先駆者</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 三大理論 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">社会学の三大理論パラダイム</h2>
+    <p class="section-desc">「社会はどう機能しているか」への3つの異なる答え——今も続く大論争</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; margin-bottom:1.5rem;">
+    <div style="background:var(--urban-deep); border:1px solid rgba(48,200,160,0.12); border-radius:4px; padding:1.75rem; color:#fff;">
+      <div style="font-family:'Cinzel',serif; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--teal-glow); margin-bottom:0.4rem;">Theory 01</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:1.15rem; font-weight:700; color:var(--teal-glow); margin-bottom:0.5rem;">機能主義（構造機能主義）</div>
+      <div style="font-size:0.62rem; color:var(--silver); margin-bottom:0.75rem; font-family:'Cinzel',serif; letter-spacing:0.06em;">FUNCTIONALISM · デュルケーム→パーソンズ→マートン</div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.68); line-height:1.65; margin-bottom:0.75rem;">社会は相互依存する部分からなるシステム——各部分（家族・宗教・教育・経済）は社会全体の維持に機能を果たす。身体の各器官が全体の生存に機能するという生物学的比喩。「なぜこの制度は存在するか」→「社会的機能があるから」。</div>
+      <div style="font-size:0.78rem; color:rgba(255,255,255,0.48); border-top:1px solid rgba(255,255,255,0.08); padding-top:0.6rem;">⚠️ 批判：「現状維持のイデオロギー」——既存の社会秩序を正当化し変革を阻む保守的理論だという批判。「機能しているから良い」という論理。</div>
+    </div>
+    <div style="background:var(--urban-deep); border:1px solid rgba(240,128,48,0.12); border-radius:4px; padding:1.75rem; color:#fff;">
+      <div style="font-family:'Cinzel',serif; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--ember-glow); margin-bottom:0.4rem;">Theory 02</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:1.15rem; font-weight:700; color:var(--ember-glow); margin-bottom:0.5rem;">葛藤理論（コンフリクト論）</div>
+      <div style="font-size:0.62rem; color:var(--silver); margin-bottom:0.75rem; font-family:'Cinzel',serif; letter-spacing:0.06em;">CONFLICT THEORY · マルクス→C・W・ミルズ→コリンズ</div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.68); line-height:1.65; margin-bottom:0.75rem;">社会は希少資源（富・権力・地位）をめぐる集団間の競争と葛藤の場——支配集団は自分たちに有利な制度・イデオロギーを維持し、被支配集団はそれに抵抗する。「誰がその制度から利益を得るか」が社会分析の核心。</div>
+      <div style="font-size:0.78rem; color:rgba(255,255,255,0.48); border-top:1px solid rgba(255,255,255,0.08); padding-top:0.6rem;">⚠️ 批判：「対立のみを強調し協力・統合を無視する」「マルクス主義への傾倒で客観性を失う」という批判。</div>
+    </div>
+    <div style="background:var(--urban-deep); border:1px solid rgba(72,128,48,0.12); border-radius:4px; padding:1.75rem; color:#fff;">
+      <div style="font-family:'Cinzel',serif; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--moss-lt); margin-bottom:0.4rem;">Theory 03</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif; font-size:1.15rem; font-weight:700; color:var(--moss-lt); margin-bottom:0.5rem;">象徴的相互作用論</div>
+      <div style="font-size:0.62rem; color:var(--silver); margin-bottom:0.75rem; font-family:'Cinzel',serif; letter-spacing:0.06em;">SYMBOLIC INTERACTIONISM · ミード→ゴッフマン→ブルーマー</div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.68); line-height:1.65; margin-bottom:0.75rem;">社会は人々の日常的な相互作用と象徴（言語・ジェスチャー・意味）の共有によって構成される——「マクロな社会構造」でなく「ミクロな対面場面」に注目。「自己はどのように形成されるか」「日常のどこに意味が生まれるか」。</div>
+      <div style="font-size:0.78rem; color:rgba(255,255,255,0.48); border-top:1px solid rgba(255,255,255,0.08); padding-top:0.6rem;">⚠️ 批判：「ミクロに過ぎてマクロな権力構造・格差を見えなくする」という批判。</div>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>三大理論の覚え方：</strong>機能主義は「社会はオーケストラ——各楽器が役割を果たして調和を生む」。葛藤論は「社会はリングーー支配者と被支配者が資源をめぐって戦い続ける」。相互作用論は「社会は即興劇——人々が互いに意味を解釈し合って現実を作る」。
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">社会学史タイムライン</h2>
+    <p class="section-desc">産業革命から情報社会まで——社会の変化と社会学の変化は対応している</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1830〜1890年代</div>
+        <div class="tl-event">社会学の誕生——産業革命と近代化の衝撃</div>
+        <div class="tl-desc">コント「社会学」命名（1838）・スペンサーの社会進化論・マルクスの「資本論」・デュルケームの「社会分業論」「自殺論」・ウェーバーの「プロテスタンティズム」。産業化・都市化・宗教の衰退という激変に社会学が応答した創成期。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏭</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1920〜1940年代</div>
+        <div class="tl-event">シカゴ学派——都市の「実地調査」革命</div>
+        <div class="tl-desc">シカゴ大学が世界初の社会学部を設立（1892年）。移民・スラム・ギャング・ホームレスを実際に歩いて調査する「エスノグラフィー（民族誌）」の方法を確立。「都市を研究室にする」——ロバート・パーク「ヒューマン・エコロジー」、W・I・トーマス「状況の定義」理論。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏙</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1930〜1960年代</div>
+        <div class="tl-event">フランクフルト学派——批判理論とファシズムの分析</div>
+        <div class="tl-desc">ホルクハイマー・アドルノ・マルクーゼ・フロム。「批判理論（Kritische Theorie）」——社会科学は「現状を客観的に記述する」のではなく「支配と抑圧を批判し解放を目指すべき」。ナチズムへの分析——「権威主義的パーソナリティ」「大衆文化（文化産業）による意識操作」。ナチス台頭でアメリカへ亡命し米国社会学に大きな影響。</div>
+      </div>
+      <div class="tl-dot ruby"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🔥</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1950〜1970年代</div>
+        <div class="tl-event">パーソンズの構造機能主義——「グランドセオリー」の時代</div>
+        <div class="tl-desc">タルコット・パーソンズが「社会的行為の構造」で機能主義を体系化。AGIL図式（適応・目標達成・統合・潜在的パターン維持）——全社会システムの普遍的機能要件。ロバート・マートン「顕在的機能と潜在的機能」——意図せざる結果。C・W・ミルズ「グランドセオリーと抽象的経験主義」でパーソンズを批判。</div>
+      </div>
+      <div class="tl-dot slate"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📐</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1960〜1980年代</div>
+        <div class="tl-event">ゴッフマン・フーコー・ブルデュー——ミクロとパワーの革命</div>
+        <div class="tl-desc">アーヴィング・ゴッフマン「劇場としての社会」——「スティグマ」「全制的施設」「印象管理」。ミシェル・フーコー「権力＝知識」「監視と処罰」——知識と権力の不可分な関係。ピエール・ブルデュー「文化資本」「ハビトゥス」「場（champ）」——社会的再生産の精緻な分析。この3人が現代社会学の最重要概念群を形成。</div>
+      </div>
+      <div class="tl-dot ember"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">👁</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1980〜1990年代</div>
+        <div class="tl-event">ポストモダン社会学——「大きな物語の終わり」</div>
+        <div class="tl-desc">リオタール「ポストモダンの条件（1979）」——「大きな物語（進歩・解放・真理）への不信」。ボードリヤール「シミュラークル」——コピーのコピーが現実を覆い、オリジナルが消える社会。ギデンズ「再帰的近代化」「構造化理論」。バウマン「液状近代」——あらゆる固定的なものが溶解する現代。</div>
+      </div>
+      <div class="tl-dot ruby"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💧</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">2000年代〜現在</div>
+        <div class="tl-event">情報社会論・グローバル化・デジタル社会学</div>
+        <div class="tl-desc">マニュエル・カステルス「ネットワーク社会」——情報フローが権力の新しい形態を作る。ハートマン「プラットフォーム資本主義」——GAFA型独占の社会学。フィルターバブル・エコーチェンバー・偽情報の拡散——民主主義の新しい脅威としての社会学的分析。「デジタル社会学」という新分野の確立。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 現代の巨人たち ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">現代社会学の巨人たち</h2>
+    <p class="section-desc">ゴッフマン・フーコー・ブルデュー——今の世界を読む最強の概念を作った人々</p>
+  </div>
+
+  <div class="school-band sb-french">
+    <div class="sb-label">French & Post-Structural Sociology · フランス社会学の革命</div>
+    <div class="sb-title">権力・身体・文化——見えない支配を解剖した思想家たち</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">ピエール・ブルデュー</div>
+        <div class="sbc-dates">1930〜2002 · フランス</div>
+        <div class="sbc-key">文化資本・ハビトゥス・場</div>
+        <div class="sbc-body">「資本」は経済資本だけでない——文化資本（教養・教育・文化的知識）・社会関係資本（人脈）・象徴資本（名声・権威）が社会的地位の再生産を担う。「ハビトゥス（habitus）」——家庭環境・教育・経験で内面化された思考・行動の傾向。「場（champ）」——各分野（学術・芸術・政治）の独自のルールで権力が争われる社会的空間。</div>
+        <div class="sbc-quote">「社会構造は身体に刻み込まれる」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ミシェル・フーコー</div>
+        <div class="sbc-dates">1926〜1984 · フランス</div>
+        <div class="sbc-key">権力＝知識・監視と処罰・系譜学</div>
+        <div class="sbc-body">「権力は上から押しつけられるのではなく、知識・言説を通じてあらゆる関係に浸透する」——医療・精神医学・刑務所・性の制度が権力/知識の産物として機能する仕組みを分析。「一望監視施設（パノプティコン）」——見られているかもしれないという意識が自己規律を生む監視社会のモデル。SNS時代に最もリアルな社会学者。</div>
+        <div class="sbc-quote">「知識は権力から切り離せない」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ジャン・ボードリヤール</div>
+        <div class="sbc-dates">1929〜2007 · フランス</div>
+        <div class="sbc-key">シミュラークル・消費社会</div>
+        <div class="sbc-body">「シミュラークル（simulacrum）」——コピーのコピーが現実を覆う社会。ディズニーランドは「夢の国」だが実は「アメリカ社会全体が虚構だ」という事実を隠蔽するリアルの代替物。湾岸戦争はメディアが作った「シミュラークル」だった。SNSのフィルターバブル・フェイクニュース——最も現代的な社会学者のひとり。</div>
+        <div class="sbc-quote">「もはやリアルはその鏡像においてのみ生産される」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">アーヴィング・ゴッフマン</div>
+        <div class="sbc-dates">1922〜1982 · カナダ→アメリカ</div>
+        <div class="sbc-key">演技・スティグマ・印象管理</div>
+        <div class="sbc-body">「日常生活における自己呈示（1959）」——社会生活は「演劇（ドラマトゥルギー）」——人は「表舞台（front stage）」で演技し「舞台裏（backstage）」で素の自分に戻る。「スティグマ」——社会が特定の人を「傷ついたアイデンティティ」として扱う汚名付与の過程。インタビュー・SNS・ビジネスにおける「自己呈示」の分析に直結。</div>
+        <div class="sbc-quote">「全ての世界は舞台、全ての男女は俳優に過ぎない」（シェイクスピアの引用として）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="school-band sb-chicago" style="margin-top:1.5rem;">
+    <div class="sb-label">British & German Sociology · 英独の現代社会学</div>
+    <div class="sb-title">構造化・液状近代・リスク社会——現代の診断</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">アンソニー・ギデンズ</div>
+        <div class="sbc-dates">1938〜 · イングランド</div>
+        <div class="sbc-key">構造化理論・再帰的近代化</div>
+        <div class="sbc-body">「構造化理論（structuration theory）」——「構造 vs 行為者」という二分法を超え、構造は行為者の実践によって再生産・変容される循環関係にある。「再帰的近代（reflexive modernity）」——伝統・宗教が権威を失い、人々が自らの生を「選択する」ことを強いられる時代。「ライフポリティクス」——個人の生き方の選択が政治になる。</div>
+        <div class="sbc-quote">「近代とは再帰性を本質とする」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ジークムント・バウマン</div>
+        <div class="sbc-dates">1925〜2017 · ポーランド→イングランド</div>
+        <div class="sbc-key">液状近代・消費社会論</div>
+        <div class="sbc-body">「液状近代（Liquid Modernity）」——安定した「固体（solid）」的アイデンティティ・共同体・仕事・関係が全て「流動的（liquid）」になる現代の比喩。「使い捨て」の人間関係・キャリア・アイデンティティ。ホロコーストを近代の合理性・官僚制の産物として分析した「近代性とホロコースト」も重要。</div>
+        <div class="sbc-quote">「固体が溶けて液体になる——これが現代だ」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ウルリヒ・ベック</div>
+        <div class="sbc-dates">1944〜2015 · ドイツ</div>
+        <div class="sbc-key">リスク社会・再帰的近代化</div>
+        <div class="sbc-body">「危険社会（Risikogesellschaft, 1986）」——チェルノブイリ事故の年に発表。科学技術の発展が「進歩」でなく「人間が制御できないリスク」を生産する社会を分析。核・環境汚染・遺伝子改造——リスクは国境・階級を超えて分配される（ただし不平等に）。コロナパンデミック・AI・気候変動——まさに今のリスク社会分析の基礎。</div>
+        <div class="sbc-quote">「貧困は階層的、スモッグは民主的」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ユルゲン・ハーバーマス</div>
+        <div class="sbc-dates">1929〜 · ドイツ</div>
+        <div class="sbc-key">コミュニケーション的行為・公共圏</div>
+        <div class="sbc-body">フランクフルト学派第二世代の最重要人物。「コミュニケーション的行為の理論」——社会統合は「戦略的行為（目的達成のための手段的コミュニケーション）」でなく「コミュニケーション的行為（相互理解を目指す対話）」によって可能。「公共圏（Öffentlichkeit）」——市民が権力を批判的に議論できる空間。SNSが公共圏を壊しているかどうかが現代の問い。</div>
+        <div class="sbc-quote">「民主主義とは熟議の場を保障する制度だ」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 日本社会学 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">日本社会と社会学</h2>
+    <p class="section-desc">「空気を読む」「同調圧力」「タテ社会」——日本の社会的特性を社会学で読む</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🗾</div>
+      <div>
+        <div class="ls-title">中根千枝「タテ社会の人間関係（1967）」</div>
+        <div class="ls-body">日本社会は「ヨコ（同じ職種・階級）」より「タテ（同じ場・会社・学校・家族）」の関係で組織される、という社会学の古典。「場」への帰属が人間関係を規定し、集団内のヒエラルキーと忠誠が優先される。「課長さん」という職名呼称・異職種間より社内の縦関係が優先される日本企業の構造を分析。今でも日本の組織文化を理解する基礎文献。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">👥</div>
+      <div>
+        <div class="ls-title">同調圧力と「空気を読む」の社会学</div>
+        <div class="ls-body">山本七平「「空気」の研究（1977）」——日本の意思決定を支配する「空気」という超論理的な集合的雰囲気の分析。社会学的には「規範の内面化」（デュルケームの「集合意識」）・「同調行動」（アッシュの実験）・「自他の調整」（ゴッフマンの「印象管理」）の複合体として説明できる。コロナ禍の「自粛警察」・マスク着用率——「強制なき同調」という日本的現象の社会学的考察。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🔄</div>
+      <div>
+        <div class="ls-title">少子化・孤立化の社会学——「無縁社会」</div>
+        <div class="ls-body">2010年NHKドキュメンタリー「無縁社会」——孤独死・無縁墓・社会的孤立が広がる日本。デュルケームの「社会的統合」の解体として読める。終身雇用の崩壊・地域共同体の衰退・核家族化・オンライン化による「顔の見えない関係」——バウマンの「液状近代」が日本で先行実験されている状態とも言える。孤立指数が先進国最高水準の日本の社会学的分析。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">📱</div>
+      <div>
+        <div class="ls-title">「推し」文化と感情資本主義の社会学</div>
+        <div class="ls-body">「推し」——特定のアイドル・キャラクター・スポーツ選手への強烈な感情的投資。社会学的には「疑似的共同体の代替」「感情労働の消費者版」「アイデンティティ構築の外部委託」として分析できる。「応援消費」「ファンダム経済」——感情を商品化する資本主義の新形態。液状近代の人間関係の中で「変わらない存在」への安定的帰属として機能する「推し文化」の現代的意義。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">社会学の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——社会を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">アノミー <span class="concept-en">Anomie</span></div>
+      <div class="concept-body">デュルケームが提唱。「規範の崩壊状態」——社会が急激に変化し、人々の行動を規制する規範・価値が機能しなくなる状態。自殺率が上昇する社会条件として分析。「無規制（anomie）自殺」は規範の欠如から来る。ポスト高度成長の日本・冷戦後の旧共産圏——アノミーが広がった社会の症状。</div>
+      <div class="concept-izakaya">「アノミーってデュルケームの概念で、社会の規範が崩れた状態のこと。戦後の日本や冷戦後のロシアで自殺・犯罪が増えたのはアノミーで説明できる。"何をしてもいい"という自由は逆に人を不安定にする——だから規範のない社会は生きにくい、という逆説的な発見」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ハビトゥス <span class="concept-en">Habitus</span></div>
+      <div class="concept-body">ブルデューの核心概念。育ちの環境・教育・文化的経験によって無意識のうちに形成された「思考・知覚・行動の傾向」。「身体化された歴史」——階級出身が食事のマナー・趣味・言葉遣い・職業選択に至るまで「自然に見える選択」として現れる。「自由に選んでいるように見えるが実は構造化されている」社会的再生産の仕組み。</div>
+      <div class="concept-izakaya">「ハビトゥスって、育ちが"普通"と思ってる感覚・行動パターンのこと。東大卒の親を持つ子が"当然のように"難関大学を目指すのはハビトゥス。本人は自由に選んでいると思ってるけど、実は親の文化資本が身体に刻み込まれている——これがブルデューが"社会は再生産される"と言った意味」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">文化資本 <span class="concept-en">Cultural Capital</span></div>
+      <div class="concept-body">ブルデューが提唱した「経済資本以外の社会的優位の基盤」。体化された文化資本（教養・能力・センス）・制度化された文化資本（学歴・資格）・客体化された文化資本（書籍・美術品）の3形態。「なぜ高学歴の親の子供が高学歴になるのか」——文化資本の世代間継承が経済格差と同様（またはそれ以上に）社会的地位の再生産を担う。</div>
+      <div class="concept-izakaya">「文化資本って、お金じゃなくて"育ちの中で身につく教養・センス・振る舞い"のこと。英語が話せる・クラシック音楽を知っている・正しいナイフとフォークの使い方——これ全部文化資本で、就職面接や婚活で"なんとなく育ちが良い"と評価される源泉。お金は3代で消えるが文化資本は家庭で再生産される」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">スティグマ <span class="concept-en">Stigma</span></div>
+      <div class="concept-body">ゴッフマンが体系化。「傷ついたアイデンティティ（spoiled identity）」——社会が特定の属性（身体的欠陥・精神障害・犯罪歴・人種・セクシュアリティ）を「普通でない」として烙印を押し、その人の全アイデンティティを否定的に色付ける過程。「スティグマを持つ人の対処戦略（情報管理・パッシング）」の分析。精神疾患・HIV・LGBTQ+差別の社会学的理解に不可欠。</div>
+      <div class="concept-izakaya">「スティグマって烙印のことで、ゴッフマンが精神疾患者・同性愛者・犯罪者などへの社会的烙印を分析した。面白いのはスティグマは"属性"でなく"社会的定義"の問題で、同じ行動が時代・社会によってスティグマになったりならなかったりする。左利きも昔はスティグマだった」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">社会的構築主義 <span class="concept-en">Social Constructionism</span></div>
+      <div class="concept-body">バーガー＆ルックマン「現実の社会的構成（1966）」。「現実」は客観的に存在するのではなく、人々の相互作用・言語・慣習によって「構築」される——「性別（ジェンダー）」「人種」「子供期」「精神疾患」「美しさ」全てが社会的構築物である可能性。「当たり前に見える現実の歴史的・社会的条件を暴く」社会学の核心的視点。</div>
+      <div class="concept-izakaya">「社会的構築主義って、"当たり前"に見えるものが実は社会が作ったものだ、という考え方。"子供は純粋無垢"という概念は18世紀以降に作られた——それ以前の子供は"小さな大人"だった。"恋愛結婚が正しい"という常識も近代の発明。見えない前提を問い直す最強の思考ツール」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">監視社会 <span class="concept-en">Surveillance Society</span></div>
+      <div class="concept-body">フーコーのパノプティコン（一望監視施設）概念を現代社会学が発展させた。「見られているかもしれない」という意識が自己規律を生む——監視カメラ・SNS・クッキー・スマートフォンの位置情報。「液状監視（デイヴィッド・ライアン）」——監視は特定の目的でなく日常に浸透し、消費者自身が進んでデータを差し出す。</div>
+      <div class="concept-izakaya">「フーコーのパノプティコンって刑務所の設計からとった概念で、全員を監視できる可能性があれば実際に監視していなくても受刑者は自分で行動を規制する。今のSNS社会がまさにそれ——監視カメラより怖いのは"誰かに見られているかもしれない"という意識が常にオンになってること」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">液状近代 <span class="concept-en">Liquid Modernity</span></div>
+      <div class="concept-body">バウマンが「液状近代（2000）」で提唱。「固体的近代（solid modernity）」——国民国家・終身雇用・安定した家族・宗教という固定的制度が秩序を与えた時代。それが溶解し「何もかもが流動的で不安定」な液状近代への移行。アイデンティティも流動化し「自己は一貫した実体でなく絶え間ない選択と構築のプロジェクト」に。</div>
+      <div class="concept-izakaya">「液状近代ってバウマンの概念で、かつては"会社・家族・国籍・宗教"という固定した所属が人生の地図だったのが、今はどれも流動的で頼れない状態になったという診断。"転職3回・離婚・宗教離れ・内田樹流に言えば所属の喪失"——現代の不安感の社会学的説明」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">社会関係資本 <span class="concept-en">Social Capital</span></div>
+      <div class="concept-body">パットナム「孤独なボウリング（2000）」が普及させた概念。「人々の間の協力・信頼・ネットワーク」という社会的資源。「橋渡し型（bridging）」——異なる集団をつなぐ水平的なつながり。「結束型（bonding）」——内部の強固な結束。地域共同体・民主主義・経済発展の基盤。「一人でボウリングする」増加をアメリカの社会関係資本の衰退として分析。</div>
+      <div class="concept-izakaya">「社会関係資本って人脈のことだと思われがちだけど、もっと広くて"社会の信頼・互酬性・協力のネットワーク"全体のこと。PTAや自治会が崩壊してるのは社会関係資本の衰退で、それが民主主義の弱体化・孤立化につながるという分析。日本は"ゲマインシャフト（有機的共同体）からゲゼルシャフト（機能的結社）への移行"が極端に速かった」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">エコーチェンバー <span class="concept-en">Echo Chamber</span></div>
+      <div class="concept-body">自分の意見と同じ意見ばかりがSNSのアルゴリズムによって返ってくる状況——「壺の中で声が反響する」比喩。確証バイアスをアルゴリズムが増幅する構造。「フィルターバブル（イーライ・パリサー）」と近似。政治的分極化・陰謀論の拡大・「分断された現実」の社会学的原因。デジタル社会の最重要概念のひとつ。</div>
+      <div class="concept-izakaya">「エコーチェンバーって自分の意見と同じ意見しか見えなくなるSNSの構造で、Twitterで保守的なものばかりフォローすると保守的な世界しか見えなくなる。アルゴリズムが"自分が見たいもの"を最適化した結果、社会の分断が深まる——フォロワーが多いほど現実から遠ざかる逆説が生まれる可能性も」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">社会学的想像力 <span class="concept-en">Sociological Imagination</span></div>
+      <div class="concept-body">C・W・ミルズが「社会学的想像力（1959）」で提唱した概念。「個人的な悩み（troubles）」を「公的な問題（issues）」として見る力——「私が仕事をなくしたのは自分のせいか、それとも不況という社会構造のせいか」。個人の経験を歴史と社会構造の文脈で読み直す視点変換。「私的な苦悩の背後に公的な問題を見る」社会学の核心的感受性。</div>
+      <div class="concept-izakaya">「社会学的想像力ってC・W・ミルズの言葉で、"個人の問題を社会構造の問題として読み直す力"のこと。鬱で仕事できない→自分がダメだから、じゃなく→競争社会の過労文化の産物かもしれない。この視点の転換があると自分を責めすぎなくなるし、制度への怒りとして政治的になれる——社会学を学ぶ最大の意義かも」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 学派比較表 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special</span>
+    <h2 class="section-title">社会学主要学派・思想家 完全比較表</h2>
+    <p class="section-desc">「社会をどう見るか」——学派ごとの問い・方法・概念を一覧で把握する</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>学派・思想家</th>
+          <th>時代・国</th>
+          <th>核心の問い</th>
+          <th>鍵概念</th>
+          <th>現代への影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>デュルケーム</td>
+          <td>19世紀末 · 仏</td>
+          <td>社会はどう統合されるか</td>
+          <td>アノミー・社会的事実・集合意識</td>
+          <td>自殺研究・社会統合論・比較社会学</td>
+        </tr>
+        <tr>
+          <td>ウェーバー</td>
+          <td>19世紀末〜20c · 独</td>
+          <td>意味と行為はどう社会を動かすか</td>
+          <td>官僚制・プロテスタンティズム・価値自由</td>
+          <td>組織論・比較宗教社会学・リーダーシップ論</td>
+        </tr>
+        <tr>
+          <td>フランクフルト学派</td>
+          <td>1930〜60s · 独→米</td>
+          <td>近代の「理性」はなぜ抑圧的になるのか</td>
+          <td>批判理論・文化産業・権威主義的性格</td>
+          <td>メディア批評・フェミニズム・批判的教育学</td>
+        </tr>
+        <tr>
+          <td>ゴッフマン</td>
+          <td>1950〜70s · 米</td>
+          <td>日常生活でどう自己を呈示するか</td>
+          <td>演劇的アプローチ・スティグマ・印象管理</td>
+          <td>SNS自己呈示・障害社会学・医療社会学</td>
+        </tr>
+        <tr>
+          <td>フーコー</td>
+          <td>1960〜80s · 仏</td>
+          <td>権力はいかに知識を通じて作動するか</td>
+          <td>監視と処罰・系譜学・言説・パノプティコン</td>
+          <td>監視社会論・ポストコロニアル・クィア理論</td>
+        </tr>
+        <tr>
+          <td>ブルデュー</td>
+          <td>1960〜90s · 仏</td>
+          <td>社会的格差はなぜ再生産されるのか</td>
+          <td>ハビトゥス・文化資本・場・社会的再生産</td>
+          <td>教育社会学・格差研究・文化消費研究</td>
+        </tr>
+        <tr>
+          <td>バウマン</td>
+          <td>1980〜2000s · 英</td>
+          <td>現代社会の「流動性」はどう人を変えるか</td>
+          <td>液状近代・消費社会・ホロコーストと近代性</td>
+          <td>アイデンティティ論・移民研究・道徳社会学</td>
+        </tr>
+        <tr>
+          <td>ベック</td>
+          <td>1980〜2000s · 独</td>
+          <td>科学技術はどんなリスクを生むのか</td>
+          <td>リスク社会・再帰的近代化・個人化</td>
+          <td>環境社会学・技術リスク・世界市民論</td>
+        </tr>
+        <tr>
+          <td>カステルス</td>
+          <td>1990〜現在 · 西→米</td>
+          <td>ネットワーク社会で権力はどこにあるか</td>
+          <td>ネットワーク社会・情報資本主義・SNS革命</td>
+          <td>プラットフォーム研究・デジタル格差・政治運動</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:3px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--teal-glow);">社会学史のパターン：</strong>各学派は「前の学派が見落としていたもの」への反応として生まれる。機能主義は「갈등（葛藤）を無視」→葛藤論が反論。葛藤論は「ミクロな相互作用を無視」→相互作用論が反論。構造分析は「行為者の能動性を無視」→構造化理論が統合。「反抗の連鎖」が社会学史を動かしている——他の知的分野と全く同じパターン。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Final Round</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">社会学史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「なんで日本って同調圧力が強いの？」</div>
+      <div class="test-q-text">日本の社会・文化の話になったとき</div>
+      <div class="test-a">「複合的な原因があるけど、社会学的には3つに整理できる。①デュルケームの"社会統合"——農業共同体から来る集団主義の残影。②ゴッフマンの"印象管理"——"世間体"という日本独自の観客意識が極度に発達している。③ウェーバーの"官僚制"——組織への忠誠が普遍的規範を上回る状況。ただし"日本だけ"は過言で、どの集団社会にも同調圧力はある。日本はそれが可視化されやすい文化的文脈を持つという方が正確。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「格差ってなんでなくならないの？」</div>
+      <div class="test-q-text">社会問題・政治の話になったとき</div>
+      <div class="test-a">「ブルデューが一番鋭い答えを出してる——格差が再生産されるのは経済資本だけでなくハビトゥス（思考・行動の傾向）と文化資本（教養・振る舞い）が世代を超えて継承されるから。「機会の平等」を与えても、持参できる文化資本に差があれば結果は異なる。進学校に通う生徒と通わない生徒の"当たり前"の違い——これが可視化されないまま「本人の努力の差」として処理される。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「SNSって社会を良くしてるの？悪くしてるの？」</div>
+      <div class="test-q-text">テクノロジーと社会の話になったとき</div>
+      <div class="test-a">「ハーバーマスの"公共圏"で考えると——公共圏は「異なる意見が対話・熟議できる場」が理想。SNSはその可能性を広げた（アラブの春）が、エコーチェンバーとアルゴリズムが「異なる意見との遭遇を減らす」構造も持つ。バウマンの"液状近代"で言えばSNSは浅くて短い「つながり」を大量生産するが、深く持続する「関係」を侵食する。良いか悪いかより"どう設計するか"が問いの核心。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なんで陰謀論を信じる人が増えてるの？」</div>
+      <div class="test-q-text">フェイクニュース・分断の話になったとき</div>
+      <div class="test-a">「複数の社会学的メカニズムが重なってる。①確証バイアス×アルゴリズムのエコーチェンバー——信じたいものを見せ続ける。②アノミー——社会規範・権威が信頼できなくなったとき「自分だけが真実を知っている」という感覚が帰属の代替になる。③ギデンズの"再帰的近代"——専門家への信頼が崩れ「自分で判断せよ」という社会では誤った情報も「自分の判断」として採用されやすい。陰謀論は個人の愚かさでなく社会の構造的産物。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「民主主義って今なんで危機なの？」</div>
+      <div class="test-q-text">政治の話になったとき</div>
+      <div class="test-a">「ハーバーマスの公共圏論から言うと——民主主義は「市民が公共の問題について理性的に議論できる場」があってこそ機能する。SNSはその場を「感情的反応の競技場」に変えつつある。ベックの"リスク社会"で言えば、複雑化した現代のリスク（AI・気候・パンデミア）は専門知識なしに理解できず「大衆による正確な判断」を難しくする。さらにポピュリストは「感情」を食料にするが熟議を食料にしない——これが民主主義の構造的脆弱性。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「日本の少子化ってなんで止まらないの？」</div>
+      <div class="test-q-text">社会問題の話になったとき</div>
+      <div class="test-a">「社会学的には「合理的な個人選択の集積が社会的に不合理な結果を生む」パターン——デュルケームの「社会的事実」。個人は「子育てコスト・キャリアへの影響・不安定な雇用」を合理的に計算して子供を持たないことを選ぶが、全員がそうすると社会が縮小するという集合的行為問題。文化資本の視点では「子育てに投資すべき文化資本の水準が上がりすぎた」——かつて子供は農業労働力だったが今は"教育投資のプロジェクト"になった。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">🏙</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史・音楽史・文学史・建築史・心理学史・社会学史。知の十三角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42; font-style:italic;">"The first wisdom of sociology is this: things are not what they seem." — Peter L. Berger</p>
+</div>
+
+</body>
+</html>

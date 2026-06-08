@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界文学史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --leather-deep:  #0C0806;
+    --leather-mid:   #1C1008;
+    --leather-rich:  #2E1A08;
+    --claret:        #6A1820;
+    --claret-lt:     #9A2830;
+    --claret-pale:   #F5DCE0;
+    --parchment:     #F8F2E2;
+    --parchment-dk:  #EDE4C8;
+    --ink-true:      #100806;
+    --ink-mid:       #2E2010;
+    --ink-light:     #685040;
+    --sepia:         #A07848;
+    --sepia-light:   #C8A068;
+    --sepia-glow:    #E8C080;
+    --moss:          #2A4018;
+    --moss-mid:      #3A6028;
+    --moss-light:    #60A040;
+    --slate-blue:    #203040;
+    --slate-lt:      #3A5878;
+    --gray:          #9A9080;
+    --silver:        #C0B8A0;
+    --shadow:        rgba(12,8,6,0.18);
+    --rule-color:    rgba(100,80,48,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--parchment);
+    color: var(--ink-true);
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--leather-deep);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 60%, rgba(106,24,32,0.3) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 25%, rgba(200,160,96,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 95%, rgba(32,48,64,0.35) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  /* subtle ruled lines */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom, transparent 0, transparent 30px,
+      rgba(200,160,96,0.04) 30px, rgba(200,160,96,0.04) 31px
+    );
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--sepia-glow);
+    border: 1px solid rgba(232,192,128,0.38);
+    padding: 4px 16px; border-radius: 1px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 600; line-height: 1.1; margin-bottom: 1rem;
+    background: linear-gradient(160deg, #fff 20%, var(--sepia-glow) 60%, var(--claret-lt) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 580px; margin: 0 auto 3rem;
+    font-style: italic;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--sepia-glow); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--leather-mid); color: var(--sepia-glow);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 1px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(200,160,96,0.2);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--ink-true); font-weight: 600; font-style: italic;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; font-style: italic; }
+  .bg-warm  { background: var(--parchment-dk); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 2px;
+    border: 1px solid var(--rule-color);
+    border-left: 4px solid var(--claret);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--leather-deep);
+    border-radius: 3px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(200,160,96,0.1);
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--sepia-glow); font-weight: 600; font-style: italic; margin-bottom: 1.25rem; }
+
+  /* ─── BOOK CARDS (spine look) ─── */
+  .book-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; }
+  .book-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 4px solid var(--sepia-light);
+    border-radius: 0 3px 3px 0;
+    padding: 1rem 1.1rem;
+  }
+  .bc-title  { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; color: var(--sepia-glow); font-weight: 600; font-style: italic; margin-bottom: 0.15rem; }
+  .bc-author { font-size: 0.68rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .bc-period { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--moss-light); margin-bottom: 0.35rem; }
+  .bc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .bc-quote  { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(200,160,96,0.6); font-style: italic; }
+
+  /* ─── WRITER CARDS ─── */
+  .writer-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(188px, 1fr)); gap: 0.9rem; }
+  .writer-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--sepia-light);
+    border-radius: 0 0 3px 3px;
+    padding: 1rem 1.1rem;
+  }
+  .wc-name   { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--sepia-glow); font-weight: 600; margin-bottom: 0.15rem; }
+  .wc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .wc-move   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--moss-light); margin-bottom: 0.35rem; }
+  .wc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .wc-quote  { margin-top: 0.55rem; font-size: 0.73rem; color: rgba(200,160,96,0.55); font-style: italic; border-left: 2px solid rgba(200,160,96,0.3); padding-left: 0.5rem; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--sepia-light), var(--sepia-light), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--sepia-light);
+    border: 3px solid var(--parchment); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--sepia-light); z-index: 2;
+  }
+  .tl-dot.claret { background: var(--claret-lt); box-shadow: 0 0 0 2px var(--claret-lt); }
+  .tl-dot.moss   { background: var(--moss-mid);  box-shadow: 0 0 0 2px var(--moss-mid); }
+  .tl-dot.slate  { background: var(--slate-lt);  box-shadow: 0 0 0 2px var(--slate-lt); }
+  .tl-dot.glow   { background: var(--sepia-glow); box-shadow: 0 0 0 2px var(--sepia-glow); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid var(--rule-color);
+    border-radius: 2px; padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--sepia); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; font-style: italic; color: var(--ink-true); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── GENRE CARDS ─── */
+  .genre-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .genre-card {
+    background: var(--leather-deep); color: #fff;
+    border-radius: 3px; padding: 1.5rem;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(200,160,96,0.1);
+  }
+  .genre-card::after {
+    content: attr(data-glyph);
+    position: absolute; bottom: -0.5rem; right: 0.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; opacity: 0.07; line-height: 1;
+    color: var(--sepia-glow);
+  }
+  .gc-label { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sepia-glow); display: block; margin-bottom: 0.4rem; }
+  .gc-name  { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--sepia-glow); display: block; margin-bottom: 0.4rem; font-style: italic; }
+  .gc-body  { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid var(--rule-color);
+    border-left: 4px solid var(--claret);
+    border-radius: 0 3px 3px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink-true); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; font-style: italic; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; font-style: normal; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--claret); background: rgba(106,24,32,0.06); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--claret-lt); }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--leather-deep); border-radius: 3px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(200,160,96,0.1); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia-glow); border-bottom: 1px solid rgba(200,160,96,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--sepia-glow); font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--parchment-dk); border-radius: 3px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--sepia-light); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1rem; color: var(--ink-true); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--leather-deep); border-radius: 3px; padding: 2.5rem; color: #fff; border: 1px solid rgba(200,160,96,0.1); }
+  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--sepia-light); padding: 1rem 1.25rem; border-radius: 0 3px 3px 0; margin-bottom: 1rem; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--claret-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--leather-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(200,160,96,0.12); }
+  .footer-icon { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; display: block; margin-bottom: 0.5rem; color: var(--sepia-glow); font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.12</div>
+  <h1>世界文学史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">ホメロスからカフカ、マルケスから村上春樹まで——人類が「物語」に込めてきた3000年の問いを一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 8世紀</span><span class="hero-stat-lbl">ホメロスの叙事詩</span></div>
+    <div><span class="hero-stat-num">3000年</span><span class="hero-stat-lbl">物語の歴史</span></div>
+    <div><span class="hero-stat-num">10の文学運動</span><span class="hero-stat-lbl">時代を映す鏡</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">解釈と再読の数</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 文学史を学ぶ意味 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">文学史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「物語を読む」から「時代を読む」へ——文学は時代の最も正直な鏡</p>
+  </div>
+  <div class="genre-grid">
+    <div class="genre-card" data-glyph="I">
+      <span class="gc-label">Mirror</span>
+      <span class="gc-name">時代の鏡</span>
+      <p class="gc-body">カフカの「変身」はナチズム前夜の不条理な官僚主義の予言。ドストエフスキーの小説は帝政ロシアの末期症状。トニ・モリスンは奴隷制の傷を言語化した。文学は時代の不安と欲望の最も正直な記録。</p>
+    </div>
+    <div class="genre-card" data-glyph="II">
+      <span class="gc-label">Empathy</span>
+      <span class="gc-name">他者への想像力</span>
+      <p class="gc-body">「千年前の他人の頭の中に入る」唯一の方法が文学。社会科学が統計で人を語るなら、文学は固有の一人を語る。「普遍的な特殊」——ハムレットの葛藤は時代・国籍・言語を超えて今も刺さる理由。</p>
+    </div>
+    <div class="genre-card" data-glyph="III">
+      <span class="gc-label">Language</span>
+      <span class="gc-name">言語と思考の拡張</span>
+      <p class="gc-body">「言語の限界が世界の限界」（ウィトゲンシュタイン）。優れた文学は新しい言語を生む——「二重思考」（オーウェル）・「百年の孤独」（マルケス）という概念は文学が作った知的ツール。</p>
+    </div>
+    <div class="genre-card" data-glyph="IV">
+      <span class="gc-label">Canon</span>
+      <span class="gc-name">誰が「名作」を決めるのか</span>
+      <p class="gc-body">西洋中心の「世界文学正典（カノン）」への批判——なぜアフリカ・アジア・南米の文学は後から「発見」されるのか。文学の評価そのものが政治的という問いが現代文学研究の中心に。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「文学って国語の授業で嫌いになった人も多いかもだけど、実は"時代の本音が一番正直に書かれてる資料"なんよ。歴史書は権力者の言い訳だけど、小説は庶民の感情を残す。カフカを読めば当時のプラハの息苦しさが今の自分のものになる」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜中世 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">古代〜中世 — 神話・英雄・騎士道</h2>
+    <p class="section-desc">BC 3000年〜14世紀。「物語」は神への奉仕であり、共同体の記憶だった</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Ancient Epics & Medieval Literature · BC 3000〜AD 1400</div>
+    <div class="dp-title">叙事詩・神話・聖典——文字が生まれ、物語が「保存」された時代</div>
+    <div class="book-row">
+      <div class="book-card">
+        <div class="bc-title">ギルガメシュ叙事詩</div>
+        <div class="bc-author">BC 2100年頃 · シュメール/アッカド</div>
+        <div class="bc-period">世界最古の文学</div>
+        <div class="bc-body">粘土板に楔形文字で刻まれた人類最古の文学作品。英雄ギルガメシュが親友エンキドゥを失い「死」と向き合う物語——友情・死の恐怖・不死の探求という主題は3000年後も変わらない。ノアの方舟の原型となる大洪水神話も含む。</div>
+        <div class="bc-quote">→ 人類が「物語」を持った最初の証拠</div>
+      </div>
+      <div class="book-card">
+        <div class="bc-title">イリアス・オデュッセイア</div>
+        <div class="bc-author">BC 8世紀頃 · ホメロス（伝）</div>
+        <div class="bc-period">西洋文学の原点</div>
+        <div class="bc-body">トロイア戦争を題材にした叙事詩2作。「イリアス」は英雄アキレウスの怒りと栄光。「オデュッセイア」はオデュッセウスの10年間の帰還の旅——西洋の「英雄の旅（ヒーローズ・ジャーニー）」の原型。全ての冒険物語・ファンタジーの祖先。</div>
+        <div class="bc-quote">→「全ての文学はホメロスの注釈だ」と言う批評家も</div>
+      </div>
+      <div class="book-card">
+        <div class="bc-title">神曲（Divina Commedia）</div>
+        <div class="bc-author">1308〜1320 · ダンテ・アリギエーリ</div>
+        <div class="bc-period">中世文学の頂点</div>
+        <div class="bc-body">地獄・煉獄・天国の三界を巡る壮大な詩。ウェルギリウスに導かれ地獄を下り、ベアトリーチェに導かれ天国へ昇る。中世キリスト教の宇宙観を完全に体系化した。現代イタリア語の基礎を作った作品でもある。</div>
+        <div class="bc-quote">「地獄への道は善意で敷き詰められている」</div>
+      </div>
+      <div class="book-card">
+        <div class="bc-title">源氏物語</div>
+        <div class="bc-author">1000〜1008年頃 · 紫式部</div>
+        <div class="bc-period">世界最古の長編小説（有力）</div>
+        <div class="bc-body">平安時代の宮廷を舞台にした約54帖の大作。「光源氏」という理想の貴公子の愛と政治を中心に、数十年・数十人の登場人物が交錯。ダンテより200年早く、ドン・キホーテより600年早い「長編小説」の誕生。「もののあはれ」の文学的具現化。</div>
+        <div class="bc-quote">→ 11世紀の日本が生んだ人類最初の長編小説</div>
+      </div>
+      <div class="book-card">
+        <div class="bc-title">カンタベリー物語</div>
+        <div class="bc-author">1387〜1400頃 · ジェフリー・チョーサー</div>
+        <div class="bc-period">英語文学の父</div>
+        <div class="bc-body">カンタベリーへの巡礼団が語る24の物語の枠組み小説。騎士・修道士・商人・農民が各々の物語を語る——「デカメロン」の英語版的位置づけ。中英語で書かれ英語文学の最初の傑作。「英語で文学が書ける」と証明した先駆者。</div>
+        <div class="bc-quote">→ 英語文学の誕生点</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: ルネサンス〜近代 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">ルネサンス〜近代 — 個人の発見と小説の誕生</h2>
+    <p class="section-desc">15〜19世紀。「神の物語」から「人間の物語」へ——近代文学の確立</p>
+  </div>
+
+  <div class="dark-panel" style="margin-bottom:1.5rem;">
+    <div class="dp-label">Renaissance & Enlightenment · 1500〜1780</div>
+    <div class="dp-title">シェイクスピアとセルバンテス——近代文学の二巨人</div>
+    <div class="writer-row">
+      <div class="writer-card">
+        <div class="wc-name">ウィリアム・シェイクスピア</div>
+        <div class="wc-dates">1564〜1616 · イングランド</div>
+        <div class="wc-move">ルネサンス演劇</div>
+        <div class="wc-body">37の戯曲・154のソネット。「ハムレット」「オセロ」「リア王」「マクベス」の4大悲劇、「真夏の夜の夢」「ヴェニスの商人」の喜劇。「存在するか否か、それが問いだ（To be, or not to be）」——人間の内面を言語化した深さは400年後も色あせない。現代英語の単語・表現の約1700語がシェイクスピア発。</div>
+        <div class="wc-quote">「全世界は舞台であり、男も女も皆ただの役者に過ぎない」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ミゲル・デ・セルバンテス</div>
+        <div class="wc-dates">1547〜1616 · スペイン</div>
+        <div class="wc-move">近代小説の父</div>
+        <div class="wc-body">「ドン・キホーテ（1605・1615）」——風車を巨人と見立て突進する騎士の物語。「近代小説の嚆矢」として文学史上最高の評価を受ける。理想と現実の乖離・フィクションと現実の混乱・語り手の信頼性——現代小説の主要テーマ全てを先取りした。</div>
+        <div class="wc-quote">「風車に突進する」——不可能な夢を追う行為の比喩として現代語に</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ジョナサン・スウィフト</div>
+        <div class="wc-dates">1667〜1745 · アイルランド</div>
+        <div class="wc-move">風刺文学</div>
+        <div class="wc-body">「ガリバー旅行記」——小人の国・大人の国・飛び島・馬の国を旅する冒険は実は英国社会・人間性への辛辣な風刺。「アイルランドの貧困を解決するには子供を食べればよい」という「穏健な提案」は歴史上最も有名な皮肉文学。</div>
+        <div class="wc-quote">→ 政治風刺小説の原型</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ゲーテ</div>
+        <div class="wc-dates">1749〜1832 · ドイツ</div>
+        <div class="wc-move">疾風怒濤・古典主義</div>
+        <div class="wc-body">「ファウスト」——悪魔メフィストフェレスに魂を売った学者ファウストの物語。「若きウェルテルの悩み」——失恋による自殺を描き「ウェルテル効果（自殺の連鎖）」という社会現象を生んだ史上初の小説。人類の苦悩と追求の縮図としての「ファウスト」は今も引用され続ける。</div>
+        <div class="wc-quote">「永遠に女性的なるものが、我らを高みへと引き上げる」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">Romanticism & Realism · 1800〜1900</div>
+    <div class="dp-title">ロマン主義・リアリズム——革命後の文学</div>
+    <div class="writer-row">
+      <div class="writer-card">
+        <div class="wc-name">レフ・トルストイ</div>
+        <div class="wc-dates">1828〜1910 · ロシア</div>
+        <div class="wc-move">写実主義・道徳文学</div>
+        <div class="wc-body">「戦争と平和」（約1350頁）・「アンナ・カレーニナ」——ロシア貴族社会の全体像を描く写実主義の極点。晩年は全財産を捨て農民と共に生きようとした。「人はどれだけの土地が必要か」——欲望の果てに一坪の墓だけという完璧な短編。ガンジー・キング牧師に影響。</div>
+        <div class="wc-quote">「幸福な家庭は皆よく似ているが、不幸な家庭はそれぞれに不幸だ」（アンナ・カレーニナ冒頭）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">フョードル・ドストエフスキー</div>
+        <div class="wc-dates">1821〜1881 · ロシア</div>
+        <div class="wc-move">心理小説・実存主義の先駆</div>
+        <div class="wc-body">死刑判決→銃殺直前に恩赦→シベリア流刑4年の体験が人間の極限を描く動力に。「罪と罰」「カラマーゾフの兄弟」——殺人・神・自由・苦しみという問いへの答えを求める心理的格闘。フロイト・ニーチェ・カミュ・サルトルが影響を受けた「小説で哲学する」作家。</div>
+        <div class="wc-quote">「神がいなければ、全てが許される」（カラマーゾフの兄弟）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ギュスターヴ・フローベール</div>
+        <div class="wc-dates">1821〜1880 · フランス</div>
+        <div class="wc-move">写実主義・文体の芸術</div>
+        <div class="wc-body">「ボヴァリー夫人（1857）」——ロマンチックな夢を追い現実に破滅する女性の物語。「文体こそが作家だ」という文章への執着——一文を書くのに何日も費やした。「適切な言葉（le mot juste）」という概念を文学に持ち込み、現代の文章批評の基礎を作った。</div>
+        <div class="wc-quote">「ボヴァリー夫人は私自身だ（Madame Bovary, c'est moi）」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">チャールズ・ディケンズ</div>
+        <div class="wc-dates">1812〜1870 · イングランド</div>
+        <div class="wc-move">社会批判・大衆小説</div>
+        <div class="wc-body">産業革命期の英国の貧困・孤児・搾取を描いた社会批判の旗手。「オリバー・ツイスト」「大いなる遺産」「二都物語」「クリスマス・キャロル」——連載小説という形式で大衆が文学を楽しめる文化を作り出した。スクルージが改心するクリスマス・キャロルは現代のクリスマス観を形成した。</div>
+        <div class="wc-quote">「最高の時代であり、最悪の時代だった」（二都物語冒頭）</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: モダニズム〜現代 ─── タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">20世紀文学タイムライン</h2>
+    <p class="section-desc">二つの大戦・実存主義・脱植民地・ポストモダン——文学が「物語の解体」を始めた世紀</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1900〜1920年代</div>
+        <div class="tl-event">モダニズム — 意識の流れ・形式の解体</div>
+        <div class="tl-desc">第一次大戦の衝撃が「進歩と理性への信頼」を壊した。ジェイムズ・ジョイス「ユリシーズ」（1922）——1日の出来事を800頁の意識の流れで描く。ウルフ「波」——時間・物語の線形性を捨てた意識の詩。プルースト「失われた時を求めて」——記憶と時間の小説（全7巻・約4000頁）。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💭</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1915〜1930年代</div>
+        <div class="tl-event">カフカとシュルレアリスム文学</div>
+        <div class="tl-desc">フランツ・カフカ「変身」（1915）——ある朝目覚めると虫になっていたグレゴール・ザムザの物語。「審判」「城」——主人公が理由もわからず裁かれ、目的地に永遠に辿り着けない不条理な世界。「カフカ的（Kafkaesque）」という形容詞が現代語に。官僚制・全体主義の寓意として今も読まれる。</div>
+      </div>
+      <div class="tl-dot claret"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🪲</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1930〜1950年代</div>
+        <div class="tl-event">実存主義文学 — サルトル・カミュ</div>
+        <div class="tl-desc">カミュ「異邦人」（1942）——母の死にも泣かず、殺人を犯しても後悔しない「不条理の英雄」ムルソー。「シーシュポスの神話」——神に罰せられ永遠に石を転がす労苦の中に幸福を見出す。サルトル「嘔吐」——存在することの根拠のなさへの吐き気。実存主義文学が戦後の「意味の喪失」に答えた。</div>
+      </div>
+      <div class="tl-dot slate"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🗿</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1945〜1950年代</div>
+        <div class="tl-event">ディストピア小説 — オーウェルとハクスリー</div>
+        <div class="tl-desc">ジョージ・オーウェル「1984年」（1949）——「ビッグ・ブラザー」「二重思考」「ニュースピーク」という全体主義的監視社会の完璧な予言。ハクスリー「すばらしい新世界」——快楽と薬物で支配される世界。両者の対比「恐怖による支配 vs 欲望による支配」は現代社会批評の基本軸。</div>
+      </div>
+      <div class="tl-dot claret"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">👁</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1960〜1980年代</div>
+        <div class="tl-event">マジックリアリズムと第三世界文学</div>
+        <div class="tl-desc">ガルシア・マルケス「百年の孤独」（1967）——コロンビアのマコンド村100年の歴史を奇跡と現実が混在する語りで描く。ラテンアメリカ文学ブーム（「ブーム」）が世界を席巻。日常の中に奇跡が当然のように起きる「マジック・リアリズム」は西洋近代文学の「写実主義」への根本的挑戦。</div>
+      </div>
+      <div class="tl-dot moss"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌿</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1960〜現代</div>
+        <div class="tl-event">ポストモダン文学 — メタフィクションと解体</div>
+        <div class="tl-desc">ピンチョン・ボルヘス・バース——「物語そのものを語る物語（メタフィクション）」「迷宮としての図書館」「無限の分岐」。ボルヘスの「砂の本」「バベルの図書館」は「フィクションとは何か」という問いを短編で具現化。デジタル時代のハイパーテキストの文学的先取り。</div>
+      </div>
+      <div class="tl-dot slate"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📖</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1980年代〜現在</div>
+        <div class="tl-event">脱植民地文学・多文化主義・日本文学の世界進出</div>
+        <div class="tl-desc">チヌア・アチェベ「崩れゆく絆」——植民地化以前のアフリカ社会の崩壊をイボ族の視点で描く。トニ・モリスン「ビラヴド」——奴隷制の傷とゴーストを描いたノーベル文学賞作品。村上春樹の世界展開。カズオ・イシグロ（日系英国）、サルマン・ラシュディ（印系英国）——「翻訳される文学」時代。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 20世紀の巨人たち ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">20世紀文学の巨人たち</h2>
+    <p class="section-desc">一冊で世界が変わった作家たち——居酒屋で話せる10人</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">The Canon · 20世紀の必読作家</div>
+    <div class="dp-title">この10人を知れば20世紀文学の地図が描ける</div>
+    <div class="writer-row">
+      <div class="writer-card">
+        <div class="wc-name">マルセル・プルースト</div>
+        <div class="wc-dates">1871〜1922 · フランス</div>
+        <div class="wc-move">モダニズム・記憶と時間</div>
+        <div class="wc-body">「失われた時を求めて」全7巻約4000頁——マドレーヌを紅茶に浸した瞬間に押し寄せる幼年期の記憶（無意志的記憶）を核に、記憶・時間・愛・嫉妬を解剖する。「プルースト的記憶」は現代心理学・神経科学とも接続する。</div>
+        <div class="wc-quote">「ただ1杯の紅茶に浸したマドレーヌの小さな切れ端——」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ジェイムズ・ジョイス</div>
+        <div class="wc-dates">1882〜1941 · アイルランド</div>
+        <div class="wc-move">モダニズム・意識の流れ</div>
+        <div class="wc-body">「ユリシーズ」——1904年6月16日のダブリン一日を描いた800頁。「意識の流れ」技法の完成形。「今まで英語で書かれた中で最も重要な小説」の一つ（現代図書館選定）。難解すぎて多くの読者が挫折するが「挑戦すること自体に価値がある」とされる作品。</div>
+        <div class="wc-quote">「はい、私は言った、はい、私はするわ、はい」（「ユリシーズ」最終行）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ヴァージニア・ウルフ</div>
+        <div class="wc-dates">1882〜1941 · イングランド</div>
+        <div class="wc-move">モダニズム・フェミニズム文学</div>
+        <div class="wc-body">「ダロウェイ夫人」「波」——時間・記憶・意識を詩的な散文で探求。「自分だけの部屋」（エッセイ）——女性が作家になるには「年500ポンドの収入と自分だけの部屋が必要」。20世紀フェミニズム文学批評の礎石。双極性障害を抱え1941年に溺死。</div>
+        <div class="wc-quote">「人間の性質は1910年12月頃に変化した」（モダニズムの到来宣言）</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">フランツ・カフカ</div>
+        <div class="wc-dates">1883〜1924 · プラハ</div>
+        <div class="wc-move">実存主義・不条理文学</div>
+        <div class="wc-body">生前は無名。「変身」「審判」「城」——死後に友人マックス・ブロートが反故にせず出版（カフカは焼却を遺言していた）。チェコ語でなくドイツ語で書いたユダヤ人——3重の疎外。「カフカ的」という形容詞は現代語として定着し、「不条理な官僚制」の代名詞に。</div>
+        <div class="wc-quote">「本とは、私たちの内なる凍った海を叩き割る斧であるべきだ」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">アーネスト・ヘミングウェイ</div>
+        <div class="wc-dates">1899〜1961 · アメリカ</div>
+        <div class="wc-move">失われた世代・ハードボイルド</div>
+        <div class="wc-body">「余計なことは書かない（氷山理論）」——水面上に1/8の言葉で残り7/8の感情を暗示させる。「老人と海」「日はまた昇る」「武器よさらば」。1954年ノーベル文学賞。男性性・戦争・酒・死への向き合い方が時代のアイコンに。1961年猟銃自殺。</div>
+        <div class="wc-quote">「最初の下書きは必ずひどいものだ」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">ガルシア・マルケス</div>
+        <div class="wc-dates">1927〜2014 · コロンビア</div>
+        <div class="wc-move">マジックリアリズム</div>
+        <div class="wc-body">「百年の孤独」——マコンド村のブエンディア一族100年の歴史。書き始めの日、「多くの歳月を経て銃殺隊の前に立つことになるその遠い午後に…」という冒頭文を書いて車を反転させて帰ったという伝説。出版されたとたん南米中で「私たちの物語だ」と叫ばれた。1982年ノーベル文学賞。</div>
+        <div class="wc-quote">「小説は現実より真実に見える嘘だ」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">トニ・モリスン</div>
+        <div class="wc-dates">1931〜2019 · アメリカ</div>
+        <div class="wc-move">アフリカ系アメリカ文学</div>
+        <div class="wc-body">「ビラヴド」——奴隷制から逃げた母が娘を「解放」するために殺した実話に基づく。奴隷制が人間の魂に刻んだ傷を「ゴーストの物語」として語る。「文学的に最も重要な20世紀アメリカ小説」に選ばれた。1993年アフリカ系アメリカ人女性初のノーベル文学賞。</div>
+        <div class="wc-quote">「あなたの痛みがあなたの全てではない」</div>
+      </div>
+      <div class="writer-card">
+        <div class="wc-name">村上春樹</div>
+        <div class="wc-dates">1949〜 · 日本</div>
+        <div class="wc-move">ポストモダン・グローバル文学</div>
+        <div class="wc-body">「ノルウェイの森」「海辺のカフカ」「1Q84」——日本文学史上最も翻訳・読まれた作家。欧米文化への深い親しみと孤独・喪失・アイデンティティのテーマが普遍的に響く。毎年「ノーベル文学賞が取れなかった作家」として話題に。J-LIT（日本文学の国際化）の象徴。</div>
+        <div class="wc-quote">「嵐が来たらかがんでやり過ごそうとするな。嵐に飛び込め」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: ジャンル概説 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">文学ジャンルの系譜——詩・戯曲・小説・エッセイ</h2>
+    <p class="section-desc">形式が内容を決める——各ジャンルの核心と代表作</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">📜</div>
+      <div>
+        <div class="ls-title">詩（Poetry）——言語の最高密度</div>
+        <div class="ls-body">散文では言えないことを言う形式。ホメロスの叙事詩→ダンテの「神曲」→シェイクスピアのソネット→ボードレール「悪の華」→リルケ「ドゥイノの悲歌」→T.S.エリオット「荒地」（第一次大戦後の精神的廃墟）。詩は翻訳で一番「失われる」ジャンル——松尾芭蕉の俳句の英訳は俳句ではなく「俳句の説明」になる。「詩とは翻訳で失われるもの（フロスト）」。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🎭</div>
+      <div>
+        <div class="ls-title">戯曲（Drama）——「上演」を前提にした文学</div>
+        <div class="ls-body">アリストファネス（古代ギリシャ喜劇）→シェイクスピア（エリザベス朝演劇）→モリエール（フランス古典喜劇）→チェーホフ（近代演劇の革命——「銃が出たら撃たれる」というチェーホフの銃）→イプセン「人形の家」（フェミニズム演劇の嚆矢）→ベケット「ゴドーを待ちながら」（不条理演劇）。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">📚</div>
+      <div>
+        <div class="ls-title">小説（Novel）——「近代」が生んだジャンル</div>
+        <div class="ls-body">「小説（Novel）」は「新しいもの」を意味する語源通り、17〜18世紀ヨーロッパで生まれた比較的新しい文学形式。セルバンテス「ドン・キホーテ」→デフォー「ロビンソン・クルーソー」→フィールディング「トム・ジョーンズ」と確立。「小説の発明は印刷術と中産階級（時間と識字率のある人々）の誕生なしに不可能だった」。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">✍</div>
+      <div>
+        <div class="ls-title">エッセイ（Essay）——「試み」という文学</div>
+        <div class="ls-body">モンテーニュ（1533〜1592）が「エッセー（試み）」というジャンルを発明——「私は何を知っているか（Que sais-je?）」という懐疑からの出発。パスカル「パンセ（瞑想録）」・ベーコン「随筆集」・ルソー「告白」と発展。現代では村上春樹のエッセイ・内田樹・スーザン・ソンタグなど「思考の実況中継」としてのエッセイが生きている。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">文学史の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——文学を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">意識の流れ <span class="concept-en">Stream of Consciousness</span></div>
+      <div class="concept-body">人間の意識の連続的・非論理的な流れをそのまま文章にする技法。ジョイス・ウルフ・フォークナーが完成させた。「語り手が整理した物語」でなく「意識が流れるまま」書かれるため読みにくいが、内面の真実に近い。心理学者ウィリアム・ジェイムズが命名した概念を文学が採用。</div>
+      <div class="concept-izakaya">「ジョイスの小説が難しいのは、人物の意識をそのまま書いてるから。論理の整理なしに連想が飛び回る。起きてから寝るまで自分の思考を全部書き起こしたら誰でもあんな風になる。それを800頁やったのが"ユリシーズ"」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">不条理 <span class="concept-en">Absurd</span></div>
+      <div class="concept-body">カミュが「シーシュポスの神話」で提唱。人間が「意味」を求める本性と、宇宙が意味を与えない事実の衝突が「不条理」。解決策は自殺（意味への諦め）・信仰（超越的意味への逃避）・反抗（意味なしに生き続ける）の3つ。カミュは「反抗」を選んだ。</div>
+      <div class="concept-izakaya">「カミュの不条理ってシンプルに言うと"生きることに意味はない、でも生きる"という話。人間は意味を求めるけど宇宙は意味を与えない——その矛盾を直視して"それでも反抗する"という生き方。虚無主義とは違い、絶望を前提にした積極的肯定」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">マジックリアリズム <span class="concept-en">Magic Realism</span></div>
+      <div class="concept-body">奇跡・幻想が日常として語られる文学様式。マルケスの「百年の孤独」が典型——人が空に浮かぶことが当たり前として描かれる。ラテンアメリカ文学の特徴だが、カズオ・イシグロ「わたしを離さないで」・村上春樹など世界に波及。「写実主義」という西洋的前提への挑戦。</div>
+      <div class="concept-izakaya">「マジックリアリズムって"あり得ない出来事が普通のように語られる"スタイル。村上春樹の小説で突然羊男が出てきても誰もびっくりしない感じ。現実と幻想の境界を溶かすことで"もう一つの現実"を作る。西洋の"事実しか書かない"という写実主義への反抗でもある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ヒーローズ・ジャーニー <span class="concept-en">Hero's Journey</span></div>
+      <div class="concept-body">神話学者ジョセフ・キャンベルが世界の神話・物語に共通する構造を発見した「単一神話（モノミス）」。日常世界→冒険への召喚→試練→変容→帰還という17段階の旅。ホメロスからスター・ウォーズ・ハリー・ポッター・全てのRPGがこの構造を持つ。</div>
+      <div class="concept-izakaya">「スター・ウォーズってなんであんなに世界中でヒットするかというと、ジョージ・ルーカスがキャンベルの"英雄の旅"を意識的にトレースして作ったから。ルーク・スカイウォーカーはオデュッセウス・ハムレット・浦島太郎と同じ構造で動いてる。人間が3000年かけて蓄積した"感動の設計図"」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">メタフィクション <span class="concept-en">Metafiction</span></div>
+      <div class="concept-body">「小説が小説であること」を意識的に語る技法。語り手が「私は今小説を書いている」と宣言する、作者が登場人物に語りかける、フィクションの枠組みを崩す——ボルヘス・カルヴィーノ・ポール・オースターが代表。「フィクションと現実の境界はどこか」という問いの文学的探求。</div>
+      <div class="concept-izakaya">「メタフィクションって"小説が小説であることを内側から暴露する"手法。映画で言えばキャラクターがカメラに向かって話しかける感じ。村上春樹の「海辺のカフカ」でも"語り手が語っている"感覚が随所にある。"フィクションとは何か"という問いを物語の中で問い続ける」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">作者の死 <span class="concept-en">Death of the Author</span></div>
+      <div class="concept-body">ロラン・バルトが1967年に提唱。「作品の意味は作者の意図ではなく読者の解釈が決める」——作者が何を書こうとしたかより「テキストが何を言うか」が重要。作品を作者の伝記から切り離す批評的転換。「ハーミオーニーは黒人だとJ.K.ローリングが言ったから正しい」という主張への反論の根拠。</div>
+      <div class="concept-izakaya">「"作者の死"って作者が実際に死ぬんじゃなく"作品は書かれた瞬間に作者から独立する"という考え方。ハムレットが何を考えているかはシェイクスピアに聞いても答えは出ない——テキストだけが答えを持つ。読者の解釈が"正解"になれる理論」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ノーベル文学賞とカノン <span class="concept-en">Nobel Prize / Canon</span></div>
+      <div class="concept-body">1901年創設のノーベル文学賞は「最も重要な方向で理想的傾向を示した最高の文学を書いた人物」が対象。トルストイ・ジョイス・カフカ・ボルヘス・プルーストは受賞せず。「誰が名作を決めるのか」という「文学的正典（カノン）」への批判が1990年代に高まった。</div>
+      <div class="concept-izakaya">「ノーベル文学賞でよく言われるのが"なんで村上春樹が取れないのか"問題だけど、トルストイもジョイスもカフカも取ってない。選考に政治的・文化的バイアスが入るのは歴史的事実で、英語・欧州語の作品が有利という構造的問題がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">信頼できない語り手 <span class="concept-en">Unreliable Narrator</span></div>
+      <div class="concept-body">語り手が読者に嘘をついている、あるいは自分で真実に気づいていない小説的技法。カズオ・イシグロ「わたしを離さないで」——語り手は読者にとって明らかな事実に気づかないまま語り続ける。読者は「語られていないこと」を読む必要がある。「何が語られているか」より「何が語られていないか」が重要。</div>
+      <div class="concept-izakaya">「信頼できない語り手って面白くて、語り手が嘘をついたり重要なことに気づかずに話す構造。カズオ・イシグロの小説はこれが多い。読んでる途中で"あ、この人全然わかってない"と気づく瞬間がゾッとするほど面白い。小説が"何を言わないか"で語る高度な技法」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ディストピア文学 <span class="concept-en">Dystopia</span></div>
+      <div class="concept-body">「最悪の社会」を描くことで現実社会への警告を行う文学ジャンル。オーウェル「1984年」・ハクスリー「すばらしい新世界」・ル・グウィン「暗闇の左手」・アトウッド「侍女の物語」。SNS監視社会・AIによる管理・気候変動——21世紀にますます現実化するジャンル。</div>
+      <div class="concept-izakaya">「ディストピア文学って書かれた当時は"SF"だったものが今はリアルな予測になってきてる。オーウェルの"1984年"が書かれたのは1948年だけど、SNSの監視、フェイクニュース、"二重思考"——全部今起きてる。良いディストピア小説は社会の予言書として読み直される」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">日本文学の世界性 <span class="concept-en">Japanese Literature</span></div>
+      <div class="concept-body">源氏物語（世界最古の長編小説候補）・松尾芭蕉の俳句・夏目漱石・川端康成（1968年ノーベル賞）・大江健三郎（1994年）・村上春樹。日本文学は「間（ま）」「余白」「もののあはれ」という西洋文学とは異なる美的原理を持ち、現代では逆輸出的に世界に影響を与えている。</div>
+      <div class="concept-izakaya">「日本文学って"言わないことで語る"文化が強い。ヘミングウェイの氷山理論と似てるけど、日本の場合は余白や間（ま）が意味を持つ——あえて説明しない、あえて結論を出さない。村上春樹が翻訳されてウケるのは"この不思議な余白感"が西洋にない新鮮さとして届くから」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 文学運動比較表 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special Edition</span>
+    <h2 class="section-title">世界文学史 運動・様式 完全比較表</h2>
+    <p class="section-desc">「何への反動か」を知ると、文学史は一本の流れとして見えてくる</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>運動・様式</th>
+          <th>時代</th>
+          <th>核心の特徴</th>
+          <th>代表作家・作品</th>
+          <th>何への反動か</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>古典主義</td>
+          <td>古代〜17世紀</td>
+          <td>調和・均整・普遍性・理性</td>
+          <td>ホメロス・ウェルギリウス・ラシーヌ</td>
+          <td>（西洋文学の出発点）</td>
+        </tr>
+        <tr>
+          <td>ロマン主義</td>
+          <td>18世紀末〜19世紀前半</td>
+          <td>感情・個人・自然・崇高・民族</td>
+          <td>ゲーテ・シラー・バイロン・シェリー</td>
+          <td>啓蒙主義の「理性主義」への感情的反動</td>
+        </tr>
+        <tr>
+          <td>写実主義・自然主義</td>
+          <td>19世紀後半</td>
+          <td>社会の客観描写・科学的観察・階級・貧困</td>
+          <td>フローベール・トルストイ・ゾラ・ドストエフスキー</td>
+          <td>ロマン主義の「理想化・感情美化」への批判</td>
+        </tr>
+        <tr>
+          <td>象徴主義・唯美主義</td>
+          <td>19世紀末</td>
+          <td>象徴・暗示・美のための美・退廃</td>
+          <td>ボードレール・マラルメ・オスカー・ワイルド</td>
+          <td>写実主義の「醜い現実描写」への反動</td>
+        </tr>
+        <tr>
+          <td>モダニズム</td>
+          <td>1910〜1940年代</td>
+          <td>形式の解体・意識の流れ・断片化・内面</td>
+          <td>ジョイス・ウルフ・プルースト・エリオット・カフカ</td>
+          <td>第一次大戦後の進歩・理性への信頼崩壊</td>
+        </tr>
+        <tr>
+          <td>実存主義文学</td>
+          <td>1940〜1960年代</td>
+          <td>不条理・自由・責任・選択・孤独</td>
+          <td>サルトル・カミュ・ボーヴォワール・ベケット</td>
+          <td>第二次大戦後の意味の喪失・神の死</td>
+        </tr>
+        <tr>
+          <td>マジックリアリズム</td>
+          <td>1960〜1980年代</td>
+          <td>現実と幻想の混在・口承文化・植民地経験</td>
+          <td>マルケス・ボルヘス・ルルフォ・アステュリアス</td>
+          <td>西洋写実主義という「普遍的文学」への挑戦</td>
+        </tr>
+        <tr>
+          <td>ポストモダニズム</td>
+          <td>1960〜1990年代</td>
+          <td>メタフィクション・パスティーシュ・意味の解体</td>
+          <td>ピンチョン・ボルヘス・カルヴィーノ・バース</td>
+          <td>モダニズムの「深刻さ・権威」への皮肉的解体</td>
+        </tr>
+        <tr>
+          <td>脱植民地・多文化主義</td>
+          <td>1980年代〜現在</td>
+          <td>周縁の声・歴史の書き直し・複数の文化的アイデンティティ</td>
+          <td>モリスン・チヌア・アチェベ・ラシュディ・イシグロ</td>
+          <td>西洋中心の「文学正典（カノン）」への批判</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--sepia-glow);">文学史のパターン：</strong>「前の様式への反動」として新しい運動が生まれる——音楽史・美術史と全く同じ構造。ロマン主義は理性主義への感情的反動、写実主義はロマン主義への客観的反動、モダニズムは写実主義への形式的反動、ポストモダニズムはモダニズムへの皮肉的解体。「反抗が文化を進める」という2500年の一貫したパターン。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Finale</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">世界文学史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「カフカって何者？」</div>
+      <div class="test-q-text">「カフカ的」という言葉が出たとき</div>
+      <div class="test-a">「プラハ生まれのユダヤ人で、ドイツ語で書いた保険会社の役人。生前はほぼ無名で、死ぬ前に全作品を焼くよう友人に頼んだのに友人が無視して出版した。だから今の文学があるんだけど。"カフカ的"という言葉は今では形容詞として英語辞典に載っていて、"不条理で逃げ場のない官僚的状況"という意味。マイナンバー手続きの窓口とか、まさにカフカ的。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「ドストエフスキーとトルストイ、どっちを読めばいい？」</div>
+      <div class="test-q-text">ロシア文学の話になったとき</div>
+      <div class="test-a">「入口としては圧倒的にドストエフスキーの"罪と罰"か"地下室の手記"。読み始めると止まらない心理的緊張がある。哲学的な問いが物語に溶け込んでいて"小説で考える"体験ができる。トルストイは宇宙規模のリアリズムで圧倒されるが入口が難しい。トルストイは"何を描くか"の天才、ドストエフスキーは"どう描くか"の革命家という対比が面白い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「"百年の孤独"って本当に面白いの？」</div>
+      <div class="test-q-text">名作文学の話になったとき</div>
+      <div class="test-a">「マルケスの"百年の孤独"の最初の一文がすごくて——"多くの歳月を経て銃殺隊の前に立つことになるその遠い午後に"で始まる。最初に結末を示してから過去に戻る構造で、語りが最初からあなたを掴む。人名が世代をまたいで繰り返されて混乱するけど、慣れると"歴史は繰り返す"という主題そのものが形式として機能していることがわかる。100ページ超えたら止まらなくなる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「源氏物語って本当に世界初の小説なの？」</div>
+      <div class="test-q-text">日本文学の話になったとき</div>
+      <div class="test-a">「「世界初の長編小説」候補という位置付けで、確実に"最初"とは言えないが有力。1008年頃に書かれた54帖は「小説」の定義（心理描写・複数の人物・時間の経過・社会の描写）を全て満たしている。ドン・キホーテ（1605年）より600年早い。当時の日本に識字率の高い女性貴族階級があり、仮名文字という手段があったことの産物。これは世界史的に見ても極めて特殊な条件。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「村上春樹はなんでノーベル賞取れないの？」</div>
+      <div class="test-q-text">毎年10月に出る話題</div>
+      <div class="test-a">「毎年候補筆頭なのに取れない理由は諸説ある——①スウェーデン・アカデミーの「社会的・政治的コミットメント」重視の選考基準に春樹の作風がそぐわない説、②J文学全体への「日本はもう川端・大江で十分」的な選考委員の意識説、③あまりに商業的成功しすぎて「文学的権威」が感じにくい説。ただしトルストイもジョイスもカフカもボルヘスも取っていないので、「取れない作家」が「最も重要な作家」という逆説は文学史の法則かも。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「AI時代に文学を読む意味はあるの？」</div>
+      <div class="test-q-text">テクノロジーと人文学の話になったとき</div>
+      <div class="test-a">「AIは統計的に"次に来る可能性が高い言葉"を生成するから、文学的には"平均的な感情"しか書けない。カフカの不条理・プルーストの感覚・マルケスの奇跡は"統計的外れ値"だからこそ価値がある。あとAIは書けても"なぜこの作家がこれを書かなければならなかったか"という実存的文脈を持てない——それが文学の最後の砦だと思う。ヘミングウェイが吐血しながら書いた文章と、同じ内容をAIが生成した文章が同じ価値を持つかどうかは、読者がこれから決めることになる。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">📖</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史・音楽史・世界文学史。知の十角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42; font-style:italic;">"A reader lives a thousand lives before he dies. The man who never reads lives only one." — George R.R. Martin</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テクノロジー史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --circuit-deep: #040810;
+    --circuit-mid:  #080F1E;
+    --circuit-rich: #0C1830;
+    --elec:         #00C8FF;
+    --elec-mid:     #008AB8;
+    --elec-dark:    #004860;
+    --elec-pale:    #D0F4FF;
+    --neon:         #00FF88;
+    --neon-mid:     #00B860;
+    --neon-dark:    #005830;
+    --amber:        #FF9800;
+    --amber-lt:     #FFB830;
+    --amber-pale:   #FFF4D8;
+    --red-hot:      #FF3820;
+    --red-mid:      #C02010;
+    --purple:       #8840FF;
+    --purple-lt:    #B070FF;
+    --ivory:        #F4F6F8;
+    --ivory-dark:   #E4E8EC;
+    --ink:          #080C10;
+    --ink-mid:      #182030;
+    --ink-light:    #406080;
+    --gray:         #8090A8;
+    --silver:       #A8B8C8;
+    --shadow:       rgba(4,8,16,0.2);
+    --scan-line:    rgba(0,200,255,0.04);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--circuit-deep);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 3px, var(--scan-line) 3px, var(--scan-line) 4px),
+      radial-gradient(ellipse at 15% 55%, rgba(0,72,96,0.5) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 25%, rgba(0,200,255,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(0,255,136,0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(0,200,255,0.05) 39px, rgba(0,200,255,0.05) 40px),
+      repeating-linear-gradient(0deg, transparent 0, transparent 39px, rgba(0,200,255,0.05) 39px, rgba(0,200,255,0.05) 40px);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--elec);
+    border: 1px solid rgba(0,200,255,0.35);
+    padding: 4px 16px; border-radius: 2px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700; line-height: 1.05; margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 15%, var(--elec) 55%, var(--neon) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 580px; margin: 0 auto 3rem; font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--elec); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--circuit-mid); color: var(--elec);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 2px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(0,200,255,0.2);
+  }
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; }
+  .bg-warm  { background: var(--ivory-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 4px;
+    border: 1px solid rgba(8,15,30,0.1);
+    border-left: 4px solid var(--elec-mid);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--circuit-deep);
+    border-radius: 6px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(0,200,255,0.12);
+    position: relative; overflow: hidden;
+  }
+  .dark-panel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, var(--scan-line) 3px, var(--scan-line) 4px);
+    pointer-events: none;
+  }
+  .dp-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.4rem; position: relative; z-index: 1; }
+  .dp-title { font-family: 'Inter', sans-serif; font-size: 1.3rem; color: var(--elec); font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.01em; position: relative; z-index: 1; }
+
+  /* ─── INVENTOR CARDS ─── */
+  .inv-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; position: relative; z-index: 1; }
+  .inv-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(0,200,255,0.15);
+    border-top: 3px solid var(--elec-mid);
+    border-radius: 0 0 6px 6px;
+    padding: 1rem 1.1rem;
+  }
+  .ic-name   { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--elec); font-weight: 700; margin-bottom: 0.15rem; }
+  .ic-dates  { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .ic-field  { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--neon); margin-bottom: 0.35rem; }
+  .ic-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .ic-inv    { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(0,200,255,0.65); }
+
+  /* ─── ERA CARDS ─── */
+  .era-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .era-card {
+    background: var(--circuit-deep); color: #fff;
+    border-radius: 6px; padding: 1.5rem;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(0,200,255,0.1);
+  }
+  .era-card::after {
+    content: attr(data-num);
+    position: absolute; bottom: -0.3rem; right: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3.5rem; opacity: 0.07; line-height: 1; font-weight: 700;
+    color: var(--elec);
+  }
+  .ec-tag  { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--elec); display: block; margin-bottom: 0.4rem; }
+  .ec-name { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--elec); font-weight: 700; display: block; margin-bottom: 0.4rem; }
+  .ec-body { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .ec-key  { margin-top: 0.6rem; font-size: 0.72rem; color: rgba(0,255,136,0.65); }
+
+  /* ─── TECH BAND ─── */
+  .tech-band { border-radius: 6px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: #fff; }
+  .tb-steam  { background: linear-gradient(135deg, #0A0600, #201000); }
+  .tb-elec   { background: linear-gradient(135deg, #040810, #080F28); }
+  .tb-info   { background: linear-gradient(135deg, #040810, #040C10); }
+  .tb-dig    { background: linear-gradient(135deg, #060408, #100818); }
+  .tb-ai     { background: linear-gradient(135deg, #040810, #08101C); }
+  .tb-label  { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.3rem; }
+  .tb-title  { font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--elec); font-weight: 700; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+  .tb-period { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  .tb-row    { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.75rem; }
+  .tb-card   { background: rgba(255,255,255,0.07); border: 1px solid rgba(0,200,255,0.12); border-radius: 6px; padding: 0.9rem; }
+  .tbc-name  { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--elec); font-weight: 700; margin-bottom: 0.15rem; }
+  .tbc-year  { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; color: var(--silver); margin-bottom: 0.35rem; }
+  .tbc-key   { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--neon); margin-bottom: 0.35rem; }
+  .tbc-body  { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+  .tbc-fact  { margin-top: 0.5rem; font-size: 0.72rem; color: rgba(0,200,255,0.55); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--elec-mid), var(--elec-mid), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--elec-mid);
+    border: 3px solid var(--ivory); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--elec-mid); z-index: 2;
+  }
+  .tl-dot.neon   { background: var(--neon-mid);   box-shadow: 0 0 0 2px var(--neon-mid); }
+  .tl-dot.amber  { background: var(--amber);       box-shadow: 0 0 0 2px var(--amber); }
+  .tl-dot.red    { background: var(--red-hot);     box-shadow: 0 0 0 2px var(--red-hot); }
+  .tl-dot.purple { background: var(--purple-lt);   box-shadow: 0 0 0 2px var(--purple-lt); }
+  .tl-dot.glow   { background: var(--elec);        box-shadow: 0 0 8px var(--elec), 0 0 0 2px var(--elec); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid rgba(8,15,30,0.1); border-radius: 6px;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--elec-mid); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid rgba(8,15,30,0.1);
+    border-left: 4px solid var(--elec-mid);
+    border-radius: 0 6px 6px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; letter-spacing: -0.01em; }
+  .concept-en   { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.04em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--elec-dark); background: rgba(0,72,96,0.07); border-radius: 4px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--elec-mid); }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--ivory-dark); border-radius: 6px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--elec-mid); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; letter-spacing: -0.01em; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--circuit-deep); border-radius: 6px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(0,200,255,0.12); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--elec); border-bottom: 1px solid rgba(0,200,255,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--elec); font-weight: 700; white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--circuit-deep); border-radius: 6px; padding: 2.5rem; color: #fff; border: 1px solid rgba(0,200,255,0.12); position: relative; overflow: hidden; }
+  .test-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, var(--scan-line) 3px, var(--scan-line) 4px);
+    pointer-events: none;
+  }
+  .test-q { background: rgba(0,0,0,0.3); border-left: 3px solid var(--elec-mid); padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .test-q-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--elec-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--circuit-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(0,200,255,0.12); }
+  .footer-icon { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; display: block; margin-bottom: 0.5rem; color: var(--elec); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.16</div>
+  <h1>テクノロジー史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">火の発見からAIまで——人類が「道具」で世界を作り変えてきた300万年の記録。次の10年を読むために過去を知る。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">300万年前</span><span class="hero-stat-lbl">最初の石器</span></div>
+    <div><span class="hero-stat-num">1760年代</span><span class="hero-stat-lbl">産業革命の始まり</span></div>
+    <div><span class="hero-stat-num">1971年</span><span class="hero-stat-lbl">マイクロプロセッサ誕生</span></div>
+    <div><span class="hero-stat-num">2045年?</span><span class="hero-stat-lbl">技術的特異点（予測）</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: テクノロジーとは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_01</span>
+    <h2 class="section-title">テクノロジー史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「最新技術」を理解する前に——技術が社会をどう変えてきたかのパターンを知る</p>
+  </div>
+  <div class="era-grid">
+    <div class="era-card" data-num="01">
+      <span class="ec-tag">Pattern</span>
+      <span class="ec-name">技術は社会の鏡</span>
+      <p class="ec-body">印刷術→宗教改革。蒸気機関→産業革命。インターネット→民主化。AI→？——技術は中立でなく、常に社会・権力・思想と絡み合って世界を変える。「技術決定論」vs「社会形成論」の論争は今も続く。</p>
+    </div>
+    <div class="era-card" data-num="02">
+      <span class="ec-tag">Disruption</span>
+      <span class="ec-name">創造的破壊の連鎖</span>
+      <p class="ec-body">新技術は常に「古い秩序の破壊者」として登場する。馬車→自動車、フィルム→デジタル、CD→ストリーミング。シュンペーターの「創造的破壊」——雇用・産業・文化が一体的に入れ替わる不可逆なプロセス。</p>
+    </div>
+    <div class="era-card" data-num="03">
+      <span class="ec-tag">Acceleration</span>
+      <span class="ec-name">加速する変化</span>
+      <p class="ec-body">農業革命まで数百万年→産業革命まで数千年→コンピュータ革命まで200年→スマートフォンまで60年→AI革命まで30年。変化の速度自体が加速しており、今後10年の変化量が過去100年を超える可能性がある。</p>
+    </div>
+    <div class="era-card" data-num="04">
+      <span class="ec-tag">Power</span>
+      <span class="ec-name">技術は誰のものか</span>
+      <p class="ec-body">活版印刷を誰が制御するかが宗教改革を決めた。インターネットの設計思想が誰に富をもたらすかを決める。技術の「中立性」という神話の下に常に政治・資本・権力が存在する。GAFAの独占をどう読むか。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「テクノロジー史って年号の暗記じゃなくて"技術が社会の何を変えたか"のパターン認識なんよ。印刷術がなければ宗教改革も啓蒙思想もなかった。蒸気機関がなければマルクスも書けなかった。AIが今どれだけ大きな転換かを歴史で測れると、"またすごい技術が出た"じゃなく"これは何を変えるか"が問える」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜産業革命前 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_02</span>
+    <h2 class="section-title">人類最初の革命的技術</h2>
+    <p class="section-desc">300万年前〜17世紀。火・農業・文字・印刷——世界の構造を変えた5つの発明</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Pre-Industrial Revolutions · 産業革命以前の5大発明</div>
+    <div class="dp-title">技術は「ツール」ではなく「文明の設計図」だった</div>
+    <div class="inv-row">
+      <div class="inv-card">
+        <div class="ic-name">火の制御</div>
+        <div class="ic-dates">約100万年前〜</div>
+        <div class="ic-field">エネルギー革命 #1</div>
+        <div class="ic-body">人類が最初に手に入れた「自然を制御する力」。調理による栄養摂取効率の向上→脳の発達→社会化。夜間の活動・捕食者からの保護・暖房・土器焼成。「火を使う動物」という定義が人間を他の動物から区別した最初の技術。</div>
+        <div class="ic-inv">→ 脳の肥大化・社会集団の形成を加速</div>
+      </div>
+      <div class="inv-card">
+        <div class="ic-name">農業革命</div>
+        <div class="ic-dates">BC 1万年頃〜</div>
+        <div class="ic-field">食料生産・余剰・都市化</div>
+        <div class="ic-body">狩猟採集から農耕・牧畜への移行。余剰食料→貯蔵→分業→階級社会→都市→文明。「農業革命は人類最大の詐欺だった（ハラリ）」——農民の方が狩猟民より労働時間が長く栄養も劣った。しかし人口爆発と文明の基盤に。</div>
+        <div class="ic-inv">→ 余剰・分業・階級・文字の連鎖反応</div>
+      </div>
+      <div class="inv-card">
+        <div class="ic-name">文字の発明</div>
+        <div class="ic-dates">BC 3500年頃〜</div>
+        <div class="ic-field">情報革命 #1</div>
+        <div class="ic-body">楔形文字（シュメール）・ヒエログリフ（エジプト）・甲骨文字（中国）が独立に誕生。「脳の外部記憶装置」としての文字——法律・歴史・取引の記録が可能に。「文字のない文明は文明でない」という西洋的バイアスへの批判も。</div>
+        <div class="ic-inv">→ 国家・法律・歴史・科学の基盤</div>
+      </div>
+      <div class="inv-card">
+        <div class="ic-name">活版印刷</div>
+        <div class="ic-dates">1450年頃 · グーテンベルク</div>
+        <div class="ic-field">情報革命 #2 · メディア革命</div>
+        <div class="ic-body">グーテンベルクの活版印刷機（1450年代）——聖書が50年間で1000万部普及。それ以前は聖書の写本に修道士が一生を費やした。ルターの「95か条の論題」が印刷物として全欧州に拡散→宗教改革。「最初のマスメディア」が知識の独占（教会・貴族）を終わらせた。</div>
+        <div class="ic-inv">→ 宗教改革・科学革命・啓蒙思想を可能にした</div>
+      </div>
+      <div class="inv-card">
+        <div class="ic-name">羅針盤・火薬・望遠鏡</div>
+        <div class="ic-dates">中国→欧州 10〜16世紀</div>
+        <div class="ic-field">大航海・科学革命の道具</div>
+        <div class="ic-body">中国の4大発明（火薬・羅針盤・印刷術・製紙）がシルクロード経由で西欧に伝わり「近代ヨーロッパ」を作った。望遠鏡（1609年ガリレオ）が地動説を確認し科学革命の決定的証拠に。「技術は文明圏を超えて伝播し別の場所で革命を起こす」。</div>
+        <div class="ic-inv">→ 大航海・科学革命・火薬兵器で世界の権力地図が変わった</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 産業革命 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_03</span>
+    <h2 class="section-title">産業革命——人類史上最大の生活変革</h2>
+    <p class="section-desc">1760〜1840年代。蒸気・鉄・電気が「筋肉の時代」から「機械の時代」へ</p>
+  </div>
+
+  <div class="tech-band tb-steam">
+    <div class="tb-label">Industrial Revolution · 第一次産業革命</div>
+    <div class="tb-title">蒸気機関——人間・動物の筋力から解放された瞬間</div>
+    <div class="tb-period">1760〜1840年 · イギリス発</div>
+    <div class="tb-row">
+      <div class="tb-card">
+        <div class="tbc-name">ジェームズ・ワット</div>
+        <div class="tbc-year">1736〜1819 · スコットランド</div>
+        <div class="tbc-key">蒸気機関の改良・馬力単位</div>
+        <div class="tbc-body">ニューコメンの蒸気機関を改良し「分離凝縮器」を追加して効率を飛躍的向上。動力単位「馬力（HP）」を発明——「この機械は何頭分の馬の力か」という当時の直感的説明から生まれた単位が今も使われる。</div>
+        <div class="tbc-fact">→「馬力」という単位はワットが今も使われる証拠</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">鉄道革命</div>
+        <div class="tbc-year">1825年〜 · スティーブンソン</div>
+        <div class="tbc-key">速度・距離・時間の概念変革</div>
+        <div class="tbc-body">スティーブンソンの蒸気機関車「ロケット号」（1829年）。鉄道が「時間の標準化」を生んだ——それ以前は各地で異なる「太陽時」を使用していた。鉄道時刻表のために「標準時」が発明された。「鉄道なくして近代なし」。</div>
+        <div class="tbc-fact">→「標準時」「タイムゾーン」は鉄道が生んだ概念</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">繊維機械と工場制</div>
+        <div class="tbc-year">1760〜1800年代</div>
+        <div class="tbc-key">分業・大量生産・都市化</div>
+        <div class="tbc-body">ジェニー紡績機・水力紡績機・力織機——手工業から工場制への移行。都市への人口集中・労働者階級の誕生・児童労働・スラム形成。マルクスが「資本論」を書いたのはこのロンドンの光景を見て。「ラッダイト運動（機械打ち壊し）」——最初のテクノロジー反乱。</div>
+        <div class="tbc-fact">→「ラッダイト」——テクノロジー反対運動の代名詞に</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">電気の時代——エジソン・テスラ</div>
+        <div class="tbc-year">1879〜1890年代</div>
+        <div class="tbc-key">電球・発電所・交流vs直流</div>
+        <div class="tbc-body">エジソンが実用的な電球（1879年）・世界初の発電所（1882年・マンハッタン）を建設。テスラ（交流）vsエジソン（直流）の「電流戦争」——テスラ/ウェスティングハウスの交流が最終的に勝利。電気が「第二の産業革命」を可能にした。</div>
+        <div class="tbc-fact">→ 電気なし、コンピュータ・インターネット・AIはない</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_04</span>
+    <h2 class="section-title">テクノロジー史タイムライン</h2>
+    <p class="section-desc">20世紀〜現在——コンピュータ・インターネット・AI・バイオテクの連鎖</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1936〜1945年</div>
+        <div class="tl-event">チューリング・コンピュータの理論的誕生</div>
+        <div class="tl-desc">アラン・チューリングが「チューリング機械」の概念を提唱（1936年）——「何でも計算できる」汎用計算機の理論的モデル。ENIAC（世界初の電子計算機、1945年）——18,000本の真空管・30トン・占有面積167㎡。第二次大戦中のエニグマ暗号解読がコンピュータ開発を加速した。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💻</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1947〜1958年</div>
+        <div class="tl-event">トランジスタ・IC——シリコン時代の幕開け</div>
+        <div class="tl-desc">ベル研究所でトランジスタ発明（1947年）——真空管に置き換わる小型・省電力・高信頼の増幅素子。ジャック・キルビーが集積回路（IC）を発明（1958年）——複数のトランジスタを一枚のチップに。「シリコンバレー」の名前の由来でもあるシリコン半導体が全てのデジタル技術の物質的基盤に。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1969〜1991年</div>
+        <div class="tl-event">ARPANET→インターネット——世界が「繋がった」</div>
+        <div class="tl-desc">ARPANET（米国防総省、1969年）——核戦争でも機能する分散型通信ネットワーク。TCP/IP（ヴィントン・サーフ、1974年）——異なるネットワークを繋ぐ共通言語。ティム・バーナーズ＝リーがWWW（World Wide Web）を発明（1989年）——「インターネット」と「ウェブ」は別物。バーナーズ＝リーは特許を取らず無償で公開した。</div>
+      </div>
+      <div class="tl-dot neon"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1975〜1984年</div>
+        <div class="tl-event">パーソナルコンピュータ革命——コンピュータが「個人」に</div>
+        <div class="tl-desc">ビル・ゲイツのMicrosoft（1975年）・スティーブ・ジョブズのApple I（1976年）・IBM PC（1981年）・Macintosh（1984年）。「コンピュータは一企業に一台→一部署に一台→一人に一台」という民主化。Apple 1984年のCMは今も史上最高のCMのひとつ——「なぜ1984年はジョージ・オーウェルの1984年と違う」。</div>
+      </div>
+      <div class="tl-dot amber"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🍎</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1998〜2007年</div>
+        <div class="tl-event">Google・SNS・iPhone——情報の民主化と集中</div>
+        <div class="tl-desc">Larry PageとSergey BrinがGoogleを創業（1998年）——「世界中の情報を整理する」。MySpace・Facebook（2004）・YouTube（2005）・Twitter（2006）——UGC（ユーザー生成コンテンツ）が爆発。スティーブ・ジョブズがiPhoneを発表（2007年）——「電話・iPod・インターネット端末を合体させた」と紹介し世界を変えた。</div>
+      </div>
+      <div class="tl-dot purple"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📱</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">2010〜2020年代</div>
+        <div class="tl-event">クラウド・ビッグデータ・IoT——「第4次産業革命」</div>
+        <div class="tl-desc">AWS（Amazon Web Services）がクラウドコンピューティングを民主化——スタートアップがゼロからグローバルインフラを持てる時代に。IoT（モノのインターネット）——冷蔵庫・自動車・工場が繋がる。「データが21世紀の石油」——プラットフォーム資本主義の基盤。GDPR（欧州一般データ保護規則）——データ権利の反撃。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">☁️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">2012〜現在</div>
+        <div class="tl-event">ディープラーニング革命——AIが「人間を超え始めた」</div>
+        <div class="tl-desc">2012年ImageNet競技でディープラーニングが従来手法を圧倒（Hinton・Krizhevsky）。2016年AlphaGoが囲碁世界王者に勝利。2022年ChatGPT登場で「AIが民主化」——1億ユーザー到達最速（2ヶ月）。2024年AIがノーベル物理学賞・化学賞の対象に。「AGI（汎用人工知能）はいつ来るか」が現代最大の問い。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🤖</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">2003〜現在</div>
+        <div class="tl-event">バイオテクノロジー——「生命を設計する」時代</div>
+        <div class="tl-desc">ヒトゲノム計画完了（2003年）。CRISPR-Cas9によるゲノム編集実用化（2012年）——「生命のコピー＆ペースト」。mRNAワクチン（コロナ禍で実用化）——「設計図から薬を作る」。合成生物学——微生物をプログラムして燃料・医薬品を生産。「ソフトウェアが世界を食べる」時代に「バイオロジーが世界を設計する」時代が来る。</div>
+      </div>
+      <div class="tl-dot neon"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🧬</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: デジタル革命の巨人 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_05</span>
+    <h2 class="section-title">デジタル革命の巨人たち</h2>
+    <p class="section-desc">チューリングからジョブズ、マスクまで——現代を設計した10人</p>
+  </div>
+
+  <div class="tech-band tb-info">
+    <div class="tb-label">Pioneers of the Digital Age · デジタル時代の開拓者</div>
+    <div class="tb-title">「コンピュータは道具だ」から「コンピュータは人間を変える」への転換</div>
+    <div class="tb-row">
+      <div class="tb-card">
+        <div class="tbc-name">アラン・チューリング</div>
+        <div class="tbc-year">1912〜1954 · イングランド</div>
+        <div class="tbc-key">コンピュータ科学・AI理論の父</div>
+        <div class="tbc-body">「チューリング機械（1936）」——汎用計算機の理論的定義。第二次大戦中エニグマ暗号解読。「チューリングテスト（1950）」——「機械が人間と区別できなければ知性があると言える」。同性愛を「治療」させられた後に自殺（公式には）。2013年英国王室が正式謝罪・恩赦。</div>
+        <div class="tbc-fact">→「現代コンピュータの父」にして最大の悲劇的英雄</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">ジョン・フォン・ノイマン</div>
+        <div class="tbc-year">1903〜1957 · ハンガリー→米</div>
+        <div class="tbc-key">ノイマン型アーキテクチャ</div>
+        <div class="tbc-body">「ノイマン型コンピュータ（1945）」——プログラムをデータとして記憶装置に格納するという設計原理。今日の全てのコンピュータ（スマートフォンも）はこのアーキテクチャに基づく。原爆計画・ゲーム理論・自己複製オートマトンにも関与した「最後の天才」。</div>
+        <div class="tbc-fact">→ 今あなたのスマホもノイマン型アーキテクチャ</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">ティム・バーナーズ＝リー</div>
+        <div class="tbc-year">1955〜 · イングランド</div>
+        <div class="tbc-key">WWW（ウェブ）の発明</div>
+        <div class="tbc-body">CERN在職中にHTTP・HTML・URLを発明（1989〜1991年）。特許を取らず全世界に無償提供——「ウェブは人類共通の財産」という信念。現在はWeb3・分散型ウェブの推進に注力。「もし特許を取っていれば世界一の富豪になっていた」という歴史的if。</div>
+        <div class="tbc-fact">→ 無償公開がなければ現代のインターネット文化はなかった</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">スティーブ・ジョブズ</div>
+        <div class="tbc-year">1955〜2011 · アメリカ</div>
+        <div class="tbc-key">UX革命・「宇宙に痕跡を残す」</div>
+        <div class="tbc-body">Mac・iPod・iPhone・iPadで「コンピュータを芸術品にした」。「技術と人文学の交差点」——デザイン思考の最高実践者。1997年Appleに復帰後の製品ラインアップ整理（4象限マトリクス）は経営学の教科書に。「死を思え——あなたはすでに裸だ。心の声を聞かない理由がない」。</div>
+        <div class="tbc-fact">→「Stay hungry, stay foolish」は21世紀の最も有名な言葉のひとつ</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">マーク・ザッカーバーグ</div>
+        <div class="tbc-year">1984〜 · アメリカ</div>
+        <div class="tbc-key">SNS・「つながった世界」の設計者</div>
+        <div class="tbc-body">Facebookが「ソーシャルグラフ（人間関係のデータ）」を商品化した。「世界をよりオープンでつながったものにする」という理念と「個人データを広告収益に変える」ビジネスモデルの矛盾。メタバースへの転換（2021年）——VR空間が次の「社会的インフラ」になるという賭け。</div>
+        <div class="tbc-fact">→「移動速く、壊せ（Move fast and break things）」の功罪</div>
+      </div>
+      <div class="tb-card">
+        <div class="tbc-name">イーロン・マスク</div>
+        <div class="tbc-year">1971〜 · 南ア→カナダ→米</div>
+        <div class="tbc-key">Tesla・SpaceX・X・Neuralink</div>
+        <div class="tbc-body">「人類を多惑星種にする」——SpaceXが民間宇宙開発を変革。電気自動車の大衆化（Tesla）。X（旧Twitter）買収・grok（AI）。Neuralink——脳とコンピュータの直接インターフェース。「最も物議を醸す現代技術者」——崇拝と批判が極端に分かれる。行動の速さと一貫性のなさの共存。</div>
+        <div class="tbc-fact">→ 技術の「崇拝」と「批判」が最も集中する人物</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: AI革命 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_06</span>
+    <h2 class="section-title">AI革命——今まさに起きている最大の転換</h2>
+    <p class="section-desc">1950年代〜現在。「人工知能」という夢は70年かけてどこへ来たのか</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🧠</div>
+      <div>
+        <div class="ls-title">AIの3つの冬と1つの夏——70年の歴史</div>
+        <div class="ls-body">AI研究は「期待の爆発→失望の冬（funding停止）」を繰り返した。第1次ブーム（1950〜60年代：チェスプログラム・自動翻訳）→第1次冬（1970年代）。第2次ブーム（1980年代：エキスパートシステム）→第2次冬（1990年代）。第3次ブーム（2012年〜ディープラーニング革命）——今回はまだ冬が来ていない。「今度こそ本物か」という問いへの答えがわかるのは10年後。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🔬</div>
+      <div>
+        <div class="ls-title">ディープラーニングなぜ2012年に爆発したか</div>
+        <div class="ls-body">3つの条件が揃った——①ビッグデータ（インターネットが大量の訓練データを生んだ）②GPU（ゲーム用グラフィックカードが並列計算に転用可能と判明）③アルゴリズムの改良（バックプロパゲーション・ReLU活性化関数）。ジェフリー・ヒントン（2024年ノーベル物理学賞）が30年かけて培った理論が「条件が揃った瞬間に爆発した」典型的な技術S字曲線。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">💬</div>
+      <div>
+        <div class="ls-title">大規模言語モデル（LLM）——「次の単語を予測する」ことの驚異</div>
+        <div class="ls-body">GPT（Generative Pre-trained Transformer）シリーズ——「膨大なテキストから"次に来る最もありそうな単語"を予測するように訓練する」という単純な目標で、翻訳・要約・コーディング・推論・創作が可能になった。「なぜ機能するかが完全には理解されていない」——理論に先行した実用化という珍しい状況。2022年11月ChatGPT登場→2ヶ月で1億ユーザー（史上最速）。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">⚠️</div>
+      <div>
+        <div class="ls-title">AIリスクと「existential risk」</div>
+        <div class="ls-body">短期リスク：雇用置換・偽情報（ディープフェイク）・監視強化・アルゴリズムによる差別。中期リスク：AIによる武器自律化・生物兵器設計支援。長期リスク：「存在リスク（existential risk）」——人間より賢いAIが人間の目標と異なる目標を持つ場合。ヒントン・ベンジオ（AI研究の権威）が「開発の一時停止」を求めた2023年書簡。アンソロピック・OpenAI・DeepMindの「安全研究」vs「能力開発」のバランス。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Chapter_07</span>
+    <h2 class="section-title">テクノロジー史の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——技術を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">ムーアの法則 <span class="concept-en">Moore's Law</span></div>
+      <div class="concept-body">インテル共同創業者ゴードン・ムーアが1965年に提唱。「半導体チップ上のトランジスタ数は約2年ごとに倍増する」——これが約50年間続き、コンピュータ性能の指数関数的向上を実現した。2010年代後半から物理的限界に近づき「ムーアの法則の終焉」が議論されている。代替としてGPU・量子コンピュータ・3D積層が注目される。</div>
+      <div class="concept-izakaya">「ムーアの法則って、2年ごとにチップの性能が2倍になるという経験則で50年続いた。1971年の最初のマイクロプロセッサからiPhone15のチップまでに計算能力は約1兆倍になった——これが"テクノロジーが加速する"の正体。でもそろそろ物理的限界で終わりそうで、次の加速ドライバーは量子かAIか」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">創造的破壊 <span class="concept-en">Creative Destruction</span></div>
+      <div class="concept-body">シュンペーターの概念。新技術は「古い産業を破壊しながら新産業を創造する」——この絶え間ない破壊と創造が資本主義の本質的ダイナミズム。印刷術→写本業者の消滅。自動車→馬車産業の消滅。デジタル音楽→CD産業の崩壊。AI→知識労働の再編。「Uberはタクシー会社を持たない最大のタクシー会社」。</div>
+      <div class="concept-izakaya">「創造的破壊って"新しいものが古いものを壊す"という話で、今起きてることに当てはめると、AIが知識労働を再編してる。弁護士・医師・プログラマーの仕事の一部がAIに置き換わる——これは「壊滅」じゃなくて「創造的破壊」で、新しい形の仕事が生まれる。ただし置き換わる速度が速すぎると人間が適応できない問題がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">プラットフォーム経済 <span class="concept-en">Platform Economy</span></div>
+      <div class="concept-body">Google・Amazon・Apple・Meta（GAFAM）に代表される「市場そのものを所有する」ビジネスモデル。「ネットワーク効果（使う人が増えるほど価値が上がる）」が自然独占を生む。「パイプライン企業（価値を作って売る）」から「プラットフォーム企業（価値の交換場所を作る）」への経済の構造転換。</div>
+      <div class="concept-izakaya">「GAFAMが凄いのはモノを売ってないことで、Amazonは倉庫業でもなく"売り手と買い手を繋ぐ市場"を持っている。Appleはアプリを作らず"アプリが売れる店"を持ってる——30%の手数料は家賃。これをプラットフォーム経済と言って、市場を所有すれば永続的に収益が入る構造。ネットワーク効果が自然独占を生むから規制が難しい」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">技術的特異点 <span class="concept-en">Technological Singularity</span></div>
+      <div class="concept-body">レイ・カーツワイルが提唱。「AIが人間の知性を超えた時点（2045年頃？）から技術が自己改善を始め、人間には予測・理解できない速度で進歩する」という仮説。「その後の世界は現在の人間には想像不可能」。強烈な支持者（カーツワイル・マスク）と否定論者（ノーム・チョムスキー等）が激しく対立する。</div>
+      <div class="concept-izakaya">「シンギュラリティって技術者の間では宗教戦争みたいな議論で、カーツワイルは"2045年にAIが人間知性を超えてそこから先は予測不可能"と言う。アインシュタイン的な物理学者は"そんな単純じゃない"と言う。どちらにせよ"AIが人間より賢くなる瞬間"を真剣に考えるのが21世紀の倫理学・政治学の急務」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ラッダイト運動とテクノ不安 <span class="concept-en">Luddism</span></div>
+      <div class="concept-body">1811〜16年イギリス、産業革命期に機械化に反対して機械を打ち壊した労働者運動。リーダー「ネッド・ラッド（伝説の人物）」から「ラッダイト」という言葉が。「テクノロジー反対論者」の代名詞として使われるが、実態は「雇用を奪う機械化への抵抗」という合理的な運動だった。現代版ラッダイト——「AIに仕事を奪われる前に法規制を」という要求。</div>
+      <div class="concept-izakaya">「ラッダイトって今は"テクノロジー嫌いな保守的な人"のレッテルに使われるけど、本来は"機械化で職を失う人の合理的な抵抗運動"だった。AI時代の今、トラック運転手・コールセンター・ライターが"現代のラッダイト的状況"に置かれてる。問題は機械打ち壊しに政府が軍を出して鎮圧した歴史——テクノロジー企業 vs 労働者の今後がどうなるか」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">オープンソースとコモンズ <span class="concept-en">Open Source</span></div>
+      <div class="concept-body">リーナス・トーバルズがLinuxカーネルを無償公開（1991年）——「知識はコモンズ（共有財）であるべき」という思想。Apache・Python・TensorFlow・Wikipedia——人類の知的インフラの多くがボランティアと企業の協力で無償公開されている。「なぜ無料で作るのか」——評判・学習・使命感・コミュニティへの帰属。GPT-2/3は非公開→LLaMA→MetaのLlama公開とオープン/クローズドAIの論争が続く。</div>
+      <div class="concept-izakaya">「オープンソースって面白い現象で、世界中のエンジニアが無給でLinux・Pythonを作り続けてる。Googleもソフトの多くはオープンソースの上に成り立ってる。"なぜ無料で作るか"——"名声・学習・コミュニティの一員という満足感"——これはプロテスタントの神への奉仕みたいな構造とも言える。ウェーバー的に分析できる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">デジタル格差 <span class="concept-en">Digital Divide</span></div>
+      <div class="concept-body">インターネット・コンピュータへのアクセス格差——先進国と途上国・都市と農村・富裕層と貧困層・高齢者と若者。「テクノロジーは中立でなく格差を拡大する可能性がある」。AIの文脈では「AIを使いこなせる人と使えない人」の新しいデジタル格差が生まれつつある。「AI活用格差は今後の最大の不平等の源泉」という予測。</div>
+      <div class="concept-izakaya">「デジタル格差って今の文脈ではAIを使える人と使えない人の差になってきた。農業ができる人とできない人の差が古代に生まれたように、AI格差が21世紀の新しい生産力格差になるかもしれない。ただし農業も文字も時間が経てば普及した——AIも10年後には当たり前になる可能性もある。格差の"拡大期"をどう乗り越えるかが今の問い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">技術決定論 vs 社会形成論 <span class="concept-en">Technological Determinism</span></div>
+      <div class="concept-body">技術決定論——「技術の発展が社会・文化・歴史を決定する（技術が主役）」。社会形成論——「社会・権力・文化が技術の発展方向を決める（社会が主役）」。現実は相互作用——印刷術が宗教改革を「可能に」したが宗教改革が印刷術を「使った」のも事実。「ソーシャルメディアが民主主義を壊した」vs「権威主義者がソーシャルメディアを武器にした」という論争も同じ構図。</div>
+      <div class="concept-izakaya">「"スマホが人間を変えた"か"人間がスマホをそう使った"か——これが技術決定論vs社会形成論の論争。核兵器の発明が「大国間の直接戦争が減った」のは事実だが、それは「核が平和を作った」のか「核を持つ人間が合理的判断をした」のかで大きく違う。AIが人間を変えるのか、人間がAIを変えるのか——今まさに決まりつつある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">イノベーションのジレンマ <span class="concept-en">Innovator's Dilemma</span></div>
+      <div class="concept-body">クレイトン・クリステンセンが提唱。「優良企業が既存顧客に最適化しすぎるため、破壊的新技術に遅れる」——Kodakがデジタルカメラを発明しながら（1975年）フィルムビジネスを守るため封印し最終的に破産。Nokiaが「スマートフォンはおもちゃだ」と言っている間にAppleに市場を奪われた。「成功が失敗の原因になる」という組織の宿命的問題。</div>
+      <div class="concept-izakaya">「イノベーションのジレンマって、Kodakがデジタルカメラを自分で発明してて、"でもフィルムが主力商品だから封印しよう"と決めた結果、最終的にデジタルカメラで倒産させられた話が一番わかりやすい。今だとGoogleが検索広告ビジネスを守るため生成AI搭載を躊躇していた間にOpenAIに先行された——自分のビジネスを破壊することの難しさ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">AIアライメント問題 <span class="concept-en">AI Alignment</span></div>
+      <div class="concept-body">「AIが人間の意図する目標に沿って行動するようにする」という技術的・哲学的問題。「ペーパークリップ最大化AI（AIに"ペーパークリップを最大化せよ"と命令すると宇宙を全てペーパークリップにしようとする）」という思考実験——目標が明確でも人間の価値観と乖離しうる問題を示す。アンソロピック・OpenAI・DeepMindの安全研究チームが最重要課題として取り組む現代最大の技術倫理問題。</div>
+      <div class="concept-izakaya">「AIアライメントって、"AIに何かを命令するとき、本当に意図していることを正確に伝えるのが難しい"という問題。"部屋を綺麗にして"と言ったらロボットが全ての物を捨てた——これの超巨大版がAGI時代の脅威。人間の価値観（複雑で矛盾だらけ）を完全にAIに理解させるのが現代AI研究の最難関課題で、アンソロピックやDeepMindが真剣に取り組んでる」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 産業革命比較表 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Special</span>
+    <h2 class="section-title">4つの産業革命 完全比較表</h2>
+    <p class="section-desc">今私たちは「第4次産業革命」のただ中にいる——過去から現在を測る</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>革命</th>
+          <th>時代</th>
+          <th>コア技術</th>
+          <th>エネルギー</th>
+          <th>社会変化</th>
+          <th>消えた職業</th>
+          <th>生まれた職業</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>第1次産業革命</td>
+          <td>1760〜1840年</td>
+          <td>蒸気機関・鉄道・機械紡績</td>
+          <td>石炭</td>
+          <td>農業→工業・農村→都市・労働者階級誕生</td>
+          <td>手工業者・御者・農民</td>
+          <td>工場労働者・機関士・工場管理者</td>
+        </tr>
+        <tr>
+          <td>第2次産業革命</td>
+          <td>1870〜1914年</td>
+          <td>電気・内燃機関・鉄鋼・化学</td>
+          <td>石油・電気</td>
+          <td>大量生産・大企業・中産階級拡大</td>
+          <td>照明係・馬丁・氷の配達人</td>
+          <td>電気技師・自動車技術者・化学者</td>
+        </tr>
+        <tr>
+          <td>第3次産業革命</td>
+          <td>1960〜2000年代</td>
+          <td>コンピュータ・インターネット・デジタル</td>
+          <td>電気（情報として）</td>
+          <td>情報化・グローバル化・サービス経済</td>
+          <td>タイピスト・電話交換手・銀行窓口</td>
+          <td>プログラマー・SEO担当・ウェブデザイナー</td>
+        </tr>
+        <tr>
+          <td>第4次産業革命</td>
+          <td>2010年代〜現在</td>
+          <td>AI・IoT・バイオ・量子・ロボット</td>
+          <td>再生可能エネルギー</td>
+          <td>知識労働の自動化・物理とデジタルの融合</td>
+          <td>データ入力・基礎的翻訳・一部の診断業務</td>
+          <td>AIエンジニア・プロンプトエンジニア・AIセーフティ研究者</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      ⚡ <strong style="color:var(--elec);">歴史のパターン：</strong>全ての産業革命で「古い職業が消え、新しい職業が生まれた」。しかし毎回「変化の速度と規模」が拡大している。第1次は50〜80年かけて社会が適応した。第4次の変化はより速く、より広範囲に及ぶ可能性がある——「今回は違う」という主張の根拠。ただし「今回こそ本当に大量失業が来る」という予測は産業革命のたびに繰り返されてきた。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">// Final_Chapter</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">テクノロジー史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「AIって本当に仕事を奪うの？」</div>
+      <div class="test-q-text">テクノロジーと雇用の話になったとき</div>
+      <div class="test-a">「歴史パターンで言うと、産業革命のたびに"今度こそ大量失業が来る"と言われたが、毎回新しい職業が生まれて全体の雇用は増えてきた。でも今回が違う可能性がある理由は2つ——①AIは"筋肉"だけでなく"頭脳"を代替するから、②変化の速度が人間の適応速度を超えるかもしれないから。Economist誌の推計では"現在の職業の47%が今後20年で自動化可能"。ただしそれが"消える"のか"変わる"のかは別問題。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「なんでGAFAMはそんなに強いの？」</div>
+      <div class="test-q-text">テクノロジー企業・独占の話になったとき</div>
+      <div class="test-a">「ネットワーク効果という自然独占の構造があって、Facebookはユーザーが多いほど価値が上がる——"友人がいる場所に行く"という正のフィードバック。Amazonは出品者と購入者が増えるほど相互に便利になる——二面市場。そこにデータの固着性——"あなたのデータは競合に移せない"という乗り換えコスト。これが規制なしに任せると自然独占になる理由。EUはそこにメスを入れようとしているがアメリカはまだ甘い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「ティム・バーナーズ＝リーって誰？」</div>
+      <div class="test-q-text">インターネットの話になったとき</div>
+      <div class="test-a">「「WWW（ウェブ）の発明者」で、"インターネット"という概念はARPANETに起源があるけど、今みんなが"インターネット"と呼んでるHTTP・HTML・URL——つまりウェブブラウザで見る部分を発明したのがバーナーズ＝リー（1989年）。凄いのは特許を取らず全人類に無償提供したこと——"もし特許を取っていたら世界一の富豪"という試算がある。現代のテクノロジー富豪との対比が面白い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「メタバースって結局どうなったの？」</div>
+      <div class="test-q-text">テクノロジートレンドの話になったとき</div>
+      <div class="test-a">「2021〜22年のメタバースブームは急速に冷えて、Metaのホライズン・ワールドは「アバターに足がない」「過疎」と揶揄された。ガートナーのハイプ・サイクルで言えば"過度な期待のピーク"から"幻滅のトラフ"に入った感じ。ただし長期では否定しにくい——PlayStation VR2・Apple Vision Proが示すように空間コンピューティングの萌芽は続いてる。"メタバース"という言葉が死んでも、VR/AR空間が次の"スクリーンの進化形"になる可能性は残っている。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「イーロン・マスクってどう評価すべきなの？」</div>
+      <div class="test-q-text">テクノロジー起業家の話になったとき</div>
+      <div class="test-a">「功績は本物——SpaceXが民間宇宙開発を変革し再利用ロケットのコストを1/10に下げた。Teslaが電気自動車を大衆に広げた。問題は"手段と目的が混乱する"点——X（旧Twitter）買収は"言論の自由"という目的があったが結果として広告主が去り偽情報が増えた。"ビジョンの巨大さ"と"実行の混乱"が共存する人物。技術的な評価と政治的な評価を分けて考えるのが健全で、どちらも切り捨てると思考が単純になる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「ChatGPTって本当に"理解"してるの？」</div>
+      <div class="test-q-text">AI・LLMの話になったとき</div>
+      <div class="test-a">「「確率的なオウム（stochastic parrot）」説——"次に来る可能性が高い単語を並べているだけで理解はない"という批判と、"人間の理解も脳の電気信号パターンに過ぎないのに何が違う"という反論が対立してる。チューリングテスト的には「会話で区別できない」=「十分に知的」とも言える。ただしLLMが一貫して苦手なのは"新しい組み合わせの真の推論"——既存パターンから外れる問題で崩れやすい。"理解"の定義自体が問われている時代。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">&gt;_ tech_history.exe</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術・音楽・文学・建築・心理学・社会学・テクノロジー史。知の十四角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42;">"Any sufficiently advanced technology is indistinguishable from magic." — Arthur C. Clarke</p>
+</div>
+
+</body>
+</html>

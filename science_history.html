@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科学史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --space-deep:   #040810;
+    --space-mid:    #081428;
+    --space-rich:   #0C2048;
+    --cyan-dark:    #083840;
+    --cyan-mid:     #0C6878;
+    --cyan-light:   #18A8C0;
+    --cyan-glow:    #30D0E8;
+    --cyan-pale:    #D0F0F8;
+    --silver-deep:  #1A2030;
+    --silver-mid:   #3A4860;
+    --silver-light: #7090B0;
+    --gold:         #B8922A;
+    --gold-light:   #E0B84A;
+    --gold-pale:    #FBF5DC;
+    --red-accent:   #C83020;
+    --green-accent: #18A050;
+    --ivory:        #F8FAF8;
+    --ivory-dark:   #E8EDE8;
+    --ink:          #081018;
+    --ink-mid:      #202830;
+    --ink-light:    #485868;
+    --gray:         #8898A8;
+    --silver:       #A8B8C8;
+    --shadow:       rgba(4,8,16,0.2);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--space-deep);
+    color:#fff; text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'⚛';
+    position:absolute; font-size:30rem; opacity:0.05;
+    top:50%; left:50%; transform:translate(-50%,-52%);
+    line-height:1; pointer-events:none;
+  }
+  .hero::after {
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 30% 50%, rgba(24,168,192,0.08) 0%, transparent 60%),
+               radial-gradient(ellipse at 70% 30%, rgba(48,208,232,0.05) 0%, transparent 50%);
+    pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--cyan-glow); border:1px solid rgba(48,208,232,0.4);
+    padding:4px 16px; border-radius:2px; margin-bottom:1.5rem; position:relative; z-index:1;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem); font-weight:700; line-height:1.2; margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff,var(--cyan-glow));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    position:relative; z-index:1;
+  }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:540px; margin:0 auto 2.5rem; font-weight:300; position:relative; z-index:1; }
+  .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--cyan-glow); display:block; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block; background:var(--space-rich); color:var(--cyan-pale);
+    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
+  }
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+  .tip-bar {
+    background:#fff; border-radius:6px; border:1px solid rgba(8,20,40,0.14);
+    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel { background:var(--space-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--cyan-glow); font-weight:700; margin-bottom:1.25rem; }
+
+  /* ─── SCIENTIST CARDS ─── */
+  .sci-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:1rem; }
+  .sci-card {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+    border-top:3px solid var(--cyan-light);
+    border-radius:0 0 8px 8px; padding:1rem 1.1rem;
+  }
+  .sc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.15rem; }
+  .sc-dates  { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .sc-field  { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-light); margin-bottom:0.4rem; }
+  .sc-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+  .sc-legacy { margin-top:0.6rem; font-size:0.72rem; color:rgba(48,208,232,0.65); }
+
+  /* ─── ERA BANDS ─── */
+  .era-band { border-radius:10px; padding:2rem 2.5rem; margin-bottom:1.5rem; color:#fff; }
+  .eb-ancient { background:linear-gradient(135deg,#100C08,#28200A); }
+  .eb-islamic { background:linear-gradient(135deg,#08100A,#102008); }
+  .eb-revol   { background:linear-gradient(135deg,#080C18,#101C38); }
+  .eb-19c     { background:linear-gradient(135deg,#0A0818,#180A28); }
+  .eb-modern  { background:linear-gradient(135deg,#040810,#08142A); }
+  .eb-21c     { background:linear-gradient(135deg,#041010,#082828); }
+  .eb-label  { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.3rem; }
+  .eb-title  { font-family:'Noto Serif JP',serif; font-size:1.15rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.3rem; }
+  .eb-period { font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
+  .eb-row    { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.75rem; }
+  .eb-card   { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem; }
+  .ebc-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.15rem; }
+  .ebc-dates { font-size:0.6rem; color:var(--silver); margin-bottom:0.35rem; }
+  .ebc-field { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--gold-light); margin-bottom:0.35rem; }
+  .ebc-body  { font-size:0.76rem; color:rgba(255,255,255,0.65); line-height:1.5; }
+  .ebc-fact  { margin-top:0.5rem; font-size:0.72rem; color:rgba(48,208,232,0.65); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--cyan-light),var(--cyan-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--cyan-light);
+    border:3px solid var(--ivory); border-radius:50%;
+    box-shadow:0 0 0 2px var(--cyan-light); z-index:2;
+  }
+  .tl-dot.gold  { background:var(--gold);         box-shadow:0 0 0 2px var(--gold); }
+  .tl-dot.red   { background:var(--red-accent);    box-shadow:0 0 0 2px var(--red-accent); }
+  .tl-dot.green { background:var(--green-accent);  box-shadow:0 0 0 2px var(--green-accent); }
+  .tl-dot.glow  { background:var(--cyan-glow);     box-shadow:0 0 0 2px var(--cyan-glow); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(8,20,40,0.14); border-radius:6px;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--cyan-mid); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(8,20,40,0.14);
+    border-left:4px solid var(--cyan-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--cyan-dark); background:rgba(8,56,64,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* ─── BREAKTHROUGH CARDS ─── */
+  .break-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .break-card {
+    background:var(--space-deep); color:#fff;
+    border-radius:8px; padding:1.5rem;
+    position:relative; overflow:hidden;
+  }
+  .break-card::after {
+    content:attr(data-sym); position:absolute; bottom:-0.5rem; right:0.5rem;
+    font-size:3.5rem; opacity:0.07; line-height:1; color:var(--cyan-glow);
+  }
+  .bk-num    { font-family:'Cinzel',serif; font-size:0.72rem; color:var(--cyan-glow); letter-spacing:0.15em; display:block; margin-bottom:0.4rem; }
+  .bk-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.4rem; }
+  .bk-year   { font-size:0.65rem; color:var(--silver); display:block; margin-bottom:0.5rem; }
+  .bk-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background:var(--space-deep); border-radius:10px; padding:2.5rem; color:#fff; overflow-x:auto; }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:500px; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.67rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--cyan-glow); border-bottom:1px solid rgba(255,255,255,0.12); white-space:nowrap; }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--cyan-glow); font-weight:700; white-space:nowrap; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
+  .ls-icon  { font-size:1.8rem; flex-shrink:0; }
+  .ls-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--space-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--cyan-light); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--cyan-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--space-deep); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-icon { font-size:2rem; display:block; margin-bottom:0.5rem; color:var(--cyan-glow); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.9</div>
+  <h1>科学史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">ニュートンから量子力学・AIまで——「宇宙はなぜこうなっているか」を問い続けた人類2500年の記録。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 6世紀</span><span class="hero-stat-lbl">自然哲学の誕生</span></div>
+    <div><span class="hero-stat-num">4つの革命</span><span class="hero-stat-lbl">世界観を覆した転換点</span></div>
+    <div><span class="hero-stat-num">1687年</span><span class="hero-stat-lbl">ニュートン「プリンキピア」</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">未解決の問い</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 科学とは何か ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">科学とはどういう営みか</h2>
+    <p class="section-desc">「なぜ信じてよいのか」——科学の方法論を理解する</p>
+  </div>
+  <div class="break-grid">
+    <div class="break-card" data-sym="①">
+      <span class="bk-num">METHOD 01</span>
+      <div class="bk-name">観察と仮説</div>
+      <div class="bk-body">現象を観察し、「なぜ？」という問いを立て、仮説を作る。仮説は反証可能でなければならない（ポパー）。「全てのカラスは黒い」は白いカラスを一羽見れば反証できる。</div>
+    </div>
+    <div class="break-card" data-sym="②">
+      <span class="bk-num">METHOD 02</span>
+      <div class="bk-name">実験と検証</div>
+      <div class="bk-body">仮説を検証する実験を設計する。「他の条件を同じにして一つだけ変える（対照実験）」という方法。ガリレオが体系化。データは正直で、期待通りでなくても公表する。</div>
+    </div>
+    <div class="break-card" data-sym="③">
+      <span class="bk-num">METHOD 03</span>
+      <div class="bk-name">再現性と査読</div>
+      <div class="bk-body">他の研究者が同じ実験をして同じ結果が出なければ科学的事実ではない。論文は専門家による査読を経て発表される。「再現性の危機」が現代科学の重大問題。</div>
+    </div>
+    <div class="break-card" data-sym="④">
+      <span class="bk-num">METHOD 04</span>
+      <div class="bk-name">パラダイムと革命</div>
+      <div class="bk-body">クーンの指摘通り、科学は少しずつ積み上がるだけでなく「世界観の革命（パラダイムシフト）」によって非連続に進歩する。天動説→地動説はその典型。</div>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「科学って"証明する"学問だと思われがちだけど、実は"反証する試みに耐え続ける"学問なんよ。今の科学的事実は全部"今のところ反証されていない"もの。ニュートン力学も200年間正しかったのに相対性理論で更新された。科学は謙虚さが前提」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜中世 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">古代ギリシャ〜イスラム黄金時代</h2>
+    <p class="section-desc">BC 6世紀〜13世紀。科学の基礎概念がここで生まれた</p>
+  </div>
+
+  <div class="era-band eb-ancient">
+    <div class="eb-label">ANCIENT GREECE · BC 6〜2世紀</div>
+    <div class="eb-title">「なぜ」を神話でなく自然で説明しようとした最初の人々</div>
+    <div class="eb-period">自然哲学から数学・物理・天文・医学の萌芽まで</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">ユークリッド</div>
+        <div class="ebc-dates">BC 300年頃 · アレクサンドリア</div>
+        <div class="ebc-field">幾何学・数学</div>
+        <div class="ebc-body">「ユークリッド原論（Elements）」13巻——5つの公理から出発し465の命題を論理的に導く。2000年間使われ続けた数学の教科書。「最も多く読まれた本はバイブルとユークリッド原論」と言われる。</div>
+        <div class="ebc-fact">→ 公理から演繹する数学の方法を確立</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">アルキメデス</div>
+        <div class="ebc-dates">BC 287〜212 · シラクサ</div>
+        <div class="ebc-field">物理・数学・工学</div>
+        <div class="ebc-body">「ユリーカ！（わかった！）」——浮力の原理を風呂で発見（伝説）。てこの原理・円周率の近似値・球の体積公式を発見。「地球を動かす点を与えよ」という言葉はてこの力の誇張。ローマ軍の侵攻時に数学の問題を解いていた最中に殺されたという伝説も。</div>
+        <div class="ebc-fact">→ 浮力・てこ・無限小の概念の先駆者</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">エラトステネス</div>
+        <div class="ebc-dates">BC 276〜194 · キレネ</div>
+        <div class="ebc-field">天文・地理・数学</div>
+        <div class="ebc-body">地球の周囲をほぼ正確に計算（誤差1〜2%）。アレクサンドリアとシエネの影の角度差と2都市間の距離だけを使った三角法的アプローチ。「地球が丸い」ことを知っていたのは中世の話ではなく古代ギリシャから。</div>
+        <div class="ebc-fact">→ 紀元前に地球の大きさをほぼ正確に計算</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">アリストテレス</div>
+        <div class="ebc-dates">BC 384〜322 · スタゲイラ</div>
+        <div class="ebc-field">生物学・物理・論理学</div>
+        <div class="ebc-body">500種以上の動物を観察・分類した生物学の父。ただし「重いものが先に落ちる」「天体は完全な円運動をする」という誤りも多く、その権威が科学革命を遅らせた側面も。「力学の誤り」をガリレオが覆すまで1800年かかった。</div>
+        <div class="ebc-fact">→ 正しい生物学と誤った物理学が1800年続いた</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">ヒポクラテス</div>
+        <div class="ebc-dates">BC 460〜370頃 · コス島</div>
+        <div class="ebc-field">医学</div>
+        <div class="ebc-body">「医学の父」。病気は神罰でなく自然現象であるという医学の出発点を確立。「ヒポクラテスの誓い（Do no harm）」は今も医師倫理の基本。四体液説（血液・粘液・黄胆汁・黒胆汁のバランスが健康を決める）は間違いだったが、自然的説明の模範を示した。</div>
+        <div class="ebc-fact">→「Do no harm」——2500年後も医師の基本倫理</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">プトレマイオス</div>
+        <div class="ebc-dates">AD 100〜170 · アレクサンドリア</div>
+        <div class="ebc-field">天文学・地理学</div>
+        <div class="ebc-body">「アルマゲスト（天文学大全）」で地球中心の天動説（周転円モデル）を数学的に精密化。惑星の運動を高精度で予測できたため1400年間「正しい天文学」とみなされた。コペルニクスが覆すまでの最高権威。</div>
+        <div class="ebc-fact">→ 天動説を数学的に完成させ1400年間使われた</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="era-band eb-islamic">
+    <div class="eb-label">ISLAMIC GOLDEN AGE · 8〜13世紀</div>
+    <div class="eb-title">ギリシャ科学を保存・発展させ、ヨーロッパに渡したイスラム世界の偉業</div>
+    <div class="eb-period">バグダードの「知恵の館」が世界の知的センターだった時代</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">フワーリズミー</div>
+        <div class="ebc-dates">780〜850頃 · バグダード</div>
+        <div class="ebc-field">数学・天文学</div>
+        <div class="ebc-body">「代数学（al-jabr）」の創始者——algebraの語源。インドのゼロ・十進法とギリシャ数学を統合。「アルゴリズム」は彼の名前のラテン語読みに由来。現代コンピュータ科学の祖先のひとり。</div>
+        <div class="ebc-fact">→ algebraとalgorithmの語源は彼の名</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">イブン・シーナー（アヴィセンナ）</div>
+        <div class="ebc-dates">980〜1037 · ペルシャ</div>
+        <div class="ebc-field">医学・哲学</div>
+        <div class="ebc-body">「医学典範（Canon of Medicine）」——5巻からなる百科全書的医学書。600年以上ヨーロッパ・中東の医学教科書として使われた。飛行する鳥の観察から「空気に重さがある」ことを先取りした。「中世最大の知性」のひとり。</div>
+        <div class="ebc-fact">→ 医学典範は17世紀まで欧米の標準教科書</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">イブン・アル＝ハイサム</div>
+        <div class="ebc-dates">965〜1040頃 · バスラ</div>
+        <div class="ebc-field">光学・科学的方法</div>
+        <div class="ebc-body">「光学の書（Book of Optics）」——目が光を出すのではなく光が目に入ると正確に論証。近代的な「実験による検証」の方法論を確立した「最初の科学者」とも呼ばれる。カメラ・オブスクラの原理を体系化しルネサンス絵画の遠近法に影響。</div>
+        <div class="ebc-fact">→ 実験科学の方法論を500年先行して確立</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 科学革命 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">科学革命 — 世界観が根本から覆った100年</h2>
+    <p class="section-desc">16〜17世紀。コペルニクスからニュートンまでの「奇跡の連鎖」</p>
+  </div>
+
+  <div class="dark-panel" style="margin-bottom:2rem;">
+    <div class="dp-label">THE SCIENTIFIC REVOLUTION · 1543〜1687</div>
+    <div class="dp-title">わずか144年で「地球が宇宙の中心」という1400年の常識が覆った</div>
+    <div class="sci-row">
+      <div class="sci-card">
+        <div class="sc-name">コペルニクス</div>
+        <div class="sc-dates">1473〜1543 · ポーランド</div>
+        <div class="sc-field">天文学</div>
+        <div class="sc-body">「天球の回転について（1543）」で地動説を発表。死の床で出版。「地球は太陽の周りを回る」——1400年続いたプトレマイオスの天動説を否定。しかし惑星の軌道を円と仮定したため精度に限界があった。</div>
+        <div class="sc-legacy">→「コペルニクス的転回」の語源</div>
+      </div>
+      <div class="sci-card">
+        <div class="sc-name">ガリレオ・ガリレイ</div>
+        <div class="sc-dates">1564〜1642 · イタリア</div>
+        <div class="sc-field">物理学・天文学</div>
+        <div class="sc-body">望遠鏡で木星の衛星・月の凸凹・金星の満ち欠けを発見し地動説を支持。ピサの斜塔実験（伝説）で「重いものが先に落ちる」というアリストテレスの誤りを否定。「それでも地球は動く（E pur si muove）」——宗教裁判で撤回を強制された後の名言とされるが実際は後世の作話。</div>
+        <div class="sc-legacy">→ 実験物理学の父——「測定できるものは測定せよ」</div>
+      </div>
+      <div class="sci-card">
+        <div class="sc-name">ヨハネス・ケプラー</div>
+        <div class="sc-dates">1571〜1630 · ドイツ</div>
+        <div class="sc-field">天文学・数学</div>
+        <div class="sc-body">惑星の軌道は円ではなく「楕円」であることを発見（ケプラーの第1法則）。惑星運動の三法則を確立。師チコ・ブラーエの膨大な観測データを数学的に分析した成果。ニュートンの万有引力の直接的な基盤に。</div>
+        <div class="sc-legacy">→ 惑星の楕円軌道——ニュートンへの橋渡し</div>
+      </div>
+      <div class="sci-card">
+        <div class="sc-name">フランシス・ベーコン</div>
+        <div class="sc-dates">1561〜1626 · イングランド</div>
+        <div class="sc-field">科学哲学・方法論</div>
+        <div class="sc-body">「知は力なり（Knowledge is power）」。帰納的推論（個別の観察から一般法則を導く）を科学的方法の基礎として体系化。「イドラ（偶像）」——人間の思考を歪める4つの先入観（種族・洞窟・市場・劇場）を批判。近代科学の精神的父。</div>
+        <div class="sc-legacy">→「帰納法」の哲学的根拠を確立</div>
+      </div>
+      <div class="sci-card">
+        <div class="sc-name">ウィリアム・ハーヴェイ</div>
+        <div class="sc-dates">1578〜1657 · イングランド</div>
+        <div class="sc-field">医学・生理学</div>
+        <div class="sc-body">血液が心臓を中心に循環することを実験で証明（1628年）。ガレノスの「血液は肝臓で作られ消費される」という1400年の誤りを覆した。解剖・実験・定量測定を医学に本格導入した先駆者。</div>
+        <div class="sc-legacy">→ 血液循環の発見——近代医学の基礎</div>
+      </div>
+      <div class="sci-card">
+        <div class="sc-name">アイザック・ニュートン</div>
+        <div class="sc-dates">1643〜1727 · イングランド</div>
+        <div class="sc-field">物理・数学・光学</div>
+        <div class="sc-body">「プリンキピア（自然哲学の数学的原理, 1687）」——万有引力・運動の三法則を体系化。「天と地を同じ法則で記述した」という衝撃。ライプニッツと独立に微積分を発明（優先権論争）。「私は巨人の肩の上に立っている」——コペルニクス・ケプラー・ガリレオの遺産の上に立つという謙虚な名言。</div>
+        <div class="sc-legacy">→「自然は数学の言語で書かれている」を証明</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem 1.5rem; font-size:0.82rem; color:var(--ink-light);">
+    ⚡ <strong style="color:var(--cyan-dark);">なぜ科学革命はヨーロッパで起きたのか？</strong>——印刷術（グーテンベルク）による知識の爆発的拡散、大学制度の発達、宗教改革による教会権威の弱体化、海洋探検による実測データの蓄積、そしてイスラム黄金時代の知的遺産がアラビア語からラテン語に翻訳されたこと。「ヨーロッパ人が賢かった」のではなく「条件が重なった」のが正確。
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">科学史2500年タイムライン</h2>
+    <p class="section-desc">革命的発見は常に「常識を疑う一人」から始まった</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">BC 3世紀〜AD 2世紀</div>
+        <div class="tl-event">ヘレニズム科学の黄金期</div>
+        <div class="tl-desc">アレクサンドリア図書館を中心にユークリッド・アルキメデス・エラトステネス・ヒッパルコスらが活躍。地球の大きさ・地球から月の距離の計算、三角法の確立、解剖学の進歩。科学の最初の「黄金時代」。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏛</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">8〜13世紀</div>
+        <div class="tl-event">イスラム黄金時代</div>
+        <div class="tl-desc">バグダードの「知恵の館」でギリシャ文献をアラビア語訳。代数学・光学・医学・天文学が飛躍的発展。ヨーロッパが「暗黒時代」を過ごしている間、人類の知的トーチを持ち続けたのはイスラム世界だった。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📚</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1543〜1687年</div>
+        <div class="tl-event">科学革命</div>
+        <div class="tl-desc">コペルニクス地動説→ガリレオの実験物理学→ケプラーの惑星運動法則→ニュートンの万有引力と運動法則。「神の意志」ではなく「数学的法則」で自然を記述するという革命的転換。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌍</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1859年</div>
+        <div class="tl-event">ダーウィン「種の起源」— 生命科学の革命</div>
+        <div class="tl-desc">自然選択による進化論を発表。「人間は神が創造した」という宗教的世界観を根底から揺さぶった。「人間もサルと共通の祖先を持つ」——ビクトリア朝イギリス社会に衝撃。150年後の現代科学でも最も重要な理論のひとつ。</div>
+      </div>
+      <div class="tl-dot green"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🐒</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1865〜1870年代</div>
+        <div class="tl-event">マクスウェルの電磁気学・メンデルの遺伝法則</div>
+        <div class="tl-desc">マクスウェルが電気・磁気・光を統一する方程式を確立——「光は電磁波」。エンジニア修道士メンデルが豆の交配実験から遺伝の法則を発見（当時は無視される）。どちらも20世紀の技術革命の基盤に。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1905年</div>
+        <div class="tl-event">アインシュタイン「奇跡の年」— 4本の論文で物理学を刷新</div>
+        <div class="tl-desc">特殊相対性理論（E=mc²）・光量子仮説（光電効果、後にノーベル賞）・ブラウン運動の理論・質量とエネルギーの等価性——全て特許局の無名の26歳職員が書いた。「光速に近づくと時間が遅れる」——日常感覚を根本から覆した。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💡</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1925〜1930年代</div>
+        <div class="tl-event">量子力学の確立</div>
+        <div class="tl-desc">ハイゼンベルク・シュレーディンガー・ボーアらが原子・電子のふるまいを記述する量子力学を確立。「電子の位置と運動量を同時に正確に測れない（不確定性原理）」「観測するまで猫は生きているか死んでいるか両方（シュレーディンガーの猫）」——常識を超えた世界。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚛</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1953年</div>
+        <div class="tl-event">DNAの二重らせん構造発見</div>
+        <div class="tl-desc">ワトソン・クリックがフランクリンのX線回折画像をもとにDNA二重らせん構造を解明。「生命の設計図」の物理的実体が明らかに。ゲノム解読・遺伝子工学・PCR検査・mRNAワクチンに至る生命科学革命の起点。</div>
+      </div>
+      <div class="tl-dot green"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🧬</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1960s〜1970s</div>
+        <div class="tl-event">宇宙開発・標準模型・プレートテクトニクス</div>
+        <div class="tl-desc">1969年アポロ11号月面着陸。素粒子物理学の「標準模型」が確立し自然界の基本粒子と力を体系化。地球科学ではプレートテクトニクス理論が大陸移動・地震・火山を統一的に説明する革命的理論として確立。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🚀</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1990s〜現在</div>
+        <div class="tl-event">ゲノム革命・AI・重力波検出・量子コンピュータ</div>
+        <div class="tl-desc">2003年ヒトゲノム計画完了。2015年CRISPR-Cas9（ゲノム編集技術）実用化。2016年重力波初検出（アインシュタインの予言100年後）。2022年ChatGPTの登場でAIが科学研究自体を変革し始めた。科学と技術の境界が消えつつある。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🧬</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 19〜20世紀の巨人 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">19〜20世紀の科学の巨人たち</h2>
+    <p class="section-desc">ダーウィンからキュリー夫人・アインシュタインまで——世界観を変えた10人</p>
+  </div>
+
+  <div class="era-band eb-19c">
+    <div class="eb-label">19TH CENTURY · 19世紀の革命</div>
+    <div class="eb-title">進化論・電磁気学・熱力学・細菌学——科学が「社会を変える力」になった時代</div>
+    <div class="eb-period">1800〜1900年</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">チャールズ・ダーウィン</div>
+        <div class="ebc-dates">1809〜1882 · イングランド</div>
+        <div class="ebc-field">生物学・進化論</div>
+        <div class="ebc-body">「種の起源（1859）」で自然選択による進化論を発表。ビーグル号での航海（5年間）の観察が基盤。「最も強い者が生き残るのではなく、最も変化に適応できる者が生き残る」という名言は実はダーウィンの言葉ではないが、本質を突いている。</div>
+        <div class="ebc-fact">→ 生命科学の全てはダーウィンなしに意味をなさない</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">ルイ・パストゥール</div>
+        <div class="ebc-dates">1822〜1895 · フランス</div>
+        <div class="ebc-field">微生物学・免疫学</div>
+        <div class="ebc-body">「病気は微生物（細菌）が引き起こす（細菌説）」を実験で確立。自然発生説を否定。低温殺菌法（パスチャライゼーション）を発明。狂犬病ワクチン開発に成功。「科学に国境はないが、科学者には祖国がある」。</div>
+        <div class="ebc-fact">→ 牛乳のパスチャライゼーションは今も彼の名から</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">ジェームズ・クラーク・マクスウェル</div>
+        <div class="ebc-dates">1831〜1879 · スコットランド</div>
+        <div class="ebc-field">電磁気学・統計力学</div>
+        <div class="ebc-body">「電磁場の動的理論（1865）」——電気・磁気・光を統一した4つのマクスウェル方程式。「光は電磁波である」を理論的に証明。ラジオ・テレビ・Wi-Fi・携帯電話の全ての基礎。アインシュタインは「マクスウェルは物理学史上最大の変革をもたらした」と評した。</div>
+        <div class="ebc-fact">→ Wi-Fi・スマートフォンはマクスウェル方程式の産物</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">グレゴール・メンデル</div>
+        <div class="ebc-dates">1822〜1884 · オーストリア</div>
+        <div class="ebc-field">遺伝学</div>
+        <div class="ebc-body">修道士として8年間エンドウ豆の交配実験を行い遺伝の法則（分離の法則・独立の法則）を発見。発表当時は無視され、死後16年後に再発見された。DNAが発見される前に遺伝の数学的法則を解明した「無名の先駆者」。</div>
+        <div class="ebc-fact">→ 生涯無名——死後に「遺伝学の父」と再評価</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="era-band eb-modern" style="margin-top:1.5rem;">
+    <div class="eb-label">20TH CENTURY · 20世紀の物理革命</div>
+    <div class="eb-title">相対性理論・量子力学——「常識」が2度根本から覆った世紀</div>
+    <div class="eb-period">1900〜2000年</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">マリー・キュリー</div>
+        <div class="ebc-dates">1867〜1934 · ポーランド→フランス</div>
+        <div class="ebc-field">物理学・化学（放射線）</div>
+        <div class="ebc-body">ノーベル賞を物理学（1903）と化学（1911）で受賞した史上唯一の人物。放射線・ラジウム・ポロニウムを発見。女性が科学者として認められなかった時代に実力で道を切り拓いた。放射線被曝で亡くなったとされ、彼女の手帳は今も放射能を帯びている。</div>
+        <div class="ebc-fact">→ ノーベル賞2回受賞——物理と化学で史上唯一</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">アルベルト・アインシュタイン</div>
+        <div class="ebc-dates">1879〜1955 · ドイツ→アメリカ</div>
+        <div class="ebc-field">理論物理学</div>
+        <div class="ebc-body">特殊相対性理論（1905）・一般相対性理論（1915）・光量子仮説・統一場理論。E=mc²——質量とエネルギーは等価（原子爆弾・原子力発電の理論的根拠）。GPS衛星は一般相対性理論の補正なしに機能しない。「神はサイコロを振らない」——量子力学の確率論的解釈に最後まで抵抗。</div>
+        <div class="ebc-fact">→ GPSはアインシュタインなしに機能しない</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">ニールス・ボーア</div>
+        <div class="ebc-dates">1885〜1962 · デンマーク</div>
+        <div class="ebc-field">量子物理学</div>
+        <div class="ebc-body">水素原子の量子モデルを確立。「コペンハーゲン解釈」——量子力学の確率論的解釈の標準的立場を主導。「量子力学に衝撃を受けなかった人は、それを理解していない」。アインシュタインとの論争（ボーア＝アインシュタイン論争）は科学史最大の知的対決のひとつ。</div>
+        <div class="ebc-fact">→「量子力学に衝撃を受けない人は理解していない」</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">ワトソン＆クリック＆フランクリン</div>
+        <div class="ebc-dates">1950〜1953 · イングランド</div>
+        <div class="ebc-field">分子生物学</div>
+        <div class="ebc-body">ロザリンド・フランクリンのX線回折「写真51」をワトソン・クリックが（許可なく）参照しDNA二重らせん構造を解明。フランクリンはノーベル賞から除外され死後も長く過小評価された。科学における性差別と功績帰属の問題を象徴する事例。</div>
+        <div class="ebc-fact">→ フランクリンの貢献は長年過小評価された</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 現代科学 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">現代科学の最前線</h2>
+    <p class="section-desc">ビッグバン・ゲノム・AI・量子コンピュータ——科学は今どこにいるのか</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🌌</div>
+      <div>
+        <div class="ls-title">ビッグバン理論と宇宙の標準モデル</div>
+        <div class="ls-body">宇宙は138億年前の「ビッグバン」から始まり今も膨張している。1965年の宇宙マイクロ波背景放射の発見がビッグバンの「残光」として決定的証拠に。現在の宇宙は通常の物質4.9%・ダークマター26.8%・ダークエネルギー68.3%で構成されているが、ダークマターとダークエネルギーの正体は未解明。宇宙の95%が「謎」のまま。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🧬</div>
+      <div>
+        <div class="ls-title">ゲノム革命とCRISPR——生命を「編集」する時代</div>
+        <div class="ls-body">2003年ヒトゲノム計画完了（30億塩基対の全解読）。当初13年・30億ドルかかったゲノム解読が今では1日・数百ドルで可能に。2020年、CRISPR-Cas9でのゲノム編集がノーベル化学賞。コロナワクチンに使われたmRNA技術・がん免疫療法・遺伝子治療が現実の医療に。「生命を設計する」時代の倫理問題も深刻化。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🤖</div>
+      <div>
+        <div class="ls-title">AIと機械学習——科学研究の方法論が変わる</div>
+        <div class="ls-body">2016年AlphaGoが囲碁世界チャンピオンに勝利。2022年AlphaFold2がタンパク質の立体構造予測を解決——50年かかった「タンパク質折りたたみ問題」をAIが解いた。2024年のノーベル化学賞の半分はAIによるタンパク質構造予測に。ChatGPT以降、AI自体が科学論文の生成・仮説提案・データ分析を行い「科学の加速」が起きている。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">⚛</div>
+      <div>
+        <div class="ls-title">量子コンピュータと量子暗号——次の技術革命</div>
+        <div class="ls-body">古典的コンピュータが「0か1」のビットで計算するのに対し、量子コンピュータは「0と1が重ね合わさった量子ビット（qubit）」で計算。特定の問題で古典コンピュータの指数関数倍の速度。2019年Googleが「量子超越性」を主張（特定タスクで古典コンピュータを凌駕）。現在の暗号システムを解読できる量子コンピュータの実現は10〜20年後とされ、国際的な安全保障問題に。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🔬</div>
+      <div>
+        <div class="ls-title">気候科学と地球システム——科学の「社会的責任」</div>
+        <div class="ls-body">IPCC（気候変動に関する政府間パネル）は「地球温暖化は疑う余地なく人間活動が主因（97%以上の科学者の合意）」と結論。過去170年で地球平均気温は1.1℃上昇。しかし気候懐疑論・情報操作・政治的利害との対立が科学的合意の政策への反映を阻む——「科学の政治化」という21世紀的問題。「科学は答えを出すが、社会がどう行動するかは別問題」。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">科学史の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——科学を読む10のキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">相対性理論 <span class="concept-en">Relativity</span></div>
+      <div class="concept-body">特殊相対性理論——光速は誰が測っても一定。その結果「速く動くと時間が遅れる・質量が増える」。一般相対性理論——重力は空間の歪み。E=mc²——質量はエネルギーと等価。GPS・原子力・ブラックホールの予測に直結する。</div>
+      <div class="concept-izakaya">「E=mc²って有名だけど、何が凄いかというと質量という「物」がエネルギーという「現象」と等価だってこと。ウラン1gが完全に変換されると広島型原爆の10分の1のエネルギーになる。アインシュタインは原爆投下を知ったとき"しまった（Ach!）"と言ったという話がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">量子力学と不確定性 <span class="concept-en">Quantum Mechanics</span></div>
+      <div class="concept-body">電子などの微小粒子は「観測されるまで確定した状態にない」。位置と運動量は同時に正確に測れない（ハイゼンベルクの不確定性原理）。「シュレーディンガーの猫」——箱の中の猫は観測するまで生きているか死んでいるか「両方」。</div>
+      <div class="concept-izakaya">「量子力学って日常感覚が全く通用しない世界の話。電子は観測されるまで"どこにあるか"が確率でしか言えない。でもスマートフォンのトランジスタ・LEDライト・MRI・レーザーは全部量子力学で動いてる。"わからないのに使えている"という奇妙な状態」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">自然選択と進化 <span class="concept-en">Natural Selection</span></div>
+      <div class="concept-body">生物の変異の中で、環境に適した変異を持つ個体が生き残りやすく、その特徴が次世代に伝わる——これが繰り返されると種が変化する（進化）。設計者のいない「盲目の時計職人（ドーキンス）」による精巧な設計。</div>
+      <div class="concept-izakaya">「進化論って"目的をもって進化する"んじゃなくて、ランダムな変異の中で環境に合ったものが残るという話。だから「人間に向かって進化する」という表現は間違い。コロナウイルスが変異するのも自然選択——人間の免疫に勝てる変異体だけが広まる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">パラダイムシフト <span class="concept-en">Paradigm Shift</span></div>
+      <div class="concept-body">クーンが「科学革命の構造（1962）」で提唱。科学は少しずつ積み上がるだけでなく、支配的な世界観（パラダイム）が根本から覆る「革命」によって非連続に進歩する。天動説→地動説、ニュートン力学→相対性理論・量子力学がその典型。</div>
+      <div class="concept-izakaya">「パラダイムシフトって今はビジネス用語になってるけど、元は科学哲学の概念で"科学の常識が根本から変わること"の話。ニュートン力学が200年以上正しかったのに量子力学と相対性理論で更新された。"今の常識は未来の非常識"という謙虚さが科学の基本」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">反証可能性 <span class="concept-en">Falsifiability</span></div>
+      <div class="concept-body">ポパーが提唱した「科学と疑似科学を区別する基準」。「反証できる（間違いと証明できる可能性がある）」命題のみが科学的。占星術・フロイトの精神分析・マルクスの歴史法則は反証不可能だから疑似科学だと批判した。</div>
+      <div class="concept-izakaya">「反証可能性って占星術が科学じゃない理由の話。"火星が逆行すると恋愛運が下がる"は何が起きても"そういう意味ではなかった"と言えるから反証できない。科学は"こうなれば間違い"という条件を明示して初めて科学になる。血液型占いも同じ理由で疑似科学」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">エントロピーと熱力学第二法則 <span class="concept-en">Entropy</span></div>
+      <div class="concept-body">「エントロピー（乱雑さ）は増大する方向にしか進まない」——熱は高温から低温へ自然に流れ、逆は起きない。コーヒーにミルクを入れたら混ざるが、混ざったコーヒーが勝手にコーヒーとミルクに分離しない。「時間の矢」の物理的根拠。</div>
+      <div class="concept-izakaya">「エントロピーって"散らかる方向にしか進まない"物理法則。部屋は放置すると散らかるが自然に片付かない。宇宙全体のエントロピーは増大し続け、最終的に全てが均一になる"熱的死"に向かっている——というものすごく暗い宇宙論の結論もある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ダークマター＆ダークエネルギー <span class="concept-en">Dark Matter / Dark Energy</span></div>
+      <div class="concept-body">宇宙の組成のうち「見える物質」はわずか4.9%。残り95%は「ダークマター（26.8%）」と「ダークエネルギー（68.3%）」という正体不明の存在で占める。重力効果は観測されるが、直接観測したことはない。21世紀物理学最大の謎。</div>
+      <div class="concept-izakaya">「宇宙って実は95%が謎なんよ。"見える物質"は全体の5%しかない。残りは"ダークマター"と"ダークエネルギー"という名前だけついてる謎の存在。名前があるから知ってるみたいに聞こえるけど、実は全く正体不明。科学は正直に"知らない"と言える」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">プレートテクトニクス <span class="concept-en">Plate Tectonics</span></div>
+      <div class="concept-body">地球の表面は十数枚の「プレート」に分かれており、それが移動することで地震・火山・大陸移動が起きるという理論。大陸移動説（ウェゲナー）は1912年に提唱され当時は嘲笑されたが、1960年代に海底拡大説と統合されて確立。「なぜアフリカと南米がパズルのように合わさるのか」の答え。</div>
+      <div class="concept-izakaya">「日本がこんなに地震が多いのはプレートのせいで、太平洋・フィリピン海・ユーラシア・北米の4枚のプレートがぶつかる場所に乗っかってるから。東日本大震災はプレートの境界での巨大断層ずれ。"なぜここは地震が多いのか"が地学的に完全に説明できる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">CRISPR-Cas9とゲノム編集 <span class="concept-en">Gene Editing</span></div>
+      <div class="concept-body">細菌の免疫機構を応用した「ゲノムのコピー＆ペースト（切り貼り）」技術（2012年）。特定のDNA配列を正確に切断・編集できる。がん治療・遺伝病治療に革命をもたらす一方、「デザイナーベビー」への道を開く倫理的問題も。2020年ノーベル化学賞。</div>
+      <div class="concept-izakaya">「CRISPR（クリスパー）って遺伝子のコピー＆ペーストができる技術で、2020年のノーベル賞。鎌状赤血球症（遺伝病）の治療が実用化された。一方で2018年に中国の研究者が双子の受精卵のゲノムを編集して"HIV耐性の赤ちゃん"を産ませて世界的非難を浴びた。技術の進歩と倫理が競走している」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">科学的合意と社会 <span class="concept-en">Scientific Consensus</span></div>
+      <div class="concept-body">気候変動・ワクチン安全性・進化論——97%以上の専門家が合意している科学的事実が存在する一方、政治・経済的利害・感情・SNSの情報環境がその合意の社会への浸透を阻む「ポスト真実（Post-truth）」の問題が深刻化している。</div>
+      <div class="concept-izakaya">「"専門家の意見"と"みんなの意見"が食い違うとき、どちらを信じるべきか——これが現代の最大の認識論的問題。気候変動は97%の科学者が合意してるのに半数の一般人が疑う。ワクチンも同じ。SNSが少数の反対意見を多数派のように見せる効果が問題の核心」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 4大革命 比較 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">科学史の4大パラダイムシフト比較表</h2>
+    <p class="section-desc">世界観を根底から覆した4つの革命——何が変わり、何が残ったか</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>革命</th>
+          <th>時期・人物</th>
+          <th>何を覆したか</th>
+          <th>何を確立したか</th>
+          <th>残った謎</th>
+          <th>現代への応用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>科学革命</td>
+          <td>1543〜1687<br>コペルニクス→ニュートン</td>
+          <td>天動説・アリストテレス物理学・神による自然秩序</td>
+          <td>地動説・万有引力・数学的自然法則・実験的方法論</td>
+          <td>なぜ重力が存在するのか</td>
+          <td>航海・暦・工学・産業革命の基礎</td>
+        </tr>
+        <tr>
+          <td>進化革命</td>
+          <td>1859年<br>ダーウィン</td>
+          <td>神による特別創造・人間の特別性・固定的種の概念</td>
+          <td>自然選択・共通祖先・生命の統一的理解</td>
+          <td>意識の進化・利他主義の起源</td>
+          <td>医学・農業・抗生物質耐性・AI進化アルゴリズム</td>
+        </tr>
+        <tr>
+          <td>相対性革命</td>
+          <td>1905〜1915年<br>アインシュタイン</td>
+          <td>絶対時間・絶対空間・ニュートン的宇宙観</td>
+          <td>時空の相対性・E=mc²・重力＝空間の歪み</td>
+          <td>量子重力理論（相対論と量子論の統合）</td>
+          <td>GPS・原子力・ブラックホール天文学・核医学</td>
+        </tr>
+        <tr>
+          <td>量子革命</td>
+          <td>1925〜1935年<br>ハイゼンベルク・ボーア・シュレーディンガー</td>
+          <td>決定論的自然観・連続的物理量・粒子と波の区別</td>
+          <td>確率的量子状態・不確定性原理・波と粒子の二重性</td>
+          <td>量子力学の解釈問題・意識との関係</td>
+          <td>半導体・レーザー・MRI・量子コンピュータ・暗号</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      ⚡ <strong style="color:var(--cyan-glow);">最大の未解決問題：</strong>相対性理論（大きなスケールの宇宙を記述）と量子力学（小さなスケールの粒子を記述）は数学的に「矛盾」しており、両者を統一する「量子重力理論（万物の理論）」はまだ存在しない。これを解くことが現代物理学最大の挑戦。「神の数式」と呼ぶ人もいる。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">科学史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「相対性理論って結局何がすごいの？」</div>
+      <div class="test-q-text">科学の話になったとき定番の話題</div>
+      <div class="test-a">「一番わかりやすい実用例がGPS。GPSは宇宙の衛星から電波を受信して位置を計算するけど、衛星は高速で動いているから特殊相対性理論で時間が遅れ、重力が弱いから一般相対性理論で時間が早くなる。この補正をしないと1日に約11kmずれる。スマホのマップアプリはアインシュタインなしに機能しない——これが最も実感できる説明。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「量子コンピュータって何がすごいの？」</div>
+      <div class="test-q-text">テクノロジーの話になったとき</div>
+      <div class="test-a">「古典コンピュータは一度に一つの計算しかできないけど、量子コンピュータは"重ね合わせ"を使って同時に多数の計算ができる。ただし全ての問題が速くなるわけでなく、特定の問題（素因数分解・最適化・分子シミュレーション）に圧倒的に強い。怖いのは現在の暗号の多くが素因数分解の難しさに依存してるから、量子コンピュータが実用化されるとインターネットの暗号が解読できてしまうかもしれない。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「進化論って今でも正しいの？」</div>
+      <div class="test-q-text">進化・創造論の話になったとき</div>
+      <div class="test-a">「進化論は生物学の全ての分野を貫く統一理論で、ゲノム解析・化石・比較解剖・実験進化学で圧倒的に支持されている。修正はあったよ——ダーウィンが知らなかったDNA・遺伝子・分子進化が加わった"総合説"に発展してる。でも「自然選択によって種が変化する」という核心は微塵も揺らいでない。コロナウイルスの変異を見ていれば自然選択が今もリアルタイムで起きているのがわかる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「AI研究者ってノーベル賞とれるの？」</div>
+      <div class="test-q-text">AI・科学ニュースの話になったとき</div>
+      <div class="test-a">「2024年のノーベル物理学賞がヒントン・ホップフィールドという機械学習の先駆者に、ノーベル化学賞の半分がDeepMindのAIによるタンパク質構造予測に与えられた。AI自体がノーベル賞を取る時代ではなく"AIを使って科学的発見をした"ことへの授与。これは科学の方法論自体の変革で、今後AIなしには競争できない研究分野が急増していく。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「ガリレオって宗教裁判でどうなったの？」</div>
+      <div class="test-q-text">科学と宗教の話になったとき</div>
+      <div class="test-a">「ガリレオは1633年に宗教裁判で地動説を撤回させられ、晩年を軟禁で過ごした。有名な"それでも地球は動く"という言葉は後世の作り話で、実際には言っていないとされる。1992年にローマ教皇ヨハネ・パウロ2世がガリレオへの判決を公式に誤りと認めた——359年後。科学と宗教の対立の象徴だけど、現代の評価は"ガリレオも傲慢な側面があった"という両面的な話になっている。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「宇宙はどうやって始まったの？」</div>
+      <div class="test-q-text">壮大な話になったとき</div>
+      <div class="test-a">「ビッグバン理論は138億年前に宇宙が極めて高温・高密度の状態から膨張を始めたという説で、宇宙マイクロ波背景放射という観測的証拠がある。でも"ビッグバンの前は何だったか"には現在の物理学は答えられない——時間と空間自体がビッグバンと共に始まったかもしれないから"前"という概念が存在しないかもしれない。"神が作った"でなく"わからない"と正直に言えるのが科学の誠実さ。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">⚛</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学史。知の七角形が完成した。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「神は微妙だが、悪意はない。— アルベルト・アインシュタイン」</p>
+</div>
+
+</body>
+</html>

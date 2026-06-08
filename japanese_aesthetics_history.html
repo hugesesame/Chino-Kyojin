@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本の美意識史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nuri-deep:    #08060C;
+    --nuri-mid:     #140E18;
+    --nuri-rich:    #201828;
+    --beni:         #901830;   /* 紅 */
+    --beni-lt:      #C03050;
+    --beni-pale:    #F8E0E4;
+    --shu:          #B84020;   /* 朱 */
+    --shu-lt:       #E06030;
+    --kin:          #C09030;   /* 金 */
+    --kin-light:    #E0B848;   /* 金・明 */
+    --kin-pale:     #FBF4DC;
+    --ai:           #1C2848;   /* 藍 */
+    --ai-mid:       #2C3E68;
+    --ai-light:     #4860A0;
+    --midori:       #1A3820;   /* 緑 */
+    --midori-lt:    #2E6840;
+    --midori-glow:  #50A060;
+    --ivory:        #FAF8F0;
+    --ivory-dark:   #EDE8D4;
+    --ink:          #0C0808;
+    --ink-mid:      #2A1E18;
+    --ink-light:    #685848;
+    --gray:         #9A9080;
+    --silver:       #C0B8A0;
+    --shadow:       rgba(8,6,12,0.18);
+    --washi:        rgba(192,144,48,0.07);  /* 和紙の質感 */
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--nuri-deep);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  /* 墨絵的な背景 */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 60%, rgba(144,24,48,0.3) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 25%, rgba(192,144,48,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 95%, rgba(28,40,72,0.4) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* 薄い格子柄 */
+  .hero::after {
+    content: '美';
+    position: absolute;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 30rem; font-weight: 700;
+    opacity: 0.03; line-height: 1;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    color: var(--kin-light);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--kin-light);
+    border: 1px solid rgba(224,184,72,0.4);
+    padding: 4px 16px; border-radius: 1px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+    font-weight: 700; line-height: 1.15; margin-bottom: 1rem;
+    background: linear-gradient(160deg, #fff 20%, var(--kin-light) 65%, var(--shu-lt) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.48);
+    max-width: 560px; margin: 0 auto 3rem; font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--kin-light); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--nuri-mid); color: var(--kin-light);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 1px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(192,144,48,0.2);
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; }
+  .bg-warm  { background: var(--ivory-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 2px;
+    border: 1px solid rgba(8,6,12,0.1);
+    border-left: 4px solid var(--shu);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--nuri-deep);
+    border-radius: 3px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(192,144,48,0.12);
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--kin-light); font-weight: 700; margin-bottom: 1.25rem; }
+
+  /* ─── AESTHETIC CARDS (美意識カード) ─── */
+  .aes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 1rem; }
+  .aes-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--kin);
+    border-radius: 0 3px 3px 0;
+    padding: 1.1rem;
+  }
+  .ac-word   { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; color: var(--kin-light); font-weight: 700; display: block; margin-bottom: 0.1rem; }
+  .ac-read   { font-size: 0.62rem; color: var(--silver); letter-spacing: 0.1em; margin-bottom: 0.35rem; display: block; }
+  .ac-era    { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--midori-glow); margin-bottom: 0.35rem; }
+  .ac-body   { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .ac-ex     { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(192,144,48,0.65); }
+
+  /* ─── ERA BANDS ─── */
+  .era-band { border-radius: 3px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: #fff; }
+  .eb-heian   { background: linear-gradient(135deg, #080610, #14102A); }
+  .eb-chuseis { background: linear-gradient(135deg, #080808, #141410); }
+  .eb-edo     { background: linear-gradient(135deg, #0C0808, #201410); }
+  .eb-meiji   { background: linear-gradient(135deg, #06080C, #101828); }
+  .eb-gendai  { background: linear-gradient(135deg, #080608, #141018); }
+  .eb-label  { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.3rem; }
+  .eb-title  { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; color: var(--kin-light); font-weight: 700; margin-bottom: 0.3rem; }
+  .eb-period { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  .eb-row    { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 0.75rem; }
+  .eb-card   { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 0.9rem; }
+  .ebc-name  { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--kin-light); font-weight: 700; margin-bottom: 0.15rem; }
+  .ebc-sub   { font-size: 0.6rem; color: var(--silver); margin-bottom: 0.35rem; }
+  .ebc-key   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--midori-glow); margin-bottom: 0.35rem; }
+  .ebc-body  { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .ebc-quote { margin-top: 0.5rem; font-size: 0.72rem; color: rgba(192,144,48,0.5); font-style: italic; border-left: 2px solid rgba(192,144,48,0.3); padding-left: 0.45rem; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--shu), var(--shu), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--shu);
+    border: 3px solid var(--ivory); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--shu); z-index: 2;
+  }
+  .tl-dot.kin    { background: var(--kin);       box-shadow: 0 0 0 2px var(--kin); }
+  .tl-dot.ai     { background: var(--ai-light);  box-shadow: 0 0 0 2px var(--ai-light); }
+  .tl-dot.midori { background: var(--midori-lt); box-shadow: 0 0 0 2px var(--midori-lt); }
+  .tl-dot.beni   { background: var(--beni-lt);   box-shadow: 0 0 0 2px var(--beni-lt); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid rgba(8,6,12,0.1); border-radius: 2px;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--shu); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid rgba(8,6,12,0.1);
+    border-left: 4px solid var(--beni);
+    border-radius: 0 3px 3px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-word { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; color: var(--beni); font-weight: 700; display: block; margin-bottom: 0.1rem; }
+  .concept-read { font-size: 0.68rem; color: var(--gray); letter-spacing: 0.08em; display: block; margin-bottom: 0.25rem; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--beni); background: rgba(144,24,48,0.06); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--beni-lt); }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--ivory-dark); border-radius: 3px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--kin); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--nuri-deep); border-radius: 3px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(192,144,48,0.12); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--kin-light); border-bottom: 1px solid rgba(192,144,48,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--kin-light); font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--nuri-deep); border-radius: 3px; padding: 2.5rem; color: #fff; border: 1px solid rgba(192,144,48,0.12); }
+  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--shu); padding: 1rem 1.25rem; border-radius: 0 3px 3px 0; margin-bottom: 1rem; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--kin-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--nuri-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(192,144,48,0.12); }
+  .footer-icon { font-family: 'Noto Serif JP', serif; font-size: 2rem; display: block; margin-bottom: 0.5rem; color: var(--kin-light); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.17</div>
+  <h1>日本の美意識史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">もののあはれ・わびさび・いき・かわいい——平安貴族から現代デザインまで、「日本らしさ」の核心を形成した美意識の系譜を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">10世紀</span><span class="hero-stat-lbl">もののあはれの誕生</span></div>
+    <div><span class="hero-stat-num">15世紀</span><span class="hero-stat-lbl">わびさびの確立</span></div>
+    <div><span class="hero-stat-num">18世紀</span><span class="hero-stat-lbl">いきの江戸的完成</span></div>
+    <div><span class="hero-stat-num">現在</span><span class="hero-stat-lbl">世界に輸出される日本美学</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 日本の美意識とは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">日本の美意識とはどういうものか</h2>
+    <p class="section-desc">「西洋的な美」との違いから理解する——なぜ日本人は桜の散り際を愛でるのか</p>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">Japanese Aesthetics · 日本の美意識の特徴</div>
+    <div class="dp-title">「完璧」より「不完全」、「永遠」より「はかなさ」を愛でる感性</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; position:relative; z-index:1;">
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:1.25rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">はかなさの美</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.65;">桜が美しいのは散るから。月は欠けるから愛でる。「永続しないもの」「移ろいゆくもの」に美を見出す感性——仏教の「諸行無常」が美意識に溶け込んだもの。西洋の「美は永遠であるべき」とは対極の発想。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:1.25rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">余白と「間（ま）」</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.65;">描かないこと・言わないこと・塗らないことが表現になる。水墨画の余白・俳句の省略・茶室の沈黙——「間（ま）」は空虚でなく充実した空間。音楽では「休符」が、建築では「縁側」が間を体現する。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:1.25rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">不完全の美（侘び）</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.65;">欠け・歪み・素朴さを「欠点」でなく「味」として愛でる。茶碗のゆがみ・陶器の「景色（模様）」・漆が剥がれた器——「金継ぎ（kintsugi）」は割れた器を金で繋ぐことで傷が美になる。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:1.25rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">自然との一体感</div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.65;">「人間と自然が対立する」（西洋的）のでなく「人間は自然の一部」という世界観。庭園は自然を模倣するのでなく自然の「本質」を抽出・圧縮する。借景・枯山水・盆栽——全て「自然との一体感」の造形的表現。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「日本人がなんで桜にあんなに熱狂するかというと、"散るから美しい"というもののあはれの感性が1000年以上かけて染み込んでるから。永遠に咲き続ける桜なら誰も花見しない——はかなさが美の核心。これが西洋の"ダイヤモンドは永遠（A Diamond is Forever）"とは真逆の美意識」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 平安の美意識 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">平安時代——もののあはれとみやびの誕生</h2>
+    <p class="section-desc">794〜1185年。日本美意識の「原型」が宮廷文化の中で生まれた</p>
+  </div>
+  <div class="era-band eb-heian">
+    <div class="eb-label">Heian Period · 平安の美意識</div>
+    <div class="eb-title">「宮廷文化」という温室——かな文字・物語・歌が育んだ繊細な感性</div>
+    <div class="eb-period">794〜1185年。藤原氏摂関政治の安定の下、貴族文化が極限まで発達した</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">もののあはれ</div>
+        <div class="ebc-sub">物の哀れ · mono no aware</div>
+        <div class="ebc-key">本居宣長が発見した日本文学の本質</div>
+        <div class="ebc-body">「もの（物事・自然）」に触れたときに「あはれ（ああ、と感じる深い感慨）」が生まれる感受性。江戸時代の本居宣長が「源氏物語」を分析して発見した日本美学の核心概念。月を見て胸が締め付けられる・桜の散り際に涙ぐむ——これが日本人の美的体験の原型。</div>
+        <div class="ebc-quote">「あはれとは、心の動くことを人の言ひし詞なり」（本居宣長）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">みやび</div>
+        <div class="ebc-sub">雅 · miyabi</div>
+        <div class="ebc-key">宮廷的洗練の美</div>
+        <div class="ebc-body">「野暮（やぼ）」の対義語——粗野・俗っぽいものを排し、洗練・優雅・上品さを追求する美意識。平安貴族の服装（十二単）・調度品・言葉遣い全てに「みやび」が求められた。今日の「上品」「雅な」という形容詞の源泉。</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">をかし</div>
+        <div class="ebc-sub">をかし · okashi</div>
+        <div class="ebc-key">清少納言的な「面白い美」</div>
+        <div class="ebc-body">清少納言「枕草子」に体現される美意識。「あはれ（感情的・共感的）」と対をなす「をかし（知的・批評的・面白い）」。「春はあけぼの——ようよう白くなりゆく山際、少し明かりて、紫だちたる雲の細くたなびきたる」——美しいことへの知的な喜び。</div>
+        <div class="ebc-quote">「春はあけぼの」（枕草子冒頭）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">「源氏物語」の美学</div>
+        <div class="ebc-sub">げんじものがたり</div>
+        <div class="ebc-key">紫式部・もののあはれの最高表現</div>
+        <div class="ebc-body">光源氏の愛と政治・老いと衰退を描く54帖。「もののあはれ」が物語の全編に貫通するライトモチーフ。「橋姫」以降の「宇治十帖」では主人公の存在意義への深い疑問が現代文学と通じる実存的テーマに。世界最初の心理小説とも。</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">平安の色彩感覚</div>
+        <div class="ebc-sub">かさねの色目</div>
+        <div class="ebc-key">季節と自然の色彩システム</div>
+        <div class="ebc-body">「かさね（重ね）の色目」——十二単の重ね着の配色が季節・自然・場面に応じて細かく規定されていた。「紅梅」「薄氷」「若草」「夏虫」——自然現象を色名にした体系は日本の色彩感覚の原型。デザインにおける「日本の色」は平安にルーツを持つ。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 中世の美意識 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">中世——わびさびと幽玄の確立</h2>
+    <p class="section-desc">12〜16世紀。禅・茶・能・水墨画が生んだ「日本美学の精髄」</p>
+  </div>
+
+  <div class="era-band eb-chuseis">
+    <div class="eb-label">Medieval Japan · 中世の美意識</div>
+    <div class="eb-title">禅が美意識を変えた——「豪華さ」を否定し「素朴さ」の中に深みを見出す</div>
+    <div class="eb-period">鎌倉〜室町・戦国時代。禅宗の影響と武家文化の台頭が新しい美意識を生んだ</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">わびさび</div>
+        <div class="ebc-sub">侘び寂び · wabi-sabi</div>
+        <div class="ebc-key">不完全・はかなさ・素朴さの美</div>
+        <div class="ebc-body">「わび（侘び）」——孤独・貧しさ・不完全さの中に見出す静けさと美。「さび（寂び）」——時間の経過・古び・風化の中に現れる深み。千利休の茶道が極限まで洗練させた美意識。割れた器を金継ぎで修復する「金継ぎ」はわびの現代的体現。</div>
+        <div class="ebc-quote">「わびとは草庵の四畳半に月を見ること」（利休）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">幽玄</div>
+        <div class="ebc-sub">ゆうげん · yugen</div>
+        <div class="ebc-key">世阿弥が完成させた「奥の深さ」</div>
+        <div class="ebc-body">能楽の美的理念——言葉では言い表せない「奥深く微妙な美」。霧の中の山・月の陰・水面の揺らぎ——完全に見えないことで深みが生まれる。世阿弥「風姿花伝」で体系化。「秘すれば花」——隠されたものが花（美）の本質。</div>
+        <div class="ebc-quote">「秘すれば花なり、秘せずば花なるべからず」（世阿弥）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">千利休と茶の美学</div>
+        <div class="ebc-sub">1522〜1591</div>
+        <div class="ebc-key">「茶の湯」——究極の統合美術</div>
+        <div class="ebc-body">にじり口（30cm四方で身分差を消す）・不完全な茶碗・草庵の茶室——全てが「わびの美学」の実践。「一期一会（この出会いは二度とない）」という茶の精神。秀吉との対立——豪華な黄金の茶室 vs 利休の素朴な美。最期は切腹を命じられた美の殉教者。</div>
+        <div class="ebc-quote">「茶の湯とは只湯をわかし、茶をたてて、のむばかりなること」（利休）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">水墨画と枯山水</div>
+        <div class="ebc-sub">すいぼくが・かれさんすい</div>
+        <div class="ebc-key">余白と象徴——「引き算の美」の極致</div>
+        <div class="ebc-body">水墨画——墨の濃淡のみで自然を表現。描かれた白い余白が「霧」「空」「水」になる。枯山水——水を使わず石と砂だけで海・山・流れを表現する庭園形式。龍安寺石庭は15個の石が配置されているが「どこから見ても1個は必ず隠れる」——完全には見せない設計。</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">松尾芭蕉と俳諧</div>
+        <div class="ebc-sub">1644〜1694</div>
+        <div class="ebc-key">17音に宇宙を込める詩の美学</div>
+        <div class="ebc-body">「古池や 蛙飛び込む 水の音」——17音の俳句が「静寂の中の一瞬の音」を永遠に刻む。「軽み」「さび」「細み」——芭蕉の美学的概念。「行く春や 鳥啼き魚の 目は涙」——別れのもののあはれ。日本語の表現経済性の極致として世界文学に輸出された。</div>
+        <div class="ebc-quote">「古池や 蛙飛び込む 水の音」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 江戸の美意識 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">江戸時代——いきと粋の誕生</h2>
+    <p class="section-desc">17〜19世紀。庶民文化が生んだ洗練——「野暮」vs「いき」という美的対立</p>
+  </div>
+  <div class="era-band eb-edo">
+    <div class="eb-label">Edo Period · 江戸の美意識</div>
+    <div class="eb-title">武家でも貴族でもない「町人」が作った美意識——粋・渋・面白</div>
+    <div class="eb-period">1603〜1868年。260年の平和が生んだ豊かな庶民文化と独特の美意識</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">いき（粋）</div>
+        <div class="ebc-sub">いき · iki</div>
+        <div class="ebc-key">九鬼周造が哲学化した江戸の美</div>
+        <div class="ebc-body">哲学者・九鬼周造が「「いき」の構造（1930）」で分析。三要素：①媚態（色気・なまめかしさ）②意気地（いさぎよさ・さっぱり感）③諦め（執着しない達観）。「やぼ」の反対——過剰でなく不足でなく、ちょうど「匂わせて引く」絶妙な距離感。縞模様・藍色・半衿のちらり見せ——視覚的には「引き算の洗練」。</div>
+        <div class="ebc-quote">「いきとは媚態・意気地・諦めの三位一体だ」（九鬼周造）</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">しぶい（渋い）</div>
+        <div class="ebc-sub">渋い · shibui</div>
+        <div class="ebc-key">派手でなく枯れた深みの美</div>
+        <div class="ebc-body">「渋い」の語源は渋柿の収斂味——口の中で何かが凝縮する感覚。派手さや新鮮さでなく「年を経た深み・落ち着き・地味な複雑さ」の美。老人の顔・古い木・くすんだ藍染め——時間が蓄積されたものの美。英語に翻訳不可能な日本の美意識として海外デザイナーに注目される。</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">浮世絵の美学</div>
+        <div class="ebc-sub">うきよえ · ukiyo-e</div>
+        <div class="ebc-key">平面性・大胆構図・鮮やかな色</div>
+        <div class="ebc-body">葛飾北斎「富嶽三十六景」・歌川広重「東海道五十三次」——大胆な構図・平面的な色彩・輪郭線の強調。遠近法を使わず「近いものが大きく遠いものが小さい」という西洋的写実を拒否。モネ・ゴッホ・ドガ・ロートレックに衝撃を与えた「ジャポニスム」の源泉。</div>
+        <div class="ebc-quote">→ モネがアトリエに浮世絵を貼っていた</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">かぶき（歌舞伎）の美学</div>
+        <div class="ebc-sub">kabuki</div>
+        <div class="ebc-key">過剰・見得・型の美</div>
+        <div class="ebc-body">歌舞伎は「わびさび」とは真逆の「派手・過剰・様式美」の美意識。「見得（みえ）」——演技の最高潮で動きを止める型。隈取り（kumadori）——顔に筋を描く化粧。女形（おやま）——男が女を演じる様式。「型（かた）」の完全な習得が江戸芸能文化の基本原理。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: タイムライン ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">明治〜現代の日本美意識タイムライン</h2>
+    <p class="section-desc">西洋との出会い・戦争・高度成長・グローバル化の中で美意識はどう変わったか</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1868〜1912年 明治</div>
+        <div class="tl-event">「文明開化」——西洋美術との衝撃的出会い</div>
+        <div class="tl-desc">政府が積極的に西洋美術を導入。フォンタネージ（伊）・ラグーザ（伊）が教師として来日。「日本画vs洋画」の二元論が始まる。岡倉天心が「日本美術の独自性」を主張し東京美術学校設立。欧米への日本美術の輸出——アールヌーヴォー作家たちへの浮世絵の影響が「逆輸出」を生む。</div>
+      </div>
+      <div class="tl-dot kin"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1920〜30年代</div>
+        <div class="tl-event">「いき」の哲学化と民芸運動</div>
+        <div class="tl-desc">九鬼周造「「いき」の構造（1930）」——江戸の美意識を哲学的に体系化。柳宗悦が「民芸運動」を起こす——「無名の職人が作った日用品の中にこそ真の美がある」。陶芸家・浜田庄司・富本憲吉・バーナード・リーチが参加。「用の美（使うものの美しさ）」の発見。</div>
+      </div>
+      <div class="tl-dot ai"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏺</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1960〜70年代</div>
+        <div class="tl-event">高度成長期のデザイン——機能美と工業化</div>
+        <div class="tl-desc">Sony・Honda・Panasonicが「機能的で美しい日本製品」を世界に普及。1964年東京オリンピックの亀倉雄策によるピクトグラム（競技種目の図形）は世界標準に。田中一光・杉浦康平らが日本のグラフィックデザインを世界水準に。「高品質・高機能・コンパクト」が日本製品の世界的ブランドに。</div>
+      </div>
+      <div class="tl-dot midori"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎌</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1980年代〜</div>
+        <div class="tl-event">無印良品・川久保玲——「引き算のデザイン」</div>
+        <div class="tl-desc">無印良品（1980年創業）——「これでいい」という余剰を削ぎ落とした美学。川久保玲（コム・デ・ギャルソン）・山本耀司——1981年パリコレクション「黒の衝撃」が西洋のカラフルなファッションに「黒・非対称・解体」をぶつけ革命。「日本的な不完全さ」がファッション美学の頂点に。</div>
+      </div>
+      <div class="tl-dot beni"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🖤</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1980〜90年代</div>
+        <div class="tl-event">「かわいい」文化の誕生と世界化</div>
+        <div class="tl-desc">サンリオ・ハローキティ（1974年）から始まったかわいい文化が社会現象に。1990年代コギャルファッション・デコ携帯・原宿系——「子供っぽさ・無邪気さ・柔らかさ」を肯定する全く新しい美意識。押井守・宮崎駿・庵野秀明のアニメが世界的影響力を持ち「かわいい」が国際語に。</div>
+      </div>
+      <div class="tl-dot kin"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌸</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">2000年代〜現在</div>
+        <div class="tl-event">深澤直人・原研哉・隈研吾——「感性の輸出」</div>
+        <div class="tl-desc">深澤直人「without thought（考えなくてもわかるデザイン）」——CDの壁掛けプレイヤー（引き紐を引くと回る）。原研哉「白（しろ）」——空虚を満たす豊かさとしての白の美学。隈研吾「負ける建築」——自然素材で環境に溶け込む建築。「日本の美意識を現代デザインとして世界に翻訳」する世代。</div>
+      </div>
+      <div class="tl-dot midori"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎨</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 現代の美意識 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">現代日本の美意識——世界に輸出される日本的感性</h2>
+    <p class="section-desc">かわいい・アニメ・ミニマリズム・無印良品——「日本らしさ」の現代的表現</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🎌</div>
+      <div>
+        <div class="ls-title">「かわいい（kawaii）」——日本が世界に輸出した全く新しい美意識</div>
+        <div class="ls-body">「かわいい」は「可愛い（幼くて愛らしい）」から来るが、現代の「kawaii」はより広く「愛着・愛でたい・守りたい」という感情を呼び起こす美的カテゴリー全体を指す。丸み・小ささ・柔らかさ・無害さ・未完成さ——これらが「kawaii」の視覚的要素。ハローキティ・ポケモン・宮崎アニメのキャラクター——世界に広まった後、欧米ファッション・音楽・サブカルチャーに「kawaii aesthetic」として逆輸入された。「大人が可愛いものを好む」ことへの抵抗が薄い日本文化の特殊性は社会学的にも注目される。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🌿</div>
+      <div>
+        <div class="ls-title">無印良品の美学——「これでいい、これがいい」</div>
+        <div class="ls-body">1980年創業の無印良品は「わびさびの現代的翻訳」として世界で理解されている。「理由なき豊かさ（原研哉）」——必要以上の装飾を削ぎ落とした後に残るもの。「これでいい（これがいい、ではなく）」——選択の放棄でなく、欲望の整理後に達する納得感。バウハウスの「Less is More」と日本のわびさびが出会った地点。現在は欧米・アジアで高級ミニマリストブランドとして定着。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🎬</div>
+      <div>
+        <div class="ls-title">宮崎駿・スタジオジブリ——アニメーションが体現する日本美意識</div>
+        <div class="ls-body">「となりのトトロ」「もののけ姫」「千と千尋の神隠し」——宮崎駿の作品は「自然との共生」「もののあはれ」「間（ま）」の動く絵画。アニメーションの制作方法からも日本的——「全員主役でなく余白に価値を見出す」構図・余韻を大切にするカット割り・説明しすぎない演出。アカデミー賞受賞（千と千尋、2003年）以降、世界の映画作家に影響を与え続けている。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🏠</div>
+      <div>
+        <div class="ls-title">「金継ぎ（kintsugi）」の世界的再発見</div>
+        <div class="ls-body">割れた陶器を漆で繋ぎ、継ぎ目に金粉を蒔いて修復する日本の伝統技法「金継ぎ」が2010年代以降、世界で「哲学的美学」として再発見された。「傷を隠さず、傷を美にする」——完全さへの執着でなく破損の歴史を肯定する美意識。心理的レジリエンス・環境への敬意・不完全さの肯定として欧米メディアで多数取り上げられた。「kintsugi」は国際語として定着しつつある。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">日本の美意識 核心語彙10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——日本美学を語る10の言葉</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-word">もののあはれ</div>
+      <div class="concept-read">物の哀れ · mono no aware</div>
+      <div class="concept-body">本居宣長が「源氏物語」を通じて発見した日本文学・美学の核心。「もの（物事・自然）」に深く感じ入る「あはれ（ああ、という感動）」の感受性。桜の散り際・月の欠け・秋の終わり——はかなさに美を見出す感性の総称。欧米の美学にない概念として哲学的に注目されている。</div>
+      <div class="concept-izakaya">「もののあはれってひと言で言うと"ああ、と感じる感受性"なんよ。枯れた紅葉を見て胸が締め付けられる感じ、古い写真で昔を思い出す感じ——あれ全部もののあはれ。永続しないから美しいという価値観は"永続するものが美しい（ダイヤモンド）"という西洋と真逆」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">わびさび</div>
+      <div class="concept-read">侘び寂び · wabi-sabi</div>
+      <div class="concept-body">「わび」——貧しさ・孤独・不完全さの中に見出す静けさと美。「さび」——老い・風化・時の経過が物に与える深み。茶道・俳句・枯山水に体現される。現代では「金継ぎ」「古民家リノベ」「ヴィンテージ」文化として世界に波及。「wabi-sabi」は英語の辞書に載るほど国際的な概念になった。</div>
+      <div class="concept-izakaya">「わびさびって"ボロい・古い・不完全を美とする"という話で、英語でwabi-sabiとして世界に広まってる。割れた器を金で修復する金継ぎ・古いジーンズの色落ち・革財布のエイジング——これ全部わびさびの現代的表現。"新品・完璧・ピカピカ"が美という価値観への異議申し立て」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">間（ま）</div>
+      <div class="concept-read">ま · ma</div>
+      <div class="concept-body">「あいだ」を意味する日本語の概念——空間的・時間的・関係的な「間」が日本文化の根底にある。建築の縁側・音楽の休符・会話の沈黙・水墨画の余白——全て「間」の表現。「充填されていない空間が意味を持つ」という西洋建築・音楽にはない概念。</div>
+      <div class="concept-izakaya">「間（ま）って日本独自の概念で、説明が難しいんだけど"意味のある空白"のこと。ルーミー（コント師）の間のとり方・音楽のブレスの美しさ・茶室の沈黙——全部"何もない"ことが表現になってる。英語のsilenceやspaceとは微妙に違う、積極的な空白」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">いき（粋）</div>
+      <div class="concept-read">いき · iki</div>
+      <div class="concept-body">九鬼周造が哲学化した江戸の美意識。媚態（色気）・意気地（いさぎよさ）・諦め（執着しない）の三要素から成る。「やぼ」の反対——派手でも地味でもなく、見せすぎず隠しすぎない絶妙な距離感と洗練。縞模様・藍色・半衿のちらり見せが視覚的体現。</div>
+      <div class="concept-izakaya">「粋ってなんで外来語に翻訳できないかというと、色気・いさぎよさ・諦めの三位一体だから。"積極的に近づきすぎず、でも無関心でもなく、でも執着もしない"という絶妙な距離感——恋愛の駆け引きとか、商売人の振る舞いに出てくる江戸的洗練。"かっこいい"より深い概念」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">幽玄</div>
+      <div class="concept-read">ゆうげん · yugen</div>
+      <div class="concept-body">能の美的理念——言葉では捉えられない「奥深く微妙な美」。「秘すれば花（世阿弥）」——完全に見せないことで深みが生まれる。霧の中の山・水面の月の揺らぎ・声の余韻——感覚を直接刺激するのでなく想像力に委ねる美。現代では「行間を読む」文学・「余音を楽しむ」音楽に通底する。</div>
+      <div class="concept-izakaya">「幽玄って"全部見せない美しさ"の話で、世阿弥が言った"秘すれば花"がまさにそれ。霧の向こうの山が美しいのは霧があって全部見えないから。全部見えたら普通の山。現代でいうと"行間を読む"必要がある小説・音楽のフェードアウト——完全に終わらせないことの美学」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">用の美</div>
+      <div class="concept-read">ようのび · beauty of use</div>
+      <div class="concept-body">柳宗悦（民芸運動）が提唱。「日常的に使われる道具に宿る美しさ」——名もない職人が使いやすさを追求した結果として生まれる美。芸術のための美でなく使用のための美。南部鉄器・備前焼・手ぬぐい・下駄——「用と美が分かれていない」状態が民芸の理想。無印良品の美学の精神的源泉。</div>
+      <div class="concept-izakaya">「用の美って柳宗悦の民芸運動のキーワードで、"美術館にある美しいものより日常で使う道具の方が本当の美がある"という主張。南部鉄器の急須が美しいのは"使いやすく作ったら自然に美しくなった"から——機能が美を生む、という無印良品の設計思想の先祖」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">かわいい</div>
+      <div class="concept-read">可愛い · kawaii</div>
+      <div class="concept-body">英語にそのままkawaii として入った日本語。「幼さ・丸み・無害さ・愛着」を引き起こす美的カテゴリー。「大人が子供っぽいものを愛でることへの抵抗が薄い」という日本文化の特殊性から生まれた。ハローキティ・ポケモン・宮崎キャラクターから始まり現代のSNSビジュアル文化全体に影響。</div>
+      <div class="concept-izakaya">「kawaii が英語になったことの凄さは、"日本にしかなかった美意識のカテゴリーが世界語になった"こと。欧米にもcuteはあるけど kawaii はもっと広い——大人が大人のままで愛でる美。ジャポニスムが浮世絵を欧州に広めたように、kawaii が日本のサブカルチャーを21世紀の西洋に広めた」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">しぶい（渋い）</div>
+      <div class="concept-read">渋い · shibui</div>
+      <div class="concept-body">渋柿の収斂味から来た言葉——「派手さや新鮮さでなく、時間が蓄積された地味な深み・複雑さ・成熟した美」。老人の顔の皺・古い木の風合い・くすんだ藍染め——若々しさを「美」とする西洋的観点の逆。英語圏では"shibui"として美術・デザインの語彙に入りつつある。</div>
+      <div class="concept-izakaya">「渋いって面白い言葉で、"渋みがある=魅力がある"という意味の逆転がある。老人の顔が渋い・古い酒場が渋い・枯れた声が渋い——全部"新鮮さや輝きがない"ものに美を見出してる。英語のmatureやvintageに近いけど渋みという触覚的なニュアンスがユニーク」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">一期一会</div>
+      <div class="concept-read">いちごいちえ · ichigo ichie</div>
+      <div class="concept-body">茶道から来た概念——「この出会い・この瞬間は二度と繰り返されない」という意識。千利休の弟子・山上宗二が記した「茶の湯に一期一会という言葉あり」。仏教の無常観が倫理的規範になったもの。「今この瞬間を全力で大切にする」という生き方の指針。英語圏でもichigo ichieとして普及しつつある。</div>
+      <div class="concept-izakaya">「一期一会ってお茶の言葉で"この出会いは今この一度きり"という意識。SNS時代に逆説的に刺さるのは、いつでもどこでも繋がれる時代だからこそ"目の前の人との今この瞬間"の価値が相対的に高まってる。スマホを置いて向き合う、という行為のための哲学的根拠」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-word">型（かた）</div>
+      <div class="concept-read">型 · kata</div>
+      <div class="concept-body">日本の伝統芸能・武道・茶道・着付けに共通する「決まった動きのパターン（型）」。「守・破・離（しゅ・は・り）」——まず型を完全に習得し（守）、型を理解した上で破り（破）、型を超えた独自の境地へ（離）。「独創性は型の完全な習得の後にのみ生まれる」という東洋的創造性論。</div>
+      <div class="concept-izakaya">「型（かた）って武道でも茶道でも落語でも"まず型を完璧にコピーする"ことから始まる。西洋の"創造性＝独自性"とは逆に、"型を極めた先に独自性が生まれる"という考え方。守・破・離——型を守って、破って、離れる。これがアジアの修行文化の哲学で、スタートアップでも"基本を完璧に学んでから破壊的革新をする"という応用がある」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 美意識比較表 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special</span>
+    <h2 class="section-title">日本の美意識 時代別 完全比較表</h2>
+    <p class="section-desc">平安から現代まで——時代ごとの美意識の核心・体現・担い手</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>時代</th>
+          <th>核心の美意識</th>
+          <th>代表的概念</th>
+          <th>体現する芸術</th>
+          <th>担い手</th>
+          <th>現代への影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>平安</td>
+          <td>みやび・もののあはれ・をかし</td>
+          <td>はかなさ・優雅・感受性</td>
+          <td>源氏物語・枕草子・和歌・かさねの色目</td>
+          <td>宮廷貴族（特に女性）</td>
+          <td>日本文学の感受性の原型・色彩文化</td>
+        </tr>
+        <tr>
+          <td>中世（鎌倉〜室町）</td>
+          <td>わびさび・幽玄・余白</td>
+          <td>不完全・奥深さ・余白</td>
+          <td>茶道・能・水墨画・枯山水・俳句</td>
+          <td>禅僧・武家・茶人</td>
+          <td>世界的「wabi-sabi」ブーム・ミニマリズム</td>
+        </tr>
+        <tr>
+          <td>江戸</td>
+          <td>いき・渋さ・派手（ど派手）</td>
+          <td>洗練・媚態・諦め・過剰</td>
+          <td>浮世絵・歌舞伎・俳諧・粋な着こなし</td>
+          <td>江戸の町人・遊女・職人</td>
+          <td>ジャポニスム・現代ファッション・グラフィック</td>
+        </tr>
+        <tr>
+          <td>明治〜昭和前期</td>
+          <td>「日本美術」vs「洋風」の葛藤</td>
+          <td>民芸・用の美・近代化</td>
+          <td>民芸運動・日本画・洋画・近代建築</td>
+          <td>文化人・美術家・デザイナー</td>
+          <td>民芸品の再評価・伝統工芸のリバイバル</td>
+        </tr>
+        <tr>
+          <td>戦後〜高度成長</td>
+          <td>機能美・コンパクト・高品質</td>
+          <td>工業デザイン・実用主義</td>
+          <td>ソニー製品・Honda・ピクトグラム</td>
+          <td>工業デザイナー・エンジニア</td>
+          <td>「メイドインジャパン」の世界的信頼</td>
+        </tr>
+        <tr>
+          <td>1980年代〜</td>
+          <td>引き算の美・かわいい・コム・デ・ギャルソン</td>
+          <td>余剰を削ぐ・黒・解体・幼さ</td>
+          <td>無印良品・川久保玲・宮崎アニメ</td>
+          <td>デザイナー・ファッション作家・アニメーター</td>
+          <td>kawaii文化・ミニマリスト世界展開</td>
+        </tr>
+        <tr>
+          <td>現代（2000〜）</td>
+          <td>感性の言語化・グローバル輸出</td>
+          <td>wabi-sabi・ma・kintsugi・kawaii</td>
+          <td>深澤直人・原研哉・隈研吾・村上隆</td>
+          <td>デザイナー・建築家・現代アーティスト</td>
+          <td>日本美学が世界のデザイン思想に影響</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">最終章</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">日本の美意識史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「wabi-sabiって何？最近よく聞くけど」</div>
+      <div class="test-q-text">外国人との会話・デザインの話になったとき</div>
+      <div class="test-a">「わびさびって"不完全・古び・はかなさ"に美を見出す日本の美意識で、鎌倉〜室町時代の禅文化と茶道から生まれた。千利休が茶室ではあえて欠けた茶碗を使い、荒れた庭を愛でた——完璧でないものの方が生きている感じがするという感性。今世界でkintsugi（金継ぎ）と一緒にブームになってるのは、過剰消費・新品崇拝への反動として"古びたものの深み"を再評価する流れがあるから。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「なんで日本人は桜にそんなにこだわるの？」</div>
+      <div class="test-q-text">外国人から聞かれたとき・花見の季節に</div>
+      <div class="test-a">「"散るから美しい"というもののあはれの感性が1000年以上かけて日本人に染み込んでるから。平安時代の和歌から今の花見まで、桜の美しさの核心は"咲いている"ことでなく"散る"こと——はかなさが美の条件。永遠に咲き続けるプラスチックの桜なら誰も花見しない。仏教の「諸行無常」という世界観が美意識に溶け込んだもので、これが欧米の"美しいものは永続すべき"とは根本的に違う価値観。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「無印良品ってなんで世界でうけてるの？」</div>
+      <div class="test-q-text">デザイン・ブランドの話になったとき</div>
+      <div class="test-a">「無印良品の美学って実はわびさびの現代版で、"余剰を削ぎ落とした後に残るもの"の美しさを売っている。「これがいい」ではなく「これでいい」——欲望を整理した後の納得感。バウハウスの"Less is More"と日本のわびさびが出会った地点で、過剰消費に疲れた西洋人に刺さる。原研哉が言う「白（しろ）」の哲学——空虚ではなく可能性に満ちた空白。これが"なんも入っていないのに買う"というパラドックスを成立させる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「利休ってなんでそんなに偉いの？」</div>
+      <div class="test-q-text">茶道・日本文化の話になったとき</div>
+      <div class="test-a">「千利休が偉いのは"美の概念を革命した"から。それ以前の美の基準は「豪華・金・装飾過多（秀吉の黄金の茶室みたいな）」だった。利休はにじり口（這って入る小さな入口で身分差を消す）・欠けた茶碗・草庵——全てを"意図的に粗末に"することで「素朴さ・余白・不完全さ」の方が深い美だと示した。秀吉と対立して最終的に切腹を命じられた——"美のために権力に反逆した"という美の殉教者。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「かわいい文化って大人っぽくないと思うんだけど」</div>
+      <div class="test-q-text">日本文化への批判的な意見が出たとき</div>
+      <div class="test-a">「面白い視点で、確かに欧米では"大人が子供っぽいものを愛でる"ことへの抵抗がある。でも社会学的には——液状近代（バウマン）の不安定さの中で「変わらない・壊れない・脅かさない」存在への安定的愛着は意味がある。あとkawaii の語彙には"守りたい""守ってもらいたい"という社会的紐帯を強化する機能もある。それが世界に広まったのは「競争・攻撃・支配」と違う美意識へのニーズが世界的にあるから、という見方もできる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「日本の美意識って西洋に影響を与えたの？」</div>
+      <div class="test-q-text">日本文化の国際的影響力の話になったとき</div>
+      <div class="test-a">「大きく二度ある。一度目は19世紀——浮世絵がヨーロッパに渡り（ジャポニスム）、モネ・ゴッホ・ドガに衝撃を与えて印象派を形成する重要な触媒になった。北斎の「波」はホクサイとして欧米デザイン界で今も引用される。二度目は20世紀後半〜現在——wabi-sabi・ma・kintsugi・kawaii がデザイン・哲学・ライフスタイルとして世界に波及。ミニマリズム・サステナビリティ・マインドフルネスの文脈で"日本的感性"が世界のソフトパワーの主要素になっている。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">花</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術・音楽・文学・建築・心理学・社会学・テクノロジー・日本の美意識史。知の十五角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42;">「散る花びらを惜しむ心がもののあはれだ。— 本居宣長（意訳）」</p>
+</div>
+
+</body>
+</html>

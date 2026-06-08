@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>武士道と日本人の倫理観 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --kurogane:     #080808;   /* 鉄色 */
+    --kurogane-mid: #121010;
+    --kurogane-rich:#1E1818;
+    --hagane:       #303840;   /* 鋼色 */
+    --hagane-lt:    #506070;
+    --hagane-pale:  #D0D8E0;
+    --kin:          #C09030;   /* 金 */
+    --kin-light:    #E0B848;
+    --kin-pale:     #FBF4DC;
+    --kurenai:      #901820;   /* 紅 */
+    --kurenai-lt:   #C02830;
+    --kurenai-pale: #F8E0E2;
+    --ai:           #1C2848;   /* 藍 */
+    --ai-light:     #3050A0;
+    --ivory:        #F8F6F0;
+    --ivory-dark:   #EDE8D4;
+    --ink:          #0C0808;
+    --ink-mid:      #2A1E18;
+    --ink-light:    #685848;
+    --gray:         #9A9080;
+    --silver:       #C0B8A0;
+    --shadow:       rgba(8,8,8,0.2);
+    --ken:          #8B7355;   /* 剣・木の色 */
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--kurogane);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 60%, rgba(144,24,32,0.3) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 25%, rgba(192,144,48,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(28,40,72,0.35) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '刀';
+    position: absolute;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 28rem; font-weight: 700;
+    opacity: 0.04; line-height: 1;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    color: var(--kin-light);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--kin-light);
+    border: 1px solid rgba(224,184,72,0.4);
+    padding: 4px 16px; border-radius: 1px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2rem, 6vw, 4.2rem);
+    font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+    background: linear-gradient(160deg, #fff 20%, var(--kin-light) 65%, var(--hagane-pale) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.48);
+    max-width: 580px; margin: 0 auto 3rem; font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--kin-light); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--kurogane-mid); color: var(--kin-light);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 1px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(192,144,48,0.2);
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; }
+  .bg-warm  { background: var(--ivory-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 2px;
+    border: 1px solid rgba(8,8,8,0.1);
+    border-left: 4px solid var(--kurenai);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--kurogane);
+    border-radius: 2px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(192,144,48,0.12);
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--kin-light); font-weight: 700; margin-bottom: 1.25rem; }
+
+  /* ─── 七徳カード (7 virtues) ─── */
+  .virtue-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; }
+  .virtue-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-top: 3px solid var(--kin);
+    border-radius: 0 0 3px 3px;
+    padding: 1rem 0.8rem; text-align: center;
+  }
+  .vc-kanji  { font-family: 'Noto Serif JP', serif; font-size: 2.5rem; color: var(--kin-light); display: block; margin-bottom: 0.2rem; line-height: 1; }
+  .vc-yomi   { font-size: 0.68rem; color: var(--silver); letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem; }
+  .vc-en     { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(192,144,48,0.7); display: block; margin-bottom: 0.5rem; }
+  .vc-body   { font-size: 0.73rem; color: rgba(255,255,255,0.62); line-height: 1.5; text-align: left; }
+
+  /* ─── FIGURE CARDS ─── */
+  .figure-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; }
+  .figure-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--kin);
+    border-radius: 0 3px 3px 0;
+    padding: 1rem 1.1rem;
+  }
+  .fc-name   { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--kin-light); font-weight: 700; margin-bottom: 0.15rem; }
+  .fc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .fc-key    { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--hagane-pale); margin-bottom: 0.35rem; }
+  .fc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .fc-quote  { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(192,144,48,0.55); font-style: italic; border-left: 2px solid rgba(192,144,48,0.3); padding-left: 0.5rem; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--kin), var(--kin), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--kin);
+    border: 3px solid var(--ivory); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--kin); z-index: 2;
+  }
+  .tl-dot.red    { background: var(--kurenai-lt); box-shadow: 0 0 0 2px var(--kurenai-lt); }
+  .tl-dot.steel  { background: var(--hagane-lt);  box-shadow: 0 0 0 2px var(--hagane-lt); }
+  .tl-dot.ai     { background: var(--ai-light);   box-shadow: 0 0 0 2px var(--ai-light); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid rgba(8,8,8,0.1); border-radius: 2px;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--kin); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid rgba(8,8,8,0.1);
+    border-left: 4px solid var(--kurenai);
+    border-radius: 0 3px 3px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--kurenai); background: rgba(144,24,32,0.06); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--kurenai-lt); }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--ivory-dark); border-radius: 3px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--kin); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--kurogane); border-radius: 2px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(192,144,48,0.12); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--kin-light); border-bottom: 1px solid rgba(192,144,48,0.2); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--kin-light); font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--kurogane); border-radius: 2px; padding: 2.5rem; color: #fff; border: 1px solid rgba(192,144,48,0.12); }
+  .test-q { background: rgba(0,0,0,0.3); border-left: 3px solid var(--kin); padding: 1rem 1.25rem; border-radius: 0 3px 3px 0; margin-bottom: 1rem; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--kin-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--kurogane); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(192,144,48,0.12); }
+  .footer-icon { font-family: 'Noto Serif JP', serif; font-size: 2rem; display: block; margin-bottom: 0.5rem; color: var(--kin-light); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.18</div>
+  <h1>武士道と<br>日本人の倫理観</h1>
+  <p class="hero-sub">「武士道は死ぬことと見つけたり」——戦国の現実から江戸の哲学、新渡戸稲造の国際発信、そして現代の企業戦士まで。「日本人らしさ」の倫理的核心を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">10世紀</span><span class="hero-stat-lbl">武士の誕生</span></div>
+    <div><span class="hero-stat-num">1900年</span><span class="hero-stat-lbl">新渡戸「武士道」英語で刊行</span></div>
+    <div><span class="hero-stat-num">七つの徳</span><span class="hero-stat-lbl">義・仁・礼・智・信・忠・孝</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">今も生きる倫理の問い</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: なぜ武士道か ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">なぜ武士道を学ぶのか</h2>
+    <p class="section-desc">「日本人はなぜこう行動するのか」——その倫理的背景を知る</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-bottom:1.5rem;">
+    <div style="background:var(--kurogane); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(192,144,48,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); display:block; margin-bottom:0.4rem;">Identity</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">日本人の倫理の原点</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55;">「恥を知れ」「義理を果たす」「迷惑をかけるな」——現代日本人の行動規範の多くは武士道的倫理の名残。なぜ日本人は列に並ぶのか、なぜ謝罪文化があるのか、武士道を知ると腑に落ちる。</p>
+    </div>
+    <div style="background:var(--kurogane); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(192,144,48,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); display:block; margin-bottom:0.4rem;">Invention</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">「武士道」は発明だった</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55;">戦国時代の武士は普通に騙し合い・裏切り・虐殺をしていた。「武士道」という体系的倫理規範は江戸時代に武士が暇になってから整備された——「戦えない武士」が作った精神的アイデンティティという逆説。</p>
+    </div>
+    <div style="background:var(--kurogane); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(192,144,48,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); display:block; margin-bottom:0.4rem;">Export</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">世界に輸出された倫理</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55;">新渡戸稲造が1900年に英語で「Bushido: The Soul of Japan」を書き、西洋に「日本の騎士道」として紹介。ルーズベルト大統領が愛読し友人に配った。今も「samurai spirit」「bushido code」は世界語として機能する。</p>
+    </div>
+    <div style="background:var(--kurogane); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(192,144,48,0.1);">
+      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); display:block; margin-bottom:0.4rem;">Now</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--kin-light); font-weight:700; margin-bottom:0.4rem;">現代企業と武士道</div>
+      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55;">終身雇用・会社への忠誠・過労死（karoshi）・名刺の扱い・謝罪会見——現代日本のビジネス文化の多くは「企業＝藩、社員＝武士」という無意識の武士道的枠組みで動いている。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「武士道って江戸時代に武士が暇になってから体系化されたんよ。戦国の武将は普通に裏切ってたのに、平和になったら"武士とはかくあるべき"という理想を作り始めた。今の"サラリーマン道"も似てて、働き方改革で暇になったら逆に"仕事への誇り"が語られ始める——人間の本質かも」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 武士の誕生と発展 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">武士の誕生と武士道の歴史的形成</h2>
+    <p class="section-desc">10世紀〜17世紀。「兵（つわもの）」から「士（さむらい）」への変容</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">History of Bushido · 武士道の歴史的展開</div>
+    <div class="dp-title">武士道は一度に「発明」されたのではなく、400年かけて積み重なった</div>
+    <div class="figure-row">
+      <div class="figure-card">
+        <div class="fc-name">武士の誕生（10〜12世紀）</div>
+        <div class="fc-dates">平安末期</div>
+        <div class="fc-key">地方豪族・軍事専業集団</div>
+        <div class="fc-body">朝廷の地方統治の実力者として台頭。「弓馬の道」——馬術・弓術・刀術という軍事技術の専業集団。武士は当初「道具」だった——貴族が武器として使う存在。「武者の習い」「もののふの道」という実践的な規範が自然発生的に生まれる。</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">鎌倉武士の倫理（12〜14世紀）</div>
+        <div class="fc-dates">鎌倉〜南北朝</div>
+        <div class="fc-key">御恩と奉公・名誉・潔さ</div>
+        <div class="fc-body">「御恩と奉公（ごおんとほうこう）」——主君が土地を与え（御恩）、武士が命をかけて仕える（奉公）という双務的契約関係。「武者の名誉」——見苦しく死ぬより潔く討ち死にすることの価値。この時代の武士は実際に戦う「リアリスト」で、観念的な倫理よりも実利を優先した。</div>
+        <div class="fc-quote">→ 名誉のために死ぬことへの価値づけが始まる</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">戦国時代の「現実」（15〜16世紀）</div>
+        <div class="fc-dates">戦国・安土桃山</div>
+        <div class="fc-key">下剋上・謀略・裏切り</div>
+        <div class="fc-body">「下剋上（身分の下の者が上位者を倒す）」が普通の時代。主君を裏切り・騙し・連合して離反することが常態化。「義理（信義）」を守ることの美談が残るのは、逆に言えば義理を破ることが多かったから。武士道の「理想」と戦国の「現実」の乖離は大きかった。</div>
+        <div class="fc-quote">→「戦国武将の裏切り」は武士道以前の現実を示す</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">江戸時代の武士道哲学（17〜19世紀）</div>
+        <div class="fc-dates">江戸時代</div>
+        <div class="fc-key">山鹿素行・葉隠・五輪書</div>
+        <div class="fc-body">260年の平和で武士は「戦わない」存在になった。「武士らしさとは何か」を哲学的に問い始める——山鹿素行「士道」・宮本武蔵「五輪書」・山本常朝「葉隠」。この時代に「武士道」という規範体系が精緻化された。「机上の武士道」vs「実戦なき武士の苦悩」。</div>
+        <div class="fc-quote">「武士道とは死ぬことと見つけたり」（葉隠）</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">明治維新と武士道の「再発明」</div>
+        <div class="fc-dates">1868〜1912年</div>
+        <div class="fc-key">廃刀令・国民道徳・軍国主義</div>
+        <div class="fc-body">1876年廃刀令——武士という身分の廃絶。しかし武士道の精神は「国民道徳」として再活用された。教育勅語（1890）に武士道的価値観が組み込まれ、「天皇への忠義」として拡大解釈。新渡戸稲造の「武士道（1900年）」は明治日本を世界に説明するための知的操作でもあった。</div>
+        <div class="fc-quote">→ 武士道が「国民全体の倫理」に変換された</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 武士道の七徳 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">武士道の七徳——倫理体系の核心</h2>
+    <p class="section-desc">新渡戸稲造が体系化した「武士道の七つの柱」——今も現代日本人の行動規範に生きる</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">The Seven Virtues of Bushido · 武士道七徳</div>
+    <div class="dp-title">儒教・仏教・神道の三つの倫理が融合した日本独自の価値体系</div>
+    <div class="virtue-grid" style="position:relative; z-index:1; margin-top:0.5rem;">
+      <div class="virtue-card">
+        <span class="vc-kanji">義</span>
+        <span class="vc-yomi">ぎ</span>
+        <span class="vc-en">Righteousness</span>
+        <p class="vc-body">正しい行い・正義。利益でなく正しさに従って行動する。「筋を通す」という現代語に残る。不正を見て見ぬふりをしないことへの社会的規範。</p>
+      </div>
+      <div class="virtue-card">
+        <span class="vc-kanji">仁</span>
+        <span class="vc-yomi">じん</span>
+        <span class="vc-en">Benevolence</span>
+        <p class="vc-body">慈悲・思いやり。強者が弱者に対して示す温かさ。「情けをかける」。武は力であり慈悲なき力は暴力——強さと優しさの統合。</p>
+      </div>
+      <div class="virtue-card">
+        <span class="vc-kanji">礼</span>
+        <span class="vc-yomi">れい</span>
+        <span class="vc-en">Respect</span>
+        <p class="vc-body">礼儀・敬意。相手への敬意を形として示すこと。日本の「お辞儀文化」「名刺の扱い」「謝罪の形式」——礼の現代的表現。「礼に始まり礼に終わる」は武道の原則。</p>
+      </div>
+      <div class="virtue-card">
+        <span class="vc-kanji">智</span>
+        <span class="vc-yomi">ち</span>
+        <span class="vc-en">Wisdom</span>
+        <p class="vc-body">知恵・判断力。単なる知識でなく実践的判断力。「書を読み、道を知る」——文武両道の精神。宮本武蔵が「五輪書」で論じた「兵法の智慧」。</p>
+      </div>
+      <div class="virtue-card">
+        <span class="vc-kanji">信</span>
+        <span class="vc-yomi">しん</span>
+        <span class="vc-en">Honesty</span>
+        <p class="vc-body">誠実さ・約束を守ること。「武士に二言はない」——一度言ったことは必ず守る。書面契約より口頭での誓いが重かった時代の倫理。現代の「日本人は約束を守る」という国際的信頼感の源泉の一つ。</p>
+      </div>
+      <div class="virtue-card">
+        <span class="vc-kanji">忠</span>
+        <span class="vc-yomi">ちゅう</span>
+        <span class="vc-en">Loyalty</span>
+        <p class="vc-body">主君・国家・集団への忠誠。「主君のために死ぬ」という最高の美徳。現代では会社・チームへの忠誠に転化。終身雇用・転職への抵抗感の文化的根拠の一つ。</p>
+      </div>
+      <div class="virtue-card">
+        <span class="vc-kanji">孝</span>
+        <span class="vc-yomi">こう</span>
+        <span class="vc-en">Filial Piety</span>
+        <p class="vc-body">親・先祖への孝行。儒教から来た徳。「家名を汚さない」「先祖に恥じない」という行動規範。現代でも「恥ずかしくて親に合わせる顔がない」という言い方に生きている。</p>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62); position:relative; z-index:1;">
+      💡 <strong style="color:var(--kin-light);">三つの源流：</strong>義・仁・礼・智・信は儒教の五常に由来。忠は儒教の忠義道。孝は儒教の孝道。「恥」の概念と「切腹による贖罪」は仏教的死生観と神道的清潔感の融合。武士道は輸入思想の「日本化」という点でも典型的な日本文化の産物。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 三大テキスト ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">武士道の三大テキスト</h2>
+    <p class="section-desc">葉隠・五輪書・武士道——三つの書物が描いた「武士とはなにか」</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:1rem;">
+    <div style="background:var(--kurogane); border:1px solid rgba(192,144,48,0.12); border-radius:2px; padding:2rem; color:#fff;">
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:start;">
+        <div style="text-align:center; min-width:80px;">
+          <div style="font-family:'Noto Serif JP',serif; font-size:3rem; color:var(--kin-light); line-height:1; margin-bottom:0.3rem;">葉隠</div>
+          <div style="font-size:0.62rem; color:var(--silver); letter-spacing:0.08em;">はがくれ</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); margin-bottom:0.4rem;">Hagakure · 1716年頃・山本常朝</div>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.68); line-height:1.7; margin-bottom:0.75rem;">「武士道とは死ぬことと見つけたり」——山本常朝が口述し田代陣基が記録した鍋島藩士の武士道論。「常に死を覚悟し、今この瞬間に全力を尽くせ」という実存的態度。戦後は三島由紀夫が愛読し再注目された。<br>
+          現代的解釈：「死を覚悟した人間だけが完全に生きられる」——死の覚悟が逆説的に生の充実をもたらすという思想はハイデガーの「死への存在」と通じる。</div>
+          <div style="background:rgba(0,0,0,0.3); border-radius:2px; padding:0.75rem; font-size:0.8rem; color:rgba(255,255,255,0.55); font-style:italic; border-left:3px solid rgba(192,144,48,0.4);">「武士道とは死ぬことと見つけたり。二つ二つの場にて、早く死に方に片付くばかりなり」</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--kurogane); border:1px solid rgba(192,144,48,0.12); border-radius:2px; padding:2rem; color:#fff;">
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:start;">
+        <div style="text-align:center; min-width:80px;">
+          <div style="font-family:'Noto Serif JP',serif; font-size:3rem; color:var(--kin-light); line-height:1; margin-bottom:0.3rem;">五輪書</div>
+          <div style="font-size:0.62rem; color:var(--silver); letter-spacing:0.08em;">ごりんのしょ</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); margin-bottom:0.4rem;">Go Rin no Sho · 1645年・宮本武蔵</div>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.68); line-height:1.7; margin-bottom:0.75rem;">生涯60余度の試合に無敗とされる剣豪・宮本武蔵が晩年に書いた兵法書。地・水・火・風・空の五巻構成。「千日の稽古を鍛とし、万日の稽古を錬とする」。<br>
+          現代では経営・スポーツ・自己啓発の文脈で世界的に読まれるビジネス書になった。「二刀流」は大谷翔平の代名詞として国際語に。</div>
+          <div style="background:rgba(0,0,0,0.3); border-radius:2px; padding:0.75rem; font-size:0.8rem; color:rgba(255,255,255,0.55); font-style:italic; border-left:3px solid rgba(192,144,48,0.4);">「我、事において後悔せず」「我、神仏を尊びて神仏を頼まず」</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--kurogane); border:1px solid rgba(192,144,48,0.12); border-radius:2px; padding:2rem; color:#fff;">
+      <div style="display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:start;">
+        <div style="text-align:center; min-width:80px;">
+          <div style="font-family:'Noto Serif JP',serif; font-size:2.5rem; color:var(--kin-light); line-height:1; margin-bottom:0.3rem;">武士道</div>
+          <div style="font-size:0.62rem; color:var(--silver); letter-spacing:0.08em;">Bushido</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--kin-light); margin-bottom:0.4rem;">Bushido: The Soul of Japan · 1900年・新渡戸稲造</div>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.68); line-height:1.7; margin-bottom:0.75rem;">ベルギーの法学者に「日本人の宗教・道徳教育は何か」と聞かれた新渡戸稲造が英語で書いた著作。「武士道こそが日本の道徳の根本」として西洋に紹介。セオドア・ルーズベルト大統領が愛読し友人60人以上に配った。<br>
+          注目すべきは、新渡戸自身はクリスチャンで武士階級出身でもない——「日本を西洋に説明するための文化外交的著作」という側面がある。「武士道とは日本人の倫理観だ」という主張自体が構築されたものとも言える。</div>
+          <div style="background:rgba(0,0,0,0.3); border-radius:2px; padding:0.75rem; font-size:0.8rem; color:rgba(255,255,255,0.55); font-style:italic; border-left:3px solid rgba(192,144,48,0.4);">「武士道は日本の象徴的な桜花のごとく、日本の土地に咲き日本の空気を香らせた」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: タイムライン ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">武士道・日本倫理観タイムライン</h2>
+    <p class="section-desc">10世紀から現代まで——武士道の誕生・変容・現代への継承</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">10〜12世紀</div>
+        <div class="tl-event">武士の誕生——「弓馬の道」</div>
+        <div class="tl-desc">平安末期、地方豪族として武力専業集団が台頭。「もののふ」「さむらい（侍う者→主君に仕える者）」という言葉が生まれる。源頼朝が鎌倉幕府を開き武家政権が誕生（1185年）。「御恩と奉公」という封建的主従関係が倫理の基盤に。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏹</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">15〜16世紀 戦国時代</div>
+        <div class="tl-event">「下剋上」——倫理より生存の時代</div>
+        <div class="tl-desc">主君を殺して成り上がる下剋上が常態化。武田信玄・毛利元就・斎藤道三——全員が裏切りや謀略で権力を得た。「義を守って討ち死に」より「生き残って次の戦いに備える」が現実の武士の戦略。武士道の「理想」が作られるのは、まさにこの混乱への反省として。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚔️</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1600〜1868年 江戸時代</div>
+        <div class="tl-event">武士道の哲学化——「文武両道」「義死」</div>
+        <div class="tl-desc">260年の平和で武士は「戦わない」存在になった。山鹿素行「士道（1665）」・宮本武蔵「五輪書（1645）」・山本常朝「葉隠（1716）」——武士道が哲学書として書かれた時代。儒教（朱子学）が武士の教養の基本に。切腹が「名誉の死」として体系化された。</div>
+      </div>
+      <div class="tl-dot ai"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📜</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1876年</div>
+        <div class="tl-event">廃刀令——武士の身分的終焉</div>
+        <div class="tl-desc">明治政府が帯刀を禁止。「武士」という社会階層が制度的に消滅。しかし武士道の精神は「国民道徳」に転化。士族の反乱（西南戦争1877年・西郷隆盛）が「最後の武士」伝説を作る。明治以降、武士道は「日本人全体の倫理規範」として再構築される。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🗡</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1900年</div>
+        <div class="tl-event">新渡戸稲造「Bushido」——世界への輸出</div>
+        <div class="tl-desc">英語で書かれた「武士道：日本の魂（Bushido: The Soul of Japan）」がアメリカで出版。欧米に「日本の騎士道」として紹介され国際的ベストセラーに。ルーズベルト大統領の愛読書に。日本人自身も「これが自分たちの倫理だ」と再発見した逆輸入的効果もあった。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1937〜1945年</div>
+        <div class="tl-event">武士道の軍国主義的歪曲</div>
+        <div class="tl-desc">太平洋戦争期、「天皇への忠義」「死を恐れぬ武士の精神」として武士道が軍国主義に利用された。特攻隊・玉砕・「生きて虜囚の辱めを受けず」——武士道の「名誉ある死」の概念が組織的な死への強制に転用された。戦後、武士道は一時的に批判的に見られるようになる。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚠️</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1970年 三島由紀夫事件</div>
+        <div class="tl-event">武士道への最後の殉死——三島の自決</div>
+        <div class="tl-desc">作家・三島由紀夫が自衛隊市ヶ谷駐屯地で「日本人の魂の再生」を訴えて割腹自殺。葉隠を愛読した三島にとって自決は「武士道の最後の実践」だった。世界を震撼させた事件は「戦後日本と武士道の関係」を象徴する最大の文化的事件として今も論じられる。</div>
+      </div>
+      <div class="tl-dot steel"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📖</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">現代</div>
+        <div class="tl-event">「企業武士道」と武士道の再評価</div>
+        <div class="tl-desc">終身雇用・会社への忠誠・過労死問題——現代日本のビジネス文化に武士道的倫理が生きている。一方でスポーツの「武士道精神」（柔道・剣道の礼・相撲の型）・「侍ジャパン」という呼称——武士道は現代日本のアイデンティティとして機能し続ける。WBCの後の一次整理での選手たちのゴミ拾いが世界で話題になった「武士道文化の現代的発現」。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏆</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 武士道と現代 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">武士道が現代日本に残したもの</h2>
+    <p class="section-desc">企業・スポーツ・日常行動——見えない武士道的価値観の現代的影響</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🏢</div>
+      <div>
+        <div class="ls-title">企業社会の「武士道的構造」——社員は現代の武士</div>
+        <div class="ls-body">「会社＝藩」「社長＝藩主」「社員＝家臣」という無意識の構造が今も日本の職場を規定している。終身雇用・年功序列——「主君（会社）への忠誠を尽くした武士が加増される」構造。「会社のために」という滅私奉公的感覚・転職への心理的抵抗・仕事への誇り（職人的マインド）。過労死（karoshi）は「忠義の極限」という武士道的論理の暗い帰結でもある。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🥋</div>
+      <div>
+        <div class="ls-title">武道と「礼」の文化——型の継承</div>
+        <div class="ls-body">柔道・剣道・空手・相撲——「礼に始まり礼に終わる」という武道の原則は武士道の「礼」の直接の継承。「型（かた）」の完全習得→破壊→超越という「守・破・離」。スポーツとしての勝利より「人間としての完成」を目指すという精神——これが欧米スポーツ文化と異なる日本武道の哲学的基盤。宮本武蔵の「五輪書」が世界の格闘家・ビジネスマンに読まれ続ける理由。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🌸</div>
+      <div>
+        <div class="ls-title">「恥」の文化と集団主義——ルース・ベネディクトの分析</div>
+        <div class="ls-body">文化人類学者ルース・ベネディクト「菊と刀（1946）」——日本文化を「恥の文化（shame culture）」、西洋を「罪の文化（guilt culture）」として対比。「恥」——他者の目線を意識した行動規範（「恥ずかしい」「世間体」）。「罪」——神や自己良心を意識した行動規範。この分析は単純化しすぎという批判もあるが、「周りに迷惑をかけてはいけない」という日本的倫理の核心を説明する枠組みとして今も有効。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🏅</div>
+      <div>
+        <div class="ls-title">「侍ジャパン」と現代スポーツの武士道——WBCのゴミ拾い</div>
+        <div class="ls-body">2023年WBC（ワールド・ベースボール・クラシック）で日本代表が優勝後、ロッカールームを綺麗に掃除して帰ったことが世界で「日本人らしさの体現」として話題に。大谷翔平の「感謝・尊重・謙虚さ」というスタンス——「武士道の現代的体現」として国際メディアが報道。「勝っても驕らない・相手を尊重する・場を清める」という武士道的礼の現代スポーツへの継承。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: CONCEPT CARDS ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">武士道・日本倫理観の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——日本人の行動を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">切腹（せっぷく）<span class="concept-en">Seppuku</span></div>
+      <div class="concept-body">武士の「名誉ある自死」の儀式。腹部を横に切る「腹切り」。「恥を受けるよりも死を選ぶ」という武士道的名誉観の究極的表現。介錯者（けいしゃくにん）が首を切って苦痛を最小化する。明治以降は制度的に廃止されたが、三島由紀夫（1970）の事件まで「名誉死」の観念は生き続けた。</div>
+      <div class="concept-izakaya">「切腹って西洋から見ると理解しにくいけど、"恥を負って生きるより死を選ぶ"という名誉観の究極的表現。介錯（首を切る）という文化まで発達した——苦痛を最小化することへの配慮が武士道らしい。現代の"責任を取って辞任"という謝罪文化は切腹の現代的形式とも見える」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">義理と人情 <span class="concept-en">Giri & Ninjo</span></div>
+      <div class="concept-body">義理——社会的義務・恩義を返すこと・筋を通すこと。人情——個人的感情・人間的共感。「義理と人情のはざまで苦しむ」という日本的葛藤の構造——社会規範と個人感情の対立。ルース・ベネディクトも分析した日本文化の核心的二項対立。浪花節・任侠映画・時代劇の主要テーマ。</div>
+      <div class="concept-izakaya">「義理と人情って浪花節のテーマだけど、現代でもリアルで。"義理があるから行かないといけない（行きたくない）忘年会"とか。義理を果たすことへの社会的義務と個人の感情のぶつかりは江戸時代から変わってない——武士道の"義"が大衆倫理として普及した形」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">恥の文化 <span class="concept-en">Shame Culture</span></div>
+      <div class="concept-body">ルース・ベネディクトが「菊と刀」で提唱した日本文化の特徴。「他者の目線・社会的評価を意識して行動する」規範体制。「恥ずかしい」「恥を知れ」「世間体」——外部の視線が行動を制御する。「罪の文化（内なる神・良心が制御）」とは異なる倫理メカニズム。現代では「SNSでの炎上＝現代的な恥の刑罰」とも言える。</div>
+      <div class="concept-izakaya">「恥の文化って日本人が"なぜそう行動するか"を説明する鍵で、"神に罪を問われる"のでなく"周りに恥をかく"から行動を律する。ゴミを持って帰る・電車で電話しない——強制されてないのにやるのはこれ。裏返すと"誰も見てなければやる"という問題もあって、コンプライアンスと恥文化の関係は面白い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">文武両道 <span class="concept-en">Bunbu Ryodo</span></div>
+      <div class="concept-body">「文（学問・芸術・教養）」と「武（武術・身体・実践）」の両方を修めることが真の武士の理想という価値観。宮本武蔵の「五輪書」が体現——剣法書でありながら絵画・彫刻・建築への言及がある。現代では「仕事と教養の両立」「スポーツと勉強の両立」という形で生きている。大谷翔平の「二刀流」は文武両道の現代スポーツ版。</div>
+      <div class="concept-izakaya">「文武両道って武士の理想で、宮本武蔵が剣の達人でありながら絵も書も達者だったのがその体現。現代の"スポーツもできて勉強もできる人が偉い"という価値観に継承されてる。大谷翔平の投打二刀流はその究極で、日本人が特別な感動を覚えるのは文武両道の伝統的価値観と共鳴してるから」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">武士は食わねど高楊枝 <span class="concept-en">Pride over Poverty</span></div>
+      <div class="concept-body">貧しくても武士としての誇りを保つという心意気を示す慣用句。「腹が減っていても食べたふりをして楊枝をくわえる」。「貧すれば鈍する」という現実と「清貧を誇りとする」という倫理の緊張関係。「物質的豊かさより精神的気高さ」という武士道的価値観——日本人の「お金に汚く見せたくない」という心理の底流にある。</div>
+      <div class="concept-izakaya">「武士は食わねど高楊枝って、貧乏でも誇り高くあれという武士の美学。これ現代でも残ってて、"安いものを買うことを恥ずかしがる"とか"給料の話をしない"とか——お金について直接語ることへの抵抗感は武士道的プライドの名残かも。アメリカ人が給料をオープンに話すのとの文化差」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">仇討ち（あだうち）<span class="concept-en">Vendetta</span></div>
+      <div class="concept-body">主君や親の仇を討つことが武士の義務とされた日本の復讐制度。江戸時代には幕府に届け出て認可された「公認の仇討ち」が存在した（1873年廃止）。「忠臣蔵（赤穂浪士）」——主君の恨みを晴らした47人の武士の物語は日本史上最大の武士道的美談として今も映画・ドラマで繰り返される。「義理と人情を重んじた見事な最期」として日本人の精神に刻まれている。</div>
+      <div class="concept-izakaya">「忠臣蔵って江戸時代最大のフィクション超えリアル事件で、主君の仇を討つために2年かけて準備して47人で吉良邸に討ち入った。全員自首して全員切腹——これが武士道の完璧な体現として今も愛される。"義理を果たした後は潔く死ぬ"という構造が映画より劇的なんよ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">過労死（カローシ）<span class="concept-en">Karoshi</span></div>
+      <div class="concept-body">仕事による過労・ストレスが原因で死亡する「過労死（karoshi）」は英語辞典に収録された日本語。「会社のために」「迷惑をかけてはいけない」という武士道的忠義観が現代労働に転化した病理。「仕事に命を捧げる」という武士道的美学の暗黒面。2000年代以降、働き方改革・プレミアムフライデー——武士道的滅私奉公への社会的反動。</div>
+      <div class="concept-izakaya">「karoshiって英語の辞書に載ってる数少ない日本語で、過労死のこと。これ、武士道の"主君（会社）への忠義"が現代労働に転化した結果だとも言える。"会社のために死ねる"は武士道的美徳の暗黒面。だから働き方改革は単なる制度改革でなく、武士道的価値観の転換が必要という話になる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">侍（サムライ）精神 <span class="concept-en">Samurai Spirit</span></div>
+      <div class="concept-body">「samurai」「bushido」「ninja」は世界で最も認知された日本語のひとつ。侍のイメージは現代の日本ブランドに直結——「侍ジャパン」（野球日本代表）・「The Last Samurai」（ハリウッド映画）・「Shogun」（ドラマ）。「誇りを持って黙々と仕事をこなす日本人」というイメージのグローバルな基盤。</div>
+      <div class="concept-izakaya">「samuraiって世界でどれだけ認知されてるかというと、ハリウッドが何度も映画化するし、WBCの日本代表チームの愛称になるし、ファッションブランド名にもなる。"誇りを持って己の道を極める孤高の存在"という武士のイメージが現代のブランディングに使われ続けてる——日本最強のソフトパワーのひとつ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">腹芸（はらげい）<span class="concept-en">Harageи / Tacit Understanding</span></div>
+      <div class="concept-body">「腹で語る（言葉にしない意思疎通）」——日本のコミュニケーション文化の核心。「空気を読む」「察する」「以心伝心」——言語化しない・直接言わない・文脈から読み取るという高文脈（ハイ・コンテキスト）文化。武士の「無言の品格」・茶室の沈黙の美学から来る「言葉より沈黙が豊かな場合がある」という感性の現代的継承。</div>
+      <div class="concept-izakaya">「腹芸って"言葉にしなくても通じる"日本の意思疎通スタイル。"空気読んでよ"は腹芸の要求で、外国人が日本でビジネスで一番つまずくのはここ。武士道的な"多くを語らない品格"の現代版とも言えるし、"言わないと伝わらない"という問題でもある。ハイコンテキスト文化の光と影」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">菊と刀 <span class="concept-en">Chrysanthemum and the Sword</span></div>
+      <div class="concept-body">ルース・ベネディクト（1946年）の書名——「菊（天皇の象徴・美・繊細さ）」と「刀（武士・暴力・厳しさ）」という相反する二面性が日本文化の特徴だという分析。「どうしてこんなに矛盾しているのに統一されているのか」——美しさへの追求と暴力性の同居。現代では「萌えとリアル」「かわいいとヤンキー」という形に変形して継続。</div>
+      <div class="concept-izakaya">「菊と刀ってベネディクトが日本文化を分析した本のタイトルで、"繊細な美意識（菊）と武力・暴力（刀）が同じ人間の中に共存してる"という矛盾の指摘。日本人って礼儀正しくて繊細なのに相撲・剣道・格闘技への熱狂がある——この二面性が外から見ると不思議でもあり魅力でもある」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 比較表 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special</span>
+    <h2 class="section-title">東西の「騎士道」比較表</h2>
+    <p class="section-desc">武士道とヨーロッパの騎士道——類似と相違から「日本らしさ」が見える</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>武士道（日本）</th>
+          <th>騎士道（ヨーロッパ）</th>
+          <th>共通点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>成立時期</td>
+          <td>10〜17世紀（形成）・江戸期に体系化</td>
+          <td>11〜15世紀（中世盛期）</td>
+          <td>ともに封建制度下の軍事貴族の倫理</td>
+        </tr>
+        <tr>
+          <td>宗教的基盤</td>
+          <td>仏教・神道・儒教の三本立て</td>
+          <td>キリスト教（カトリック）一本</td>
+          <td>宗教的権威が倫理に正当性を与える</td>
+        </tr>
+        <tr>
+          <td>最高の徳</td>
+          <td>忠義（主君への絶対的忠誠）</td>
+          <td>信仰（神への忠誠）・名誉</td>
+          <td>「大義のために死ねる」覚悟</td>
+        </tr>
+        <tr>
+          <td>死への態度</td>
+          <td>名誉ある死（切腹）を積極的に価値づける</td>
+          <td>神のために死ぬことは天国への道（殉教）</td>
+          <td>勇敢な死の美化・臆病の非難</td>
+        </tr>
+        <tr>
+          <td>女性への態度</td>
+          <td>女性の保護より集団・主君への忠義が優先</td>
+          <td>「宮廷恋愛（courtly love）」——貴婦人への献身が美徳</td>
+          <td>女性の理想化（ただし実態は異なる）</td>
+        </tr>
+        <tr>
+          <td>現代への継承</td>
+          <td>企業倫理・武道・スポーツ精神・「恥」文化</td>
+          <td>紳士道（gentleman）・スポーツマンシップ</td>
+          <td>現代の「フェアプレー」精神に共通する価値</td>
+        </tr>
+        <tr>
+          <td>理想と現実の乖離</td>
+          <td>戦国の武士は騙し合い常態——江戸の「武士道」は観念的理想</td>
+          <td>実際の騎士は略奪・強姦も多く——「騎士道」は文学的理想化</td>
+          <td>ともに「理想としての倫理」と「現実の行動」は乖離していた</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      ⚔️ <strong style="color:var(--kin-light);">最大の違い：</strong>騎士道は「弱者（女性・貧者）を守る」という保護の倫理が中心。武士道は「主君への忠義」という服従の倫理が中心——これが現代においても「個人の権利」を優先する西洋文化と「集団への帰属」を優先する日本文化の差異の一因となっている。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">最終章</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">武士道・日本倫理観を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「武士道って今でも生きてるの？」</div>
+      <div class="test-q-text">日本文化・ビジネス・スポーツの話になったとき</div>
+      <div class="test-a">「めちゃくちゃ生きてる。WBCで大谷翔平率いる日本チームがロッカールームを綺麗にして帰ったのが世界でニュースになった——"勝っても場を整える"という礼の精神。終身雇用・会社への忠誠・過労死問題——全部武士道的忠義観の現代版。柔道・相撲の"礼に始まり礼に終わる"は武士道の形式的継承。日本人は"武士道的行動"を無意識にやってる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「忠臣蔵ってなんでそんなに人気なの？」</div>
+      <div class="test-q-text">時代劇・日本史の話になったとき</div>
+      <div class="test-a">「忠臣蔵は義理と人情の完璧なドラマで、主君の恥辱を晴らすために2年間耐えて47人で討ち入りした後、全員で自首して切腹という——「義理を果たしたら潔く死ぬ」という武士道の完璧な実践。しかも実話。毎年12月14日（討ち入りの日）にドラマや映画が放送されるのは、日本人の集合的無意識に刻まれた"義理と覚悟"への憧れがあるから。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「葉隠の"死ぬことと見つけたり"って危ない思想じゃないの？」</div>
+      <div class="test-q-text">武士道・日本精神について語るとき</div>
+      <div class="test-a">「危険な側面は確かにあって、太平洋戦争で軍国主義に利用されて特攻隊・玉砕の精神的根拠にされた。ただし本来の意味は"常に死を覚悟しているから今この瞬間に全力を尽くせる"という実存的な主張——ハイデガーの"死への存在"と通じる。"いつ死んでもいい覚悟で今日を生きる"という意味で現代人にも響く側面がある。文脈を無視した引用が一番危険。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「日本人はなぜ謝罪文化が強いの？」</div>
+      <div class="test-q-text">日本の社会・ビジネスの話になったとき</div>
+      <div class="test-a">「複合的な理由で、①武士道の「礼」——相手への敬意を形で示す文化の延長。②「恥の文化（ベネディクト）」——社会的評価を傷つけたことへの修復。③仏教的な「お詫び」——相手との関係性を回復する儀式。日本の謝罪は「私が法的・道徳的に悪かった」という認罪でなく「あなたとの関係を修復したい」という関係修復の儀式——これが欧米から「なぜ謝ったのに責任を認めないのか」と誤解される原因。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「武士道って男性だけのもの？女性と武士道は？」</div>
+      <div class="test-q-text">ジェンダー・歴史の話になったとき</div>
+      <div class="test-a">「面白い問いで、女性版武士道「なでしこ道」というものが存在した。武家の女性は「貞淑・従順・勇敢（護身のための薙刀）」が求められた——主君への忠義の女性版が夫への貞節。新渡戸の「武士道」は女性をほぼ扱っていない。現代では「大和撫子（yamato nadeshiko）」という言葉が武家女性の理想像の名残。女性武士（巴御前・鶴姫など）は存在したが例外とされた——武士道のジェンダー的限界は今も語られる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「宮本武蔵ってどんな人？」</div>
+      <div class="test-q-text">武将・侍の話になったとき</div>
+      <div class="test-a">「生涯60余度の試合に無敗とされる剣豪で、「五輪書」という兵法書を書いた。佐々木小次郎との「巌流島の決闘（1612年）」が最も有名——遅刻して心理的優位に立ってから斬ったという話。晩年は剣だけでなく絵画・書道・彫刻も達人という文武両道の体現者。"我、事において後悔せず"という言葉で死んだ。五輪書は今も世界中のビジネスマン・格闘家が読む——"兵法書が経営哲学になった"稀有な例。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">武</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術・音楽・文学・建築・心理学・社会学・テクノロジー・日本美意識・武士道と倫理観。知の十六角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42;">「武士道とは死ぬことと見つけたり。——山本常朝『葉隠』」</p>
+</div>
+
+</body>
+</html>

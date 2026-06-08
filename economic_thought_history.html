@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>経済思想史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amber-deep:   #1A0E00;
+    --amber-mid:    #5C3200;
+    --amber-rich:   #A05A00;
+    --amber-light:  #D4820A;
+    --amber-glow:   #F0A830;
+    --amber-pale:   #FBF0D8;
+    --teal-dark:    #083030;
+    --teal-mid:     #0E6060;
+    --teal-light:   #18A0A0;
+    --crimson:      #8B1A1A;
+    --green-dark:   #0A2010;
+    --green-mid:    #1A6030;
+    --green-light:  #2AA050;
+    --ivory:        #FAF8F0;
+    --ivory-dark:   #EDE8D0;
+    --ink:          #160E00;
+    --ink-mid:      #3A2800;
+    --ink-light:    #705A30;
+    --gray:         #9A9080;
+    --silver:       #C8BEA0;
+    --shadow:       rgba(26,14,0,0.15);
+    --gold:         #B8922A;
+    --gold-light:   #E0B84A;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--amber-deep);
+    color:#fff;
+    text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'₿';
+    position:absolute; font-family:'Cinzel',serif;
+    font-size:34rem; opacity:0.04;
+    top:50%; left:50%; transform:translate(-50%,-52%);
+    line-height:1; pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--amber-glow); border:1px solid rgba(240,168,48,0.45);
+    padding:4px 16px; border-radius:2px; margin-bottom:1.5rem;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem); font-weight:700; line-height:1.2; margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff,var(--amber-glow));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:520px; margin:0 auto 2.5rem; font-weight:300; }
+  .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+  .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--amber-glow); display:block; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block; background:var(--amber-mid); color:var(--amber-pale);
+    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
+  }
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+
+  .tip-bar {
+    background:#fff; border-radius:6px; border:1px solid rgba(90,50,0,0.16);
+    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel { background:var(--amber-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--amber-glow); font-weight:700; margin-bottom:1.25rem; }
+
+  /* ─── THINKER CARDS ─── */
+  .thinker-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1rem; }
+  .thinker-card {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+    border-radius:8px; padding:1rem 1.1rem;
+  }
+  .tc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.15rem; }
+  .tc-dates  { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .tc-key    { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal-light); margin-bottom:0.4rem; }
+  .tc-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+  .tc-quote  { margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.42); font-style:italic; border-left:2px solid rgba(240,168,48,0.4); padding-left:0.5rem; }
+
+  /* ─── DEBATE GRID (proper equal columns) ─── */
+  .debate-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1.25rem; }
+  .debate-card {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    border-radius:8px; padding:1.25rem;
+  }
+  .dc-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.2rem; }
+  .dc-rep   { font-size:0.65rem; color:var(--silver); margin-bottom:0.6rem; }
+  .dc-claim { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--amber-light),var(--amber-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--amber-light);
+    border:3px solid var(--ivory); border-radius:50%;
+    box-shadow:0 0 0 2px var(--amber-light); z-index:2;
+  }
+  .tl-dot.red   { background:var(--crimson);    box-shadow:0 0 0 2px var(--crimson); }
+  .tl-dot.teal  { background:var(--teal-mid);   box-shadow:0 0 0 2px var(--teal-mid); }
+  .tl-dot.green { background:var(--green-mid);  box-shadow:0 0 0 2px var(--green-mid); }
+  .tl-dot.gold  { background:var(--gold);       box-shadow:0 0 0 2px var(--gold); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(90,50,0,0.14); border-radius:6px;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--amber-light); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── BIG IDEA CARDS ─── */
+  .idea-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .idea-card {
+    background:var(--amber-deep); color:#fff;
+    border-radius:8px; padding:1.5rem;
+    position:relative; overflow:hidden;
+  }
+  .idea-card::after {
+    content:attr(data-sym);
+    position:absolute; bottom:-0.5rem; right:0.5rem;
+    font-size:3.5rem; opacity:0.08; line-height:1; color:var(--amber-glow);
+  }
+  .ic-icon  { font-size:2rem; display:block; margin-bottom:0.5rem; }
+  .ic-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--amber-glow); font-weight:700; display:block; margin-bottom:0.2rem; }
+  .ic-en    { font-size:0.62rem; letter-spacing:0.1em; color:var(--silver); text-transform:uppercase; display:block; margin-bottom:0.6rem; }
+  .ic-body  { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+
+  /* ─── SCHOOL BANDS ─── */
+  .school-band {
+    border-radius:10px; padding:2rem 2.5rem;
+    margin-bottom:1.5rem; color:#fff;
+  }
+  .sb-amber  { background:linear-gradient(135deg, #2A1400, #5C3200); }
+  .sb-teal   { background:linear-gradient(135deg, #001818, #0E6060); }
+  .sb-green  { background:linear-gradient(135deg, #0A1A00, #1A6030); }
+  .sb-navy   { background:linear-gradient(135deg, #040C18, #0E2848); }
+  .sb-purple { background:linear-gradient(135deg, #0E0820, #2E1860); }
+  .sb-label  { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.3rem; }
+  .sb-title  { font-family:'Noto Serif JP',serif; font-size:1.15rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.4rem; }
+  .sb-period { font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
+  .sb-row    { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.75rem; }
+  .sb-card   { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem; }
+  .sbc-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.15rem; }
+  .sbc-dates { font-size:0.6rem; color:var(--silver); margin-bottom:0.35rem; }
+  .sbc-key   { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--teal-light); margin-bottom:0.35rem; }
+  .sbc-body  { font-size:0.76rem; color:rgba(255,255,255,0.65); line-height:1.5; }
+  .sbc-quote { margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.38); font-style:italic; border-left:2px solid rgba(240,168,48,0.35); padding-left:0.45rem; }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(90,50,0,0.14);
+    border-left:4px solid var(--amber-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--amber-mid); background:rgba(90,50,0,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background:var(--amber-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-top:1rem; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber-glow); border-bottom:1px solid rgba(255,255,255,0.12); }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--amber-glow); font-weight:700; white-space:nowrap; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
+  .ls-icon  { font-size:1.8rem; flex-shrink:0; }
+  .ls-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--amber-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--amber-light); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--amber-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--amber-deep); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-icon { font-size:2rem; display:block; margin-bottom:0.5rem; color:var(--amber-glow); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.6</div>
+  <h1>経済思想史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">アダム・スミスからケインズ・行動経済学まで——「お金と社会」を2500年考え続けた人類の記録。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 4世紀</span><span class="hero-stat-lbl">最初の経済論</span></div>
+    <div><span class="hero-stat-num">1776年</span><span class="hero-stat-lbl">経済学の誕生</span></div>
+    <div><span class="hero-stat-num">4大論争</span><span class="hero-stat-lbl">今も続く経済の戦争</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">未解決の経済問題</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 経済学とは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">経済学とは何を問う学問か</h2>
+    <p class="section-desc">「希少な資源を誰がどう配分するか」——これが全ての経済学の出発点</p>
+  </div>
+  <div class="idea-grid">
+    <div class="idea-card" data-sym="?">
+      <span class="ic-icon">🥧</span>
+      <span class="ic-name">配分の問題</span>
+      <span class="ic-en">Allocation</span>
+      <p class="ic-body">パイを誰がどう切るか。市場に任せるか、国家が決めるか。この問いが「右派 vs 左派」の経済的対立の核心。</p>
+    </div>
+    <div class="idea-card" data-sym="?">
+      <span class="ic-icon">📊</span>
+      <span class="ic-name">成長の問題</span>
+      <span class="ic-en">Growth</span>
+      <p class="ic-body">パイ自体をどう大きくするか。技術革新・投資・労働・貿易のどれが鍵か。資本主義の根本的推進力。</p>
+    </div>
+    <div class="idea-card" data-sym="?">
+      <span class="ic-icon">⚖️</span>
+      <span class="ic-name">安定の問題</span>
+      <span class="ic-en">Stability</span>
+      <p class="ic-body">景気循環・インフレ・失業・金融危機をどう防ぐか。ケインズ経済学が生まれた動機。政府の役割の核心。</p>
+    </div>
+    <div class="idea-card" data-sym="?">
+      <span class="ic-icon">🌍</span>
+      <span class="ic-name">持続可能性</span>
+      <span class="ic-en">Sustainability</span>
+      <p class="ic-body">地球環境・資源枯渇・格差拡大に経済成長は両立するのか。21世紀の経済学最大の問い。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「経済学って難しそうだけど、核心は"誰がどう決めるか"という話。市場（みんなの取引）に任せるのか、政府が決めるのか。この軸さえわかれば、アベノミクスも金融緩和もMMTも全部この文脈で読める」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜重商主義 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">古代〜重商主義 — 経済学以前の経済思想</h2>
+    <p class="section-desc">BC 4世紀〜17世紀。「富とは何か」を最初に問い始めた人々</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">PRE-CLASSICAL · 経済学以前</div>
+    <div class="dp-title">哲学者・宗教・国家が「富」を定義した時代</div>
+    <div class="thinker-row">
+      <div class="thinker-card">
+        <div class="tc-name">アリストテレス</div>
+        <div class="tc-dates">BC 384〜322 · ギリシャ</div>
+        <div class="tc-key">最初の経済分析</div>
+        <div class="tc-body">「政治学」「ニコマコス倫理学」で交換・貨幣・利子を分析した最初の思想家。貨幣は交換の媒介として有用だが、貨幣それ自体を目的にする「金儲けのための金儲け（クレマティスティケー）」を不自然・不道徳として批判。利子（金貸し）を最も非難した。</div>
+        <div class="tc-quote">「お金はお金を生まない」— 利子批判の原点</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">重商主義</div>
+        <div class="tc-dates">16〜18世紀 · ヨーロッパ</div>
+        <div class="tc-key">貿易差額説・金銀蓄積</div>
+        <div class="tc-body">「国富＝金銀の蓄積量」。輸出を最大化し輸入を制限して貿易黒字を稼ぐことが国家富強の道という考え。植民地政策・保護貿易主義の思想的根拠。アダム・スミスが猛烈に批判した「打倒すべき標的」。今でも「貿易黒字が良い」と思う人は重商主義的発想。</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">重農主義（フィジオクラシー）</div>
+        <div class="tc-dates">18世紀 · フランス</div>
+        <div class="tc-key">富の源泉は農業</div>
+        <div class="tc-body">ケネー（1694〜1774）らが創始。「富の源泉は農業（土地）のみ。製造業・商業は不毛」という農業至上主義。「経済表」で経済循環を初めて図示した（現代のGDPフローの原型）。「ラッセ・フェール（自由放任）」という言葉の起源でもある。</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">宗教と利子禁止</div>
+        <div class="tc-dates">中世〜近世</div>
+        <div class="tc-key">ウスリー（利子）禁止</div>
+        <div class="tc-body">キリスト教・イスラム教ともに利子（ウスリー）を禁じた。中世ヨーロッパではユダヤ人のみが金貸しを許された（「ヴェニスの商人」の背景）。資本主義の勃興はこの宗教的制約の突破と密接に関係する。イスラム金融は現代も無利子を実践。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: アダム・スミスと古典派 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">アダム・スミスと古典派経済学</h2>
+    <p class="section-desc">1776年、経済学という学問が誕生した瞬間</p>
+  </div>
+
+  <div class="dark-panel" style="background:var(--amber-mid);">
+    <div style="display:grid; grid-template-columns:1fr 2fr; gap:2rem; align-items:start;">
+      <div style="text-align:center;">
+        <div style="font-size:5rem; display:block; margin-bottom:0.75rem;">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:1.3rem; color:var(--amber-glow); display:block; font-weight:700;">アダム・スミス</div>
+        <div style="font-size:0.72rem; color:var(--silver); letter-spacing:0.1em; margin-top:4px;">Adam Smith · 1723〜1790</div>
+        <div style="margin-top:1rem; font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.8;">
+          <div>📍 スコットランド・カーコーディ</div>
+          <div>📖 道徳哲学者→経済学者</div>
+          <div>🎓 グラスゴー大学教授</div>
+          <div style="margin-top:0.75rem; color:var(--amber-glow); font-size:0.82rem;">「経済学の父」<br>生涯独身・母親と同居</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div style="background:rgba(0,0,0,0.25); border-left:3px solid var(--amber-glow); border-radius:0 8px 8px 0; padding:1rem;">
+          <div style="font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.4rem;">「国富論」(1776) — 経済学の聖典</div>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.68); line-height:1.6;">正式名称「諸国民の富の性質と原因の研究（An Inquiry into the Nature and Causes of the Wealth of Nations）」。分業・交換・市場メカニズムを体系化。重商主義を徹底批判し、自由貿易・自由市場の優位性を論証。アメリカ独立宣言と同年の出版。</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25); border-left:3px solid var(--amber-glow); border-radius:0 8px 8px 0; padding:1rem;">
+          <div style="font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.4rem;">「道徳感情論」(1759) — 忘れられた傑作</div>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.68); line-height:1.6;">「共感（sympathy）」こそが社会の道徳的基盤という倫理学書。「国富論」と合わせて読むと、スミスは冷徹な市場原理主義者ではなく、道徳と経済の統合を目指した思想家だとわかる。「スミス問題」——なぜ同じ人間が真逆の本を書いたのか——は現代も議論される。</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.25); border-left:3px solid var(--amber-glow); border-radius:0 8px 8px 0; padding:1rem;">
+          <div style="font-size:0.85rem; color:var(--amber-glow); font-weight:700; margin-bottom:0.3rem;">「見えざる手（Invisible Hand）」</div>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.68); line-height:1.6;">個人が自己利益を追求すると、まるで「見えざる手」に導かれるかのように社会全体の利益も増進される。市場の価格メカニズムが情報を自動集計・分配する機能を比喩した言葉。実は「国富論」全体でわずか1回しか使われていない。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <div class="school-band sb-amber">
+      <div class="sb-label">CLASSICAL ECONOMICS · 古典派経済学</div>
+      <div class="sb-title">スミスの後継者たち — 1776〜1870年代</div>
+      <div class="sb-period">「労働価値説」「比較優位」「人口論」——近代経済学の骨格を作った</div>
+      <div class="sb-row">
+        <div class="sb-card">
+          <div class="sbc-name">デヴィッド・リカード</div>
+          <div class="sbc-dates">1772〜1823 · イングランド</div>
+          <div class="sbc-key">比較優位・地代論・労働価値説</div>
+          <div class="sbc-body">「比較優位の原理」で自由貿易の利益を証明。ポルトガルがワインも布も絶対的優位でも、両国が得意分野に特化して貿易する方が双方にとって有利——これが自由貿易の最強の論拠。株式投機で巨万の富を築いた実業家でもあった。</div>
+          <div class="sbc-quote">「比較優位」は今でも経済学で最も美しい理論のひとつ</div>
+        </div>
+        <div class="sb-card">
+          <div class="sbc-name">トマス・マルサス</div>
+          <div class="sbc-dates">1766〜1834 · イングランド</div>
+          <div class="sbc-key">人口論・有効需要論</div>
+          <div class="sbc-body">「人口論（1798）」——人口は等比数列的に増えるが食糧は等差数列的にしか増えない。だから人類は常に貧困・戦争・疫病に直面する、という暗い予言。「陰鬱な科学（dismal science）」と呼ばれる経済学の源泉。ケインズの「有効需要」論に先行する問題提起も。</div>
+        </div>
+        <div class="sb-card">
+          <div class="sbc-name">ジョン・スチュアート・ミル</div>
+          <div class="sbc-dates">1806〜1873 · イングランド</div>
+          <div class="sbc-key">功利主義・自由論・フェミニズム</div>
+          <div class="sbc-body">古典派経済学の集大成者。「自由論（1859）」で「他者危害の原則（他人を傷つけない限り自由は最大化されるべき）」を提唱。父の英才教育で3歳でギリシャ語、8歳でラテン語を習得。晩年に女性参政権を議会で主張した先駆者。</div>
+        </div>
+        <div class="sb-card">
+          <div class="sbc-name">カール・マルクス</div>
+          <div class="sbc-dates">1818〜1883 · ドイツ</div>
+          <div class="sbc-key">剰余価値・資本論・唯物史観</div>
+          <div class="sbc-body">古典派の「労働価値説」を継承しつつ批判的に発展。「資本家は労働者の剰余価値（労働者が作った価値のうち賃金以上の部分）を搾取する」という資本主義批判の核心。「資本論（Das Kapital）」第1巻は1867年刊。20世紀最大の政治変動の思想的源泉。</div>
+          <div class="sbc-quote">「万国のプロレタリアよ、団結せよ！」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 限界革命〜新古典派 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">限界革命と新古典派 — 経済学が「科学」になった</h2>
+    <p class="section-desc">1870年代。数学と心理学を取り込み、経済学が大変身した</p>
+  </div>
+
+  <div class="school-band sb-teal">
+    <div class="sb-label">MARGINALIST REVOLUTION · 限界革命 (1870s)</div>
+    <div class="sb-title">「価値＝労働量」から「価値＝主観的な限界効用」へのコペルニクス的転回</div>
+    <div class="sb-period">ジェヴォンズ（英）・メンガー（墺）・ワルラス（仏）が1870年代にほぼ同時に発見</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">限界効用逓減の法則</div>
+        <div class="sbc-key">DIMINISHING MARGINAL UTILITY</div>
+        <div class="sbc-body">1個目のビールは最高においしい。2個目も美味しい。10個目は気持ち悪い——1単位追加するごとに得られる「追加的な満足（限界効用）」は減少する。これが需要曲線が右下がりになる理由。「なぜダイヤは高くて水は安いのか（ダイヤと水のパラドックス）」もここで解ける。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">アルフレッド・マーシャル</div>
+        <div class="sbc-dates">1842〜1924 · イングランド</div>
+        <div class="sbc-key">ミクロ経済学の父・需給曲線</div>
+        <div class="sbc-body">「経済学原理（1890）」で需要曲線と供給曲線の交点が価格を決める「均衡分析」を体系化。「部分均衡分析」の創始者。現代の経済学教科書の「需要と供給」グラフは全てマーシャルに由来する。ケンブリッジ学派を創設。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">レオン・ワルラス</div>
+        <div class="sbc-dates">1834〜1910 · フランス→スイス</div>
+        <div class="sbc-key">一般均衡理論</div>
+        <div class="sbc-body">すべての市場が同時に均衡する「一般均衡（General Equilibrium）」を数学的に証明しようとした。現代の計量経済学・マクロ経済モデルの数学的基礎。「経済学史上最も偉大な経済学者」とサミュエルソンが評した。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ヴィルフレド・パレート</div>
+        <div class="sbc-dates">1848〜1923 · イタリア</div>
+        <div class="sbc-key">パレート最適・80/20の法則</div>
+        <div class="sbc-body">「パレート最適——誰かを悪くしないと誰も良くできない状態」は経済政策評価の基準に。「社会の富の80%を上位20%が保有する」という「パレートの法則（80/20の法則）」の発見者でもある。現代ビジネスで多用される。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 歴史タイムライン ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">経済思想2500年タイムライン</h2>
+    <p class="section-desc">思想の転換点は常に「経済の危機」と共にあった</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">BC 4世紀</div>
+        <div class="tl-event">アリストテレスの経済論</div>
+        <div class="tl-desc">交換・貨幣・利子を哲学的に分析。「貨幣はお金を生まない（利子批判）」。使用価値と交換価値の区別——後のマルクスの価値論に直結。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏛</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">16〜17世紀</div>
+        <div class="tl-event">重商主義の時代</div>
+        <div class="tl-desc">植民地獲得競争・金銀蓄積・保護貿易が国家政策の中心に。英蘭仏が東インド会社を設立。「貿易黒字＝国益」という考えが支配する。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⛵</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1776年</div>
+        <div class="tl-event">アダム・スミス「国富論」— 経済学の誕生</div>
+        <div class="tl-desc">分業・自由市場・見えざる手を体系化。重商主義を批判し自由貿易・自由市場の優位を論証。アメリカ独立宣言と同年。近代経済学の原点。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📖</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1867年</div>
+        <div class="tl-event">マルクス「資本論」第1巻</div>
+        <div class="tl-desc">資本主義の内的矛盾——搾取・恐慌・崩壊の必然——を分析。「剰余価値論」「疎外論」「商品フェティシズム」。20世紀の共産主義革命の理論的基盤に。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🔥</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1870年代</div>
+        <div class="tl-event">限界革命 — 経済学の科学化</div>
+        <div class="tl-desc">ジェヴォンズ・メンガー・ワルラスが独立に「限界効用」を発見。労働価値説から効用価値説へ。数学的分析の導入で経済学が自然科学に接近。</div>
+      </div>
+      <div class="tl-dot teal"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📐</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1929〜1933年</div>
+        <div class="tl-event">大恐慌 — ケインズ革命の引き金</div>
+        <div class="tl-desc">米国株価大暴落から世界恐慌へ。失業率25%。「市場は自動的に均衡に戻る」という古典派理論が破綻。ニューディール政策の実践とケインズ理論の台頭。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📉</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1936年</div>
+        <div class="tl-event">ケインズ「雇用・利子および貨幣の一般理論」</div>
+        <div class="tl-desc">「長期的には我々はみな死んでいる」。市場は自動均衡しない——政府の財政出動が必要。有効需要管理・乗数効果を理論化。戦後の先進国経済政策の基本に。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💡</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1970年代</div>
+        <div class="tl-event">スタグフレーションとマネタリズム台頭</div>
+        <div class="tl-desc">石油ショックでインフレと不況が同時発生（スタグフレーション）。「財政出動がインフレを招く」とフリードマンのマネタリズムが反撃。サッチャー・レーガン改革で新自由主義が世界を席巻。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🛢</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">2008年</div>
+        <div class="tl-event">リーマンショック — ケインズ復活</div>
+        <div class="tl-desc">金融危機で世界同時不況。各国政府が「100年に一度の危機」に財政出動・量的緩和で対応。「市場は自己調整する」という新古典派の前提が再び崩壊。ケインズ政策が一時的に復活。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏦</div>
+    </div>
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">2010s〜現在</div>
+        <div class="tl-event">格差・MMT・行動経済学・気候経済学</div>
+        <div class="tl-desc">ピケティ「21世紀の資本（2014）」で格差拡大を実証。MMT（現代貨幣理論）が財政拡張の根拠に。カーボンプライシング・SDGs経済学が台頭。AIによる経済学の変容も進行中。</div>
+      </div>
+      <div class="tl-dot teal"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌿</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: ケインズ vs ハイエク ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">20世紀最大の経済論争 — ケインズ vs ハイエク</h2>
+    <p class="section-desc">「政府が介入すべきか、市場に任せるべきか」——今も続く戦争</p>
+  </div>
+  <div class="dark-panel" style="background:#0A1A0A;">
+    <div class="dp-label">THE GREAT DEBATE · 20世紀最大の知的対決</div>
+    <div class="dp-title">現代経済政策の対立軸はここに集約される</div>
+    <div class="debate-grid">
+      <div class="debate-card" style="border-top:3px solid var(--amber-glow);">
+        <div class="dc-name">ジョン・メイナード・ケインズ</div>
+        <div class="dc-rep">1883〜1946 · イングランド · ケンブリッジ大学</div>
+        <div class="dc-claim">
+          <div style="font-size:0.72rem; color:var(--amber-glow); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem;">主張：政府の積極介入</div>
+          「市場は自動的に均衡に戻らない。不況時には民間投資が萎縮するため、政府の財政出動（公共投資）で有効需要を創出すべき。節約のパラドックス——個人の節約は合理的だが全員がやると需要が消えて不況になる。長期的には我々はみな死んでいる（短期の政策が重要）。」
+        </div>
+      </div>
+      <div class="debate-card" style="border-top:3px solid var(--amber-glow);">
+        <div class="dc-name">フリードリヒ・ハイエク</div>
+        <div class="dc-rep">1899〜1992 · オーストリア→イングランド · ノーベル経済学賞1974</div>
+        <div class="dc-claim">
+          <div style="font-size:0.72rem; color:var(--amber-glow); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem;">主張：自由市場・小さな政府</div>
+          「経済の情報は分散していて、どの政府もそれを集中管理できない（知識の問題）。政府の介入は必ずインフレ・資源配分の歪みをもたらす。『隷属への道』——経済計画は全体主義への第一歩だ。市場こそが人類最高の情報処理装置。」
+        </div>
+      </div>
+      <div class="debate-card" style="border-top:3px solid var(--amber-glow);">
+        <div class="dc-name">ミルトン・フリードマン</div>
+        <div class="dc-rep">1912〜2006 · アメリカ · シカゴ学派 · ノーベル経済学賞1976</div>
+        <div class="dc-claim">
+          <div style="font-size:0.72rem; color:var(--amber-glow); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem;">主張：マネタリズム・規制緩和</div>
+          「インフレは常に貨幣的現象（貨幣供給量の増大が物価を上げる）。ケインズ的財政政策は短期には効くが長期では無効——自然失業率仮説。大恐慌はFRBの金融引き締めが原因。規制緩和・民営化・負の所得税（ベーシックインカムの原型）を主張。」
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.3); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.65);">
+      ⚡ <strong style="color:var(--amber-glow);">現代への影響：</strong>好況期→「ハイエク・フリードマン優勢（規制緩和・民営化）」、不況・危機時→「ケインズ復活（財政出動・量的緩和）」というサイクルが繰り返されている。日本のアベノミクス・リーマン後の各国政策・コロナ給付金は全てケインズ的。一方「小さな政府」「規制緩和」という理念はハイエク・フリードマン由来。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 現代の経済思想 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">現代の経済思想 — 今まさに起きている革命</h2>
+    <p class="section-desc">行動経済学・格差論・MMT・気候経済学——経済学の最前線</p>
+  </div>
+
+  <div class="school-band sb-purple">
+    <div class="sb-label">BEHAVIORAL ECONOMICS · 行動経済学</div>
+    <div class="sb-title">「人間は合理的ではない」——経済学の最大の前提を覆した</div>
+    <div class="sb-period">カーネマン・スミス（2002年ノーベル経済学賞）、セイラー（2017年）</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">ダニエル・カーネマン</div>
+        <div class="sbc-dates">1934〜2024 · イスラエル/アメリカ</div>
+        <div class="sbc-key">プロスペクト理論・システム1/2</div>
+        <div class="sbc-body">「ファスト＆スロー」。人間の思考はシステム1（速い・直感・感情）とシステム2（遅い・論理・意識）の二系統。経済判断の大半はシステム1が行う。「損失回避バイアス——利得100万円より損失100万円の方が2倍以上痛く感じる」。</div>
+        <div class="sbc-quote">「人は利益よりも損失を大きく感じる」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">リチャード・セイラー</div>
+        <div class="sbc-dates">1945〜 · アメリカ</div>
+        <div class="sbc-key">ナッジ理論・メンタルアカウンティング</div>
+        <div class="sbc-body">「ナッジ（軽いひと押し）」——強制せず選択肢の設計（チョイスアーキテクチャ）で人々の行動を望ましい方向に誘導する政策設計。英国「ナッジユニット」・日本の健康保険デザインなどに応用。「臓器提供のオプトアウト制度」もナッジの典型。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ロバート・シラー</div>
+        <div class="sbc-dates">1946〜 · アメリカ · ノーベル賞2013</div>
+        <div class="sbc-key">バブル・物語の経済学</div>
+        <div class="sbc-body">「市場は効率的」という「効率的市場仮説」を実証的に否定。株価は「合理的な」水準をはるかに超えて変動する。「物語経済学（Narrative Economics）」——流行する物語（narrative）が経済を動かすという革命的主張。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">アマルティア・セン</div>
+        <div class="sbc-dates">1933〜 · インド · ノーベル賞1998</div>
+        <div class="sbc-key">ケイパビリティアプローチ・厚生経済学</div>
+        <div class="sbc-body">「豊かさとは何か」——GDPだけでは測れない。人が「実際に何をできるか（ケイパビリティ）」こそが真の豊かさ。「飢饉は食糧不足でなく分配の失敗で起きる」。国連のHDI（人間開発指数）の設計に貢献。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">📊</div>
+      <div>
+        <div class="ls-title">トマ・ピケティ（1971〜）— 「21世紀の資本」と格差の経済学</div>
+        <div class="ls-body">2014年に発表した「21世紀の資本（Capital in the Twenty-First Century）」が世界的ベストセラーに。20カ国・200年のデータを分析し「r（資本収益率）＞g（経済成長率）」であり続ける限り格差は拡大し続けることを実証。「富が富を生む速度が経済成長を上回る」という問題提起は格差是正のための富裕税論争を呼び起こした。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">💵</div>
+      <div>
+        <div class="ls-title">MMT（現代貨幣理論）— 財政赤字は問題ない？</div>
+        <div class="ls-body">ステファニー・ケルトンらが提唱。「自国通貨を発行できる政府は財政破綻しない。インフレにならない限り財政赤字を気にせず支出できる」という主張。コロナ禍の大規模財政出動でにわかに注目が集まった。主流派経済学者からは「インフレリスクを軽視している」と批判される。日本は世界最大の財政赤字国でありMMTの「自然実験場」とも言われる。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🌿</div>
+      <div>
+        <div class="ls-title">気候経済学とカーボンプライシング</div>
+        <div class="ls-body">ウィリアム・ノードハウス（ノーベル賞2018）が「気候変動の経済学」を体系化。CO₂排出に価格をつける「炭素税」・排出量を取引する「排出権取引（ETS）」が主要な政策ツールに。「グリーン成長」——脱炭素と経済成長の両立——は現代経済学最大の実験的課題。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 8</span>
+    <h2 class="section-title">知っておくべき経済思想の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定される10のキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">見えざる手 <span class="concept-en">Invisible Hand</span></div>
+      <div class="concept-body">アダム・スミスの比喩。個人が自己利益を追求すると、意図せずして社会全体の利益も増進される——市場の価格メカニズムが「見えざる手」として機能する。「国富論」で実は1回しか使われていない言葉。</div>
+      <div class="concept-izakaya">「見えざる手って、みんなが自分の得を追求すると結果的に社会全体がうまくいく、という市場メカニズムの話。アダム・スミスのキャッチコピーだけど、実は"でも独占は問題"とか条件つきの話なんよ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">比較優位 <span class="concept-en">Comparative Advantage</span></div>
+      <div class="concept-body">リカードの自由貿易論の核心。絶対的に劣っている国でも、相対的に得意な分野に特化して貿易すれば両国が豊かになる。「ポルトガルがワインも布も上手でも、イギリスとの貿易は双方の利益」。</div>
+      <div class="concept-izakaya">「比較優位って、何でも上手な人でも全部自分でやるより得意分野に集中して苦手は他人に任せる方が合理的、という話。個人の仕事分担にも当てはまるし、自由貿易の最強の根拠でもある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">有効需要と乗数効果 <span class="concept-en">Effective Demand / Multiplier</span></div>
+      <div class="concept-body">ケインズの核心概念。政府が100億円の公共投資をすると、その100億円が誰かの収入になり→消費に回り→また誰かの収入になり……と経済全体に連鎖。最終的な経済効果は投資額の数倍（乗数倍）になる。</div>
+      <div class="concept-izakaya">「乗数効果ってテコの原理。政府が1万円使うと消費が連鎖して2万・3万円分の経済効果が出る理論。だから不況時の財政出動は意味がある、というケインズの論理。ただし"穴を掘ってまた埋めればいい"まで言ったので批判も多い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">節約のパラドックス <span class="concept-en">Paradox of Thrift</span></div>
+      <div class="concept-body">ケインズの逆説。個人が節約するのは合理的だが、社会全員が同時に節約すると消費が減り→企業収益が下がり→賃金が下がり→さらに節約……という悪循環（デフレスパイラル）に陥る。ミクロ合理的だがマクロ不合理。</div>
+      <div class="concept-izakaya">「節約のパラドックスって、みんなが貯金すると経済が縮む話。不況時に"国民が節約して緊縮すべき"という政策が逆に景気を悪化させる理由。日本のデフレ30年がまさにこれだと言う人も多い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">創造的破壊 <span class="concept-en">Creative Destruction</span></div>
+      <div class="concept-body">ヨーゼフ・シュンペーター（1883〜1950）の概念。資本主義の本質は均衡ではなく「絶え間ない破壊と創造の嵐」。既存産業を壊しながら新産業が生まれる——蒸気機関→電気→コンピュータ→AI。イノベーション論・起業家論の源泉。</div>
+      <div class="concept-izakaya">「創造的破壊ってシュンペーターの言葉で、資本主義って古いものを壊しながら新しいものを作る構造だって話。GAFAが既存産業を破壊したのも創造的破壊。スタートアップが既存企業を潰すことに正当性を与えてる概念」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">市場の失敗 <span class="concept-en">Market Failure</span></div>
+      <div class="concept-body">市場メカニズムだけでは効率的な資源配分ができない状況。①外部性（公害など市場価格に反映されないコスト）②公共財（国防・道路など）③情報の非対称性④独占・寡占。政府介入の正当性の根拠。</div>
+      <div class="concept-izakaya">「市場の失敗って、"見えざる手が機能しない場面"のこと。工場が川を汚しても市場は自動的に解決しない（外部性）。だから環境規制・公共サービス・独占規制が必要になる。これが政府の経済介入の正当化論理」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">損失回避バイアス <span class="concept-en">Loss Aversion</span></div>
+      <div class="concept-body">カーネマンのプロスペクト理論の核心。人間は同じ金額でも「得る喜び」より「失う痛み」を約2倍強く感じる。「100万円得る」より「100万円失わない」方が強く動機付けられる。マーケティング・政策設計に応用。</div>
+      <div class="concept-izakaya">「損失回避バイアスって、"1000円もらうより1000円失わない方が気になる"という人間の特性。セールで"今だけ50%オフ"より"今買わないと損"という表現の方が効くのはこれ。保険が売れる理由もこれ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">r ＞ g （ピケティの不等式）<span class="concept-en">Capital Returns vs Growth</span></div>
+      <div class="concept-body">ピケティが200年のデータで実証した格差拡大の法則。r（資本収益率＝株・不動産などの利回り）がg（経済成長率）を上回る限り、持てる者はより持てるようになり格差は拡大し続ける。</div>
+      <div class="concept-izakaya">「ピケティのr＞gって、株・土地から得られるリターンが経済成長より常に高ければ、資産家と労働者の格差は必ず広がる、という話。努力より親ガチャが大事な社会になるという実証。富裕税の根拠に使われた」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ナッジ <span class="concept-en">Nudge</span></div>
+      <div class="concept-body">セイラー＆サンスティーンが提唱。強制や金銭的誘因ではなく、選択肢の「設計（チョイスアーキテクチャ）」によって人々を望ましい行動に誘導する。臓器提供オプトアウト・年金自動加入・フルーツを目の高さに置くなど。</div>
+      <div class="concept-izakaya">「ナッジって"軽くひと押し"って意味で、強制せず選択肢の並べ方で行動を変える設計のこと。健康食を目線の高さに置く・臓器提供をデフォルトオンにする。日本も政府で導入始めてる。強制と自由の間の第三の道」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">トリクルダウン vs 分配 <span class="concept-en">Trickle-Down vs Redistribution</span></div>
+      <div class="concept-body">「金持ちをもっと豊かにすれば、その富が下に滴り落ちて全体が豊かになる（トリクルダウン）」という右派の理論。実証的には否定されているが政治的には今も生きている。左派は再分配・最低賃金引き上げを優先。</div>
+      <div class="concept-izakaya">「トリクルダウンって、金持ち優遇すれば投資増えて皆に恩恵が及ぶという理論。レーガン・サッチャー・アベノミクスの理論的根拠。でも実証研究ではほぼ否定されてる。金持ちはもらった分を貯蓄・資産投資に回す傾向があるから」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ COMPARE TABLE ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">主要経済学派 完全比較表</h2>
+    <p class="section-desc">「不況時に何をすべきか」という問いへの各学派の答え</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>学派</th>
+          <th>代表者</th>
+          <th>市場観</th>
+          <th>政府の役割</th>
+          <th>不況対策</th>
+          <th>現代の影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>古典派</td>
+          <td>スミス・リカード</td>
+          <td>自動均衡する</td>
+          <td>最小限（夜警国家）</td>
+          <td>市場に任せる（セーの法則）</td>
+          <td>自由貿易・比較優位の根拠</td>
+        </tr>
+        <tr>
+          <td>マルクス経済学</td>
+          <td>マルクス・エンゲルス</td>
+          <td>搾取・矛盾を内包</td>
+          <td>廃止→共産主義へ</td>
+          <td>革命で資本主義を打倒</td>
+          <td>格差批判・労働運動の源泉</td>
+        </tr>
+        <tr>
+          <td>新古典派</td>
+          <td>マーシャル・ピグー</td>
+          <td>需給均衡・合理的個人</td>
+          <td>市場の失敗時のみ</td>
+          <td>賃金・価格の下方硬直性を除去</td>
+          <td>現代ミクロ経済学の基礎</td>
+        </tr>
+        <tr>
+          <td>ケインズ派</td>
+          <td>ケインズ・サミュエルソン</td>
+          <td>不安定・有効需要不足</td>
+          <td>積極的財政出動</td>
+          <td>財政拡大・公共投資</td>
+          <td>コロナ給付金・アベノミクス</td>
+        </tr>
+        <tr>
+          <td>マネタリズム</td>
+          <td>フリードマン・シカゴ学派</td>
+          <td>基本的に自己調整</td>
+          <td>金融政策のみ・規制緩和</td>
+          <td>マネーサプライ管理</td>
+          <td>インフレ目標・中央銀行独立性</td>
+        </tr>
+        <tr>
+          <td>行動経済学</td>
+          <td>カーネマン・セイラー</td>
+          <td>非合理な人間が取引</td>
+          <td>ナッジ・チョイスアーキテクチャ</td>
+          <td>心理バイアスを活用した政策</td>
+          <td>ナッジ政策・金融規制設計</td>
+        </tr>
+        <tr>
+          <td>MMT</td>
+          <td>ケルトン・モスラー</td>
+          <td>内生的貨幣創造</td>
+          <td>通貨発行権で積極支出</td>
+          <td>財政赤字を気にせず支出</td>
+          <td>コロナ財政・日本財政論争</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">経済思想を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「増税と財政出動、どっちが正しいの？」</div>
+      <div class="test-q-text">政治・経済ニュースの話になったとき</div>
+      <div class="test-a">「これはケインズ対ハイエク・フリードマンの100年論争そのもの。不況時は財政出動でよいという人（ケインズ派）と、財政赤字はインフレを招くから財政規律を守れという人（新古典派・マネタリスト）が対立してる。正解は"状況による"で、インフレ時には財政引き締め、デフレ不況時には拡張、というのが現実のコンセンサス。日本は30年デフレなのに財政赤字を恐れ続けたという批判もある。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「なぜ格差はなくならないの？」</div>
+      <div class="test-q-text">親ガチャ・格差の話になったとき</div>
+      <div class="test-a">「ピケティのr＞g（資本収益率＞経済成長率）で説明できる。株・不動産を持っている人は持っていない人より資産が増えるスピードが速いから格差は必然的に広がる。マルクスは「剰余価値の搾取」と言い、ピケティは「資本収益と経済成長のスピード差」と実証した。解決策として富裕税・金融資産課税が提案されるが、資本逃避で効果が限定的という問題がある。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「日本の財政赤字は大丈夫なの？」</div>
+      <div class="test-q-text">経済ニュースの話になったとき</div>
+      <div class="test-a">「主流派経済学は"いつかは問題になる"と言い、MMT論者は"自国通貨建て国債だから破綻しない。問題はインフレだけ"と言う。日本は世界最大の財政赤字国（GDP比250%超）なのにまだ低金利でMMTの自然実験場とも言われる。ただしインフレが加速し金利が上がると利払いが急増するリスクはある。今のところ正解はわかっていない。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「株価って経済の実態を反映してるの？」</div>
+      <div class="test-q-text">投資・株の話になったとき</div>
+      <div class="test-a">「効率的市場仮説（市場は全ての情報を価格に織り込んでいる）と行動経済学（人間は非合理なのでバブルと暴落を繰り返す）の対立が面白い。シラーは実証的に「株価は合理的水準をはるかに超えて変動する」と証明してノーベル賞を取った。つまり短期は"気分"、長期は"実体経済"を反映する、というのが現代のコンセンサスに近い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「自由貿易って本当にみんなが得するの？」</div>
+      <div class="test-q-text">関税・貿易問題の話になったとき</div>
+      <div class="test-a">「リカードの比較優位では"国全体"として見れば自由貿易で豊かになる。でも国の中で"誰が豊かになるか"は別問題。製造業労働者は途上国との競争で職を失い、資本家・高スキル労働者は恩恵を受ける。これがアメリカのラストベルト→トランプ現象の経済的説明。国全体のパイが大きくなっても再分配がなければ"勝者と敗者"に分かれる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「経済学って結局当たるの？」</div>
+      <div class="test-q-text">経済予測の話になったとき</div>
+      <div class="test-a">「ケインズの名言——"経済学者たちが互いに間違いを犯してさえいなければ、彼らは世界を支配できるだろう"。大恐慌・リーマンショック・コロナ不況、全て主流派経済学者の多数は予測できなかった。ただし"経済学は当たらないが、なければもっとひどい政策が取られる"という防衛的正当化もある。医学が完璧でないからと言って廃止できないのと同じ。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">💰</span>
+  <p>宗教・哲学・政治・経済。知の四角形が完成した。次は美術史か、音楽史か。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「長期的には我々はみな死んでいる。— ジョン・メイナード・ケインズ」</p>
+</div>
+
+</body>
+</html>

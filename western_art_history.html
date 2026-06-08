@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西洋美術史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --museum-deep:  #0E0A06;
+    --museum-mid:   #1E1408;
+    --museum-rich:  #2E1E0C;
+    --bordeaux:     #6A1428;
+    --bordeaux-lt:  #9A2040;
+    --bordeaux-pale:#F5DDE2;
+    --canvas:       #F8F2E4;
+    --canvas-dark:  #EDE4CA;
+    --ochre:        #C08030;
+    --ochre-light:  #E0A850;
+    --ochre-pale:   #FBF0D0;
+    --prussian:     #0C2840;
+    --prussian-lt:  #1C4870;
+    --viridian:     #0C3828;
+    --viridian-lt:  #1A6848;
+    --ink:          #140C04;
+    --ink-mid:      #3A280E;
+    --ink-light:    #706040;
+    --gray:         #A09880;
+    --silver:       #C8BC9C;
+    --shadow:       rgba(14,10,6,0.18);
+    --frame-gold:   #C8A840;
+    --frame-dark:   #6A5010;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Sans JP',sans-serif;
+    background:var(--canvas);
+    color:var(--ink);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--museum-deep);
+    color:#fff;
+    text-align:center;
+    padding:5rem 2rem 4rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(106,20,40,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(192,128,48,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(12,40,64,0.3) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:'✦ ✦ ✦';
+    position:absolute;
+    bottom:1.5rem; left:50%;
+    transform:translateX(-50%);
+    font-size:0.7rem;
+    letter-spacing:0.8em;
+    color:rgba(200,168,64,0.3);
+  }
+  .hero-tag {
+    display:inline-block; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--ochre-light); border:1px solid rgba(224,168,80,0.4);
+    padding:4px 16px; border-radius:1px; margin-bottom:1.5rem;
+    position:relative; z-index:1;
+    font-family:'Cinzel',serif;
+  }
+  .hero h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.2rem,6vw,4.5rem); font-weight:700; line-height:1.15; margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff 30%,var(--ochre-light) 70%,var(--frame-gold) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    position:relative; z-index:1;
+  }
+  .hero-sub {
+    font-size:1rem; color:rgba(255,255,255,0.48);
+    max-width:560px; margin:0 auto 3rem; font-weight:300;
+    position:relative; z-index:1;
+    font-style:italic;
+  }
+  .hero-stats {
+    display:flex; justify-content:center; gap:3.5rem; flex-wrap:wrap;
+    position:relative; z-index:1;
+  }
+  .hero-stat-num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--ochre-light); display:block; }
+  .hero-stat-lbl { font-size:0.7rem; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4.5rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block;
+    font-family:'Cinzel',serif;
+    background:var(--museum-mid); color:var(--ochre-light);
+    font-size:0.62rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase;
+    padding:4px 14px; border-radius:1px; margin-bottom:0.75rem;
+    border:1px solid rgba(200,168,64,0.2);
+  }
+  .section-title {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.6rem,3vw,2.3rem); color:var(--ink); font-weight:700;
+  }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; font-style:italic; }
+  .bg-warm  { background:var(--canvas-dark); }
+  .bg-white { background:#fff; }
+  .bg-canvas { background:var(--canvas); }
+
+  /* ─── TIP BAR ─── */
+  .tip-bar {
+    background:#fff; border-radius:2px;
+    border:1px solid rgba(14,10,6,0.12);
+    border-left:4px solid var(--ochre);
+    padding:0.85rem 1.25rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background:var(--museum-deep);
+    border-radius:4px; padding:2.5rem; color:#fff;
+    border:1px solid rgba(200,168,64,0.12);
+  }
+  .dp-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.25em; color:var(--silver); margin-bottom:0.4rem; font-family:'Cinzel',serif; }
+  .dp-title { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--ochre-light); font-weight:700; margin-bottom:1.25rem; }
+
+  /* ─── MOVEMENT CARDS (framed look) ─── */
+  .movement-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1rem; }
+  .movement-card {
+    background:var(--museum-mid);
+    border:2px solid var(--frame-dark);
+    border-radius:2px;
+    padding:1.25rem 1.1rem;
+    position:relative;
+    box-shadow: 3px 3px 0 rgba(106,80,16,0.3);
+  }
+  .movement-card::before {
+    content:'';
+    position:absolute; inset:4px;
+    border:1px solid rgba(200,168,64,0.12);
+    pointer-events:none;
+  }
+  .mc-era    { font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--ochre-light); display:block; margin-bottom:0.4rem; }
+  .mc-name   { font-family:'Playfair Display',serif; font-size:1rem; color:var(--ochre-light); font-weight:700; margin-bottom:0.4rem; display:block; }
+  .mc-period { font-size:0.62rem; color:var(--silver); margin-bottom:0.5rem; display:block; }
+  .mc-body   { font-size:0.77rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+  .mc-key    { margin-top:0.6rem; font-size:0.72rem; color:rgba(200,168,64,0.7); }
+
+  /* ─── ARTIST CARDS ─── */
+  .artist-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.9rem; }
+  .artist-card {
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.1);
+    border-top:3px solid var(--ochre);
+    border-radius:0 0 4px 4px;
+    padding:1rem 1.1rem;
+  }
+  .ac-name   { font-family:'Playfair Display',serif; font-size:0.95rem; color:var(--ochre-light); font-weight:700; margin-bottom:0.15rem; }
+  .ac-dates  { font-size:0.6rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.35rem; }
+  .ac-field  { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--viridian-lt); margin-bottom:0.35rem; font-family:'Cinzel',serif; }
+  .ac-body   { font-size:0.77rem; color:rgba(255,255,255,0.65); line-height:1.5; }
+  .ac-work   { margin-top:0.55rem; font-size:0.72rem; color:rgba(200,168,64,0.65); font-style:italic; }
+
+  /* ─── MASTERPIECE CARDS ─── */
+  .masterpiece-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
+  .masterpiece-card {
+    background:#fff;
+    border:1px solid rgba(14,10,6,0.12);
+    border-radius:2px;
+    padding:1.5rem;
+    box-shadow:0 2px 12px var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .masterpiece-card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0; height:4px;
+    background:linear-gradient(90deg,var(--bordeaux),var(--ochre),var(--prussian));
+  }
+  .mp-movement { font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--ochre); display:block; margin-bottom:0.4rem; }
+  .mp-title  { font-family:'Playfair Display',serif; font-size:1rem; color:var(--ink); font-weight:700; font-style:italic; margin-bottom:0.2rem; }
+  .mp-artist { font-size:0.72rem; color:var(--ink-light); margin-bottom:0.6rem; }
+  .mp-body   { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .mp-izakaya{ margin-top:0.75rem; font-size:0.75rem; color:var(--bordeaux); background:rgba(106,20,40,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--bordeaux-lt); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--ochre),var(--ochre),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--ochre);
+    border:3px solid var(--canvas); border-radius:50%;
+    box-shadow:0 0 0 2px var(--ochre); z-index:2;
+  }
+  .tl-dot.bordeaux { background:var(--bordeaux-lt); box-shadow:0 0 0 2px var(--bordeaux-lt); }
+  .tl-dot.prussian { background:var(--prussian-lt); box-shadow:0 0 0 2px var(--prussian-lt); }
+  .tl-dot.viridian { background:var(--viridian-lt); box-shadow:0 0 0 2px var(--viridian-lt); }
+  .tl-dot.frame    { background:var(--frame-gold);  box-shadow:0 0 0 2px var(--frame-gold); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(14,10,6,0.12);
+    border-radius:2px; padding:1.25rem 1.5rem;
+    box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--ochre); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(14,10,6,0.12);
+    border-left:4px solid var(--bordeaux);
+    border-radius:0 4px 4px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:baseline; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:'Cinzel',serif; font-weight:400; letter-spacing:0.06em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--bordeaux); background:rgba(106,20,40,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--bordeaux-lt); }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background:var(--museum-deep); border-radius:4px; padding:2.5rem; color:#fff; overflow-x:auto; border:1px solid rgba(200,168,64,0.12); }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:520px; }
+  .cmp-table th { padding:0.7rem 0.9rem; text-align:left; font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--ochre-light); border-bottom:1px solid rgba(200,168,64,0.2); white-space:nowrap; font-family:'Cinzel',serif; }
+  .cmp-table td { padding:0.7rem 0.9rem; border-bottom:1px solid rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--ochre-light); font-weight:700; white-space:nowrap; font-family:'Playfair Display',serif; font-style:italic; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--canvas-dark); border-radius:4px; padding:1rem; margin-bottom:0.75rem; border-left:3px solid var(--ochre); }
+  .ls-icon  { font-size:1.8rem; flex-shrink:0; }
+  .ls-title { font-family:'Playfair Display',serif; font-weight:700; font-size:0.95rem; color:var(--ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--museum-deep); border-radius:4px; padding:2.5rem; color:#fff; border:1px solid rgba(200,168,64,0.12); }
+  .test-q { background:rgba(0,0,0,0.25); border-left:3px solid var(--ochre); padding:1rem 1.25rem; border-radius:0 4px 4px 0; margin-bottom:1rem; }
+  .test-q-label { font-family:'Cinzel',serif; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--ochre-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── DIVIDER ─── */
+  .ornament-divider { text-align:center; color:var(--frame-gold); opacity:0.4; letter-spacing:1em; font-size:0.8rem; margin:1.5rem 0; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--museum-deep); color:var(--silver); text-align:center; padding:2.5rem; font-size:0.77rem; border-top:1px solid rgba(200,168,64,0.15); }
+  .footer-icon { font-size:1.8rem; display:block; margin-bottom:0.5rem; color:var(--ochre-light); }
+  .footer-ornament { color:var(--frame-gold); opacity:0.35; letter-spacing:0.8em; font-size:0.7rem; display:block; margin-top:1rem; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.10</div>
+  <h1>西洋美術史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">"美しい絵"を見て「すごいね」で終わらせない——古代ギリシャから現代アートまで、2500年の視覚の革命を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 5世紀</span><span class="hero-stat-lbl">西洋美術の原点</span></div>
+    <div><span class="hero-stat-num">10の様式</span><span class="hero-stat-lbl">時代を彩った潮流</span></div>
+    <div><span class="hero-stat-num">ルーヴル2日</span><span class="hero-stat-lbl">世界最大の美術館</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">解釈の数</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: なぜ美術史か ═══ -->
+<section class="bg-canvas">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">美術史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「キレイ・キレイじゃない」の先へ——時代の世界観を「見る」ための技術</p>
+  </div>
+  <div class="movement-grid">
+    <div class="movement-card">
+      <span class="mc-era">Time Capsule</span>
+      <span class="mc-name">時代の世界観が「見える」</span>
+      <p class="mc-body">中世の絵に遠近法がないのは技術不足ではなく「神の前に大きさは等しい」という世界観の表現。絵を読めると、その時代の哲学・宗教・権力構造が丸ごと見えてくる。</p>
+    </div>
+    <div class="movement-card">
+      <span class="mc-era">Power Reading</span>
+      <span class="mc-name">誰が何のために作らせたか</span>
+      <p class="mc-body">バチカンのシスティーナ礼拝堂は教皇の権威のために作られた。印象派の絵は「画商」という新業態なしに存在しなかった。美術は常に「権力と資本と才能の交差点」。</p>
+    </div>
+    <div class="movement-card">
+      <span class="mc-era">Revolution</span>
+      <span class="mc-name">「常識の破壊」の歴史</span>
+      <p class="mc-body">遠近法・明暗法・印象主義・キュビズム・抽象絵画——美術史は「今まで誰もやらなかったこと」の連鎖。スタートアップ的な「破壊と創造」を2500年続けてきた。</p>
+    </div>
+    <div class="movement-card">
+      <span class="mc-era">Visual Fluency</span>
+      <span class="mc-name">会話が変わる・旅が変わる</span>
+      <p class="mc-body">ルーヴル・ウフィツィ・大英博物館——「なんかすごい」が「そういうことか！」に変わる瞬間がある。美術史は美術館・映画・建築・広告のリテラシー。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「美術って好き嫌いで語るもんだと思ってたけど、実は"読む"ものなんよね。なんでモナリザの背景は霧がかかってるのか、なんで中世の絵は平面的なのか——全部意味がある。美術史って時代の世界観の地図帳みたいなもの」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜中世 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">古代〜中世 — 神・人間・象徴</h2>
+    <p class="section-desc">BC 5世紀〜13世紀。「美」の概念そのものが作られた時代</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Ancient Greece → Byzantine · BC 5c 〜 AD 13c</div>
+    <div class="dp-title">西洋美術の「文法」は古代ギリシャで書かれた</div>
+    <div class="artist-row">
+      <div class="artist-card">
+        <div class="ac-name">古代ギリシャ彫刻</div>
+        <div class="ac-dates">BC 5〜4世紀</div>
+        <div class="ac-field">理想の人体・コントラポスト</div>
+        <div class="ac-body">「人体の美しさ」を追求した最初の文明。コントラポスト（体重移動で生まれる自然なポーズ）を発明。ヴィーナス・ミロ・サモトラケのニケがその完成形。「理想的な人間の姿を彫る」という西洋彫刻の伝統がここから始まる。</div>
+        <div class="ac-work">代表：ミロのヴィーナス・ラオコーン群像</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ローマ美術</div>
+        <div class="ac-dates">BC 2世紀〜AD 4世紀</div>
+        <div class="ac-field">肖像彫刻・建築・モザイク</div>
+        <div class="ac-body">ギリシャ美術を継承しながら「写実的な個人の肖像」を追求——権力者の顔を正確に再現。パンテオン・コロッセウムなど建築の革新。ポンペイの壁画は「日常生活の美術」の貴重な記録。</div>
+        <div class="ac-work">代表：アウグストゥス像・ポンペイの壁画</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ビザンティン美術</div>
+        <div class="ac-dates">4〜15世紀</div>
+        <div class="ac-field">イコン・金のモザイク・精神性</div>
+        <div class="ac-body">「神の世界を描く」。遠近法をあえて使わず金地に平面的な聖人を描くイコン（聖画像）。現実空間でなく「神の空間」を表現するため、意図的に非写実的。この「非写実」が中世西欧美術の基本に。ラヴェンナのモザイクが傑作。</div>
+        <div class="ac-work">代表：ラヴェンナのモザイク・各地のイコン画</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ロマネスク・ゴシック</div>
+        <div class="ac-dates">10〜15世紀</div>
+        <div class="ac-field">大聖堂・ステンドグラス・写本</div>
+        <div class="ac-body">ロマネスク：重厚な石の壁・丸アーチ・暗く神秘的。ゴシック：尖頭アーチ・フライングバットレス・高い天井とステンドグラス——「光」で神の存在を表現。ノートルダム・シャルトル大聖堂。建築と彫刻と絵画が「宗教教育の総合メディア」だった。</div>
+        <div class="ac-work">代表：シャルトル大聖堂のステンドグラス</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: ルネサンス ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">ルネサンス — 「人間の再発見」と視覚革命</h2>
+    <p class="section-desc">14〜17世紀。遠近法・解剖学・油彩——3つの技術革命が美術を変えた</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+    <div class="life-step">
+      <div class="ls-icon">📐</div>
+      <div>
+        <div class="ls-title">線遠近法（透視図法）の発明——ブルネレスキ（1420年頃）</div>
+        <div class="ls-body">フィレンツェの建築家ブルネレスキが「消失点」に向かって線が収束する線遠近法を発明。「人間の目から見た世界」を正確に描けるようになった。以降の西洋絵画の基本文法。中世の「神の視点」から「人間の視点」への革命的転換。マサッチオが絵画に応用し、その後のダ・ヴィンチ・ラファエロに受け継がれた。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🕯</div>
+      <div>
+        <div class="ls-title">スフマート（煙霧法）——レオナルド・ダ・ヴィンチ</div>
+        <div class="ls-body">輪郭線を煙のようにぼかし、光と影を繊細に混合させることで「大気の空気感」と「生命感」を表現する技法。モナリザの謎めいた微笑・背景の霧はこの技法の完成形。「線は存在しない、光と影があるだけだ」という洞察から生まれた。これ以降の写実表現の基本技術になった。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🎨</div>
+      <div>
+        <div class="ls-title">油彩技法の普及——ファン・エイク（15世紀）</div>
+        <div class="ls-body">フランドル（現ベルギー）のヤン・ファン・エイクが油絵具を改良・普及させた。それ以前のテンペラ（卵黄）と比べ、乾燥が遅く何度も重ね塗りができ、光沢と深みが出る。質感・光沢・細部描写が劇的に向上。ベルベット・毛皮・宝石の質感を写真のように描けるようになった。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">The Renaissance Masters · ルネサンスの巨人たち</div>
+    <div class="dp-title">フィレンツェ・ヴェネツィア・ローマに集った天才たちの競演</div>
+    <div class="artist-row">
+      <div class="artist-card">
+        <div class="ac-name">レオナルド・ダ・ヴィンチ</div>
+        <div class="ac-dates">1452〜1519 · フィレンツェ</div>
+        <div class="ac-field">万能の天才・ルネサンスの象徴</div>
+        <div class="ac-body">画家・彫刻家・建築家・音楽家・数学者・工学者・解剖学者・植物学者——全てをひとりで。7000ページ以上の手稿に飛行機・戦車・太陽光発電の原理を構想。「モナリザ」「最後の晩餐」の2作品だけで美術史に永遠の名を刻んだ。</div>
+        <div class="ac-work">代表：「モナリザ」「最後の晩餐」「ウィトルウィウス的人体図」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ミケランジェロ</div>
+        <div class="ac-dates">1475〜1564 · フィレンツェ</div>
+        <div class="ac-field">彫刻・フレスコ画・建築</div>
+        <div class="ac-body">「大理石の中に天使がいる。私はその周りの石を削り出すだけだ」。ダヴィデ像（4年・17トン）・ピエタ（24歳の作）・システィーナ礼拝堂天井画（4年・1人で600㎡）。80歳を超えてサン・ピエトロ大聖堂の設計を担当。「神に最も近い芸術家」と呼ばれた。</div>
+        <div class="ac-work">代表：「ダヴィデ像」「システィーナ礼拝堂」「ピエタ」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ラファエロ</div>
+        <div class="ac-dates">1483〜1520 · ウルビーノ</div>
+        <div class="ac-field">聖母子像・バランスの美</div>
+        <div class="ac-body">37歳で夭折しながらルネサンスの「調和と美」の完成者。「アテナイの学堂」——プラトン・アリストテレスを中心に古代哲学者50人を描いた究極の集合肖像画。温かみある聖母子像は後世のカトリック美術の標準に。生前から"神の子"と称された。</div>
+        <div class="ac-work">代表：「アテナイの学堂」「システィーナのマドンナ」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ボッティチェッリ</div>
+        <div class="ac-dates">1445〜1510 · フィレンツェ</div>
+        <div class="ac-field">神話画・詩的な美しさ</div>
+        <div class="ac-body">メディチ家の庇護下で古代神話をキリスト教以外のテーマとして堂々と描いた。「ヴィーナスの誕生」——貝から生まれる美の女神。線的・装飾的で夢見るような美しさは19世紀ラファエル前派に再発見され現代日本のアニメ美少女の系譜にも繋がる。</div>
+        <div class="ac-work">代表：「ヴィーナスの誕生」「春（プリマヴェーラ）」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ティツィアーノ</div>
+        <div class="ac-dates">1488〜1576 · ヴェネツィア</div>
+        <div class="ac-field">色彩の魔術師・ヴェネツィア派</div>
+        <div class="ac-body">「色彩のミケランジェロ」。フィレンツェ派が「線（デッサン）」を重視したのに対し、ヴェネツィア派は「色彩」を重視——この対立が後のバロック・印象派に続く美術の根本的分岐点。カール5世・フェリペ2世など欧州各国の王侯に仕えた最初の「スター芸術家」。</div>
+        <div class="ac-work">代表：「ウルビーノのヴィーナス」「聖愛と俗愛」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: バロック〜新古典主義 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">バロック〜ロマン主義 — 動・光・感情の爆発</h2>
+    <p class="section-desc">17〜19世紀前半。ルネサンスの「静」から「動」へ——演劇的な緊張感の時代</p>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">Baroque to Romanticism · バロック〜ロマン主義</div>
+    <div class="dp-title">光と影・動き・感情——「体験させる美術」への転換</div>
+    <div class="artist-row">
+      <div class="artist-card">
+        <div class="ac-name">カラヴァッジョ</div>
+        <div class="ac-dates">1571〜1610 · ミラノ→ローマ</div>
+        <div class="ac-field">テネブリスム・劇的な明暗</div>
+        <div class="ac-body">真っ暗な背景にスポットライトのように人物を浮かび上がらせる「テネブリスム（暗黒主義）」の発明者。殺人・逃亡を繰り返した問題児でありながら、その写実的な暴力と光は教会から大量発注を受けた。バロック美術の父。ルーベンス・レンブラント・ヴェラスケスを直接間接に形成。</div>
+        <div class="ac-work">代表：「聖マタイの召命」「ホロフェルネスの首を切るユーディット」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">レンブラント</div>
+        <div class="ac-dates">1606〜1669 · アムステルダム</div>
+        <div class="ac-field">光の画家・自画像の巨匠</div>
+        <div class="ac-body">オランダ黄金時代の頂点。「光の魔術師」——金色がかった暖かい光が人物の顔から放射するような効果。100点以上の自画像は「老いと時間」への探求として美術史唯一の規模。「夜警」——集団肖像画を動きのある劇的な場面に変えた革命作。晩年に破産・孤独死。</div>
+        <div class="ac-work">代表：「夜警」「自画像（老年）」「テュルプ博士の解剖学講義」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">フェルメール</div>
+        <div class="ac-dates">1632〜1675 · デルフト</div>
+        <div class="ac-field">光の詩人・日常の神聖化</div>
+        <div class="ac-body">生涯デルフトを離れず35点ほどしか残さなかった謎の画家。左の窓から差し込む柔らかな光が日常の一場面を永遠に変える。「真珠の耳飾りの少女」の微笑は「北のモナリザ」と呼ばれる。絵のテーマは全て「どこかにある普通の部屋の、光の奇跡」。</div>
+        <div class="ac-work">代表：「真珠の耳飾りの少女」「牛乳を注ぐ女」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ルーベンス</div>
+        <div class="ac-dates">1577〜1640 · アントワープ</div>
+        <div class="ac-field">バロックの絢爛・外交官画家</div>
+        <div class="ac-body">外交官として欧州を駆け回りながら大量の大作を制作。肉感的な人物・渦巻く構図・原色の鮮やかさが特徴。「ルーベンスの工房」では多数の弟子が分業制で制作——美術の「産業化」の先駆け。</div>
+        <div class="ac-work">代表：「マリー・ド・メディシスの生涯」連作</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ゴヤ</div>
+        <div class="ac-dates">1746〜1828 · スペイン</div>
+        <div class="ac-field">宮廷画家→近代絵画の父</div>
+        <div class="ac-body">スペイン宮廷画家として出発しながら晩年は「黒い絵」シリーズで人間の狂気と恐怖を描いた。「1808年5月3日の処刑」は現代のゲルニカ・報道写真につながる「戦争告発絵画」の先駆。「近代絵画の父」——テーマ的にも技法的にも20世紀美術の予言者。</div>
+        <div class="ac-work">代表：「1808年5月3日の処刑」「我が子を喰らうサトゥルヌス」</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🎭 <strong style="color:var(--ochre-light);">ロマン主義（19世紀前半）：</strong>ドラクロワ「民衆を率いる自由の女神」・ターナーの嵐の海——「理性より感情、規則より自由」。フランス革命・ナポレオン・産業革命への反動として生まれた「崇高さ・自然・英雄」への憧憬。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 印象派 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">印象派 — 光を描いた革命</h2>
+    <p class="section-desc">1860〜1890年代。「見えるように描く」から「感じるように描く」への転換</p>
+  </div>
+
+  <div style="background:var(--canvas-dark); border-radius:4px; padding:2rem; margin-bottom:1.5rem; border-left:4px solid var(--ochre);">
+    <div style="font-family:'Cinzel',serif; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--ochre); margin-bottom:0.5rem;">The Context · 背景</div>
+    <div style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:0.75rem;">「落選展（Salon des Refusés）」から始まった革命</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; font-size:0.82rem; color:var(--ink-light);">
+      <div>📸 <strong>写真の発明（1839年）</strong>——「写実的に描く」という絵画の役割が突然奪われた。画家は「写真にできないこと」を探し始めた。</div>
+      <div>🚂 <strong>チューブ絵具（1841年）</strong>——それ以前の画家は屋外に出られなかった。携帯できる絵具が「戸外制作（アン・プレイン・エール）」を可能に。</div>
+      <div>🏛 <strong>アカデミーの拒絶（1863年）</strong>——落選展でマネ「草上の昼食」が展示されスキャンダルに。この「拒絶と反発」が印象派誕生の引き金。</div>
+      <div>🎑 <strong>日本の浮世絵（ジャポニスム）</strong>——輸入された浮世絵の平面性・大胆な構図・鮮やかな色彩がモネ・ゴッホ・ドガに衝撃を与えた。</div>
+    </div>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">Impressionism & Post-Impressionism · 印象派〜後期印象派</div>
+    <div class="dp-title">「光の瞬間」を描いた画家たちと、その先へ進んだ先駆者たち</div>
+    <div class="artist-row">
+      <div class="artist-card">
+        <div class="ac-name">クロード・モネ</div>
+        <div class="ac-dates">1840〜1926 · パリ</div>
+        <div class="ac-field">光と色彩・睡蓮連作</div>
+        <div class="ac-body">「印象・日の出（1872）」の展覧会タイトルを批評家に嘲笑されたのが「印象派」の命名の由来。同じ積み藁・大聖堂・睡蓮を時間帯・季節を変えて繰り返し描いた連作。晩年は白内障になりながら巨大な睡蓮を描き続けた——色覚が変わっても光への愛は変わらなかった。</div>
+        <div class="ac-work">代表：「睡蓮」連作・「ルーアン大聖堂」連作</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">エドガー・ドガ</div>
+        <div class="ac-dates">1834〜1917 · パリ</div>
+        <div class="ac-field">バレエ・動きの瞬間捉え</div>
+        <div class="ac-body">バレエダンサー・競馬・入浴する女性を繰り返し描いた。印象派の中で唯一「屋内・人工光・動き」にこだわった。パステルを自在に使い、まるでスナップ写真のような斜め構図・トリミング——浮世絵の影響が最も強く表れた。</div>
+        <div class="ac-work">代表：「バレエの稽古」「カフェにて（アプサント）」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ヴィンセント・ファン・ゴッホ</div>
+        <div class="ac-dates">1853〜1890 · オランダ</div>
+        <div class="ac-field">後期印象派・感情の渦</div>
+        <div class="ac-body">生前売れた絵は1枚。死後「最高値の画家」に。黄色い太陽・渦巻く夜空・うねる糸杉——筆触そのものが感情の表現に。耳切り事件・精神病院での制作・37歳での死（自殺？）。「表現主義」の直接の父。生涯で879点の油彩。</div>
+        <div class="ac-work">代表：「星月夜」「ひまわり」「夜のカフェテラス」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ポール・セザンヌ</div>
+        <div class="ac-dates">1839〜1906 · エクス</div>
+        <div class="ac-field">後期印象派・近代絵画の父</div>
+        <div class="ac-body">「リンゴ1個でパリを驚かせたい」。三次元の形を「球・円錐・円柱」の組み合わせで描く方法を探求した。遠近法を無視した複数視点——これがピカソのキュビズムに直結する。「近代絵画の父」——20世紀美術の全ての源泉。</div>
+        <div class="ac-work">代表：「サント・ヴィクトワール山」連作・「カード遊びをする人々」</div>
+      </div>
+      <div class="artist-card">
+        <div class="ac-name">ポール・ゴーギャン</div>
+        <div class="ac-dates">1848〜1903 · パリ→タヒチ</div>
+        <div class="ac-field">後期印象派・原始への回帰</div>
+        <div class="ac-body">証券マンから画家に転身、ゴッホとの同居・対立の末タヒチに渡る。西洋文明を「病んだもの」として批判し、タヒチの人々の生を濃厚な色彩で描いた。「我々はどこから来たのか、我々は何者か、我々はどこへ行くのか」——生の問いを巨大な壁画に。</div>
+        <div class="ac-work">代表：「我々はどこから来たのか…」「タヒチの女たち」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">20世紀美術タイムライン</h2>
+    <p class="section-desc">「絵とは何か」という問い自体を問い直した100年</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1905〜1908年</div>
+        <div class="tl-event">フォービスムとキュビズム — 形と色の解体</div>
+        <div class="tl-desc">マティス率いるフォーヴィスム（野獣派）が色彩を感情表現として解放——「物の本来の色を捨てろ」。ピカソとブラックのキュビズム（立体派）は複数視点を同時に描くことで三次元を二次元平面に解体。「見えるように描く」という2500年の前提を破壊した。</div>
+      </div>
+      <div class="tl-dot frame"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎨</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1910年代</div>
+        <div class="tl-event">抽象絵画の誕生 — カンディンスキー</div>
+        <div class="tl-desc">ヴァシリー・カンディンスキーが世界初の完全な抽象画を制作（1910年）。「音楽が具体的な意味なしに感情を伝えるように、色と形も意味なしに感情を伝えられる」——具象表現を完全に捨てた絵画の革命。モンドリアンが直線と三原色のみの「純粋抽象」を確立。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⬛</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1916〜1930年代</div>
+        <div class="tl-event">ダダイズムとシュルレアリスム — 無意識の解放</div>
+        <div class="tl-desc">第一次大戦への絶望からチューリッヒで生まれたダダ——「意味」「美」「芸術」そのものを否定するアンチ芸術。マルセル・デュシャン「泉」（便器をそのまま展示）は20世紀最大のスキャンダル。シュルレアリスム（超現実主義）はフロイトの無意識理論を視覚化——ダリ・マグリット・エルンスト。</div>
+      </div>
+      <div class="tl-dot bordeaux"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🕰</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1940〜50年代</div>
+        <div class="tl-event">抽象表現主義 — ニューヨーク派の台頭</div>
+        <div class="tl-desc">戦後ナチスから逃れた欧州芸術家の流入でニューヨークが世界の美術の中心に。ジャクソン・ポロックの「ドリッピング」（床に広げたキャンバスに絵具を垂らす）・マーク・ロスコの色面絵画——「行為」と「感情」そのものが絵画に。アメリカが初めて世界の美術をリードした。</div>
+      </div>
+      <div class="tl-dot prussian"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🇺🇸</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1960年代</div>
+        <div class="tl-event">ポップアートとコンセプチュアルアート</div>
+        <div class="tl-desc">アンディ・ウォーホルが缶スープ・マリリン・マオを版画で大量複製——「芸術とはオリジナルの一点物であるべき」という常識を破壊。「芸術とは何か」という問い自体が作品になる「コンセプチュアルアート」へ。リヒテンスタインの漫画的絵画も同時代。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🥫</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1980s〜現在</div>
+        <div class="tl-event">現代アート——市場・NFT・バンクシー</div>
+        <div class="tl-desc">バスキア・ジェフ・クーンズ・村上隆などが「アート市場」と正面から向き合った。バンクシーの匿名的ストリートアート（2018年オークション中に自ら絵をシュレッダーにかける）。NFTアートの登場。「美術とは何か」という問いが今も続いている。</div>
+      </div>
+      <div class="tl-dot viridian"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 名画と解説 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">居酒屋で語れる名画10選</h2>
+    <p class="section-desc">見たことある絵を「読める」ようになる——背景を知ると名画は3倍面白い</p>
+  </div>
+  <div class="masterpiece-grid">
+    <div class="masterpiece-card">
+      <span class="mp-movement">Renaissance · 1503〜1517</span>
+      <div class="mp-title">モナリザ</div>
+      <div class="mp-artist">レオナルド・ダ・ヴィンチ / ルーヴル美術館</div>
+      <div class="mp-body">世界一有名な絵だが縦77×横53cmと意外に小さい。フィレンツェの商人の妻リザ・ゲラルディーニの肖像画とされるが今も論争中。謎の微笑はスフマートで輪郭をぼかしているため見る角度で変わる。背景の霧の中の道はどこへも続かない。ダ・ヴィンチは死ぬまで手放さなかった。</div>
+      <div class="mp-izakaya">「モナリザってルーヴルで見るとすごく小さくてびっくりする。あの謎の微笑は輪郭をぼかす技法のせいで、どこから見ても微笑んでいるように見える錯覚を計算して作られてる」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Renaissance · 1508〜1512</span>
+      <div class="mp-title">システィーナ礼拝堂天井画</div>
+      <div class="mp-artist">ミケランジェロ / バチカン</div>
+      <div class="mp-body">4年間・1人で600㎡を仰向けで描いた。「神とアダムの指」——触れそうで触れない指の隙間が「生命が宿る瞬間」を表す。ミケランジェロは彫刻家であり絵画を低く見ていたため当初は拒否したが、教皇ユリウス2世に強制された。「嫌々描いた傑作」。</div>
+      <div class="mp-izakaya">「アダムと神の指の間の隙間ってミケランジェロの天才的演出で、"生命を与える瞬間"を触れることなく表現してる。これをネットミームで使いまくってる現代人は一応ミケランジェロのデザインを毎日引用してる」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Dutch Baroque · 1642</span>
+      <div class="mp-title">夜警</div>
+      <div class="mp-artist">レンブラント / アムステルダム国立美術館</div>
+      <div class="mp-body">縦3.6×横4.4mの巨大集団肖像画。注文主の市民警備隊員18人がお金を払って描いてもらったが、レンブラントは全員を等しく描かず「劇的な場面」として構成。暗い背景に金色の少女がなぜいるのかは未解明の謎。光と影の巨大な交響曲。</div>
+      <div class="mp-izakaya">「夜警って"夜の見回り"を描いてると思われてたけど実は昼の場面。後世のニスが黒ずんで"夜"に見えるようになっただけ。300年以上誤解されてた名前」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Dutch Golden Age · 1665頃</span>
+      <div class="mp-title">真珠の耳飾りの少女</div>
+      <div class="mp-artist">フェルメール / マウリッツハイス美術館</div>
+      <div class="mp-body">「北のモナリザ」。こちらを振り返る少女の視線が謎めいた魅力の源泉。誰が少女かは不明——娘説・弟子説・架空の存在説がある。背景の完全な黒が少女を際立たせる。フェルメールが使ったラピスラズリ（青）は金より高価な顔料だった。</div>
+      <div class="mp-izakaya">「フェルメールの青って当時金より高い顔料だった。絵の中の青いターバンはラピスラズリという宝石を砕いたもの。絵を買った金持ちへの富の誇示でもあった」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Romanticism · 1830</span>
+      <div class="mp-title">民衆を率いる自由の女神</div>
+      <div class="mp-artist">ドラクロワ / ルーヴル美術館</div>
+      <div class="mp-body">1830年フランス七月革命を描いた政治的絵画。胸をはだけた女性「マリアンヌ」がフランスの自由の象徴として今も使われる。三色旗・積み重なる遺体・立ち上がる民衆——ロマン主義が「崇高な大義のために死ぬ」という感情を最大限に演出した。</div>
+      <div class="mp-izakaya">「ドラクロワの自由の女神って実在の人物じゃなく"自由"の擬人化で、胸をはだけているのは「検閲されない表現」という象徴。フランス人はこの絵が好きすぎて今でも切手・硬貨・政府の象徴に使ってる」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Post-Impressionism · 1889</span>
+      <div class="mp-title">星月夜</div>
+      <div class="mp-artist">ヴァン・ゴッホ / MoMA・ニューヨーク</div>
+      <div class="mp-body">精神病院で描いた作品。渦巻く夜空・糸杉・静かな村——不安と美が渦巻く。ゴッホ自身はこの絵が好きでなかったという。弟テオへの手紙に「夜空の星を見るとき、私は夢想する——なぜ天球の地図の点に行けないのかと、鉄道で都市へ行くように」とある。</div>
+      <div class="mp-izakaya">「ゴッホの星月夜って精神病院から見た夜空を描いたもの。本人は嫌いだったらしく弟に"失敗作"と送ってる。生前は1枚しか売れなかった人が今じゃ100億超で取引される——美術の評価ってほんとに面白い」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Expressionism · 1893</span>
+      <div class="mp-title">叫び</div>
+      <div class="mp-artist">エドヴァルド・ムンク / ノルウェー国立美術館</div>
+      <div class="mp-body">「血のような雲を見て叫ぶような不安を感じた」という日記から生まれた。渦巻く空・橋・叫ぶ人物——「不安」という感情を視覚化した最初期の作品のひとつ。1994年と2004年に盗難に遭い（どちらも後に回収）世界的に有名に。現代のミームとしても無限に再解釈される。</div>
+      <div class="mp-izakaya">「叫びって口を開けてる人が叫んでるんじゃなく、自然の叫び声を聞いて耳を塞いでる解釈もある。不安という感情を初めてそのまま絵にしたという意味で現代アートの入口」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Cubism · 1937</span>
+      <div class="mp-title">ゲルニカ</div>
+      <div class="mp-artist">パブロ・ピカソ / ソフィア王妃芸術センター・マドリード</div>
+      <div class="mp-body">スペイン内戦でのナチスによるゲルニカ市への無差別爆撃への抗議として制作（縦3.5m×横7.8m）。あえてモノクロ——カラーで描けば視覚的快楽になる、という判断。ニュース写真のような報道性とキュビズムの多視点が「戦争の混乱」を表現。現代の反戦芸術の象徴。</div>
+      <div class="mp-izakaya">「ゲルニカがモノクロなのは意図的で、カラーにすると綺麗に見えてしまうから。爆撃の恐怖を"記録"として描くためにニュース写真的なモノクロを選んだ。アートが政治的主張を持った最も有名な例」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Surrealism · 1931</span>
+      <div class="mp-title">記憶の固執（溶ける時計）</div>
+      <div class="mp-artist">サルバドール・ダリ / MoMA・ニューヨーク</div>
+      <div class="mp-body">溶けたやわらかい時計——「夢の中では時間が流れない」。ダリはカマンベールチーズが溶けるのを見てインスピレーションを得たと語る。フロイトの精神分析に触発された「夢の景色」の忠実な描写。細部は極めてリアルだが全体は非現実——超現実主義の完璧な定義。</div>
+      <div class="mp-izakaya">「ダリの溶ける時計って夢の中では時間が意味をなさないというフロイトの無意識論を視覚化したもの。制作のきっかけはカマンベールが溶けるのを見たからというのが笑える」</div>
+    </div>
+    <div class="masterpiece-card">
+      <span class="mp-movement">Pop Art · 1962</span>
+      <div class="mp-title">キャンベルのスープ缶</div>
+      <div class="mp-artist">アンディ・ウォーホル / MoMA・ニューヨーク</div>
+      <div class="mp-body">32種類のスープ缶をそのまま描いた32点の連作。「なぜスープ缶が芸術でハンバーガーはそうでないのか」という問い。ウォーホルは「機械になりたい」と言い、版画による大量複製を追求。「芸術はオリジナルであるべき」「芸術は美しくあるべき」という常識を覆した。</div>
+      <div class="mp-izakaya">「ウォーホルのスープ缶って"スーパーマーケットの商品と芸術作品の違いは何か"という哲学的問いかけなんよ。本人が"機械になりたい"と言って大量複製に徹したのは"芸術家の個性"への皮肉でもある」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VIII</span>
+    <h2 class="section-title">美術史の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——絵を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">パトロン（庇護者）<span class="concept-en">Patron</span></div>
+      <div class="concept-body">メディチ家（ルネサンス）・教皇（バロック）・王侯貴族（17〜18世紀）・ブルジョワ市民（印象派）・ギャラリーと市場（現代）——誰がお金を出したかが、何が描かれたかを決定した。芸術は「自由な表現」である前に「依頼された仕事」だった歴史。</div>
+      <div class="concept-izakaya">「ミケランジェロが教皇の命令でシスティーナを描いたように、芸術史はパトロン（お金を出す人）の歴史でもある。現代でいえばアート市場・美術館・コレクターがパトロン。誰がお金を出すかが何が生き残るかを決める」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">パラダイムシフト <span class="concept-en">Avant-Garde</span></div>
+      <div class="concept-body">「前衛（アヴァンギャルド）」——軍事用語「前衛部隊」から来た美術用語。時代の規範を破り次の美術を「先行して」作る動きを指す。写実主義・印象派・キュビズム・抽象美術は全て当初は「異端」と批判された前衛運動だった。</div>
+      <div class="concept-izakaya">「印象派ってキュビズムって最初はこっぴどく批判された。"こんなものは美術じゃない"と。でも50年後には全員が"クラシック"になってる。美術史って"今日の異端は明日の古典"の繰り返し。批判される人が歴史を作る法則がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">イコノグラフィー <span class="concept-en">Iconography</span></div>
+      <div class="concept-body">絵に描かれた「象徴・記号の読み方」。ユリはマリアの純潔・頭蓋骨は死・羊はキリスト・天秤は正義——宗教画は全て記号の組み合わせ。鑑賞者が「読み解く楽しさ」のために描かれた。当時の鑑賞者には一目でわかる「絵のテキスト」だった。</div>
+      <div class="concept-izakaya">「中世・ルネサンスの宗教画って当時の人には"絵本"みたいなもの。ユリが描いてあればマリア、羊はキリスト、頭蓋骨は死の象徴。字が読めない人でも絵を読めるように設計されてた。聖書のコミック版」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">スフマート / キアロスクーロ <span class="concept-en">Sfumato / Chiaroscuro</span></div>
+      <div class="concept-body">スフマート（ダ・ヴィンチ）——輪郭を煙のようにぼかす技法。キアロスクーロ（明暗法）——強烈な明暗のコントラストで立体感・劇的効果を生む。カラヴァッジョが完成させた「テネブリスム」はその極端な形。印象派はこれを逆転させ「影にも色がある」と主張。</div>
+      <div class="concept-izakaya">「スフマートって"煙のような"という意味のイタリア語で、ダ・ヴィンチが輪郭をぼかして空気感を出す技法。モナリザの微笑が謎めいて見えるのはこのため。カラヴァッジョは逆に超強烈な明暗——まるでスポットライトが当たってる舞台のよう」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ジャポニスム <span class="concept-en">Japonisme</span></div>
+      <div class="concept-body">1860年代以降、日本の浮世絵・工芸品がヨーロッパに流入し印象派・ポスト印象派に与えた衝撃。ゴッホは歌川広重の模写を描き、モネは着物姿の妻を描き、ロートレックはポスターに浮世絵の平面性を取り込んだ。「開国の副産物が世界美術を変えた」。</div>
+      <div class="concept-izakaya">「ゴッホが浮世絵マニアだったって知ってる？ 広重の「大はしあたけの夕立」を油絵で模写してる。北斎の波は今もデザイン界で引用される。明治の開国で輸出された日本の浮世絵が印象派を作ったという"蝶の羽ばたき"の歴史」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">レディ・メイド <span class="concept-en">Readymade</span></div>
+      <div class="concept-body">マルセル・デュシャンが既製品（便器）をそのまま「芸術作品」として展示した概念。「芸術家が芸術と呼べばそれが芸術である」——「作ること」でなく「選ぶこと（コンセプト）」が芸術の本質だという主張。現代アートの全ての「なぜこれが芸術?」という問いはここに起源がある。</div>
+      <div class="concept-izakaya">「デュシャンが便器を美術館に出品したのは1917年。"これが芸術と言えるなら何でも芸術だ"という皮肉のつもりだったが、それ自体が20世紀最大の芸術作品になった。今の現代アートの"なぜこれが数億円?"問題の元凶と言えばデュシャン」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ホワイトキューブ <span class="concept-en">White Cube</span></div>
+      <div class="concept-body">20世紀以降の近代美術館の「白い壁・中性的な空間・何もない部屋」という展示様式。白い空間に作品を置くことで「純粋に作品を鑑賞させる」という思想。しかしこれ自体が「美術の権威化・神聖化」というイデオロギーだという批判もある。</div>
+      <div class="concept-izakaya">「現代美術館って白い壁に絵1枚ってよくあるけど、あれ"ホワイトキューブ"って思想があって。白い部屋で文脈を排除することで"純粋な芸術体験"を作るという設計。でもその"何もない白い部屋"という文脈が実は美術を"聖なるもの"にしているという批判もある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">アート市場と投機 <span class="concept-en">Art Market</span></div>
+      <div class="concept-body">現代美術の価格はオークションハウス（サザビーズ・クリスティーズ）・ギャラリー・コレクター・批評家の複雑な相互作用で決まる。「価値があるから高い」のか「高いから価値がある」のか——バスキアの絵が100億円になる論理。NFTアートは「デジタル所有権」という新市場を作った。</div>
+      <div class="concept-izakaya">「ゴッホが生前1枚しか売れなかったのに今は100億超。バスキアは28歳で死んで30年後に100億超。現代アートの価格って"才能×希少性×権威ある人の承認×投機的期待値"で決まってて、金融商品に近い側面がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ゲルニカと政治的芸術 <span class="concept-en">Art & Politics</span></div>
+      <div class="concept-body">芸術は「純粋な美の追求」でありながら常に政治的だった。ローマ帝国の皇帝像は権力の可視化、宗教画は教会の思想統制の道具、ゲルニカは反戦声明、ポップアートは消費社会批判。「芸術は中立ではない」——何を描き何を描かないかが政治性を持つ。</div>
+      <div class="concept-izakaya">「"芸術に政治を持ち込むな"ってよく言われるけど、歴史的に芸術はずっと政治的だった。パルテノン神殿はアテネの権威のため、ベルサイユ宮殿の絵画は王権のため、ゲルニカは反戦のため。"政治性のない芸術"という概念自体が比較的最近の発明」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">「額縁の外」の美術 <span class="concept-en">Beyond the Frame</span></div>
+      <div class="concept-body">バンクシーのストリートアート・クリストの梱包アート（国会議事堂を布で包む）・パフォーマンスアート・大地芸術（アース・ワーク）——「美術館の外」「額縁の外」で起きる芸術。「芸術とは専用の空間に飾られるものだ」という定義そのものへの挑戦。</div>
+      <div class="concept-izakaya">「バンクシーって誰もいないうちに公共の壁に絵を描いて消えるんだけど、それがサザビーズで数億円になる。権威ある美術館の「外」で生まれた作品が「中」で最高値をつける矛盾が現代アートの面白さ」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 様式比較表 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special Exhibition</span>
+    <h2 class="section-title">西洋美術史 様式・運動 完全比較表</h2>
+    <p class="section-desc">年代・特徴・代表画家・「何への反動か」を一覧で把握する</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>様式・運動</th>
+          <th>時代</th>
+          <th>核心の特徴</th>
+          <th>代表作家</th>
+          <th>何への反動か</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>古代ギリシャ</td>
+          <td>BC 5〜2世紀</td>
+          <td>理想的人体・均衡・コントラポスト</td>
+          <td>フィディアス・プラクシテレス</td>
+          <td>（西洋美術の出発点）</td>
+        </tr>
+        <tr>
+          <td>中世ビザンティン</td>
+          <td>4〜15世紀</td>
+          <td>金地・平面性・精神性・イコン</td>
+          <td>（無名の修道士たち）</td>
+          <td>古代の「身体礼賛」への宗教的否定</td>
+        </tr>
+        <tr>
+          <td>ルネサンス</td>
+          <td>14〜17世紀</td>
+          <td>遠近法・解剖学的写実・人間中心主義</td>
+          <td>ダ・ヴィンチ・ミケランジェロ・ラファエロ</td>
+          <td>中世の神中心・非写実への反動</td>
+        </tr>
+        <tr>
+          <td>バロック</td>
+          <td>17世紀</td>
+          <td>劇的明暗・動き・感情・スペクタクル</td>
+          <td>カラヴァッジョ・レンブラント・ルーベンス</td>
+          <td>ルネサンスの「静的な調和」への反動</td>
+        </tr>
+        <tr>
+          <td>ロマン主義</td>
+          <td>18世紀末〜19世紀前半</td>
+          <td>感情・崇高・自然・英雄的主題</td>
+          <td>ドラクロワ・ゴヤ・ターナー</td>
+          <td>新古典主義の「理性・規則」への反動</td>
+        </tr>
+        <tr>
+          <td>印象主義</td>
+          <td>1860〜1890年代</td>
+          <td>光の瞬間・筆触の可視化・戸外制作</td>
+          <td>モネ・ルノワール・ドガ・マネ</td>
+          <td>アカデミーの「完成された写実」への反動</td>
+        </tr>
+        <tr>
+          <td>後期印象主義</td>
+          <td>1880〜1900年代</td>
+          <td>形の構造・感情的色彩・原始主義</td>
+          <td>セザンヌ・ゴッホ・ゴーギャン</td>
+          <td>印象派の「光の描写」への個人的超克</td>
+        </tr>
+        <tr>
+          <td>キュビズム</td>
+          <td>1907〜1920年代</td>
+          <td>多視点同時描写・形の幾何学的分解</td>
+          <td>ピカソ・ブラック</td>
+          <td>単一視点遠近法への根本的疑問</td>
+        </tr>
+        <tr>
+          <td>シュルレアリスム</td>
+          <td>1920〜1940年代</td>
+          <td>夢・無意識・不条理・フロイト的表現</td>
+          <td>ダリ・マグリット・エルンスト</td>
+          <td>「理性と合理性」への批判・ダダの後継</td>
+        </tr>
+        <tr>
+          <td>ポップアート</td>
+          <td>1950〜1960年代</td>
+          <td>大衆文化・商品・複製・芸術の脱神秘化</td>
+          <td>ウォーホル・リヒテンスタイン</td>
+          <td>抽象表現主義の「内面と深刻さ」への反動</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--ochre-light);">美術史のパターン：</strong>各様式は「前の様式への反動」として生まれる。ルネサンスは中世への反動、バロックはルネサンスへの反動、印象派はアカデミーへの反動——「反抗の連鎖」が西洋美術史を駆動している。「今日の異端が明日の古典」という構造が2500年続いている。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Final Chapter</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">美術史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「モナリザってなんでそんなに有名なの？」</div>
+      <div class="test-q-text">美術の話になったとき定番の疑問</div>
+      <div class="test-a">「実は19世紀初頭まではルーヴルの"中くらいの有名作"に過ぎなかった。1911年に美術館員に盗まれて2年間行方不明になり、"消えた幻の名画"として世界的注目を浴びた。見つかって展示再開したとき長蛇の列ができて"世界一有名な絵"の地位が確立した。名声は作品の質だけでなく"事件"が作ることを教えてくれる美術史の教訓。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「印象派ってなんで革命的だったの？」</div>
+      <div class="test-q-text">印象派の展覧会に行ったあとで</div>
+      <div class="test-a">「1874年の第一回印象派展では批評家が"印象・日の出"を皮肉って"印象派"と命名した——つまり最初は馬鹿にした名前。革命性は3つ：①筆触を隠さず見せた（仕上げの否定）②影は黒でなく色（紫・青）だと主張した③屋外で描いた（チューブ絵具の発明で可能になった）。写真の発明が"写実の独占"を絵画から奪い、画家が"写真にできないこと"を探した結果が印象派。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「現代アートって価値があるの？」</div>
+      <div class="test-q-text">よくある懐疑論</div>
+      <div class="test-a">「"子供でも描ける"という批判は的外れで、ポロックのドリッピングやマレーヴィチの黒い四角は"誰でもできるのにやらなかった"ことに意味がある。問題は"何を描いたか"でなく"なぜそれをやったか（コンセプト）"。ただし市場価格は才能とは別の"権威・希少性・投機"で動くのも事実。"わからない"で終わらず"なぜこれが選ばれたか"を問うのが正しい態度。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「ゴッホはなぜ生前は売れなかったの？」</div>
+      <div class="test-q-text">アートと評価の話になったとき</div>
+      <div class="test-a">「ゴッホの時代はアカデミーが絵の価値を決めていた。官展（サロン）に入選できなければ画家として評価されない仕組みで、ゴッホの筆致と色彩は当時の基準から大きく外れていた。生涯で売れた絵は1枚（弟の友人が同情で買ったとも言われる）。死後に弟テオの妻ヨーが積極的に宣伝し価値が認められた。"評価は誰がするか"という問いはゴッホの人生が最も鋭く突いている。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「ピカソってなんで評価されてるの？」</div>
+      <div class="test-q-text">キュビズムがよくわからないという人に</div>
+      <div class="test-a">「ピカソが凄いのはキュビズム以外にも「青の時代」「薔薇色の時代」「新古典主義期」「シュルレアリスム期」と何度も全く異なるスタイルを発明し続けた点。91歳まで制作し、「成熟した一貫したスタイル」でなく「絶え間ない自己破壊と再構築」を続けた。"変化しない完成"を目指した多くの画家と違い、"変化し続けること"を作品にした。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「美術館の見方ってあるの？」</div>
+      <div class="test-q-text">美術館旅行の前後に</div>
+      <div class="test-a">「3つのコツ：①"時代"を見る——同じ部屋の作品は同じ時代。その時代の世界観が共通しているはず。②"光"を見る——どこから光が来ているかを探すと構図と意図がわかる。③"パトロン"を考える——誰がお金を出してこれを作らせたか。教会・王室・商人・美術館——動機を想像すると絵が語り始める。全部わからなくても"これ誰が誰のために作ったんだろう"という問いを持つだけで美術館の時間が変わる。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">🎨</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史。知の八角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.45; font-style:italic;">"Every artist dips his brush in his own soul, and paints his own nature into his pictures."</p>
+  <p style="opacity:0.3; font-size:0.72rem; margin-top:0.3rem;">— Henry Ward Beecher</p>
+  <span class="footer-ornament">✦ ✦ ✦</span>
+</div>
+
+</body>
+</html>

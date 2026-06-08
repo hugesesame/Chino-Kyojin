@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治思想史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red-deep:    #1E0A0A;
+    --red-mid:     #7A1A1A;
+    --red-light:   #C03030;
+    --red-pale:    #F5DADA;
+    --gold:        #B8922A;
+    --gold-light:  #E0B84A;
+    --gold-pale:   #FBF5DC;
+    --navy:        #0D1B2E;
+    --navy-mid:    #1A3658;
+    --navy-light:  #2E5F96;
+    --ivory:       #FAF8F2;
+    --ivory-dark:  #EEE8D4;
+    --ink:         #14100A;
+    --ink-mid:     #352A18;
+    --ink-light:   #6E5A3E;
+    --gray:        #9A9080;
+    --silver:      #B8B4A8;
+    --teal:        #0E6E6E;
+    --teal-light:  #18A8A8;
+    --green-dark:  #0E3A1A;
+    --green-mid:   #1A6E32;
+    --shadow:      rgba(30,10,10,0.13);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    color:#fff;
+    text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:'⚖';
+    position:absolute;
+    font-size:32rem;
+    opacity:0.04;
+    top:50%; left:50%;
+    transform:translate(-50%,-52%);
+    line-height:1;
+    pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block;
+    font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold-light);
+    border:1px solid rgba(224,184,74,0.45);
+    padding:4px 16px; border-radius:2px; margin-bottom:1.5rem;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem); font-weight:700; line-height:1.2; margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff,var(--gold-light));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:520px; margin:0 auto 2.5rem; font-weight:300; }
+  .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+  .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-light); display:block; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+
+  /* LAYOUT */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block; background:var(--navy-mid); color:#fff;
+    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
+  }
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+  .tip-bar {
+    background:#fff; border-radius:6px; border:1px solid rgba(13,27,46,0.14);
+    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+  }
+
+  /* DARK CARD BASE */
+  .dark-panel {
+    background:var(--navy);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+  }
+  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--gold-light); font-weight:700; margin-bottom:1.25rem; }
+
+  /* PHILOSOPHER ROW */
+  .phil-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:1rem; }
+  .phil-card {
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:8px; padding:1rem 1.1rem;
+  }
+  .phil-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.15rem; }
+  .phil-dates { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .phil-key   { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal-light); margin-bottom:0.4rem; }
+  .phil-body  { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+  .phil-quote { margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.42); font-style:italic; border-left:2px solid rgba(224,184,74,0.4); padding-left:0.5rem; }
+
+  /* IDEOLOGY CARDS */
+  .ideo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+  .ideo-card {
+    border-radius:8px; padding:1.5rem;
+    position:relative; overflow:hidden; color:#fff;
+  }
+  .ideo-card::after {
+    content:attr(data-sym);
+    position:absolute; bottom:-0.5rem; right:0.5rem;
+    font-size:3.5rem; opacity:0.08; line-height:1;
+    color:var(--gold-light);
+  }
+  .ic-red    { background:linear-gradient(135deg, #5C1010, #8B1A1A); }
+  .ic-blue   { background:linear-gradient(135deg, #0D1B2E, #1A3658); }
+  .ic-green  { background:linear-gradient(135deg, #0E2E14, #1A6E32); }
+  .ic-gold   { background:linear-gradient(135deg, #2A1A00, #5C3A00); }
+  .ic-purple { background:linear-gradient(135deg, #1A0F2E, #3C2A6E); }
+  .ic-teal   { background:linear-gradient(135deg, #0A2020, #0E6E6E); }
+  .ideo-name   { font-family:'Noto Serif JP',serif; font-size:1.1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
+  .ideo-en     { font-size:0.62rem; letter-spacing:0.1em; color:var(--silver); text-transform:uppercase; margin-bottom:0.6rem; display:block; }
+  .ideo-core   { font-size:0.8rem; color:rgba(255,255,255,0.75); line-height:1.6; margin-bottom:0.5rem; }
+  .ideo-thinker{ font-size:0.72rem; color:rgba(255,255,255,0.45); }
+
+  /* TIMELINE */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--red-light),var(--red-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--red-light);
+    border:3px solid var(--ivory); border-radius:50%;
+    box-shadow:0 0 0 2px var(--red-light); z-index:2;
+  }
+  .tl-dot.gold  { background:var(--gold);       box-shadow:0 0 0 2px var(--gold); }
+  .tl-dot.navy  { background:var(--navy-light);  box-shadow:0 0 0 2px var(--navy-light); }
+  .tl-dot.teal  { background:var(--teal);        box-shadow:0 0 0 2px var(--teal); }
+  .tl-dot.green { background:var(--green-mid);   box-shadow:0 0 0 2px var(--green-mid); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(13,27,46,0.14); border-radius:6px;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--red-light); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* BATTLE */
+  .battle-wrap { display:grid; grid-template-columns:1fr auto 1fr; gap:1rem; align-items:center; margin-bottom:1.25rem; }
+  @media(max-width:600px){ .battle-wrap{ grid-template-columns:1fr; } .vs-badge{ display:none; } }
+  .side { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:1.25rem; }
+  .side-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
+  .side-rep   { font-size:0.65rem; color:var(--silver); margin-bottom:0.6rem; }
+  .side-claim { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6; }
+  .vs-badge {
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(224,184,74,0.15); border:1px solid rgba(224,184,74,0.4);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel',serif; font-size:0.75rem; color:var(--gold-light); flex-shrink:0;
+  }
+
+  /* CONCEPT CARDS */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(13,27,46,0.14);
+    border-left:4px solid var(--navy-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--navy-mid); background:rgba(13,27,46,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* REVOLUTION BAND */
+  .rev-band {
+    background: linear-gradient(135deg, #1a0808, #3a0a0a);
+    border-radius:10px; padding:2.5rem; color:#fff;
+  }
+  .rev-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.25rem; }
+  .rev-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:1.1rem; }
+  .rev-name { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
+  .rev-year { font-size:0.62rem; color:var(--silver); letter-spacing:0.08em; margin-bottom:0.5rem; }
+  .rev-body { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+
+  /* COMPARE TABLE */
+  .cmp-bg { background:var(--navy); border-radius:10px; padding:2.5rem; color:#fff; }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-top:1rem; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-light); border-bottom:1px solid rgba(255,255,255,0.12); }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--gold-light); font-weight:700; white-space:nowrap; }
+
+  /* LIFE STEP */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
+  .life-step-icon  { font-size:1.8rem; flex-shrink:0; }
+  .life-step-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .life-step-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* IZAKAYA */
+  .test-bg { background:var(--navy); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--navy-light); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:#B5D4F4; margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* FOOTER */
+  .footer { background:var(--navy); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-icon { font-size:2rem; display:block; margin-bottom:0.5rem; color:var(--gold-light); }
+
+  /* AXIS MAP */
+  .axis-wrap { position:relative; background:#fff; border:1px solid rgba(13,27,46,0.14); border-radius:10px; padding:2rem; margin-bottom:1.5rem; }
+  .axis-title { font-family:'Noto Serif JP',serif; font-size:0.9rem; font-weight:700; color:var(--ink); text-align:center; margin-bottom:1.5rem; }
+  .axis-grid { display:grid; grid-template-columns:1fr 40px 1fr; grid-template-rows:1fr 40px 1fr; gap:0; position:relative; min-height:280px; }
+  .axis-line-h { grid-column:1/4; grid-row:2/3; display:flex; align-items:center; justify-content:center; }
+  .axis-line-v { grid-column:2/3; grid-row:1/4; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+  .hline { height:2px; width:100%; background:rgba(13,27,46,0.2); position:relative; }
+  .vline { width:2px; height:100%; background:rgba(13,27,46,0.2); position:relative; }
+  .axis-lbl { font-size:0.72rem; color:var(--ink-light); padding:4px 8px; font-weight:700; }
+  .quad { padding:1rem; display:flex; flex-direction:column; justify-content:center; gap:0.4rem; }
+  .q-tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:3px 8px; border-radius:4px; margin-bottom:2px; }
+  .q-desc { font-size:0.72rem; color:var(--ink-light); line-height:1.4; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.5</div>
+  <h1>政治思想史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">民主主義・共産主義・ファシズム・リベラル——なぜ人類はこの思想を生み出したのか。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 5世紀</span><span class="hero-stat-lbl">民主主義の誕生</span></div>
+    <div><span class="hero-stat-num">2500年</span><span class="hero-stat-lbl">権力論の歴史</span></div>
+    <div><span class="hero-stat-num">6大イデオロギー</span><span class="hero-stat-lbl">今も争い続ける思想</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">未解決の政治問題</span></div>
+  </div>
+</div>
+
+<!-- CH1: なぜ政治思想を学ぶか -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">政治思想とは何を問うのか</h2>
+    <p class="section-desc">「誰が、なぜ、誰を統治できるのか」——2500年間の問い</p>
+  </div>
+  <div class="ideo-grid">
+    <div class="ideo-card ic-blue" data-sym="?">
+      <div class="ideo-name">正統性</div>
+      <span class="ideo-en">Legitimacy</span>
+      <div class="ideo-core">なぜある者が他の者を支配することが許されるのか。神の命令？強さ？合意？それとも選挙？権力の「正しさ」の根拠を問う。</div>
+      <div class="ideo-thinker">→ 全ての政治思想の出発点</div>
+    </div>
+    <div class="ideo-card ic-red" data-sym="?">
+      <div class="ideo-name">自由と秩序</div>
+      <span class="ideo-en">Liberty vs Order</span>
+      <div class="ideo-core">個人の自由を最大化するか、社会の秩序・安全を優先するか。この緊張が政治の永遠のジレンマ。左右対立の核心でもある。</div>
+      <div class="ideo-thinker">→ リベラル vs 保守の根本</div>
+    </div>
+    <div class="ideo-card ic-gold" data-sym="?">
+      <div class="ideo-name">平等と効率</div>
+      <span class="ideo-en">Equality vs Efficiency</span>
+      <div class="ideo-core">富と権力を平等に配分すると効率が下がる？格差を許容すると創造性が増す？この問いが資本主義 vs 社会主義論争の核心。</div>
+      <div class="ideo-thinker">→ 右派 vs 左派の軸</div>
+    </div>
+    <div class="ideo-card ic-teal" data-sym="?">
+      <div class="ideo-name">国家と個人</div>
+      <span class="ideo-en">State vs Individual</span>
+      <div class="ideo-core">国家は個人の手段か、個人は国家の一部か。全体主義は国家優先、リベラリズムは個人優先。どちらも極端にすると恐ろしい結果になる。</div>
+      <div class="ideo-thinker">→ 全体主義 vs 自由主義の軸</div>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「ニュースで左派・右派・リベラル・保守って言葉が飛び交うけど、何が軸かわかる？ 大ざっぱに言うと、縦軸が"国家の力を強くするか弱くするか"、横軸が"格差を容認するか是正するか"。ここさえわかればほぼ全ての政治論争が読める」
+  </div>
+</div>
+</section>
+
+<!-- CH2: 古代〜中世 -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">古代〜中世 — 支配の正当性を問う</h2>
+    <p class="section-desc">BC 5世紀〜15世紀。「神」か「理性」か——権力の根拠を巡る2000年</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">ANCIENT GREECE · BC 5〜4世紀</div>
+    <div class="dp-title">民主主義・哲人王・現実主義の誕生</div>
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">プラトン</div>
+        <div class="phil-dates">BC 428〜348 · アテネ</div>
+        <div class="phil-key">哲人王・理想国家論</div>
+        <div class="phil-body">「国家」で理想の政治体制を論じた。民主主義は「無知な大衆による衆愚政治」に堕落するとして批判。真の知識（イデア）を持つ「哲人王（philosopher-king）」のみが統治すべきだと主張した。エリート主義政治論の原点。</div>
+        <div class="phil-quote">「民主主義は最良の中の最悪、専制は最悪の中の最良」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">アリストテレス</div>
+        <div class="phil-dates">BC 384〜322 · スタゲイラ</div>
+        <div class="phil-key">中庸の政治学・混合政体</div>
+        <div class="phil-body">「政治学」で6種の政体（王政・貴族制・共和制とその堕落形）を分析。最善は「中産階級」が多数を占める「共和制（ポリティア）」。「人間はポリス的動物（ゾーオン・ポリティコン）」という言葉は政治学最大の名言のひとつ。</div>
+        <div class="phil-quote">「人間は本性上、政治的動物である」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">トゥキュディデス</div>
+        <div class="phil-dates">BC 460〜400頃 · アテネ</div>
+        <div class="phil-key">政治的リアリズムの父</div>
+        <div class="phil-body">「ペロポネソス戦争史」で「強者は可能なことを行い、弱者は甘受しなければならない（メロス対話）」という権力政治の論理を冷徹に記述。道徳より国家利益を優先する「政治的リアリズム（現実主義）」の源泉。現代国際政治学の必読書。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">アテネの民主政</div>
+        <div class="phil-dates">BC 508〜322年頃</div>
+        <div class="phil-key">世界初の民主主義実験</div>
+        <div class="phil-body">クレイステネスによる改革で市民が直接政治に参加。しかし「市民」は成人男性自由民のみで、女性・奴隷・外国人を除く全人口の約1割。ソクラテスを死刑にしたのもこの民主政。現代の代議制民主主義とはかなり異なる。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem; display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="life-step-icon">✝</div>
+      <div>
+        <div class="life-step-title">中世ヨーロッパ — 「神権政治」と教皇 vs 皇帝</div>
+        <div class="life-step-body">中世の政治思想は「権力の源泉は神」という大前提の上に成立。教皇（霊的権力）と皇帝（世俗権力）のどちらが上位かという「叙任権闘争」が11〜12世紀を支配した。トマス・アクィナスは「自然法」を根拠に世俗権力の正当性を基礎づけようとした。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">🗡</div>
+      <div>
+        <div class="life-step-title">マキャヴェッリ（1469〜1527）— 近代政治学の父、悪名高き現実主義者</div>
+        <div class="life-step-body">「君主論」でメディチ家に献呈した政治マニュアル。「目的は手段を正当化する」「愛されるより恐れられる方が安全」「力とキツネの狡猾さを兼ね備えよ」。道徳から切り離した権力の論理を初めて体系化した。「マキャヴェリスト」という言葉が悪用されてきたが、近代政治科学の礎石を置いた革命的思想家。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CH3: 社会契約論 -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">社会契約論の三巨人</h2>
+    <p class="section-desc">17〜18世紀。「なぜ国家に従わなければならないか」を理性で答えた</p>
+  </div>
+  <div class="dark-panel" style="background:var(--red-deep);">
+    <div class="dp-label">SOCIAL CONTRACT THEORY · 社会契約論</div>
+    <div class="dp-title">共通の問い：「自然状態」から「政治社会」はどう生まれるか</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1.25rem;">
+      <div class="phil-card">
+        <div class="phil-name">トマス・ホッブズ</div>
+        <div class="phil-dates">1588〜1679 · イングランド</div>
+        <div class="phil-key" style="color:#EF9F27;">リヴァイアサン・絶対主権</div>
+        <div class="phil-body">自然状態は「万人の万人に対する戦争（bellum omnium contra omnes）」。人間は本来利己的・暴力的な生き物で、社会なければ「生は孤独・貧困・汚辱・野蛮・短命」。だからこそ絶対的権力（リヴァイアサン）に全権委譲することで安全を買う。民主主義より強い権威を支持。</div>
+        <div class="phil-quote">「人間の生は孤独で、貧しく、汚く、残忍で、短い」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ジョン・ロック</div>
+        <div class="phil-dates">1632〜1704 · イングランド</div>
+        <div class="phil-key" style="color:#EF9F27;">自然権・抵抗権・立憲主義</div>
+        <div class="phil-body">自然状態は比較的平和で、人間は生命・自由・財産の「自然権」を持つ。政府はその保護のために人民が「信託」した存在。もし政府が自然権を侵害すれば人民には「抵抗権・革命権」がある。アメリカ独立宣言の直接の哲学的源泉。自由民主主義の礎。</div>
+        <div class="phil-quote">「政府なきところに自由はない、しかし自由なきところに政府の正当性もない」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ジャン＝ジャック・ルソー</div>
+        <div class="phil-dates">1712〜1778 · ジュネーヴ</div>
+        <div class="phil-key" style="color:#EF9F27;">一般意志・直接民主主義</div>
+        <div class="phil-body">「人間は自由なものとして生まれたが、至る所で鎖につながれている」。自然状態の人間は善良で、文明が堕落させた（性善説）。国家は「一般意志（volonté générale）」——個人の意思の総和ではなく共同体全体の利益——によって統治されるべき。フランス革命・ナショナリズムの思想的父。ルソーの「一般意志」が独裁の正当化に使われた危険な側面も。</div>
+        <div class="phil-quote">「人間は自由なものとして生まれたが、至る所で鎖につながれている」</div>
+      </div>
+    </div>
+    <div style="background:rgba(0,0,0,0.3); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.65); margin-top:0.5rem;">
+      ⚡ <strong style="color:var(--gold-light);">三者の違いの核心：</strong>ホッブズは「人間は悪だから強い国家が必要」→ 権威主義的。ロックは「国家は個人の権利を守る手段」→ 自由主義的。ルソーは「一般意志こそ主権者」→ 民主主義的・かつ全体主義的危険も孕む。アメリカ建国はロック、フランス革命はルソー、中国・ロシア型体制はある意味でホッブズ。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CH4: 革命の時代 -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">革命の時代 — 思想が世界を変えた18〜19世紀</h2>
+    <p class="section-desc">アメリカ独立・フランス革命・産業革命が生んだ政治思想の爆発</p>
+  </div>
+  <div class="rev-band">
+    <div class="dp-label">REVOLUTIONS · 18〜19世紀</div>
+    <div class="dp-title">思想が歴史を動かした4つの革命</div>
+    <div class="rev-row">
+      <div class="rev-card">
+        <div class="rev-name">アメリカ独立革命</div>
+        <div class="rev-year">1776年</div>
+        <div class="rev-body">ロックの自然権・社会契約論を実践。「全ての人は平等に創られ、生命・自由・幸福追求の権利を持つ」（独立宣言）。世界初の成文憲法国家。民主共和制のモデルに。</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-name">フランス革命</div>
+        <div class="rev-year">1789年</div>
+        <div class="rev-body">「自由・平等・友愛」。絶対王政を打倒し共和制へ。ルソーの一般意志・人権宣言。しかし恐怖政治→ナポレオン独裁へ。「革命は自らの子を食う」。</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-name">産業革命とマルクス</div>
+        <div class="rev-year">1848年「共産党宣言」</div>
+        <div class="rev-body">工場労働者の悲惨な状況がマルクス・エンゲルスに「万国のプロレタリアよ、団結せよ！」を書かせた。資本主義の内的矛盾を分析し、共産主義革命の必然を論じた。</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-name">明治維新と日本</div>
+        <div class="rev-year">1868年</div>
+        <div class="rev-body">西洋の政治思想を急速吸収。自由民権運動（ロック・ルソー的）と藩閥政府の対立。大日本帝国憲法（1889）は欽定憲法でドイツ型。戦後の日本国憲法（1947）はアメリカ型立憲主義。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CH5: イデオロギー六大潮流 -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">六大イデオロギー完全解剖</h2>
+    <p class="section-desc">現代政治を動かす六つの思想の核心を一気に理解する</p>
+  </div>
+  <div class="ideo-grid">
+    <div class="ideo-card ic-blue" data-sym="L">
+      <div class="ideo-name">自由主義（リベラリズム）</div>
+      <span class="ideo-en">Liberalism</span>
+      <div class="ideo-core">個人の自由・権利の尊重が最優先。小さな政府・市場経済・法の支配・普通選挙。ロック・J.S.ミル・カントが源泉。「古典的自由主義」（市場自由）と「現代的自由主義」（平等重視）に分裂。</div>
+      <div class="ideo-thinker">ロック / ミル / ロールズ / ハイエク</div>
+    </div>
+    <div class="ideo-card ic-gold" data-sym="C">
+      <div class="ideo-name">保守主義</div>
+      <span class="ideo-en">Conservatism</span>
+      <div class="ideo-core">「変化は慎重に」。伝統・慣習・既存制度に蓄積された知恵を重視。急進的改革は社会を破壊する。エドマンド・バークがフランス革命批判で体系化。「あるものには理由がある」。</div>
+      <div class="ideo-thinker">バーク / ハイエク（右派）/ トクヴィル</div>
+    </div>
+    <div class="ideo-card ic-red" data-sym="S">
+      <div class="ideo-name">社会主義・共産主義</div>
+      <span class="ideo-en">Socialism / Communism</span>
+      <div class="ideo-core">生産手段の社会化・平等な分配。マルクス・エンゲルスが科学的社会主義を構築。共産主義は私有財産制廃止・階級のない社会が目標。20世紀の共産革命（ソ連・中国）は変形・堕落した形で実現。</div>
+      <div class="ideo-thinker">マルクス / エンゲルス / レーニン / 毛沢東</div>
+    </div>
+    <div class="ideo-card ic-green" data-sym="N">
+      <div class="ideo-name">ナショナリズム</div>
+      <span class="ideo-en">Nationalism</span>
+      <div class="ideo-core">国民（民族）共同体への帰属意識と自決権。フランス革命後に欧州を席巻。19世紀の国民国家形成の原動力。民主主義と結びつく場合も、排外主義・ファシズムに転落する場合も。</div>
+      <div class="ideo-thinker">ルソー→ヘーゲル→フィヒテ→ガンジー</div>
+    </div>
+    <div class="ideo-card ic-purple" data-sym="F">
+      <div class="ideo-name">ファシズム・全体主義</div>
+      <span class="ideo-en">Fascism / Totalitarianism</span>
+      <div class="ideo-core">国家・民族・指導者への絶対的服従。個人は国家の手段。議会・自由・人権を否定。ムッソリーニのイタリア・ヒトラーのナチスが代表例。「全体主義」という概念はハンナ・アーレントが分析。</div>
+      <div class="ideo-thinker">ムッソリーニ / ヒトラー → アーレントが解剖</div>
+    </div>
+    <div class="ideo-card ic-teal" data-sym="A">
+      <div class="ideo-name">無政府主義（アナーキズム）</div>
+      <span class="ideo-en">Anarchism</span>
+      <div class="ideo-core">「国家そのものが悪である」。あらゆる強制的権威の廃絶を求める。プルードン「所有は窃盗なり」・バクーニン・クロポトキン。現代では「自発的協調」によるコミュニティを理想とする。</div>
+      <div class="ideo-thinker">プルードン / バクーニン / クロポトキン</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CH6: 20世紀の政治思想 -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">20世紀の政治思想 — 全体主義との闘い</h2>
+    <p class="section-desc">二つの世界大戦と冷戦が生んだ思想家たち</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+    <div class="life-step">
+      <div class="life-step-icon">🔥</div>
+      <div>
+        <div class="life-step-title">ハンナ・アーレント（1906〜1975）— 全体主義の解剖学</div>
+        <div class="life-step-body">ナチス・スターリン体制を比較分析した「全体主義の起源」は20世紀最大の政治哲学書のひとつ。アドルフ・アイヒマン裁判を傍聴して「悪の陳腐さ（banality of evil）」を提唱——大量虐殺は怪物ではなく、考えることを放棄した凡庸な官僚が実行した。「思考することをやめることが最大の悪」。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">📖</div>
+      <div>
+        <div class="life-step-title">ジョン・ロールズ（1921〜2002）— 現代正義論の最高峰</div>
+        <div class="life-step-body">「正義論（A Theory of Justice, 1971）」で「無知のヴェール」という思考実験を提示。自分が社会のどの立場に生まれるか（金持ちか貧乏か・男か女か・多数派か少数派か）が全くわからない「原初状態」で合意できる社会制度こそ正義。この論理から「格差原理（最も恵まれない人の地位を最大化する格差のみ許容）」を導出。戦後最大の政治哲学者。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">🗽</div>
+      <div>
+        <div class="life-step-title">カール・ポパー（1902〜1994）— 開かれた社会の哲学</div>
+        <div class="life-step-body">「開かれた社会とその敵（1945）」でプラトン・ヘーゲル・マルクスを「全体主義の思想的祖先」として批判。歴史に「法則」はなく（歴史主義の貧困）、民主主義の真の価値は「良い支配者を選ぶ」ことではなく「悪い支配者を平和的に追い出せる」ことにあると論じた。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">🌏</div>
+      <div>
+        <div class="life-step-title">サミュエル・ハンティントン（1927〜2008）— 文明の衝突</div>
+        <div class="life-step-body">冷戦後の世界秩序を「文明の衝突（1996）」で予測。イデオロギー対立（自由主義 vs 共産主義）が終わった後は「文明（宗教・文化圏）」の間の衝突が主要な対立軸になる、と主張。9.11後に注目を浴び、賛否両論を巻き起こした。「西洋 vs イスラム」「西洋 vs 中華」という枠組みが現代地政学の主要概念に。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="life-step-icon">🏁</div>
+      <div>
+        <div class="life-step-title">フランシス・フクヤマ（1952〜）— 歴史の終わり</div>
+        <div class="life-step-body">冷戦終結直後の1989年「歴史の終わり？」を発表。リベラル民主主義・市場経済が人類史上最終的に勝利した「イデオロギーの終点」が来た、と宣言。ソ連崩壊後に世界的ベストセラーになったが、9.11・2008年金融危機・ポピュリズムの台頭・中国の権威主義的成長によって「時期尚早」という批判が高まった。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-panel" style="background:#0d1f10;">
+    <div class="dp-label">COLD WAR BATTLE · 冷戦の思想対決</div>
+    <div class="dp-title">自由主義 vs 共産主義 — 20世紀最大のイデオロギー戦争</div>
+    <div class="battle-wrap">
+      <div class="side">
+        <div class="side-name">西側：自由民主主義</div>
+        <div class="side-rep">アメリカ・西欧 · ハイエク・ポパー</div>
+        <div class="side-claim">個人の自由・私有財産・市場経済・複数政党制・法の支配。計画経済は「隷属への道（ハイエク）」だと批判。人類の多様性と自発的秩序を信頼。</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="side">
+        <div class="side-name">東側：マルクス・レーニン主義</div>
+        <div class="side-rep">ソ連・中国 · マルクス・レーニン・毛沢東</div>
+        <div class="side-claim">プロレタリアートによる生産手段の社会化・共産党一党独裁・計画経済。「自由民主主義は資本家階級の支配の仮面」と批判。1991年ソ連崩壊で事実上の敗北。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CH7: 現代の政治思想 -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">現代の政治思想地図</h2>
+    <p class="section-desc">新自由主義・ポピュリズム・アイデンティティ政治——今まさに起きている思想の戦争</p>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">CONTEMPORARY IDEOLOGIES · 現代のイデオロギー対立</div>
+    <div class="dp-title">冷戦後に噴出した「新しい政治の軸」</div>
+    <div class="phil-row" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr));">
+      <div class="phil-card">
+        <div class="phil-name">新自由主義</div>
+        <div class="phil-dates">1970s〜 · サッチャー・レーガン革命</div>
+        <div class="phil-key">ネオリベラリズム</div>
+        <div class="phil-body">ハイエク・フリードマンの思想を実践。規制緩和・民営化・減税・自由貿易が世界標準に。経済効率は高まったが格差拡大・中産階級の空洞化をもたらし、2008年金融危機後に猛烈な反発を受けた。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ポピュリズム</div>
+        <div class="phil-dates">2010s〜 · トランプ・ボルソナロ・欧州極右</div>
+        <div class="phil-key">「純粋な民 vs 腐敗したエリート」</div>
+        <div class="phil-body">左右を問わず「既成エリートへの反乱」として台頭。移民・グローバル化・エリート政治への不満が燃料。ポピュリズムは民主主義の内側から民主主義を侵食する「民主主義の最大の敵」とも。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">アイデンティティ政治</div>
+        <div class="phil-dates">1990s〜 · BLM・MeToo・LGBT+</div>
+        <div class="phil-key">承認の政治</div>
+        <div class="phil-body">階級ではなくジェンダー・人種・性的指向などのアイデンティティに基づく権利要求。「承認の政治（テイラー）」。フクヤマはアイデンティティ政治の過剰が左右ポピュリズムを生んでいると批判。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">権威主義的資本主義</div>
+        <div class="phil-dates">21世紀 · 中国モデル</div>
+        <div class="phil-key">「民主主義なき市場経済」</div>
+        <div class="phil-body">一党独裁・国家資本主義・高い経済成長を組み合わせた「中国モデル」が途上国に魅力的に映る。「民主主義がなくても豊かになれる」という挑戦状はリベラル民主主義の自明性を揺さぶっている。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="axis-wrap" style="margin-top:2rem;">
+    <div class="axis-title">現代政治の「二軸マップ」——左右だけでは読めない</div>
+    <div style="display:grid; grid-template-columns:1fr; gap:0.75rem;">
+      <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
+        <div style="font-size:2rem;">↕</div>
+        <div>
+          <div style="font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.25rem;">縦軸：国家の強さ（権威主義 ↔ 自由主義）</div>
+          <div style="font-size:0.8rem; color:var(--ink-light);">上：国家・権威・集団を重視。下：個人・自由・多様性を重視。独裁者もここに位置する。</div>
+        </div>
+      </div>
+      <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
+        <div style="font-size:2rem;">↔</div>
+        <div>
+          <div style="font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.25rem;">横軸：経済政策（右派 ↔ 左派）</div>
+          <div style="font-size:0.8rem; color:var(--ink-light);">右：市場・私有財産・競争を重視。左：再分配・規制・平等を重視。「左右」はもともとフランス革命時の議会の座席位置が語源。</div>
+        </div>
+      </div>
+      <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.5rem;">
+        <div style="text-align:center;">
+          <div style="background:var(--red-mid); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">権威主義的右派</div>
+          <div style="font-size:0.68rem; color:var(--ink-light);">ファシズム・ナショナリズム・中国共産党（経済は国家主導）</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--red-deep); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">権威主義的左派</div>
+          <div style="font-size:0.68rem; color:var(--ink-light);">スターリン主義・毛沢東主義・共産独裁</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--navy-mid); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">自由主義的右派</div>
+          <div style="font-size:0.68rem; color:var(--ink-light);">新自由主義・古典的自由主義・小さな政府</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="background:var(--green-mid); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">自由主義的左派</div>
+          <div style="font-size:0.68rem; color:var(--ink-light);">社会民主主義・福祉国家・リベラル左派</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CH8: CONCEPT CARDS -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 8</span>
+    <h2 class="section-title">知っておくべき政治思想の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定される10のキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">社会契約論 <span class="concept-en">Social Contract</span></div>
+      <div class="concept-body">国家の権威は、人民が自然状態から脱するために「契約」によって権力を譲渡・委託したことに由来する、という政治哲学の基本理論。ホッブズ・ロック・ルソーが異なる内容で展開。</div>
+      <div class="concept-izakaya">「なぜ税金払わないといけないの？って根本的には社会契約の話。国家の正当性の根拠が"みんなが同意して委ねた"という契約だから。だからその契約に反する国家には抵抗する権利がある、というのがロック以来の考え方」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">三権分立 <span class="concept-en">Separation of Powers</span></div>
+      <div class="concept-body">モンテスキューが「法の精神（1748）」で体系化。立法・行政・司法の三権が相互にチェックし合うことで権力の一極集中と専制を防ぐ。アメリカ合衆国憲法に最もよく具現化された。</div>
+      <div class="concept-izakaya">「三権分立ってなんで必要かというと、権力が一か所に集まると必ず腐敗するから。モンテスキューが18世紀に設計図を書いてアメリカが実装した。今の世界で三権分立が機能してない国は権威主義に転落しやすい」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">法の支配 <span class="concept-en">Rule of Law</span></div>
+      <div class="concept-body">「人の支配」ではなく「法の支配」。誰も法の上に立てない。権力者も法に従わなければならない。「法の支配」と「法による支配（rule by law）」は別物——後者は権力者が都合よく法を使うこと。</div>
+      <div class="concept-izakaya">「法の支配とルールで支配するのは全然違う。習近平が法律を作ってそれで反対派を弾圧するのは"法による支配"。真の"法の支配"は権力者自身も法に縛られること。この区別がわかれば独裁政治かどうか判断できる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ポピュリズム <span class="concept-en">Populism</span></div>
+      <div class="concept-body">「純粋な民衆」対「腐敗したエリート」という対立構造を強調する政治スタイル。左右を問わず存在する。民主主義の外皮をまとって民主主義の制度を侵食する「民主主義の最大の脅威」とも言われる。</div>
+      <div class="concept-izakaya">「ポピュリズムって大衆迎合主義って訳されるけど、本質は"俺たちvs腐った奴ら"という単純化。怒りを食べて育つ政治スタイル。右でも左でも出てくる。SNSの時代に最も相性がいい政治形態で今が全盛期かもしれない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">全体主義 <span class="concept-en">Totalitarianism</span></div>
+      <div class="concept-body">個人の私的領域を含む社会全体を一つの政治的意志のもとに統合しようとする体制。ハンナ・アーレントが概念化。ナチズム・スターリン主義が典型。独裁（一人の支配）とは異なり、大衆動員・イデオロギー統制・恐怖政治の三位一体が特徴。</div>
+      <div class="concept-izakaya">「全体主義って独裁とは違う。独裁は権力者が上から支配するだけだけど、全体主義は人民自身が熱狂して参加する怖さがある。ナチスは選挙で勝ったし、紅衛兵は自発的に動いた。大衆が主体的に自由を手放す構造がある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">無知のヴェール <span class="concept-en">Veil of Ignorance</span></div>
+      <div class="concept-body">ロールズの「正義論」の核心概念。自分がどの立場に生まれるかわからない「原初状態」でなら、公平な社会設計に合意できる、という思考実験。最も弱い立場の人を守るルールこそ正義とみなされる。</div>
+      <div class="concept-izakaya">「無知のヴェールって、自分が金持ちになるか貧しくなるか生まれる前にルール決めろって思考実験。そうすると誰でも"最悪のケース"に備えた社会保障制度に賛成するはず、とロールズは言う。格差是正の哲学的根拠」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ヘゲモニー <span class="concept-en">Hegemony</span></div>
+      <div class="concept-body">単なる軍事・経済的優位を超えた「文化的・イデオロギー的指導力」。グラムシが提唱。支配階級は暴力ではなく、支配的価値観を社会全体に内面化させることで統治する。「常識」自体が権力の産物。</div>
+      <div class="concept-izakaya">「アメリカが強いのは軍事力だけじゃない。ハリウッド・英語・民主主義・人権というイデオロギーが世界中に"当然のこと"として受け入れられてる。これがグラムシのヘゲモニー概念。今まさに中国がここに挑戦してる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">悪の陳腐さ <span class="concept-en">Banality of Evil</span></div>
+      <div class="concept-body">ハンナ・アーレントがアイヒマン裁判を傍聴して提唱。600万人のユダヤ人虐殺の実行官アイヒマンは怪物ではなく「命令に従う凡庸な官僚」だった。考えることの放棄が大量虐殺を可能にした。</div>
+      <div class="concept-izakaya">「アーレントの悪の陳腐さって、ホロコーストはサディストじゃなく普通の小役人が"上の命令だから"と書類処理した結果だって話。怖いのは悪魔じゃなくて思考停止した普通の人間。これが今でも刺さる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">一般意志 <span class="concept-en">General Will</span></div>
+      <div class="concept-body">ルソーの概念。個々人の欲求（特殊意志）の総和（全体意志）とは異なる、共同体全体の真の利益としての「一般意志」。民主主義の基盤だが、「俺が一般意志を体現する」という独裁者の正当化論理にも転用された。</div>
+      <div class="concept-izakaya">「一般意志って危険な概念で、ルソーはみんなの本当の利益は一つあると言った。でも"本当の利益を知っている"と主張した独裁者が大勢出てきた。フランス革命のロベスピエールから毛沢東まで、みんなルソーを援用した」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">文明の衝突 <span class="concept-en">Clash of Civilizations</span></div>
+      <div class="concept-body">ハンティントンの1996年の著作。冷戦後の世界の主要な対立軸はイデオロギーではなく「文明（宗教・文化圏）」の間の衝突になる、という予測。9.11・中米対立で「先見の明」とも「自己成就予言」とも評される。</div>
+      <div class="concept-izakaya">「文明の衝突って西洋 vs イスラム、西洋 vs 中華文明が21世紀の主要対立になるって90年代に予言した本。賛否あるけど今の国際政治見ると当たり過ぎてて怖い。ただしその枠組みが対立を固定化・悪化させているという批判も重要」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">社会契約三者比較 × 現代の政治体制</h2>
+    <p class="section-desc">ホッブズ・ロック・ルソーが現代のどの政治体制に対応するか</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>ホッブズ</th>
+          <th>ロック</th>
+          <th>ルソー</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>人間の本性</td>
+          <td>利己的・暴力的（性悪説）</td>
+          <td>理性的・権利保持者（中間）</td>
+          <td>本来善良（性善説）</td>
+        </tr>
+        <tr>
+          <td>自然状態</td>
+          <td>万人の万人に対する戦争</td>
+          <td>比較的平和だが不安定</td>
+          <td>自由・平等・平和</td>
+        </tr>
+        <tr>
+          <td>国家の役割</td>
+          <td>安全保障のための絶対権力</td>
+          <td>自然権保護の信託機関</td>
+          <td>一般意志の実現機関</td>
+        </tr>
+        <tr>
+          <td>革命・抵抗権</td>
+          <td>なし（服従が義務）</td>
+          <td>あり（権利侵害時）</td>
+          <td>条件付きあり</td>
+        </tr>
+        <tr>
+          <td>理想の政体</td>
+          <td>強力な主権者（君主制可）</td>
+          <td>立憲君主制・代議制民主主義</td>
+          <td>直接民主主義</td>
+        </tr>
+        <tr>
+          <td>現代での対応</td>
+          <td>中国・シンガポール型権威主義</td>
+          <td>アメリカ・EU型自由民主主義</td>
+          <td>民主主義＋全体主義両方の源泉</td>
+        </tr>
+        <tr>
+          <td>影響を受けた革命</td>
+          <td>（王政擁護）</td>
+          <td>アメリカ独立革命（1776）</td>
+          <td>フランス革命（1789）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- IZAKAYA -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">政治思想を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「民主主義って本当に一番いいの？」</div>
+      <div class="test-q-text">政治の話になったとき</div>
+      <div class="test-a">「チャーチルの名言で"民主主義はこれまで試みられた他のすべての政治形態を除けば最悪の政治形態だ"というのがある。完璧じゃないけど今のところマシな選択肢、という話。プラトンは衆愚政治になると批判し、実際にソクラテスを死刑にしたのが民主主義。ただし独裁のほうが腐敗と暴力の歴史が圧倒的に多い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「共産主義ってなんで失敗したの？」</div>
+      <div class="test-q-text">中国・北朝鮮の話になったとき</div>
+      <div class="test-a">「マルクスの理論自体は資本主義の分析として鋭い部分が多いけど、実装の問題があった。計画経済は情報量が膨大すぎて中央で処理できない（ハイエクの指摘）こと、権力を持った共産党が腐敗・独裁化したこと、人間の利己的動機を無視したインセンティブ設計の失敗が主な原因。"誰が番人を番するのか"という権力統制の問題が未解決だった。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「最近の政治なんで左右に割れてるの？」</div>
+      <div class="test-q-text">ポピュリズム・分断の話になったとき</div>
+      <div class="test-a">「グローバル化と新自由主義の30年で、高学歴・都市・多国籍企業側が利益を得て、低学歴・地方・製造業側が置いてきぼりになった。"置いてきぼり側"の怒りがポピュリストに向かった。移民も同じ文脈で、グローバルな移動が経済的競争と文化的変化をもたらした。ロールズが無知のヴェールで設計したはずの福祉国家が機能不全に陥っているのが根本。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なぜ戦争はなくならないの？」</div>
+      <div class="test-q-text">国際情勢・ウクライナの話になったとき</div>
+      <div class="test-a">「国際政治のリアリスト（ホッブズ系）は"国際社会には強制力を持つ政府がないから戦争は不可避"という。リベラリスト（ロック系）は"民主主義国同士は戦争しない（民主的平和論）""経済的相互依存が戦争コストを上げる"と楽観的。ウクライナ戦争はリアリストの見立てが正しかったことを示した。核抑止が大国間戦争を防いでいるが、これは恐怖による平和。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「中国の政治体制ってファシズムなの？」</div>
+      <div class="test-q-text">中国の話になったとき</div>
+      <div class="test-a">「ファシズムとは言い切れないけど、近い要素はある。一党独裁・強烈なナショナリズム・監視社会・指導者崇拝はファシズム的。ただし資本主義的市場経済は維持している点でマルクス主義的でもなく古典的ファシズムとも違う。アーレントの全体主義概念——イデオロギー統制・恐怖・大衆動員——は当てはまる部分が多い。ハンティントンが予言した"権威主義的近代化"の一形態。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「マキャヴェッリって悪い人？」</div>
+      <div class="test-q-text">政治の話の中で名前が出たとき</div>
+      <div class="test-a">「マキャヴェリズム＝権謀術数・目的のためなら手段を選ばないってイメージだけど、本人は冷静な政治科学者。"政治は道徳と別の論理で動く"という事実を初めて正直に書いただけ。それが500年間「悪魔の書」と呼ばれたけど、今の外交・経営・政治を見ればみんなマキャヴェッリが言った通りやってる。正直に書いた人を批判するのはある種のご都合主義。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-icon">⚖</span>
+  <p>宗教・哲学・政治思想。知の三角形が完成した。次は経済か、美術か。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「権力は腐敗する。絶対権力は絶対に腐敗する。— アクトン卿」</p>
+</div>
+
+</body>
+</html>

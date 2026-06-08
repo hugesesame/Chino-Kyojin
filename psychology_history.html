@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心理学史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=DM+Sans:ital,wght@0,300;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mind-deep:    #080A18;
+    --mind-mid:     #101828;
+    --mind-rich:    #182038;
+    --violet:       #5020A0;
+    --violet-lt:    #7840C8;
+    --violet-pale:  #E8DEFF;
+    --rose:         #901840;
+    --rose-lt:      #C03060;
+    --rose-pale:    #FFE0EA;
+    --sage:         #204830;
+    --sage-lt:      #387858;
+    --sage-glow:    #60B880;
+    --amber:        #A06010;
+    --amber-lt:     #D08820;
+    --amber-glow:   #F0B030;
+    --ivory:        #F8F6F2;
+    --ivory-dark:   #EDE9DF;
+    --ink:          #100810;
+    --ink-mid:      #2A1E28;
+    --ink-light:    #685860;
+    --gray:         #9890A0;
+    --silver:       #C0B8C8;
+    --shadow:       rgba(8,10,24,0.18);
+    --synapse:      rgba(120,64,200,0.12);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--mind-deep);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(80,32,160,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 25%, rgba(192,48,96,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 95%, rgba(32,72,48,0.2) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  /* neural network pattern */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(120,64,200,0.15) 0%, transparent 8%),
+      radial-gradient(circle at 40% 70%, rgba(120,64,200,0.1) 0%, transparent 6%),
+      radial-gradient(circle at 70% 20%, rgba(192,48,96,0.12) 0%, transparent 7%),
+      radial-gradient(circle at 85% 60%, rgba(120,64,200,0.1) 0%, transparent 5%),
+      radial-gradient(circle at 60% 85%, rgba(96,184,128,0.1) 0%, transparent 6%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--violet-pale);
+    border: 1px solid rgba(232,222,255,0.35);
+    padding: 4px 16px; border-radius: 20px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700; line-height: 1.1; margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 15%, var(--violet-pale) 55%, var(--amber-glow) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 580px; margin: 0 auto 3rem; font-weight: 300; font-style: italic;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-stat-num { font-family: 'DM Sans', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--violet-pale); display: block; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 4.5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    background: var(--mind-mid); color: var(--violet-pale);
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 0.75rem;
+    border: 1px solid rgba(120,64,200,0.3);
+  }
+  .section-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+  }
+  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; font-style: italic; }
+  .bg-warm  { background: var(--ivory-dark); }
+  .bg-white { background: #fff; }
+
+  .tip-bar {
+    background: #fff; border-radius: 12px;
+    border: 1px solid rgba(80,32,160,0.12);
+    border-left: 4px solid var(--violet-lt);
+    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background: var(--mind-deep);
+    border-radius: 12px; padding: 2.5rem; color: #fff;
+    border: 1px solid rgba(120,64,200,0.18);
+  }
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'DM Sans', sans-serif; font-size: 1.3rem; color: var(--violet-pale); font-weight: 700; margin-bottom: 1.25rem; }
+
+  /* ─── THINKER CARDS ─── */
+  .thinker-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; }
+  .thinker-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--violet-lt);
+    border-radius: 0 0 8px 8px;
+    padding: 1rem 1.1rem;
+  }
+  .tc-name   { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--violet-pale); font-weight: 700; margin-bottom: 0.15rem; }
+  .tc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .tc-school { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage-glow); margin-bottom: 0.35rem; }
+  .tc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .tc-quote  { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(232,222,255,0.5); font-style: italic; border-left: 2px solid rgba(120,64,200,0.4); padding-left: 0.5rem; }
+
+  /* ─── BIAS CARDS ─── */
+  .bias-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .bias-card {
+    background: var(--mind-deep); color: #fff;
+    border-radius: 12px; padding: 1.5rem;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(120,64,200,0.15);
+  }
+  .bias-card::after {
+    content: attr(data-num);
+    position: absolute; bottom: -0.5rem; right: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 4rem; opacity: 0.07; line-height: 1; font-weight: 700;
+    color: var(--violet-pale);
+  }
+  .bc-tag   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amber-glow); display: block; margin-bottom: 0.4rem; }
+  .bc-name  { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--violet-pale); font-weight: 700; display: block; margin-bottom: 0.4rem; }
+  .bc-body  { font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+  .bc-key   { margin-top: 0.6rem; font-size: 0.72rem; color: rgba(240,176,48,0.65); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding: 1rem 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--violet-lt), var(--violet-lt), transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+  .tl-item.right { flex-direction: row-reverse; }
+  .tl-item.right .tl-card { text-align: right; }
+  .tl-dot {
+    position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
+    width: 14px; height: 14px; background: var(--violet-lt);
+    border: 3px solid var(--ivory); border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--violet-lt); z-index: 2;
+  }
+  .tl-dot.rose  { background: var(--rose-lt);    box-shadow: 0 0 0 2px var(--rose-lt); }
+  .tl-dot.sage  { background: var(--sage-lt);    box-shadow: 0 0 0 2px var(--sage-lt); }
+  .tl-dot.amber { background: var(--amber-lt);   box-shadow: 0 0 0 2px var(--amber-lt); }
+  .tl-dot.glow  { background: var(--amber-glow); box-shadow: 0 0 0 2px var(--amber-glow); }
+  .tl-card {
+    width: calc(50% - 2.5rem); background: #fff;
+    border: 1px solid rgba(80,32,160,0.1); border-radius: 10px;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--violet-lt); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
+  .tl-item.right .tl-emoji        { left: -2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left: 1.5rem; }
+    .tl-item, .tl-item.right { flex-direction: column; padding-left: 3.5rem; }
+    .tl-card, .tl-item.right .tl-card { width: 100%; text-align: left; }
+    .tl-dot { left: 1.5rem; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .concept-card {
+    background: #fff; border: 1px solid rgba(80,32,160,0.1);
+    border-left: 4px solid var(--violet);
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--violet); background: rgba(80,32,160,0.07); border-radius: 8px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--violet-lt); }
+
+  /* ─── SCHOOL BAND ─── */
+  .school-band { border-radius: 12px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: #fff; }
+  .sb-freud   { background: linear-gradient(135deg, #0C060C, #280830); }
+  .sb-behav   { background: linear-gradient(135deg, #060C06, #0E2816); }
+  .sb-human   { background: linear-gradient(135deg, #0A080C, #201428); }
+  .sb-cogn    { background: linear-gradient(135deg, #060810, #0E1828); }
+  .sb-social  { background: linear-gradient(135deg, #100806, #281408); }
+  .sb-label  { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.3rem; }
+  .sb-title  { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; color: var(--violet-pale); font-weight: 700; margin-bottom: 0.3rem; }
+  .sb-period { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  .sb-row    { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.75rem; }
+  .sb-card   { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.9rem; }
+  .sbc-name  { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--violet-pale); font-weight: 700; margin-bottom: 0.15rem; }
+  .sbc-dates { font-size: 0.6rem; color: var(--silver); margin-bottom: 0.35rem; }
+  .sbc-key   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--sage-glow); margin-bottom: 0.35rem; }
+  .sbc-body  { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+  .sbc-quote { margin-top: 0.5rem; font-size: 0.72rem; color: rgba(232,222,255,0.45); font-style: italic; border-left: 2px solid rgba(120,64,200,0.35); padding-left: 0.45rem; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background: var(--mind-deep); border-radius: 12px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(120,64,200,0.15); }
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet-pale); border-bottom: 1px solid rgba(120,64,200,0.25); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table td:first-child { color: var(--violet-pale); font-weight: 700; white-space: nowrap; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--ivory-dark); border-radius: 10px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--violet-lt); }
+  .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
+  .ls-title { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background: var(--mind-deep); border-radius: 12px; padding: 2.5rem; color: #fff; border: 1px solid rgba(120,64,200,0.15); }
+  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--violet-lt); padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; margin-bottom: 1rem; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--violet-pale); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-a::before { content: '💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background: var(--mind-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(120,64,200,0.15); }
+  .footer-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; color: var(--violet-pale); }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.14</div>
+  <h1>心理学史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">フロイトの無意識からカーネマンの行動経済学、AIと感情まで——「人間とはなにか」を科学した150年の記録を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">1879年</span><span class="hero-stat-lbl">心理学の誕生（ヴント実験室）</span></div>
+    <div><span class="hero-stat-num">5大学派</span><span class="hero-stat-lbl">精神分析・行動主義・人間性・認知・社会</span></div>
+    <div><span class="hero-stat-num">188の認知バイアス</span><span class="hero-stat-lbl">人間の「非合理」のカタログ</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">まだ解けない「意識の謎」</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 心理学とは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">心理学とはどういう学問か</h2>
+    <p class="section-desc">「自分を理解する」だけでなく——世界・政治・経済・AIまで読み解く道具</p>
+  </div>
+  <div class="bias-grid">
+    <div class="bias-card" data-num="I">
+      <span class="bc-tag">Why</span>
+      <span class="bc-name">「なぜそう感じるのか」の地図</span>
+      <p class="bc-body">怒り・恐れ・愛・嫉妬——感情はどこから来るのか。人間の行動の95%以上が無意識で決定されているとする説もある。心理学はその「見えない動力」を可視化する試み。</p>
+    </div>
+    <div class="bias-card" data-num="II">
+      <span class="bc-tag">Power</span>
+      <span class="bc-name">プロパガンダと広告の武器庫</span>
+      <p class="bc-body">ナチスのプロパガンダ・現代の選挙戦略・ターゲット広告——心理学の知識は「人を動かす」ための最強の道具として使われ続けてきた。使う側を知り、使われる側にならないために。</p>
+    </div>
+    <div class="bias-card" data-num="III">
+      <span class="bc-tag">Decision</span>
+      <span class="bc-name">意思決定の科学</span>
+      <p class="bc-body">人間は「合理的」ではない——行動経済学はそれを実証した。損失回避・現状維持バイアス・確証バイアス……自分の思考の「クセ」を知ることが、より良い判断への第一歩。</p>
+    </div>
+    <div class="bias-card" data-num="IV">
+      <span class="bc-tag">AI Era</span>
+      <span class="bc-name">AIと「意識」の問い</span>
+      <p class="bc-body">ChatGPTは「感情」を持つのか。AIに「心」はあるのか——これは心理学・哲学・神経科学の融合問題。「意識とは何か」という心理学最古の問いが、AI時代に最大の緊急問題として蘇った。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「心理学って自己啓発本の話だと思ってたけど、実は選挙もSNSも広告も全部心理学で設計されてるんよ。Facebookの「いいね」ボタン・Twitterの引用RT・スマホの通知——全部依存を生む心理メカニズムを意図的に使ってる。知らないと操られる、知ると少し自由になれる」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 精神分析 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">精神分析——フロイトとその後継者たち</h2>
+    <p class="section-desc">1890年代〜。「無意識」という概念が世界を変えた</p>
+  </div>
+
+  <div class="school-band sb-freud">
+    <div class="sb-label">Psychoanalysis · 精神分析学派</div>
+    <div class="sb-title">無意識の発見——「理性の下に何かがある」</div>
+    <div class="sb-period">フロイト以前の世界では「人間は意識で動く」が常識だった</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">ジークムント・フロイト</div>
+        <div class="sbc-dates">1856〜1939 · オーストリア</div>
+        <div class="sbc-key">精神分析の創始者</div>
+        <div class="sbc-body">「無意識（Unconscious）」「自我（Ego）・超自我（Super-ego）・イド（Id）」の三層構造・「エディプスコンプレックス」・夢分析・自由連想法を体系化。多くの理論は現代科学的には否定されているが、「人間行動の多くは無意識の欲動から来る」という基本的洞察は今も有効。カフカ・ダリ・文学・映画に無尽蔵の影響。</div>
+        <div class="sbc-quote">「夢は無意識への王道である」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">カール・グスタフ・ユング</div>
+        <div class="sbc-dates">1875〜1961 · スイス</div>
+        <div class="sbc-key">集合的無意識・元型・内向/外向</div>
+        <div class="sbc-body">フロイトの弟子から決別。「個人的無意識」の下に人類共通の「集合的無意識」があり、「元型（アーキタイプ）——英雄・影・アニマ/アニムス」という普遍的なイメージが宿ると主張。「内向型・外向型」という性格分類の原型を作った。MBTIの理論的祖先。</div>
+        <div class="sbc-quote">「自分の影と向き合う者だけが光を受け取れる」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">アルフレッド・アドラー</div>
+        <div class="sbc-dates">1870〜1937 · オーストリア</div>
+        <div class="sbc-key">劣等感・権力への意志・個人心理学</div>
+        <div class="sbc-body">フロイトから離れ「人間の動機はセックス（フロイト）でなく"社会的な力への意志"にある」と主張。劣等感の補償として人は努力する——「嫌われる勇気（岸見一郎の現代解説本）」で日本で爆発的人気。「課題の分離」「他者貢献」——自己啓発的な応用が現代に広く。</div>
+        <div class="sbc-quote">「すべての悩みは対人関係の悩みである」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ジャック・ラカン</div>
+        <div class="sbc-dates">1901〜1981 · フランス</div>
+        <div class="sbc-key">言語と無意識・鏡像段階</div>
+        <div class="sbc-body">「無意識は言語のように構造化されている」。鏡で初めて自分の姿を認識する「鏡像段階」——自己イメージの形成。ポスト構造主義・フェミニズム理論・映画批評に多大な影響。難解すぎて「意図的に難解に書いている」という批判も。</div>
+        <div class="sbc-quote">「言語が話し手を話す」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 行動主義〜人間性 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">行動主義・人間性心理学——「内面」か「行動」か</h2>
+    <p class="section-desc">1910〜1970年代。フロイトへの二つの「反乱」</p>
+  </div>
+
+  <div class="school-band sb-behav" style="margin-bottom:1.5rem;">
+    <div class="sb-label">Behaviorism · 行動主義</div>
+    <div class="sb-title">「見えない心を語るな——行動だけを見よ」</div>
+    <div class="sb-period">1910〜1960年代 · 実証主義の時代</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">ジョン・B・ワトソン</div>
+        <div class="sbc-dates">1878〜1958 · アメリカ</div>
+        <div class="sbc-key">行動主義の創始者</div>
+        <div class="sbc-body">「意識・感情・無意識は観察できないから科学の対象外——行動だけを研究せよ」。「恐怖の条件づけ（アルバート実験）」——赤ちゃんに白ネズミと大きな音を組み合わせて恐怖を条件づけた。現代では倫理的に絶対不可能な実験。広告・マーケティングの心理的基礎を作った。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">B・F・スキナー</div>
+        <div class="sbc-dates">1904〜1990 · アメリカ</div>
+        <div class="sbc-key">オペラント条件づけ・強化理論</div>
+        <div class="sbc-body">「スキナー箱」——レバーを押すと餌が出るネズミの実験。報酬と罰によって行動は形成される（オペラント条件づけ）。「自由意志は幻想だ——行動は全て環境による強化の産物」という過激な主張。スマートフォンのプッシュ通知・SNSの「いいね」はスキナーの強化理論の応用。</div>
+        <div class="sbc-quote">「行動の問題はその先行条件と結果の問題だ」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">イワン・パブロフ</div>
+        <div class="sbc-dates">1849〜1936 · ロシア</div>
+        <div class="sbc-key">古典的条件づけ・パブロフの犬</div>
+        <div class="sbc-body">鐘の音と同時に餌を与え続けると、鐘の音だけで唾液が出るようになる「古典的条件づけ」。本来は消化生理学者だったが、この発見が心理学の歴史を変えた。「パブロフの犬」は今も「条件反射的な反応」の比喩として日常語に。</div>
+        <div class="sbc-quote">→「パブロフの犬」は日常語として世界中に普及</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="school-band sb-human">
+    <div class="sb-label">Humanistic Psychology · 人間性心理学</div>
+    <div class="sb-title">「人間はねずみではない——成長・愛・自己実現を語れ」</div>
+    <div class="sb-period">1950〜1970年代 · 第三の流れ</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">アブラハム・マズロー</div>
+        <div class="sbc-dates">1908〜1970 · アメリカ</div>
+        <div class="sbc-key">欲求の階層・自己実現</div>
+        <div class="sbc-body">「欲求の5段階ピラミッド」——生理的欲求→安全→社会的帰属→承認→自己実現。「人間は成長と意味を求める存在だ——病理でなく健康を研究せよ」という心理学の転換点。ビジネス・教育・自己啓発に最も使われた心理学理論。ただし科学的根拠の薄さも近年批判される。</div>
+        <div class="sbc-quote">「最高の状態の人間を研究すれば最高のことがわかる」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">カール・ロジャーズ</div>
+        <div class="sbc-dates">1902〜1987 · アメリカ</div>
+        <div class="sbc-key">来談者中心療法・共感・無条件の肯定的配慮</div>
+        <div class="sbc-body">「来談者（クライアント）中心療法」——「共感・無条件の肯定的配慮・一致（genuineness）」の三条件が治療的変化を生む。カウンセリング・コーチング・教育の基礎理論として世界最大の普及。「人間には自己実現への潜在的動力がある」——適切な環境があれば人は自分で成長する。</div>
+        <div class="sbc-quote">「聴くことは愛の最高の形式のひとつだ」</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">エリクソン（エリク・エリクソン）</div>
+        <div class="sbc-dates">1902〜1994 · ドイツ→アメリカ</div>
+        <div class="sbc-key">心理社会的発達段階・アイデンティティ</div>
+        <div class="sbc-body">人生を乳児〜老年の8段階に分けた発達理論。各段階に固有の「危機（crisis）」がある——青年期の「アイデンティティ vs 役割拡散」は「自分は何者か」という問いで全ての青年が直面する。「アイデンティティ・クライシス」という言葉の生みの親。</div>
+        <div class="sbc-quote">「子供は大人の未来ではなく、大人が子供の未来だ」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">心理学史タイムライン</h2>
+    <p class="section-desc">1879年〜現在——150年で「心」の科学はここまで来た</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1879年</div>
+        <div class="tl-event">ヴントの実験室——心理学の誕生</div>
+        <div class="tl-desc">ヴィルヘルム・ヴントがライプツィヒに世界初の心理学実験室を開設。「心理学の父」。内観法（自分の意識状態を報告する）で感覚・反応時間を計測。「哲学の一部だった心の探求」が「実験科学」になった歴史的瞬間。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🔬</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1890年</div>
+        <div class="tl-event">ウィリアム・ジェイムズ「心理学原理」</div>
+        <div class="tl-desc">アメリカ心理学の父。「意識の流れ（stream of consciousness）」という概念を提唱——意識は固定したものでなく絶え間なく変化する流れ。実用主義（プラグマティズム）——「真理とは役に立つことだ」という哲学と心理学を結びつけた。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📖</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1900年</div>
+        <div class="tl-event">フロイト「夢判断」——無意識の発見</div>
+        <div class="tl-desc">精神分析の誕生。「夢は無意識への王道」——抑圧された欲望が夢に象徴として現れる。フロイトの登場で「理性で動く人間」という啓蒙主義的人間観が根本から覆された。20世紀の文化・芸術・映画に計り知れない影響。</div>
+      </div>
+      <div class="tl-dot rose"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💭</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1920〜1950年代</div>
+        <div class="tl-event">行動主義の全盛——ワトソン・スキナー</div>
+        <div class="tl-desc">「意識は科学の対象外——行動だけ研究せよ」というワトソンの宣言が米国心理学を席巻。スキナーの強化理論が動物から人間の学習・教育に応用。「人間は環境で形成できる」という楽観的・危険な思想が政治的にも利用された。</div>
+      </div>
+      <div class="tl-dot sage"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🐀</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1950年代</div>
+        <div class="tl-event">ミルグラム実験・アッシュ実験——服従と同調の発見</div>
+        <div class="tl-desc">ミルグラム「権威への服従実験」——実験者の命令で65%の被験者が「危険なほどの」電気ショックを押し続けた（実際は演技）。アッシュ「同調実験」——明らかに間違った回答でも集団に従う。「ホロコーストはなぜ起きたか」への心理学的答え。</div>
+      </div>
+      <div class="tl-dot rose"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1960〜1970年代</div>
+        <div class="tl-event">認知革命——「コンピュータとしての心」</div>
+        <div class="tl-desc">チョムスキーが行動主義を批判。コンピュータ科学の影響で「心は情報処理システム」という認知心理学が台頭。記憶・注意・問題解決・言語処理を情報処理モデルで研究。AI研究との融合が始まる。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🖥</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1970〜1980年代</div>
+        <div class="tl-event">カーネマン＆トヴェルスキー——人間の非合理性を実証</div>
+        <div class="tl-desc">「プロスペクト理論」——人間は合理的でなく、損失を過大評価し、確率を歪めて判断する。「アンカリング」「代表性ヒューリスティック」「利用可能性ヒューリスティック」という認知バイアスを実験で立証。後の行動経済学の基盤に。</div>
+      </div>
+      <div class="tl-dot amber"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🧠</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1990年代〜</div>
+        <div class="tl-event">ポジティブ心理学・神経科学との統合</div>
+        <div class="tl-desc">マーティン・セリグマン「ポジティブ心理学」——病理より「幸福・繁栄・強み」を研究する運動。fMRI（機能的磁気共鳴画像法）の普及で「感情・記憶・決断の脳内メカニズム」が可視化され始めた。「心理学は哲学から生まれ、神経科学に戻っていく」。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">✨</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 認知・社会・行動経済 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">認知心理学・社会心理学・行動経済学</h2>
+    <p class="section-desc">「人間はなぜ間違えるのか」——20世紀後半の三大革命</p>
+  </div>
+
+  <div class="school-band sb-cogn" style="margin-bottom:1.5rem;">
+    <div class="sb-label">Cognitive & Social Psychology · 認知・社会心理学</div>
+    <div class="sb-title">集団・権威・状況が人間の行動を決める</div>
+    <div class="sb-row">
+      <div class="sb-card">
+        <div class="sbc-name">スタンフォード監獄実験</div>
+        <div class="sbc-dates">1971年 · フィリップ・ジンバルドー</div>
+        <div class="sbc-key">役割と状況——人は役割に染まる</div>
+        <div class="sbc-body">学生を無作為に「看守」と「囚人」に分けた模擬刑務所実験。予定2週間→6日で中止——看守役が本当に虐待的になり囚人役が精神崩壊。「悪は悪人がするのではなく、状況が作る」。後にデータ捏造の批判も。ただし「人は役割で変わる」という洞察は今も影響力大。</div>
+        <div class="sbc-quote">→「悪の陳腐さ（アーレント）」と接続する心理的証拠</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">バンデューラの社会的学習理論</div>
+        <div class="sbc-dates">1925〜2021 · カナダ</div>
+        <div class="sbc-key">観察学習・自己効力感（セルフ・エフィカシー）</div>
+        <div class="sbc-body">「ボボ人形実験」——大人が人形を殴るのを見た子供は同じ行動をする。人間はモデル（手本）を観察するだけで学習する（行動主義「直接経験のみ」への反論）。「自己効力感（自分はできる、という信念）」が達成の鍵という概念は教育・スポーツ心理・コーチングの基盤。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">ロールシャッハ・テストと投影法</div>
+        <div class="sbc-dates">1921年 · ヘルマン・ロールシャッハ</div>
+        <div class="sbc-key">インクの染み——無意識の投影</div>
+        <div class="sbc-body">インクの染みが何に見えるか——答えに個人の無意識・感情・パーソナリティが投影されるという仮説。科学的信頼性には議論があるが文化的アイコンに。「TAT（主題統覚検査）」「描画テスト」など投影法は今も臨床現場で使用。</div>
+      </div>
+      <div class="sb-card">
+        <div class="sbc-name">認知的不協和</div>
+        <div class="sbc-dates">1957年 · レオン・フェスティンガー</div>
+        <div class="sbc-key">矛盾する信念の解消</div>
+        <div class="sbc-body">「自分の信念と行動が矛盾すると不快（不協和）が生じ、人はそれを解消しようとする」。タバコを吸い続ける喫煙者が「タバコは健康に悪くない」という情報を探す行動の原理。フェイクニュースを信じ続ける心理・カルト信者が失敗の証拠を合理化する理由。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">💰</div>
+      <div>
+        <div class="ls-title">行動経済学——「ホモ・エコノミクス」という嘘</div>
+        <div class="ls-body">古典経済学は「人間は合理的に自己利益を最大化する」と仮定した（ホモ・エコノミクス）。カーネマン＆トヴェルスキーはそれが嘘だと実証した。損失回避バイアス（損する痛みは得る喜びの2倍）・現状維持バイアス・アンカリング（最初の数字に引きずられる）・ピーク・エンドルール（体験は最高点と最後だけで記憶される）。これらが行動経済学の基礎概念となり、セイラーのナッジ理論・マーケティング・政策設計に応用された。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🧬</div>
+      <div>
+        <div class="ls-title">進化心理学——「心のソフトウェア」は進化の産物</div>
+        <div class="ls-body">「人間の心理メカニズムは石器時代の適応の産物だ」という進化心理学。恐蜘蛛（クモへの本能的恐怖）・嫉妬の男女差・親族贔屓・互恵的利他主義——これらは今の環境でなく数万年前のサバンナで有利だった特徴の痕跡。「なぜ人間はカロリー高い食べ物を好むのか」→「飢餓が多かった時代の適応」。ただし「自然だから正しい」という自然主義的誤謬には注意が必要。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 認知バイアス ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">必知の認知バイアス12選</h2>
+    <p class="section-desc">「賢い人ほど引っかかる」——人間の思考の欠陥を知ることが防衛の第一歩</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">Cognitive Biases · 認知バイアス</div>
+    <div class="dp-title">人間には188種以上の認知バイアスがある——まず最重要12個を制覇する</div>
+    <div class="thinker-row">
+      <div class="thinker-card">
+        <div class="tc-name">確証バイアス</div>
+        <div class="tc-dates">Confirmation Bias</div>
+        <div class="tc-school">最も危険なバイアス</div>
+        <div class="tc-body">自分の既存の信念を支持する情報を積極的に集め、反証する情報を無視・軽視する傾向。陰謀論・フェイクニュースの最大の心理的原動力。「調べれば調べるほど信念が強くなる」のは新情報を得ているのでなく確証を集めているだけ。</div>
+        <div class="tc-quote">→ Google検索は確証バイアスを強化するよう設計されている</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">損失回避バイアス</div>
+        <div class="tc-dates">Loss Aversion</div>
+        <div class="tc-school">プロスペクト理論（カーネマン）</div>
+        <div class="tc-body">同じ金額でも「得る喜び」より「失う痛み」を約2倍強く感じる。「今なら50%オフ」より「今買わないと損」の方が刺さる理由。保険が売れる原理。投資家が損切りできずに損を拡大させる原因。</div>
+        <div class="tc-quote">→「FOMO（取り残される恐怖）」マーケティングの心理的根拠</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">アンカリング効果</div>
+        <div class="tc-dates">Anchoring Effect</div>
+        <div class="tc-school">判断・意思決定</div>
+        <div class="tc-body">最初に提示された数字（アンカー）に引きずられて判断が歪む。「定価50,000円→今なら30,000円」——定価が錨になる。給与交渉で最初に高い金額を言った方が有利な理由。「全品半額」の元の価格は本当に妥当か？</div>
+        <div class="tc-quote">→ 全ての値引き表示はアンカリングの応用</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">ダニング＝クルーガー効果</div>
+        <div class="tc-dates">Dunning-Kruger Effect</div>
+        <div class="tc-school">メタ認知・自己評価</div>
+        <div class="tc-body">知識や能力が低い人ほど「自分はできる」と過大評価し、高い人ほど「自分はできない」と過小評価する傾向。「少し勉強した人が最も自信満々になる」。専門家が「これは難しい」と言い、素人が「簡単だ」と言う逆転現象。</div>
+        <div class="tc-quote">→「物事をちょっと知っている人が最も危険」の心理的根拠</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">生存者バイアス</div>
+        <div class="tc-dates">Survivorship Bias</div>
+        <div class="tc-school">統計的思考</div>
+        <div class="tc-body">成功した事例だけが可視化され、失敗した事例は見えなくなる。「成功した起業家はX大学卒だ」——退学して失敗した人を数えていない。第二次大戦の「被弾していない部分を補強」という発想の転換で有名。</div>
+        <div class="tc-quote">→「自己啓発本の著者はほぼ全員が生存者」</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">現状維持バイアス</div>
+        <div class="tc-dates">Status Quo Bias</div>
+        <div class="tc-school">意思決定</div>
+        <div class="tc-body">変化よりも現状を好む傾向。デフォルト（初期設定）に従い続けることへの心理的傾向。臓器提供が「オプトイン（希望者が登録）」か「オプトアウト（希望しない人が削除）」かで寄付率が大幅に変わる理由。ナッジ政策の根拠。</div>
+        <div class="tc-quote">→ デフォルト設定を変えるだけで人の行動が変わる</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">フレーミング効果</div>
+        <div class="tc-dates">Framing Effect</div>
+        <div class="tc-school">判断・コミュニケーション</div>
+        <div class="tc-body">同じ情報でも提示の仕方（フレーミング）で判断が変わる。「手術の成功率90%」と「手術の死亡率10%」は同じ事実だが印象が全く異なる。「赤身90%」の牛肉と「脂肪10%」の牛肉——同じ情報なのに前者の方が魅力的に感じる。</div>
+        <div class="tc-quote">→ 政治的スピーチとニュースの見出しはフレーミングの連続</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">バンドワゴン効果</div>
+        <div class="tc-dates">Bandwagon Effect</div>
+        <div class="tc-school">社会的証明・同調</div>
+        <div class="tc-body">「みんながやっている」という情報がその行動を増幅させる。「Amazonレビュー数」「フォロワー数」「行列」——社会的証明が購買・選択に与える影響。選挙で「勝ち馬に乗る」投票行動。ソーシャルメディアが「バズ」を意図的に作る構造的理由。</div>
+        <div class="tc-quote">→「行列のできる店」は行列自体がマーケティングツール</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">ピーク・エンドの法則</div>
+        <div class="tc-dates">Peak-End Rule</div>
+        <div class="tc-school">記憶と体験（カーネマン）</div>
+        <div class="tc-body">体験全体でなく「最高点（ピーク）」と「最後（エンド）」だけで体験を記憶・評価する。痛い手術でも最後だけ少し楽にすると「それほど辛くなかった」と感じる（カーネマンの実験）。テーマパークの最後の花火・コンサートのラストナンバーへの投資が重要な理由。</div>
+        <div class="tc-quote">→ 顧客体験設計の最重要法則</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">後知恵バイアス</div>
+        <div class="tc-dates">Hindsight Bias</div>
+        <div class="tc-school">記憶・判断</div>
+        <div class="tc-body">「あの時からわかっていた（I knew it all along）」——結果を知った後で「予測していた」と感じる傾向。歴史の「必然性」——「ナチスの台頭はあの時点で明らかだった」という後付け解釈。失敗した意思決定を公正に評価する（「当時の情報で判断したら合理的だった」）を難しくする。</div>
+        <div class="tc-quote">→「歴史を批判するのが簡単な理由」</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">基本的帰属錯誤</div>
+        <div class="tc-dates">Fundamental Attribution Error</div>
+        <div class="tc-school">社会心理学</div>
+        <div class="tc-body">他者の行動は「その人の性格・人格のせい」と説明し、自分の行動は「状況のせい」と説明する傾向の非対称性。「あの人は怒りやすい（性格）」vs「私が怒ったのは状況が悪かった（状況）」。スタンフォード監獄実験が示した「人は状況で変わる」という真実の逆。</div>
+        <div class="tc-quote">→「他人に厳しく自分に甘い」の心理的根拠</div>
+      </div>
+      <div class="thinker-card">
+        <div class="tc-name">スポットライト効果</div>
+        <div class="tc-dates">Spotlight Effect</div>
+        <div class="tc-school">自己認知</div>
+        <div class="tc-body">自分は周りにとって「スポットライトが当たっているように目立っている」と感じる過大評価。「ニキビが目立って恥ずかしい」——他人は実際ほとんど気にしていない。「人は自分が思うほど他者に注意されていない」という安堵と哀愁が同時にある事実。</div>
+        <div class="tc-quote">→「人は自分が気にするほど他人はあなたを見ていない」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 現代心理学 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VII</span>
+    <h2 class="section-title">現代心理学の最前線</h2>
+    <p class="section-desc">神経科学・ポジティブ心理学・AIと心——21世紀の「心の科学」</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🧠</div>
+      <div>
+        <div class="ls-title">神経科学との統合——「心」の物質的基盤</div>
+        <div class="ls-body">fMRI（機能的磁気共鳴画像法）の普及で、感情・記憶・意思決定の「脳の場所と活動パターン」が可視化された。「恐怖は扁桃体」「作業記憶は前頭前皮質」「報酬は側坐核のドーパミン」——心理現象の神経的相関の解明が進む。「自由意志」問題——脳スキャナーで「決断」を本人が意識する0.3〜0.5秒前に神経活動が先行することが示された（ベンジャミン・リベットの実験）。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">✨</div>
+      <div>
+        <div class="ls-title">ポジティブ心理学——「幸福の科学」</div>
+        <div class="ls-body">マーティン・セリグマンが1998年米国心理学会の会長就任時に「病理中心の心理学から人間の強みと幸福を研究する心理学へ」と宣言。PERMA理論（肯定的感情・没頭・良好な関係・意味・達成）。「フロー（ゾーン）体験」（チクセントミハイ）——難易度と実力が均衡した状態で生まれる完全集中。グリット（やり抜く力）——IQより長期的成果を予測する資質（アンジェラ・ダックワース）。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🤖</div>
+      <div>
+        <div class="ls-title">AIと「意識の難問」——心理学最古の問いの現代的復活</div>
+        <div class="ls-body">哲学者デビッド・チャーマーズが提唱した「意識の難問（Hard Problem of Consciousness）」——「なぜ物理的プロセスが主観的体験（クオリア）を生むのか」。ChatGPTが「辛い」と言うとき、それは本当に感じているのか、それとも次に来る言葉を統計的に生成しているだけか——これは測定不可能かもしれない問い。心理学・哲学・神経科学・AI工学が収束する21世紀最大の学際問題。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">📱</div>
+      <div>
+        <div class="ls-title">デジタル心理学——SNSと心の相関</div>
+        <div class="ls-body">スマートフォンの使用時間と10代の抑うつ・不安の増加には相関があるという研究（ジョナサン・ハイト）。しかし「相関は因果でない」という反論も根強い。「ソーシャルメディア」がスキナーのオペラント条件づけを意図的に応用していること（元Facebook社員の内部告発）・フィルターバブル（確証バイアスのアルゴリズム的増幅）・ドーパミン循環（通知→確認→報酬の連鎖）。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VIII</span>
+    <h2 class="section-title">心理学の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——心を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">無意識 <span class="concept-en">Unconscious</span></div>
+      <div class="concept-body">フロイトが提唱した「意識の下に抑圧された欲望・記憶・葛藤が動力として働く層」。現代神経科学では「暗黙記憶・自動処理・感情の先取り反応」として再定義される。人間の行動の大部分が「意識的な選択」でなく無意識の処理から来るという洞察は今も有効。</div>
+      <div class="concept-izakaya">「無意識って「あの人なんか好き」とか「この場所なんか嫌」という説明できない感覚の正体。フロイト的には抑圧された欲望だけど、現代では"意識に上がる前に脳が先に処理してる"という神経科学的理解の方が主流。カーナビの再計算みたいなもの」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">システム1 / システム2 <span class="concept-en">System 1 / 2</span></div>
+      <div class="concept-body">カーネマンの「ファスト＆スロー」の核心概念。システム1——速い・自動的・直感的・感情的（大半の日常判断）。システム2——遅い・意識的・論理的・努力を要する（意識的な計算・論理的推論）。「認知バイアスはシステム1が引き起こし、システム2で補正できる（が疲れると補正できない）」。</div>
+      <div class="concept-izakaya">「システム1は本能で、システム2は理性。問題はシステム1が常に先行して決定してて、システム2はほぼ後付けで理由をつけてるだけという説もある。「なぜそれを選んだのか」と聞かれて答えられる理由は、実は選んだ後で作られた物語かもしれない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">自己効力感 <span class="concept-en">Self-Efficacy</span></div>
+      <div class="concept-body">バンデューラが提唱。「自分はこれをやり遂げられる」という確信・信念。IQや実際の能力より「自分にできると信じるかどうか」が成果の強力な予測因子。「意志力の科学」「グリット」「成長型マインドセット（キャロル・ドゥエック）」の根本。</div>
+      <div class="concept-izakaya">「自己効力感って自己肯定感とはちょっと違くて、"自分は何でもできる"という漠然とした自信でなく、"この課題は自分はやり遂げられる"という具体的な確信。面白いのは実際の能力より自己効力感の方が成果を予測するという研究が多い。"できると思う人ができる"というのは科学的事実」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">フロー体験 <span class="concept-en">Flow State</span></div>
+      <div class="concept-body">チクセントミハイが提唱。課題の難易度と本人の能力が均衡した時に生まれる「完全没頭・時間を忘れる・自己を失う」状態。「ゾーン（zone）」とも。アスリート・芸術家・プログラマー・棋士が語る「最高のパフォーマンス状態」。難しすぎると不安、易しすぎると退屈——その均衡点がフロー。</div>
+      <div class="concept-izakaya">「フローって仕事や趣味でたまに"気づいたら3時間経ってた"というあの状態。チクセントミハイが科学的に定義した。難しすぎず簡単すぎない課題設定でしか起きない——だからゲームは意図的にフロー状態を作るよう設計されてる。人間にとって最も満足度が高い状態」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">エピジェネティクスと心 <span class="concept-en">Epigenetics</span></div>
+      <div class="concept-body">「遺伝か環境か（nature vs nurture）」という古典的二分法を超えた現代の理解。ストレス・栄養・対人関係がDNAの発現を変える（遺伝子のオン・オフを切り替える）。「トラウマは世代を超えて伝達される可能性がある」——ホロコースト生存者の子供・孫に生理的変化が見られるという研究が示す深刻な意味。</div>
+      <div class="concept-izakaya">「"遺伝か環境か"という論争は今では"両方が相互作用する"という結論で、環境によってDNAの発現自体が変わるエピジェネティクスが注目されてる。虐待を受けた子供のストレス応答が変わるだけでなく、その変化が子供の子供にも伝わる可能性があるという研究は"歴史の傷"の生物学的証拠かも」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">アタッチメント理論 <span class="concept-en">Attachment Theory</span></div>
+      <div class="concept-body">ジョン・ボウルビィが提唱。幼少期の「安全基地（主要な養育者との安定した関係）」が生涯の対人関係・感情調整・心理的健康の基盤になる。「安定型・不安型・回避型・混乱型」の4分類。「なぜその恋愛パターンを繰り返すのか」「なぜ職場の上司に過剰反応するのか」の説明に。</div>
+      <div class="concept-izakaya">「アタッチメント理論って要は"親との幼少期の関係が大人の恋愛パターンに出る"という話。"不安型애着スタイル"の人は恋人が少し冷たくなると強い不安を感じる——それが親との関係の再演かもしれない。ただし決定論ではなく、適切な支援があれば変われるというのが現代の立場」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">認知の歪み <span class="concept-en">Cognitive Distortion</span></div>
+      <div class="concept-body">認知療法（アーロン・ベック）が特定した思考パターンの歪み——全か無か思考（「失敗したら全部終わり」）・過度な一般化（「いつも〜だ」）・心の読み取り（「あの人は私を嫌いだと思っている」）・べき思考（「〜すべきだ」）。これらに気づき修正するのが認知行動療法（CBT）の核心。</div>
+      <div class="concept-izakaya">「認知の歪みって、うつ病の人の思考パターンを分類したものだけど、健康な人でも程度の差で全員持ってる。"全か無か思考"——ちょっと失敗したら"全部ダメ"と感じる。"べき思考"——"こうすべき"が多すぎると常に自分を責め続ける。認知行動療法(CBT)はこのパターンに気づかせて修正する方法」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">プラシーボ効果 <span class="concept-en">Placebo Effect</span></div>
+      <div class="concept-body">「効く」と信じることで実際に症状が改善する現象。偽薬（砂糖錠）でも30〜35%の患者に本物の治療効果が現れることがある。「心が体を変える」という心身相関の最も明確な証拠。逆のノシーボ効果（「副作用がある」と告げられると実際に副作用が出る）も。「意識の現実への介入」として哲学・科学・医学の境界にある現象。</div>
+      <div class="concept-izakaya">「プラシーボ効果って"気のせいで治る"を笑えないのは、脳が信じると実際に鎮痛物質（エンドルフィン）が分泌されるという神経科学的メカニズムがあるから。"偽薬だとわかっていても効果がある"という研究まである。"信じる力"が物理的な身体変化を起こすという、最も不思議な心理学的事実」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">MBTI / ビッグファイブ <span class="concept-en">Personality Models</span></div>
+      <div class="concept-body">MBTI（16タイプ）——ユング理論に基づくが科学的根拠に乏しく「再テストで異なる結果になる確率50%」という批判も。ビッグファイブ（OCEAN）——開放性・誠実性・外向性・協調性・神経症傾向の5因子は最も科学的根拠のある性格モデル。「MBTI文化圏（日本・韓国）」では誰かを知るための会話ツールとして機能し、科学的正確性より社会的役割が大きい。</div>
+      <div class="concept-izakaya">「MBTIって科学的精度は低いのに日本・韓国では"星座占い2.0"みたいな文化になってる。科学的には"ビッグファイブ"の方が信頼性が高い。でもMBTIの"社会的なコミュニケーションツール"としての機能は別物——初対面で"私INFP"と言えば雰囲気が共有できる文化的記号として機能してる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">マインドフルネス <span class="concept-en">Mindfulness</span></div>
+      <div class="concept-body">仏教の瞑想実践を心理学的に再定義したジョン・カバット＝ジンの「MBSR（マインドフルネスストレス低減法）」。「今この瞬間の体験に非判断的に注意を向けること」。ストレス低減・集中力向上・抑うつ再発防止に効果があるとするエビデンスが多数。Googleやアップルが社員研修に導入。「瞑想の科学化」。</div>
+      <div class="concept-izakaya">「マインドフルネスって瞑想の科学化で、Googleが社内研修に入れて有名になった。ポイントは"今考えてることを評価せず観察する"——"また自分は役に立たないと考えてる。面白いな"という第三者的な距離感を作ること。これがADHD・うつ・不安障害のエビデンスベースの治療法の一つになってる」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 学派比較表 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special</span>
+    <h2 class="section-title">心理学5大学派 完全比較表</h2>
+    <p class="section-desc">「人間とは何か」への5つの異なる答え</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>学派</th>
+          <th>時代</th>
+          <th>人間観</th>
+          <th>研究対象</th>
+          <th>代表者</th>
+          <th>現代への影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>精神分析</td>
+          <td>1890〜現在</td>
+          <td>無意識の欲動に動かされる存在</td>
+          <td>無意識・夢・幼少期の体験</td>
+          <td>フロイト・ユング・アドラー</td>
+          <td>精神療法・文学批評・映画理論・日常語（抑圧・投影）</td>
+        </tr>
+        <tr>
+          <td>行動主義</td>
+          <td>1910〜1960年代</td>
+          <td>環境と学習によって形成される存在</td>
+          <td>観察可能な行動・刺激と反応</td>
+          <td>ワトソン・スキナー・パブロフ</td>
+          <td>広告・教育・動物訓練・依存症治療・ゲーム設計</td>
+        </tr>
+        <tr>
+          <td>人間性心理学</td>
+          <td>1950〜現在</td>
+          <td>成長と自己実現を求める善なる存在</td>
+          <td>幸福・意味・潜在能力・自己実現</td>
+          <td>マズロー・ロジャーズ・フランクル</td>
+          <td>カウンセリング・コーチング・ポジティブ心理学・HR</td>
+        </tr>
+        <tr>
+          <td>認知心理学</td>
+          <td>1960〜現在</td>
+          <td>情報処理システムとしての存在</td>
+          <td>記憶・注意・言語・問題解決・バイアス</td>
+          <td>カーネマン・チョムスキー・ミラー</td>
+          <td>行動経済学・AI・UXデザイン・認知療法（CBT）</td>
+        </tr>
+        <tr>
+          <td>社会心理学</td>
+          <td>1930〜現在</td>
+          <td>社会的状況と関係によって変わる存在</td>
+          <td>同調・服従・偏見・集団・説得</td>
+          <td>ミルグラム・アッシュ・ジンバルドー</td>
+          <td>政治広告・組織論・差別研究・SNS研究</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:10px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--violet-pale);">心理学史のパターン：</strong>各学派は「前の学派への反動」として生まれる。行動主義はフロイトの「観察できない無意識」への反論、人間性心理学は行動主義の「人間をネズミと同等に扱う」への反論、認知心理学は行動主義の「内面の情報処理を無視する」への反論——他の知的分野と全く同じ「反抗の連鎖」が心理学史を動かしている。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Final Session</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">心理学史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「フロイトって今でも有効なの？」</div>
+      <div class="test-q-text">心理学・精神分析の話になったとき</div>
+      <div class="test-a">「具体的な理論（エディプスコンプレックス・夢は性的欲望の象徴）は現代科学的には否定されてるものが多い。でも"人間の行動の多くは意識されない動機から来る"という基本洞察は神経科学でも支持されてる。あとフロイトが偉大なのは"無意識を科学の議題にした"こと——それ以前は心は全て意識的だと思われていた。"旅行に出るとき傘を忘れる"のは無意識の願望という説明は面白いけど反証不可能という点でポパー的には科学じゃない。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「認知バイアスって知ると役に立つの？」</div>
+      <div class="test-q-text">自己啓発・思考法の話になったとき</div>
+      <div class="test-a">「知ることと抵抗することは別問題なのが難しいところで。損失回避バイアスを知っていても「今なら半額」セールで余計なものを買ってしまう。ダニング＝クルーガー効果を知っていても過信する。ただし"あ、これは確証バイアスかも"と立ち止まれる瞬間は確実に増える。完全に消えるのは無理でも、知ることで"引っかかる速度を遅くする"効果はある。バイアスに対する最大の防衛はシステム2を使う意識的な努力——疲れているときは特に危ない。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「ミルグラム実験って本当のこと？」</div>
+      <div class="test-q-text">権威・服従・組織の話になったとき</div>
+      <div class="test-a">「65%の被験者が「危険なレベル」の電気ショックのボタンを押し続けた——というミルグラムの結果。後にデータの操作が指摘されているが、大枠では「権威ある人物の命令に人は従いやすい」は多くの追試でも支持されている。アーレントの"悪の陳腐さ"——ホロコーストはサディストでなく"命令に従う普通の人"が実行したという議論と完全に対応する。組織で"おかしい"と思っても言えない、というのも同じ構造。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「人間って変われるの？」</div>
+      <div class="test-q-text">自己変革・成長の話になったとき</div>
+      <div class="test-a">「性格の変化可能性については科学的に議論がある。ビッグファイブの各特性は遺伝率40〜60%とされるが、環境・意図的な行動変化で変わるとする研究も多い。脳の可塑性（ニューロプラスティシティ）——脳は成人後も経験に応じて神経回路を変える。"人は変わらない"はある意味正しく"核心的な気質は変わりにくい"が、"特定の行動習慣や反応パターンは変えられる"のも正しい。認知行動療法（CBT）が世界中の臨床で効果が示されているのがその証拠。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「AIに感情はあるの？」</div>
+      <div class="test-q-text">AI・テクノロジーの話になったとき</div>
+      <div class="test-a">「これは哲学的ゾンビ問題に繋がって、「感情がある」ことを外部から証明するのは人間でも原理的に不可能。私が「悲しい」と言うとき、あなたには私が本当に悲しんでるか確認する方法がない——これは心理学・哲学最古の「他我問題」。AIが「つらい」と言うとき、それが訓練データのパターン再生か内的状態の表現かの区別は現在不可能。ただし「意識がないから感情的に扱っていい」という論理には注意が必要——その判断の根拠も実は怪しい。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「マズローのピラミッドって本当なの？」</div>
+      <div class="test-q-text">モチベーション・組織心理学の話になったとき</div>
+      <div class="test-a">「マズローのピラミッドは経営学・自己啓発で最も使われた心理学理論だけど、実は科学的根拠はかなり薄い。マズロー自身は階層を「厳密な順序」と言っておらず、後継者が図式化した。実証研究では「下位の欲求が満たされないと上位は目指せない」という仮説は支持されにくい——貧困の中でも自己実現を求めた人は無数にいる。にもかかわらずこれだけ使われるのは「わかりやすい図」の説得力を示してる——これ自体が認知バイアスの一例。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">🧠</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史・音楽史・文学史・建築史・心理学史。知の十二角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42; font-style:italic;">"Everything that irritates us about others can lead us to an understanding of ourselves." — Carl Jung</p>
+</div>
+
+</body>
+</html>

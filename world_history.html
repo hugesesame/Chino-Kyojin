@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界史概論 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra-deep:   #1A0A00;
+    --terra-mid:    #5C2800;
+    --terra-rich:   #9A4800;
+    --terra-light:  #C86820;
+    --terra-glow:   #E8903A;
+    --terra-pale:   #FBF0E0;
+    --stone-dark:   #1E1A14;
+    --stone-mid:    #3A3020;
+    --stone-light:  #6A5A3A;
+    --copper:       #A06030;
+    --copper-light: #D09050;
+    --sky-dark:     #082030;
+    --sky-mid:      #104060;
+    --sky-light:    #2878B0;
+    --jade:         #0A3020;
+    --jade-mid:     #1A6040;
+    --jade-light:   #30A070;
+    --crimson:      #8B1A1A;
+    --ivory:        #FAF7EF;
+    --ivory-dark:   #EDE5CC;
+    --ink:          #160A00;
+    --ink-mid:      #3A2800;
+    --ink-light:    #705830;
+    --gray:         #9A9080;
+    --silver:       #C8BCA0;
+    --shadow:       rgba(26,10,0,0.15);
+    --gold:         #B8922A;
+    --gold-light:   #E0B84A;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--stone-dark);
+    color:#fff; text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'🌍';
+    position:absolute; font-size:28rem; opacity:0.05;
+    top:50%; left:50%; transform:translate(-50%,-52%);
+    line-height:1; pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--terra-glow); border:1px solid rgba(232,144,58,0.45);
+    padding:4px 16px; border-radius:2px; margin-bottom:1.5rem;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem); font-weight:700; line-height:1.2; margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff,var(--terra-glow));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:540px; margin:0 auto 2.5rem; font-weight:300; }
+  .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+  .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--terra-glow); display:block; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block; background:var(--terra-mid); color:var(--terra-pale);
+    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
+  }
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+  .tip-bar {
+    background:#fff; border-radius:6px; border:1px solid rgba(90,40,0,0.16);
+    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel { background:var(--stone-dark); border-radius:10px; padding:2.5rem; color:#fff; }
+  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--terra-glow); font-weight:700; margin-bottom:1.25rem; }
+
+  /* ─── CIV CARDS ─── */
+  .civ-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:1rem; }
+  .civ-card {
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
+    border-top:3px solid var(--terra-glow);
+    border-radius:0 0 8px 8px; padding:1rem 1.1rem;
+  }
+  .cc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--terra-glow); font-weight:700; margin-bottom:0.15rem; }
+  .cc-period { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .cc-region { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--jade-light); margin-bottom:0.4rem; }
+  .cc-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+  .cc-legacy { margin-top:0.6rem; font-size:0.72rem; color:rgba(255,255,255,0.42); border-left:2px solid rgba(232,144,58,0.4); padding-left:0.5rem; }
+
+  /* ─── ERA BANDS ─── */
+  .era-band { border-radius:10px; padding:2rem 2.5rem; margin-bottom:1.5rem; color:#fff; }
+  .eb-stone  { background:linear-gradient(135deg, #1A1208, #3A2810); }
+  .eb-bronze { background:linear-gradient(135deg, #1A0E00, #5C2800); }
+  .eb-iron   { background:linear-gradient(135deg, #080818, #182848); }
+  .eb-mid    { background:linear-gradient(135deg, #0A1A08, #1A4820); }
+  .eb-early  { background:linear-gradient(135deg, #180808, #481818); }
+  .eb-modern { background:linear-gradient(135deg, #080818, #101840); }
+  .eb-cont   { background:linear-gradient(135deg, #101010, #282828); }
+  .eb-label  { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.3rem; }
+  .eb-title  { font-family:'Noto Serif JP',serif; font-size:1.15rem; color:var(--terra-glow); font-weight:700; margin-bottom:0.3rem; }
+  .eb-period { font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
+  .eb-row    { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.75rem; }
+  .eb-card   { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem; }
+  .ebc-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--terra-glow); font-weight:700; margin-bottom:0.15rem; }
+  .ebc-dates { font-size:0.6rem; color:var(--silver); margin-bottom:0.35rem; }
+  .ebc-key   { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--jade-light); margin-bottom:0.35rem; }
+  .ebc-body  { font-size:0.76rem; color:rgba(255,255,255,0.65); line-height:1.5; }
+  .ebc-fact  { margin-top:0.5rem; font-size:0.72rem; color:rgba(232,144,58,0.7); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--terra-light),var(--terra-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--terra-light);
+    border:3px solid var(--ivory); border-radius:50%;
+    box-shadow:0 0 0 2px var(--terra-light); z-index:2;
+  }
+  .tl-dot.gold   { background:var(--gold);       box-shadow:0 0 0 2px var(--gold); }
+  .tl-dot.red    { background:var(--crimson);     box-shadow:0 0 0 2px var(--crimson); }
+  .tl-dot.sky    { background:var(--sky-light);   box-shadow:0 0 0 2px var(--sky-light); }
+  .tl-dot.jade   { background:var(--jade-mid);    box-shadow:0 0 0 2px var(--jade-mid); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(90,40,0,0.14); border-radius:6px;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--terra-light); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(90,40,0,0.14);
+    border-left:4px solid var(--terra-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--terra-mid); background:rgba(90,40,0,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
+  .ls-icon  { font-size:1.8rem; flex-shrink:0; }
+  .ls-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background:var(--stone-dark); border-radius:10px; padding:2.5rem; color:#fff; overflow-x:auto; }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:520px; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.67rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--terra-glow); border-bottom:1px solid rgba(255,255,255,0.12); white-space:nowrap; }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--terra-glow); font-weight:700; white-space:nowrap; }
+
+  /* ─── TURNING POINT CARDS ─── */
+  .turn-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .turn-card {
+    background:var(--stone-dark); color:#fff;
+    border-radius:8px; padding:1.5rem;
+    position:relative; overflow:hidden;
+  }
+  .turn-card::after {
+    content:attr(data-num);
+    position:absolute; bottom:-0.5rem; right:0.5rem;
+    font-family:'Cinzel',serif; font-size:4rem; opacity:0.07; line-height:1; color:var(--terra-glow);
+  }
+  .tc-num    { font-family:'Cinzel',serif; font-size:0.75rem; color:var(--terra-glow); letter-spacing:0.15em; display:block; margin-bottom:0.4rem; }
+  .tc-event  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--terra-glow); font-weight:700; margin-bottom:0.4rem; }
+  .tc-year   { font-size:0.65rem; color:var(--silver); margin-bottom:0.5rem; display:block; }
+  .tc-why    { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--stone-dark); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--terra-light); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--terra-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--stone-dark); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-icon { font-size:2rem; display:block; margin-bottom:0.5rem; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.7</div>
+  <h1>世界史概論<br>完全攻略ガイド</h1>
+  <p class="hero-sub">文明の誕生から冷戦終結まで——人類5000年の「なぜ」を一気に理解する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 3500年</span><span class="hero-stat-lbl">最初の文明</span></div>
+    <div><span class="hero-stat-num">5000年</span><span class="hero-stat-lbl">人類の記録</span></div>
+    <div><span class="hero-stat-num">4大文明</span><span class="hero-stat-lbl">世界の出発点</span></div>
+    <div><span class="hero-stat-num">10の転換点</span><span class="hero-stat-lbl">今の世界を作った瞬間</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 歴史を学ぶ意味 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">歴史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「過去を知る」のではなく「現在を理解する」ための道具</p>
+  </div>
+  <div class="turn-grid">
+    <div class="turn-card" data-num="①">
+      <span class="tc-num">WHY 01</span>
+      <div class="tc-event">現在は過去の産物</div>
+      <div class="tc-why">今の国境・宗教・経済格差・民族対立は全て歴史的経緯の産物。「なぜ中東は不安定か」「なぜ日本は島国で独自文化を持つか」は歴史なしに答えられない。</div>
+    </div>
+    <div class="turn-card" data-num="②">
+      <span class="tc-num">WHY 02</span>
+      <div class="tc-event">パターン認識の訓練</div>
+      <div class="tc-why">帝国の盛衰・革命・疫病・技術革新には繰り返すパターンがある。コロナ禍・AI革命・ポピュリズム——歴史はそのアナロジーを提供してくれる。</div>
+    </div>
+    <div class="turn-card" data-num="③">
+      <span class="tc-num">WHY 03</span>
+      <div class="tc-event">相対化の視点</div>
+      <div class="tc-why">今の「常識」は歴史的に見れば特殊な一形態に過ぎない。民主主義・人権・国民国家はどれも200年以内の発明。相対化することで思考が自由になる。</div>
+    </div>
+    <div class="turn-card" data-num="④">
+      <span class="tc-num">WHY 04</span>
+      <div class="tc-event">共感と対話の基盤</div>
+      <div class="tc-why">異なる文明・時代の人々がどう考え、何に苦しみ、何を求めたかを知ること。歴史は「他者理解」の最大の訓練場。国際社会での対話に直結する。</div>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「歴史って暗記教科だと思ってたけど、実は"今の世界の取扱説明書"なんよね。なんでロシアとウクライナが戦争してるか、なんで中東が揉めてるか、全部歴史を知らないと説明できない。年号より"なぜ"が大事」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 四大文明 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">四大文明 — 人類最初の「社会」</h2>
+    <p class="section-desc">BC 3500〜BC 2000年。なぜ川のほとりで文明は生まれたのか</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">FOUR RIVER CIVILIZATIONS · 四大文明</div>
+    <div class="dp-title">共通点：大河・農業・余剰生産・文字・都市・国家——この6つが揃うと「文明」になる</div>
+    <div class="civ-row">
+      <div class="civ-card">
+        <div class="cc-name">メソポタミア文明</div>
+        <div class="cc-period">BC 3500年頃〜</div>
+        <div class="cc-region">チグリス・ユーフラテス川 / 現イラク</div>
+        <div class="cc-body">人類最古の文明。シュメール人が都市国家を建設。楔形文字・60進法（1時間60分の起源）・最古の法典「ハンムラビ法典」。「目には目を、歯には歯を」は同害報復を限定する近代的側面も。</div>
+        <div class="cc-legacy">⏰ 60進法 → 今の時計・角度の基礎</div>
+      </div>
+      <div class="civ-card">
+        <div class="cc-name">エジプト文明</div>
+        <div class="cc-period">BC 3100年頃〜</div>
+        <div class="cc-region">ナイル川 / 現エジプト</div>
+        <div class="cc-body">「エジプトはナイルの賜物（ヘロドトス）」。定期的なナイルの氾濫が肥沃な農地を生んだ。ピラミッド建設は強制労働でなく国家プロジェクトだった可能性大。象形文字（ヒエログリフ）・太陽暦（現代暦の起源）・パピルス紙。</div>
+        <div class="cc-legacy">📅 太陽暦 → 今の365日暦の原型</div>
+      </div>
+      <div class="civ-card">
+        <div class="cc-name">インダス文明</div>
+        <div class="cc-period">BC 2600年頃〜</div>
+        <div class="cc-region">インダス川 / 現パキスタン</div>
+        <div class="cc-body">モヘンジョダロ・ハラッパーの計画都市が有名。世界最古の下水道システムを持ち、碁盤目状の街路・公衆浴場・標準化された煉瓦。文字は未解読のまま。突然の消滅は今も謎（干ばつ説・アーリア人侵入説など）。</div>
+        <div class="cc-legacy">🚿 下水道システム → 現代都市計画の先駆</div>
+      </div>
+      <div class="civ-card">
+        <div class="cc-name">黄河文明</div>
+        <div class="cc-period">BC 2000年頃〜</div>
+        <div class="cc-region">黄河流域 / 現中国</div>
+        <div class="cc-body">殷・周・春秋戦国時代へ続く中国文明の出発点。甲骨文字（現代漢字の祖）・青銅器・天命思想（王朝は天の命令で正当性を持つ）。孔子・老子・孫子が活躍した「諸子百家」の時代は秦の統一で終わる。</div>
+        <div class="cc-legacy">📜 甲骨文字 → 現代漢字・日本語漢字の起源</div>
+      </div>
+    </div>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.65);">
+      💡 <strong style="color:var(--terra-glow);">「四大文明」は実は日本と中国だけで使われる教育用語：</strong>欧米の歴史学では「文明の起源」を特定の4つに限定しない。クレタ・ミケーネ・アンデス・中央アメリカなど多数の独立文明が存在した。「四大文明」という概念を学んでいるのは世界でも珍しい現象。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 古代帝国 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">古代帝国の時代 — 世界を「つなぐ」力</h2>
+    <p class="section-desc">BC 6世紀〜AD 5世紀。ペルシア・ギリシャ・ローマ・漢が世界を形作った</p>
+  </div>
+
+  <div class="era-band eb-iron">
+    <div class="eb-label">CLASSICAL EMPIRES · BC 6世紀〜AD 5世紀</div>
+    <div class="eb-title">「帝国」という発明——異なる民族を一つの秩序に統合する試み</div>
+    <div class="eb-period">この時代の政治制度・法律・文化・宗教が今も世界の骨格を形成している</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">アケメネス朝ペルシア</div>
+        <div class="ebc-dates">BC 550〜BC 330</div>
+        <div class="ebc-key">最初の「世界帝国」</div>
+        <div class="ebc-body">キュロス2世が建設した史上初の多民族帝国。「王の道」（全長2700km）・駅伝制・統一通貨・宗教寛容政策（ユダヤ人を解放）。ダレイオス1世の時代に人口5000万人。アレクサンドロスに滅ぼされるまで200年間持続。</div>
+        <div class="ebc-fact">→ 郵便・駅伝制度の原型</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">アテネ民主政とギリシャ</div>
+        <div class="ebc-dates">BC 508〜BC 322</div>
+        <div class="ebc-key">民主主義・哲学・科学の揺籠</div>
+        <div class="ebc-body">ペリクレス時代のアテネが全盛期。哲学（ソクラテス・プラトン・アリストテレス）・歴史学（ヘロドトス・トゥキュディデス）・演劇・建築（パルテノン神殿）が花開いた。マケドニアのアレクサンドロス大王がギリシャ文化をアジアに拡散（ヘレニズム）。</div>
+        <div class="ebc-fact">→ 民主主義・哲学・オリンピックの起源</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">ローマ帝国</div>
+        <div class="ebc-dates">BC 753〜AD 476（西）</div>
+        <div class="ebc-key">法律・インフラ・キリスト教国教化</div>
+        <div class="ebc-body">「全ての道はローマに通ず」。総延長8万kmの幹線道路・水道橋・ローマ法（近代法の起源）・ラテン語（現代のフランス語・スペイン語・イタリア語の源泉）。313年キリスト教公認、392年国教化。476年西ローマ滅亡が「古代の終わり」。</div>
+        <div class="ebc-fact">→ 法律・道路・ラテン語・キリスト教国教化</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">秦・漢帝国</div>
+        <div class="ebc-dates">BC 221〜AD 220</div>
+        <div class="ebc-key">中華統一・シルクロード・儒教</div>
+        <div class="ebc-body">秦の始皇帝が初めて「中国」を統一（BC 221）。万里の長城・度量衡の統一・郡県制。後漢が滅びるまで400年続いた漢王朝は「漢民族」「漢字」の名前の由来。張騫の西域遠征でシルクロードが開通し東西を結んだ。</div>
+        <div class="ebc-fact">→ 漢字・儒教・シルクロード・科挙制度</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">インド・マウリヤ朝</div>
+        <div class="ebc-dates">BC 322〜BC 185</div>
+        <div class="ebc-key">アショーカ王と仏教の普及</div>
+        <div class="ebc-body">チャンドラグプタが建設したインド初の統一帝国。孫のアショーカ王がカリンガ戦争の惨禍に後悔し仏教に帰依。石柱に法（ダルマ）を刻み全土に広めた。スリランカへ仏教使節を派遣し東南アジア仏教の起点に。インドの国旗の輪はアショーカのシンボル。</div>
+        <div class="ebc-fact">→ インド国旗の「アショーカ・チャクラ」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 中世〜モンゴル ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">中世の世界 — イスラムとモンゴルが世界を結んだ</h2>
+    <p class="section-desc">5〜13世紀。ローマ後の「空白」を埋めた3つの巨大な力</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:1.5rem;">
+    <div class="era-band eb-mid">
+      <div class="eb-label">ISLAMIC GOLDEN AGE · 8〜13世紀</div>
+      <div class="eb-title">イスラム黄金時代 — バグダードが世界の知的首都だった</div>
+      <div class="eb-period">アッバース朝のもと、数学・天文学・医学・哲学が空前の発展を遂げた</div>
+      <div class="eb-row">
+        <div class="eb-card">
+          <div class="ebc-name">知恵の館（バイト・アル＝ヒクマ）</div>
+          <div class="ebc-dates">830年頃建設・バグダード</div>
+          <div class="ebc-key">世界最大の研究機関</div>
+          <div class="ebc-body">ギリシャ・インド・ペルシャの文献をアラビア語に翻訳・発展。アルゴリズム（フワーリズミー）・代数学（algebra）・光学・外科手術・病院システムが生まれた。1258年モンゴルに破壊され「知の大洪水」が消える。</div>
+        </div>
+        <div class="eb-card">
+          <div class="ebc-name">十字軍（1096〜1291）</div>
+          <div class="ebc-dates">200年間・7回の遠征</div>
+          <div class="ebc-key">東西接触・負の遺産</div>
+          <div class="ebc-body">軍事的には失敗だったが、イスラム・ビザンツ文明との接触がヨーロッパに知識・技術・香辛料・疫病をもたらした。ルネサンスの間接的引き金に。サラディンのエルサレム奪還（1187）はイスラム世界の英雄譚。</div>
+        </div>
+        <div class="eb-card">
+          <div class="ebc-name">ヨーロッパ中世封建制</div>
+          <div class="ebc-dates">5〜15世紀</div>
+          <div class="ebc-key">教会・封建制・農奴制</div>
+          <div class="ebc-body">ローマ崩壊後の「暗黒時代」はやや誇張。教会が文化・教育を担いロマネスク・ゴシック建築が生まれた。農奴制が経済基盤。1347年黒死病（ペスト）でヨーロッパ人口の約3分の1が死亡——これが封建制崩壊・ルネサンス台頭の社会的引き金に。</div>
+        </div>
+        <div class="eb-card">
+          <div class="ebc-name">宋・明・清の中国</div>
+          <div class="ebc-dates">960〜1912年</div>
+          <div class="ebc-key">火薬・羅針盤・印刷術</div>
+          <div class="ebc-body">宋代に火薬・羅針盤・活版印刷が実用化。全てヨーロッパに伝わり「近代」を形成した。マルコ・ポーロが宋・元の繁栄を「東方見聞録」に記し、コロンブスに影響を与えた。鄭和の大航海（15c初）はコロンブスより先に「世界一周」できる規模だった。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="era-band eb-early" style="background:linear-gradient(135deg,#1a0808,#3a1010);">
+      <div class="eb-label">MONGOL EMPIRE · 13世紀</div>
+      <div class="eb-title">モンゴル帝国 — 史上最大の陸上帝国が世界をつなぎ変えた</div>
+      <div class="eb-period">チンギス・ハーン（1162頃〜1227）とその子孫が築いた人類史上最大の連続領土帝国</div>
+      <div class="eb-row">
+        <div class="eb-card">
+          <div class="ebc-name">チンギス・ハーン</div>
+          <div class="ebc-dates">1162頃〜1227</div>
+          <div class="ebc-key">史上最大の征服者</div>
+          <div class="ebc-body">テムジン（後のチンギス・ハーン）がモンゴル高原を統一。騎馬軍団の機動力と心理戦で中央アジア・ペルシア・中国・ロシアを席巻。「降伏すれば優遇、抵抗すれば皆殺し」という戦略で恐怖と服従を組み合わせた。</div>
+          <div class="ebc-fact">→ DNAでは世界人口の0.5%の祖先という説も</div>
+        </div>
+        <div class="eb-card">
+          <div class="ebc-name">パックス・モンゴリカ</div>
+          <div class="ebc-dates">13〜14世紀</div>
+          <div class="ebc-key">ユーラシア全体の「平和」</div>
+          <div class="ebc-body">帝国最盛期のユーラシア大陸全土を一人の商人が比較的安全に横断できた。シルクロードが再活性化し、東西で技術・文化・疫病（ペスト）が交換された。マルコ・ポーロはこの時代にクビライ・ハーンの宮廷を訪問。</div>
+        </div>
+        <div class="eb-card">
+          <div class="ebc-name">モンゴルの遺産と崩壊</div>
+          <div class="ebc-dates">14〜15世紀</div>
+          <div class="ebc-key">帝国分裂→黒死病の伝播</div>
+          <div class="ebc-body">帝国はチンギスの孫の代に4つのハン国に分裂。ペスト菌がモンゴルの軍事行動によりユーラシア全土に拡散——ヨーロッパの黒死病はモンゴル由来。一方ムガル帝国（インド）・元朝（中国）は後世まで続くモンゴル系王朝の系譜。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 近代の誕生 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">近代の誕生 — ルネサンスから大航海・宗教改革まで</h2>
+    <p class="section-desc">15〜17世紀。ヨーロッパが世界を再定義した100年</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+    <div class="life-step">
+      <div class="ls-icon">🎨</div>
+      <div>
+        <div class="ls-title">ルネサンス（14〜17世紀）— 「人間の再発見」</div>
+        <div class="ls-body">イタリアのフィレンツェで始まった文化運動。ギリシャ・ローマの古典への回帰と「人間中心主義（ヒューマニズム）」。レオナルド・ダ・ヴィンチ（絵画・解剖・工学）、ミケランジェロ（彫刻・絵画）、コペルニクス（地動説）。ペストによる社会変動と、コンスタンティノープル陥落（1453）でギリシャ知識人がイタリアに逃れてきたことが引き金。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">⛵</div>
+      <div>
+        <div class="ls-title">大航海時代（15〜17世紀）— 世界が「つながった」</div>
+        <div class="ls-body">羅針盤・三角帆・天文航法によりポルトガル・スペインが大西洋・インド洋に進出。コロンブスの「アメリカ」到達（1492）・ヴァスコ・ダ・ガマのインド航路開拓（1498）・マゼランの世界周航（1519〜1522）。先住民の大量死（天然痘）・銀の大量流入によるヨーロッパのインフレ・奴隷貿易の開始——「栄光と悲惨」が一体になった時代。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">📌</div>
+      <div>
+        <div class="ls-title">宗教改革（1517年〜）— キリスト教世界の分裂</div>
+        <div class="ls-body">ルターの「95か条の論題」がカトリック教会の腐敗を批判。グーテンベルクの活版印刷（1450年代発明）が改革思想を急速に拡散——「最初のメディア革命」。プロテスタント諸派が生まれ、30年戦争（1618〜1648）でヨーロッパ人口の約3分の1が死亡。ウェストファリア条約（1648）で「国家主権」の概念が確立——近代国際秩序の出発点。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🔭</div>
+      <div>
+        <div class="ls-title">科学革命（17世紀）— 世界観の根本的転換</div>
+        <div class="ls-body">コペルニクス→ガリレオ→ケプラー→ニュートンという「科学革命の連鎖」。1687年ニュートン「プリンキピア」で万有引力・運動法則を体系化。「宇宙は神の意志でなく数学的法則で動く」という世界観が確立し、啓蒙思想・産業革命・社会契約論への橋渡しとなった。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 大タイムライン ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">近現代世界史タイムライン</h2>
+    <p class="section-desc">18〜20世紀——革命・帝国主義・二つの大戦・冷戦・グローバル化</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1688〜1789年</div>
+        <div class="tl-event">啓蒙の時代と二つの革命</div>
+        <div class="tl-desc">英国名誉革命（1688）→ロック・モンテスキュー・ルソーの啓蒙思想→アメリカ独立（1776）→フランス革命（1789）。「王権神授説」の終わりと「人民主権」の始まり。「自由・平等・博愛」が世界に伝播。</div>
+      </div>
+      <div class="tl-dot jade"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🗽</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1760〜1840年</div>
+        <div class="tl-event">産業革命 — 人類史上最大の生活変革</div>
+        <div class="tl-desc">イギリスで蒸気機関→紡績機械→鉄道が連鎖的に発展。農業社会から工業社会へ。都市化・労働問題・環境汚染・階級社会が生まれた。GDP成長が初めて「爆発的」になった歴史上の転換点。マルクスはこの時代のロンドンで資本論を書いた。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🏭</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">19世紀</div>
+        <div class="tl-event">帝国主義とアジア・アフリカの植民地化</div>
+        <div class="tl-desc">工業力を背景に欧米列強がアジア・アフリカを植民地化。1884〜85年ベルリン会議でアフリカをヨーロッパが勝手に分割。日本は明治維新（1868）で近代化し列強入りを目指した。清は日清・日露・アヘン戦争で屈辱を受けた。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1914〜1918年</div>
+        <div class="tl-event">第一次世界大戦 — 「帝国主義の最終決算」</div>
+        <div class="tl-desc">サラエボ事件（フランツ・フェルディナント暗殺）が引き金だが、根因は帝国主義・民族主義・同盟網の複雑な連鎖。塹壕戦・毒ガス・戦車が初登場。死者1700万人。ロマノフ・ハプスブルク・オスマン・ホーエンツォレルン4帝国が崩壊。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚔️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1917年</div>
+        <div class="tl-event">ロシア革命 — 世界が「二つ」に割れた</div>
+        <div class="tl-desc">レーニン率いるボルシェビキがロマノフ朝を打倒。世界初の社会主義国家ソ連が誕生。「プロレタリア国際主義」対「自由民主主義」という20世紀の基本対立軸がここで確定。スターリンの独裁・粛清・強制収容所が続く。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⭐</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1939〜1945年</div>
+        <div class="tl-event">第二次世界大戦 — 人類史上最大の破壊</div>
+        <div class="tl-desc">死者約7000万人（うち民間人4000万人）。ホロコースト（ユダヤ人600万人虐殺）・原爆投下・南京事件・シベリア抑留。戦後の国連・IMF・世界銀行・NATO・冷戦体制のすべてがこの戦争への反省として設計された。日本の「戦後」はここから始まる。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💣</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1947〜1991年</div>
+        <div class="tl-event">冷戦 — イデオロギーで二分された世界</div>
+        <div class="tl-desc">米ソが直接戦わず代理戦争・宇宙開発・核軍拡競争で対立。朝鮮戦争・ベトナム戦争・キューバ危機（核戦争に最も近づいた1962年）。1989年ベルリンの壁崩壊→1991年ソ連崩壊で冷戦終結。「歴史の終わり」をフクヤマが宣言。</div>
+      </div>
+      <div class="tl-dot sky"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">☢️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1945〜1990年代</div>
+        <div class="tl-event">脱植民地化とアジア・アフリカの独立</div>
+        <div class="tl-desc">インド独立（1947）・中華人民共和国成立（1949）・アフリカの年（1960年に17カ国独立）。「第三世界」が冷戦の戦場に。植民地時代の人為的国境が民族紛争の原因となり今も続く。ガンジーの非暴力抵抗運動は20世紀最大の政治的遺産のひとつ。</div>
+      </div>
+      <div class="tl-dot jade"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌍</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1991年〜現在</div>
+        <div class="tl-event">グローバル化・9.11・新興国の台頭</div>
+        <div class="tl-desc">冷戦後の「一極集中（アメリカの時代）」→9.11（2001）→イラク戦争→中国の急成長→リーマンショック→アラブの春→ポピュリズム→コロナ→ウクライナ戦争。「歴史の終わり」は終わらず、むしろ歴史が加速している。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 10の転換点 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">世界史を変えた10の転換点</h2>
+    <p class="section-desc">「もしこれがなければ今の世界は存在しない」という決定的瞬間</p>
+  </div>
+  <div class="dark-panel">
+    <div class="dp-label">10 TURNING POINTS · 今の世界を作った分岐点</div>
+    <div class="dp-title">歴史に「もしも」はないが、これらの出来事が世界の軌道を変えた</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem; margin-top:1rem;">
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">01 · BC 3500年頃</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">文字の発明</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">文字なしに複雑な社会・法律・歴史の蓄積は不可能。農業→余剰→記録の必要→文字という連鎖。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">02 · BC 221年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">中国統一（秦）</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">「中国は分裂後に統一を目指す」という政治文化がここから始まる。統一中国という概念が2000年以上の歴史を通じて維持された。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">03 · 476年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">西ローマ帝国滅亡</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">古代の終わりと中世の始まり。ゲルマン諸族が西欧に国家を作り、それが現代のフランス・ドイツ・イタリアの源泉に。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">04 · 622年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">ヒジュラ（イスラム誕生）</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">イスラム暦元年。100年以内に中東・北アフリカ・中央アジアを席巻。現在19億人の信者——その急拡大は歴史上類例がない。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">05 · 1206年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">チンギス・ハーン即位</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">ユーラシアを統合しペストを世界に広め、東西の文化交流を促進。バグダードの知の蓄積を破壊した側でもあった。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">06 · 1492年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">コロンブスの「新世界」</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">世界が「ひとつ」になった。先住民の壊滅・奴隷貿易・銀の流入・食材の交換（トマト・じゃがいも・トウモロコシが欧州へ）。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">07 · 1648年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">ウェストファリア条約</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">「主権国家」システムの始まり。国境の尊重・内政不干渉・国家平等という近代国際秩序の原則がここで確立。今もこの枠組みが基本。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">08 · 1760s</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">産業革命</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">人類の経済成長が「離陸」した瞬間。それ以前の1000年はほぼゼロ成長。工業化→帝国主義→現代の格差構造が始まった。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">09 · 1945年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">原爆投下・国連設立</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">核兵器の登場が「大国間戦争のコスト」を天文学的に上げた。以来、核保有国同士は直接戦争していない（核抑止）。国連は不完全だが「多国間協議の場」として機能。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; color:var(--terra-glow); margin-bottom:0.3rem;">10 · 1989〜1991年</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.9rem; color:#fff; font-weight:700; margin-bottom:0.3rem;">冷戦終結・ソ連崩壊</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.62); line-height:1.5;">50年の東西対立が消滅。「これで平和になる」という楽観は9.11・中国台頭・ロシアの復活で崩れた。現在の「新冷戦」の直接の背景。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 8</span>
+    <h2 class="section-title">世界史を読む10の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——歴史を分析する道具箱</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">帝国主義 <span class="concept-en">Imperialism</span></div>
+      <div class="concept-body">強国が政治・経済・軍事力で他地域を支配・収奪する行為。19世紀の欧米列強によるアジア・アフリカ植民地化が典型。「文明化の使命」という建前と資源・市場獲得という本音。現在の南北格差・紛争の多くはここに根がある。</div>
+      <div class="concept-izakaya">「今の発展途上国の貧困問題って、自業自得じゃなくて大半が植民地時代の遺産なんよ。アフリカの国境線は民族を無視してヨーロッパが引いたもの。そこから生まれた紛争を"未開"のせいにするのは歴史的には大きな間違い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">国民国家 <span class="concept-en">Nation-State</span></div>
+      <div class="concept-body">同一の「国民（ネーション）」意識を持つ人々が作る主権国家。フランス革命後に西欧で形成・拡大。「日本人」「フランス人」という国民意識は自然なものではなく歴史的に作られた。「想像の共同体（ベネディクト・アンダーソン）」。</div>
+      <div class="concept-izakaya">「国民国家って200年くらいの発明なんよ。江戸時代の農民は"日本人"より"この藩の人間"って意識だった。新聞・学校・鉄道が"日本人"という共同体意識を作った。ナショナリズムも人工的に作られる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">覇権（ヘゲモニー） <span class="concept-en">Hegemony</span></div>
+      <div class="concept-body">特定の国家が国際秩序を主導・維持する状態。ポルトガル→スペイン→オランダ→イギリス→アメリカと「覇権国家」の交代が繰り返された（世界システム論）。中国の台頭は次の覇権交代かどうかが現代最大の地政学的問い。</div>
+      <div class="concept-izakaya">「アメリカが覇権国家って言うとき、軍事力だけじゃなくドル・英語・ハリウッドという"ソフトパワー"も含めた話。過去500年は覇権国が交代してきた歴史で、今まさに中米の覇権争いが起きてるとも見える」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">冷戦 <span class="concept-en">Cold War</span></div>
+      <div class="concept-body">米ソが直接戦わず、核抑止・代理戦争・情報戦・宇宙開発競争で対立した1947〜1991年の国際構造。「熱い戦争」でないから「冷戦」。この構造が朝鮮半島分断・ベトナム戦争・中東紛争など今の問題の多くの直接原因。</div>
+      <div class="concept-izakaya">「北朝鮮問題って冷戦の生き残りなんよ。1950年の朝鮮戦争が停戦（終戦じゃない）したまま70年が経った。南北分断は米ソが38度線で便宜上分けた結果。"なぜ北朝鮮だけ変な国なのか"は冷戦構造なしに説明できない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">グローバル化 <span class="concept-en">Globalization</span></div>
+      <div class="concept-body">ヒト・モノ・カネ・情報が国境を越えて移動する度合いが増す過程。大航海時代が第1波・産業革命・帝国主義が第2波・冷戦後のインターネット・WTOが第3波。恩恵（経済成長・情報共有）と弊害（格差・感染症拡大・文化均質化）が表裏一体。</div>
+      <div class="concept-izakaya">「グローバル化って昨日今日始まったわけじゃなく、コロンブスの大航海時代から500年かけてここまで来た。コロナは"完全につながった世界"の脆弱性を露わにした。チンギス・ハーンもペストをグローバル化した意味では最初のグローバリストかも」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">パックス（平和） <span class="concept-en">Pax ___</span></div>
+      <div class="concept-body">「パックス・ロマーナ（ローマの平和）」「パックス・モンゴリカ」「パックス・ブリタニカ」「パックス・アメリカーナ」——覇権国家の圧倒的力が一定の秩序と平和をもたらす状態。覇権が揺らぐと「秩序の真空」が生じ、混乱が起きやすい。</div>
+      <div class="concept-izakaya">「パックス・アメリカーナって冷戦後のアメリカによる世界秩序のこと。完璧じゃないけど、大国間の直接戦争を防いできた面もある。今アメリカが"世界の警察やめる"と言い始めたとき何が起きるか、ウクライナはその先行事例かもしれない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">文明の衝突 vs 歴史の終わり <span class="concept-en">Clash vs End</span></div>
+      <div class="concept-body">冷戦後の世界秩序を巡る二大論争。フクヤマ「自由民主主義が最終勝利——歴史の終わり」vs ハンティントン「次は文明間の衝突が始まる」。9.11・中国台頭・ロシア復活を見るとハンティントン優勢だが、自由主義への支持も根強い。</div>
+      <div class="concept-izakaya">「フクヤマの"歴史の終わり"とハンティントンの"文明の衝突"は冷戦後の二大予測で、今でも議論されてる。ウクライナ戦争・中台問題は文明の衝突より地政学的権力争いに近いが、イスラム原理主義は文明論的側面が強い。どちらが正しいか、まだ答えは出ていない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ホロコーストと「二度と繰り返さない」 <span class="concept-en">Never Again</span></div>
+      <div class="concept-body">ナチスによるユダヤ人600万人虐殺。「ホロコースト（全焼）」という言葉は人類の道徳的低点を示す。国連の人権宣言（1948）・ジェノサイド条約・ICC（国際刑事裁判所）はすべてこの反省から生まれた。「二度と繰り返さない」は今も試練の中にある。</div>
+      <div class="concept-izakaya">「国連・人権宣言・ジェノサイド条約って全部ホロコーストの反省から生まれた制度なんよ。普遍的人権という概念も戦後に確立した比較的新しい発明。それが今もロヒンギャ・ウイグル問題で試されてる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">コロンブス交換 <span class="concept-en">Columbian Exchange</span></div>
+      <div class="concept-body">1492年以降、新旧世界間で起きた動植物・疾病・文化の大規模交換。ヨーロッパへ：トマト・じゃがいも・トウモロコシ・タバコ・梅毒。アメリカへ：天然痘・麻疹・馬・牛。先住民人口は100年で90%以上減少。現在の食文化の多くがここに由来。</div>
+      <div class="concept-izakaya">「イタリア料理にトマトが使われるようになったのは17世紀以降。それ以前のイタリアにトマトはない。じゃがいもがなければアイルランドの大飢饉もなく、アメリカへのアイルランド移民もいなかった。コロンブス交換は現代の食と人口地図を作った」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">歴史の「加速」 <span class="concept-en">Acceleration of History</span></div>
+      <div class="concept-body">農業革命まで数百万年、文明まで数万年、近代まで数千年、産業革命から100年、IT革命から30年、AI革命は数年——変化のスピードが加速している。「人類の99%の出来事は最近1万年に起きた。そしてその99%は最近200年に起きた」。</div>
+      <div class="concept-izakaya">「歴史って線形に流れてるんじゃなくて、変化のスピード自体が加速してる。祖父母の世代から今の若者まで、生きてる間に受けた変化量が全然違う。AIの登場で人類は今また"加速の閾値"を越えようとしてるのかもしれない」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ COMPARE TABLE ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">主要帝国・文明 興亡比較表</h2>
+    <p class="section-desc">「なぜ帝国は滅びるのか」——パターンを読む</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>帝国・文明</th>
+          <th>最盛期の範囲</th>
+          <th>最大の遺産</th>
+          <th>滅亡の主因</th>
+          <th>現代への影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ローマ帝国</td>
+          <td>地中海全域・西欧・中東</td>
+          <td>ローマ法・ラテン語・道路・キリスト教国教化</td>
+          <td>ゲルマン民族の侵入＋内部腐敗・経済衰退</td>
+          <td>欧州法制度・ロマンス語・カトリックの原型</td>
+        </tr>
+        <tr>
+          <td>イスラム帝国（アッバース朝）</td>
+          <td>中東・北アフリカ・中央アジア</td>
+          <td>数学・医学・哲学の保存と発展</td>
+          <td>モンゴルによるバグダード破壊（1258）</td>
+          <td>代数学・アルゴリズム・天文学・病院制度</td>
+        </tr>
+        <tr>
+          <td>モンゴル帝国</td>
+          <td>ユーラシア大陸の大半</td>
+          <td>東西交流の促進・パックス・モンゴリカ</td>
+          <td>広大すぎて分裂・ペスト・後継者争い</td>
+          <td>ペストの拡散→ルネサンス遠因・ロシア・中国</td>
+        </tr>
+        <tr>
+          <td>大英帝国</td>
+          <td>地球の陸地の25%（最盛期）</td>
+          <td>英語・議会制民主主義・工業化・資本主義</td>
+          <td>二つの大戦での疲弊・民族自決運動</td>
+          <td>英語の国際語化・コモンウェルス・国際法</td>
+        </tr>
+        <tr>
+          <td>アメリカ（覇権国）</td>
+          <td>経済・軍事・文化の全球支配</td>
+          <td>民主主義の普及・ドル体制・インターネット</td>
+          <td>（覇権の相対的衰退が進行中）</td>
+          <td>国連・IMF・NATO・シリコンバレー</td>
+        </tr>
+        <tr>
+          <td>中国文明（連続性）</td>
+          <td>東アジア全域への影響圏</td>
+          <td>漢字・儒教・科挙・四大発明</td>
+          <td>繰り返す統一と分裂のサイクル</td>
+          <td>漢字文化圏・日本文化の母体・今の中国崛起</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--terra-glow);">帝国崩壊のパターン：</strong>①過度な膨張でコスト増大、②多様な民族・宗教の統合に失敗、③経済的搾取への反発、④外敵の侵入に対する軍事的疲弊、⑤指導層の腐敗・後継者問題——この5つがほぼ全ての帝国崩壊に共通する。「現代のアメリカは①と③を抱えている」と見る歴史家も多い。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">世界史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「なんで中東はずっと不安定なの？」</div>
+      <div class="test-q-text">ニュースで中東紛争が流れるたびに出る定番の疑問</div>
+      <div class="test-a">「第一次大戦後にイギリスとフランスが民族・宗教・歴史を無視して国境線を引いた（サイクス・ピコ協定、1916年）のが根本原因。クルド人は国を持てず、シーアとスンニが同じ国に押し込められた。そこに石油利権と冷戦の代理戦争が重なった。100年前のヨーロッパの身勝手な設計図が今も紛争を生んでいる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「なんで中国はあんなに強気なの？」</div>
+      <div class="test-q-text">台湾問題や中国の覇権の話になったとき</div>
+      <div class="test-a">「中国の自己認識を理解する鍵は"百年の屈辱"（1839〜1949）。アヘン戦争で香港を奪われ、日清戦争で台湾を奪われ、日本に侵略された。5000年の文明大国が100年間ズタズタにされた体験がある。"それを取り戻す"という国民感情が習近平の強硬姿勢を国内的に支えている。歴史的自負と歴史的屈辱が同居している。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「民主主義って歴史的に見て本当に広まってるの？」</div>
+      <div class="test-q-text">政治体制・自由の後退の話になったとき</div>
+      <div class="test-a">「第三の波（サミュエル・ハンティントン）という概念がある。民主化は1974年以降の"第三の波"で世界に広がり、冷戦後の1990年代が最多。でも2005年頃から"民主主義の後退"が始まり、ハンガリー・トルコ・ロシア・インドでさえ権威主義化が進んでいる。民主主義は"一度達成したら永続する"ものではなく、常に維持に努力が必要なシステム。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「ヨーロッパって歴史的にそんなに優れてたの？」</div>
+      <div class="test-q-text">西洋中心史観を問い直す話になったとき</div>
+      <div class="test-a">「1500年まで世界で最も豊かな地域はイスラム世界と中国だった。ヨーロッパはむしろ後進地域。大航海時代の"発見"は大量虐殺と略奪の側面が大きく、その富が産業革命を支えた。"西洋の優位"は500年程度の話で、5000年の歴史では例外かもしれない。中国の台頭を"異常"と見るか"正常化"と見るかで見方が変わる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「なんでロシアはウクライナに侵攻したの？」</div>
+      <div class="test-q-text">ウクライナ戦争の話になったとき</div>
+      <div class="test-a">「歴史的には三つの層がある。①帝政ロシア以来の"スラブ民族の一体性"という歴史認識でプーチンはウクライナを別国とみなしていない、②冷戦後のNATO東方拡大をロシアへの脅威とみなした安全保障計算、③国内向けのナショナリズム動員。"歴史"の解釈が戦争の直接原因になりうる典型例。どの解釈が正しいかより"プーチンはどう解釈しているか"を理解することが重要。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「モンゴル帝国ってどれくらい凄かったの？」</div>
+      <div class="test-q-text">歴史の話の中で雑学ネタとして</div>
+      <div class="test-a">「最盛期の領土は約3300万平方キロで、ソ連の1.5倍・中国の3.4倍・アメリカの3.4倍。遊牧民の軍団が中国・イスラム・ロシア・東欧を一世代で征服した。ただし破壊面も凄まじく、バグダードを滅ぼしたとき学者たちの血でチグリス川が黒く染まったという伝説がある。現在の世界人口の約0.5%がチンギス・ハーンの直系子孫という遺伝子研究も。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">🌍</span>
+  <p>宗教・哲学・政治・経済・世界史。知の五角形が完成した。次は日本史か、美術史か。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「歴史を学ぶのは、過去を暗記するためでなく、現在を理解するためである。— E.H.カー」</p>
+</div>
+
+</body>
+</html>

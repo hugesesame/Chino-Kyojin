@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音楽史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vinyl-black:  #080608;
+    --vinyl-mid:    #141018;
+    --vinyl-rich:   #201828;
+    --jazz-crimson: #801830;
+    --jazz-red:     #B02840;
+    --jazz-pale:    #F5D8DC;
+    --amber:        #C07820;
+    --amber-light:  #E0A030;
+    --amber-glow:   #F8C050;
+    --amber-pale:   #FBF3DC;
+    --ivory:        #FAF8F4;
+    --ivory-dark:   #EDE8D8;
+    --slate:        #283048;
+    --slate-light:  #485878;
+    --teal:         #0C5048;
+    --teal-light:   #189880;
+    --ink:          #100C08;
+    --ink-mid:      #2A2018;
+    --ink-light:    #685848;
+    --gray:         #9A9088;
+    --silver:       #C0B8A8;
+    --shadow:       rgba(8,6,8,0.2);
+    --staff-line:   rgba(255,255,255,0.07);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Sans JP', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--vinyl-black);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  /* staff lines overlay */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 28px,
+        var(--staff-line) 28px,
+        var(--staff-line) 29px
+      ),
+      radial-gradient(ellipse at 25% 60%, rgba(128,24,48,0.3) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 30%, rgba(192,120,32,0.2) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--amber-glow);
+    border: 1px solid rgba(248,192,80,0.38);
+    padding: 4px 16px; border-radius: 2px; margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem,7vw,5rem);
+    font-weight: 400; line-height: 1.1; margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 20%, var(--amber-glow) 65%, var(--jazz-red) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    position: relative; z-index: 1;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(255,255,255,0.45);
+    max-width: 560px; margin: 0 auto 3rem;
+    font-weight: 300; font-style: italic;
+    position: relative; z-index: 1;
+  }
+  .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero-stat-num { font-family:'DM Serif Display',serif; font-size:2.2rem; color:var(--amber-glow); display:block; }
+  .hero-stat-lbl { font-size:0.7rem; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4.5rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block;
+    font-family:'Cinzel',serif;
+    background:var(--vinyl-mid); color:var(--amber-glow);
+    font-size:0.62rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
+    border:1px solid rgba(248,192,80,0.18);
+  }
+  .section-title {
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(1.7rem,3.5vw,2.4rem); color:var(--ink); font-weight:400;
+  }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; font-style:italic; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+
+  .tip-bar {
+    background:#fff; border-radius:3px;
+    border:1px solid rgba(8,6,8,0.1);
+    border-left:4px solid var(--jazz-red);
+    padding:0.85rem 1.25rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel {
+    background:var(--vinyl-black);
+    border-radius:4px; padding:2.5rem; color:#fff;
+    border:1px solid rgba(248,192,80,0.1);
+    position:relative; overflow:hidden;
+  }
+  .dark-panel::before {
+    content:'';
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      to bottom, transparent 0px, transparent 22px,
+      var(--staff-line) 22px, var(--staff-line) 23px
+    );
+    pointer-events:none;
+  }
+  .dp-label { font-family:'Cinzel',serif; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.25em; color:var(--silver); margin-bottom:0.4rem; position:relative; z-index:1; }
+  .dp-title { font-family:'DM Serif Display',serif; font-size:1.35rem; color:var(--amber-glow); font-weight:400; margin-bottom:1.25rem; position:relative; z-index:1; }
+
+  /* ─── COMPOSER CARDS ─── */
+  .composer-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.9rem; position:relative; z-index:1; }
+  .composer-card {
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.1);
+    border-top:3px solid var(--amber-light);
+    border-radius:0 0 4px 4px;
+    padding:1rem 1.1rem;
+  }
+  .cc-name   { font-family:'DM Serif Display',serif; font-size:0.95rem; color:var(--amber-glow); font-weight:400; margin-bottom:0.15rem; }
+  .cc-dates  { font-size:0.6rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.35rem; }
+  .cc-field  { font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal-light); margin-bottom:0.35rem; }
+  .cc-body   { font-size:0.77rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+  .cc-work   { margin-top:0.55rem; font-size:0.72rem; color:rgba(248,192,80,0.6); font-style:italic; }
+
+  /* ─── GENRE CARDS ─── */
+  .genre-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .genre-card {
+    border-radius:4px; padding:1.5rem;
+    position:relative; overflow:hidden;
+    color:#fff;
+  }
+  .genre-card::after {
+    content:attr(data-note);
+    position:absolute; bottom:-0.5rem; right:0.5rem;
+    font-size:4rem; opacity:0.07; line-height:1;
+    color:var(--amber-glow);
+  }
+  .gc-black  { background:linear-gradient(135deg,#0A0608,#1A1020); border:1px solid rgba(248,192,80,0.12); }
+  .gc-jazz   { background:linear-gradient(135deg,#1A0408,#400818); }
+  .gc-blues  { background:linear-gradient(135deg,#040818,#081840); }
+  .gc-rock   { background:linear-gradient(135deg,#180408,#380808); }
+  .gc-pop    { background:linear-gradient(135deg,#0A0818,#201028); }
+  .gc-world  { background:linear-gradient(135deg,#041010,#0A2820); }
+  .gc-era    { font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--amber-glow); display:block; margin-bottom:0.4rem; }
+  .gc-name   { font-family:'DM Serif Display',serif; font-size:1.05rem; color:var(--amber-glow); display:block; margin-bottom:0.4rem; }
+  .gc-body   { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+  .gc-key    { margin-top:0.6rem; font-size:0.72rem; color:rgba(248,192,80,0.62); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--amber-light),var(--amber-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--amber-light);
+    border:3px solid var(--ivory); border-radius:50%;
+    box-shadow:0 0 0 2px var(--amber-light); z-index:2;
+  }
+  .tl-dot.red   { background:var(--jazz-red);   box-shadow:0 0 0 2px var(--jazz-red); }
+  .tl-dot.teal  { background:var(--teal-light);  box-shadow:0 0 0 2px var(--teal-light); }
+  .tl-dot.slate { background:var(--slate-light); box-shadow:0 0 0 2px var(--slate-light); }
+  .tl-dot.glow  { background:var(--amber-glow);  box-shadow:0 0 0 2px var(--amber-glow); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(8,6,8,0.12); border-radius:3px;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--amber); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'DM Serif Display',serif; font-size:1rem; font-weight:400; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.4rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(8,6,8,0.12);
+    border-left:4px solid var(--jazz-crimson);
+    border-radius:0 4px 4px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'DM Serif Display',serif; font-size:1.1rem; font-weight:400; color:var(--ink); display:flex; align-items:baseline; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-family:'Cinzel',serif; font-size:0.6rem; color:var(--gray); font-weight:400; letter-spacing:0.06em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--jazz-crimson); background:rgba(128,24,48,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--jazz-red); }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:4px; padding:1rem; margin-bottom:0.75rem; border-left:3px solid var(--amber); }
+  .ls-icon  { font-size:1.8rem; flex-shrink:0; }
+  .ls-title { font-family:'DM Serif Display',serif; font-weight:400; font-size:1rem; color:var(--ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background:var(--vinyl-black); border-radius:4px; padding:2.5rem; color:#fff; overflow-x:auto; border:1px solid rgba(248,192,80,0.1); }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:520px; }
+  .cmp-table th { padding:0.7rem 0.9rem; text-align:left; font-family:'Cinzel',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--amber-glow); border-bottom:1px solid rgba(248,192,80,0.18); white-space:nowrap; }
+  .cmp-table td { padding:0.7rem 0.9rem; border-bottom:1px solid rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--amber-glow); font-family:'DM Serif Display',serif; font-size:0.92rem; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--vinyl-black); border-radius:4px; padding:2.5rem; color:#fff; border:1px solid rgba(248,192,80,0.1); position:relative; overflow:hidden; }
+  .test-bg::before {
+    content:'';
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(to bottom,transparent 0px,transparent 22px,var(--staff-line) 22px,var(--staff-line) 23px);
+    pointer-events:none;
+  }
+  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--amber-light); padding:1rem 1.25rem; border-radius:0 4px 4px 0; margin-bottom:1rem; position:relative; z-index:1; }
+  .test-q-label { font-family:'Cinzel',serif; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--amber-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--vinyl-black); color:var(--silver); text-align:center; padding:2.5rem; font-size:0.77rem; border-top:1px solid rgba(248,192,80,0.12); }
+  .footer-icon { font-size:2rem; display:block; margin-bottom:0.5rem; color:var(--amber-glow); }
+
+  /* ─── ERA SUMMARY ROW ─── */
+  .era-flow { display:flex; overflow-x:auto; gap:0; padding-bottom:0.5rem; margin-bottom:1.5rem; }
+  .era-node {
+    flex:0 0 auto;
+    text-align:center; padding:0.75rem 1rem;
+    border-right:1px solid rgba(248,192,80,0.15);
+  }
+  .era-node:last-child { border-right:none; }
+  .en-period { font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber-glow); display:block; margin-bottom:0.25rem; }
+  .en-name   { font-family:'DM Serif Display',serif; font-size:0.9rem; color:#fff; display:block; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.11</div>
+  <h1>音楽史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">バッハからビートルズ、ジャズからヒップホップまで——人類が「音」に込めてきた2500年の感情と革命を一夜で制覇する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 6世紀</span><span class="hero-stat-lbl">音楽理論の誕生</span></div>
+    <div><span class="hero-stat-num">10の時代様式</span><span class="hero-stat-lbl">クラシックの流れ</span></div>
+    <div><span class="hero-stat-num">1877年</span><span class="hero-stat-lbl">録音の発明・音楽が"商品"に</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">今も生まれ続けるジャンル</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 音楽とは ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter I</span>
+    <h2 class="section-title">音楽史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「好き・嫌い」の先へ——時代の感情と権力を「聴く」ための技術</p>
+  </div>
+  <div class="genre-grid">
+    <div class="genre-card gc-black" data-note="♩">
+      <span class="gc-era">Power</span>
+      <span class="gc-name">権力と音楽</span>
+      <p class="gc-body">バッハは教会に雇われ、モーツァルトは貴族に仕え、ベートーヴェンは独立した。録音の発明で音楽は"商品"になり、ストリーミングで"データ"になった。誰が音楽を支配したかは、誰が時代を支配したかと重なる。</p>
+    </div>
+    <div class="genre-card gc-jazz" data-note="♪">
+      <span class="gc-era">Rebellion</span>
+      <span class="gc-name">反抗の連鎖</span>
+      <p class="gc-body">バロック→古典派→ロマン派→印象派→ジャズ→ロック→パンク→ヒップホップ——音楽史は「前の世代への反抗」の連鎖。「親の聴く音楽は古い」という感覚は人類普遍の構造だった。</p>
+    </div>
+    <div class="genre-card gc-blues" data-note="♫">
+      <span class="gc-era">Technology</span>
+      <span class="gc-name">技術が音楽を変えた</span>
+      <p class="gc-body">ピアノの発明→録音の発明→ラジオ→電気ギター→シンセサイザー→デジタル→ストリーミング——楽器や記録・流通技術の革新が毎回、音楽そのものを根底から変えた。次の変革はAIか。</p>
+    </div>
+    <div class="genre-card gc-pop" data-note="🎵">
+      <span class="gc-era">Emotion</span>
+      <span class="gc-name">言語を超える感情</span>
+      <p class="gc-body">音楽だけが「言葉なしに感情を伝える」。バッハの対位法・ブルースの12小節・ビートルズのコード——感情の設計図を理解すると、なぜその曲が感動させるのかがわかる。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「音楽史って突き詰めると"反抗の歴史"なんよ。クラシックが偉そうにしてたらジャズが生まれ、ジャズが偉そうにしたらロックが来て、ロックが古くなったらパンク。"今の若者の音楽はうるさい"って2500年前から言われてる」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代〜バロック ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter II</span>
+    <h2 class="section-title">古代〜バロック — 音楽理論の誕生</h2>
+    <p class="section-desc">BC 6世紀〜1750年。ピタゴラスの音律からバッハの完成まで</p>
+  </div>
+  <div class="dark-panel" style="margin-bottom:1.5rem;">
+    <div class="dp-label">Ancient → Renaissance · BC 6c 〜 AD 1600</div>
+    <div class="dp-title">音楽が「神への奉仕」だった時代</div>
+    <div class="composer-row">
+      <div class="composer-card">
+        <div class="cc-name">ピタゴラスの音律</div>
+        <div class="cc-dates">BC 6世紀 · ギリシャ</div>
+        <div class="cc-field">音楽理論の起源</div>
+        <div class="cc-body">「宇宙は数学的調和で動いている——音楽もその反映」。弦の長さの比（2:1=オクターブ、3:2=完全5度）を発見。音楽は数学であるという西洋音楽理論の根本的前提を確立した。</div>
+        <div class="cc-work">→ 今の音階・和声論の原点</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">グレゴリオ聖歌</div>
+        <div class="cc-dates">6〜9世紀 · カトリック教会</div>
+        <div class="cc-field">単声・無伴奏・神への奉仕</div>
+        <div class="cc-body">教皇グレゴリウス1世が整備した単旋律の聖歌。記譜法（音符を書く技術）の発展の原動力。「音楽は神に捧げるもの」という中世の基本観。教会が西洋音楽の最初の「メセナ（後援者）」。</div>
+        <div class="cc-work">→ 西洋音楽の楽譜・音階の土台</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">ルネサンス声楽</div>
+        <div class="cc-dates">14〜17世紀</div>
+        <div class="cc-field">ポリフォニー・マドリガル</div>
+        <div class="cc-body">複数の声部が独立して絡み合う「ポリフォニー（多声音楽）」が発達。パレストリーナが教会音楽を完成させ、マドリガル（世俗合唱）がイタリアで流行。「音楽の印刷（楽譜の出版）」が普及し音楽が広まり始めた。</div>
+        <div class="cc-work">→ バッハの対位法への橋渡し</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">オペラの誕生</div>
+        <div class="cc-dates">1597年頃 · フィレンツェ</div>
+        <div class="cc-field">音楽と劇の総合芸術</div>
+        <div class="cc-body">フィレンツェのカメラータが古代ギリシャ劇の復元を目指してオペラを発明。モンテヴェルディ「オルフェオ（1607）」が最初の傑作オペラ。「歌う演劇」という新ジャンルが誕生し、後のモーツァルト・ヴェルディ・プッチーニへ。</div>
+        <div class="cc-work">→「音楽と物語」の結合が始まる</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">Baroque · 1600〜1750</div>
+    <div class="dp-title">バロック音楽——「音の建築家」たちの時代</div>
+    <div class="composer-row">
+      <div class="composer-card">
+        <div class="cc-name">ヨハン・ゼバスティアン・バッハ</div>
+        <div class="cc-dates">1685〜1750 · ドイツ</div>
+        <div class="cc-field">対位法の完成者・音楽の父</div>
+        <div class="cc-body">鍵盤楽曲・室内楽・宗教曲・管弦楽曲——全てのジャンルで頂点に達した。「平均律クラヴィーア曲集」で12の長短調全てを使いこなす現代音楽理論の基礎を確立。生涯カンタータ（教会音楽）200曲超を書いた一方、20人の子をなす。存命中は「古い様式」と軽視されたが、メンデルスゾーンによって100年後に再発見された。</div>
+        <div class="cc-work">代表：「マタイ受難曲」「平均律クラヴィーア曲集」「フーガの技法」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">ゲオルク・フリードリヒ・ヘンデル</div>
+        <div class="cc-dates">1685〜1759 · ドイツ→イングランド</div>
+        <div class="cc-field">オペラ・オラトリオ・興行師</div>
+        <div class="cc-body">バッハと同年生まれのバロック双璧。ロンドンに渡り「音楽興行師」として自らオペラ・オラトリオを作曲・上演。「メサイア」の「ハレルヤ」は英国王が立ち上がって聴いたという伝説から今も起立して聴く習慣が。</div>
+        <div class="cc-work">代表：「メサイア」「水上の音楽」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">アントニオ・ヴィヴァルディ</div>
+        <div class="cc-dates">1678〜1741 · ヴェネツィア</div>
+        <div class="cc-field">協奏曲の革新者・赤毛の司祭</div>
+        <div class="cc-body">「四季」——春夏秋冬を音で描く標題音楽の傑作。協奏曲（ソロ楽器vs管弦楽）の形式を完成させ500曲以上作曲。バッハが尊敬して多くを編曲研究した。ヴェネツィアの孤児院の院長として女子生徒に音楽を教えていた。</div>
+        <div class="cc-work">代表：ヴァイオリン協奏曲集「四季」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">バロックの特徴まとめ</div>
+        <div class="cc-dates">1600〜1750年</div>
+        <div class="cc-field">様式の核心</div>
+        <div class="cc-body">「装飾的・対位法的・通奏低音」が三本柱。宮廷・教会が最大のパトロン。チェンバロ（ピアノの前身）が中心楽器。対位法——複数のメロディが独立して進行し最終的に調和するという「音の建築」。バッハで完成し古典派への橋渡しに。</div>
+        <div class="cc-work">→ 今のクラシックの「土台」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 古典派〜ロマン派 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter III</span>
+    <h2 class="section-title">古典派〜ロマン派 — 天才の競演と感情の爆発</h2>
+    <p class="section-desc">1750〜1900年。ハイドン・モーツァルト・ベートーヴェンから始まる「感情の時代」</p>
+  </div>
+
+  <div class="dark-panel" style="margin-bottom:1.5rem;">
+    <div class="dp-label">Classical Period · 1750〜1820</div>
+    <div class="dp-title">古典派——「形式の美」とウィーンの黄金時代</div>
+    <div class="composer-row">
+      <div class="composer-card">
+        <div class="cc-name">フランツ・ヨーゼフ・ハイドン</div>
+        <div class="cc-dates">1732〜1809 · オーストリア</div>
+        <div class="cc-field">交響曲の父・弦楽四重奏の父</div>
+        <div class="cc-body">エステルハージ家の宮廷楽長として30年間。交響曲104曲・弦楽四重奏68曲を書き「交響曲」という形式を完成させた。モーツァルトの親友でベートーヴェンの師。「驚愕（第94番）」——眠っている聴衆を起こすために突然大音量を使った冗談シンフォニー。</div>
+        <div class="cc-work">代表：交響曲第94番「驚愕」・弦楽四重奏「皇帝」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">ヴォルフガング・アマデウス・モーツァルト</div>
+        <div class="cc-dates">1756〜1791 · ザルツブルク→ウィーン</div>
+        <div class="cc-field">天才・35年の短すぎた生涯</div>
+        <div class="cc-body">3歳でピアノ・5歳で作曲・6歳でヨーロッパ演奏旅行。35年間で626作品。晩年は貧困・病気の中で「レクイエム」を書きながら死んだ。モーツァルトが特別なのは「完璧な形式の中に深い感情が宿る」点——整然として美しく、しかし悲しい。</div>
+        <div class="cc-work">代表：「フィガロの結婚」「ドン・ジョヴァンニ」「交響曲第40番」「レクイエム」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">ルートヴィヒ・ヴァン・ベートーヴェン</div>
+        <div class="cc-dates">1770〜1827 · ボン→ウィーン</div>
+        <div class="cc-field">古典派の完成・ロマン派の扉</div>
+        <div class="cc-body">30代から始まった難聴——最終的に完全に聴こえなくなりながら最高傑作を書き続けた。「運命」「第九」「月光」「熱情」。後期弦楽四重奏は20世紀まで「理解不能」と言われた。「芸術家は貴族の下僕でない」——最初に宮廷から独立した作曲家。</div>
+        <div class="cc-work">代表：「交響曲第5番（運命）」「第九」「ピアノソナタ月光」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">フランツ・シューベルト</div>
+        <div class="cc-dates">1797〜1828 · ウィーン</div>
+        <div class="cc-field">歌曲の王・31年の生涯</div>
+        <div class="cc-body">31年間で交響曲9曲・ピアノソナタ21曲・弦楽四重奏15曲・歌曲600曲以上を作曲。「魔王」「冬の旅」——ゲーテの詩に曲をつけた「リート（芸術歌曲）」という新ジャンルを確立。生前はほぼ無名、死後に再評価された「不遇の天才」の典型。</div>
+        <div class="cc-work">代表：「魔王」「冬の旅」「未完成交響曲」「ます」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">Romantic Period · 1820〜1900</div>
+    <div class="dp-title">ロマン派——感情・民族・標題音楽の爆発</div>
+    <div class="composer-row">
+      <div class="composer-card">
+        <div class="cc-name">フレデリック・ショパン</div>
+        <div class="cc-dates">1810〜1849 · ポーランド→パリ</div>
+        <div class="cc-field">ピアノの詩人・マズルカ・夜想曲</div>
+        <div class="cc-body">ピアノのほぼ全作品。「夜想曲（ノクターン）」「バラード」「練習曲（エチュード）」——技術訓練と音楽的表現を同時に実現した練習曲という発明。ロシアの占領下にあったポーランドへの望郷の念がマズルカ・ポロネーズに込められた。「ピアノは一人で全てのオーケストラだ」。</div>
+        <div class="cc-work">代表：「夜想曲op.9-2」「別れの曲」「バラード第1番」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">リヒャルト・ワーグナー</div>
+        <div class="cc-dates">1813〜1883 · ライプツィヒ</div>
+        <div class="cc-field">楽劇・総合芸術・毀誉褒貶</div>
+        <div class="cc-body">「楽劇（Musikdrama）」——音楽・詩・演劇・美術を統合した「総合芸術作品（ゲザムトクンストヴェルク）」。バイロイト祝祭劇場を自ら設計し「ニーベルングの指環」（4部作・16時間超）を上演。強烈な反ユダヤ主義と超国家主義思想——ヒトラーに愛用されたという複雑な遺産。</div>
+        <div class="cc-work">代表：「ニーベルングの指環」「トリスタンとイゾルデ」「ワルキューレの騎行」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">ヨハネス・ブラームス</div>
+        <div class="cc-dates">1833〜1897 · ハンブルク→ウィーン</div>
+        <div class="cc-field">新古典主義的ロマン派</div>
+        <div class="cc-body">「ワーグナーの革新か、古典的形式の維持か」——19世紀音楽の最大論争で保守派の旗手。交響曲4曲全てが傑作として今も演奏される。シューマンの妻クラーラへの生涯の愛。「ブラームスの子守唄」は世界で最も歌われた曲のひとつ。</div>
+        <div class="cc-work">代表：「交響曲第1番」「ヴァイオリン協奏曲」「ハンガリー舞曲第5番」</div>
+      </div>
+      <div class="composer-card">
+        <div class="cc-name">チャイコフスキー</div>
+        <div class="cc-dates">1840〜1893 · ロシア</div>
+        <div class="cc-field">バレエ・民族主義・感情の強度</div>
+        <div class="cc-body">「白鳥の湖」「眠れる森の美女」「くるみ割り人形」——3大バレエ音楽。旋律の美しさと感情の直接性がロマン派の極致。ロシア民謡への愛情と西洋音楽の手法の統合。「ピアノ協奏曲第1番」の冒頭は音楽史上最も有名な数秒のひとつ。</div>
+        <div class="cc-work">代表：「白鳥の湖」「交響曲第6番(悲愴)」「1812年序曲」</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 近代〜20世紀クラシック ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter IV</span>
+    <h2 class="section-title">近代〜20世紀クラシック — 調性の解体</h2>
+    <p class="section-desc">1890〜1970年代。「美しいメロディ」という前提が覆された</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🌊</div>
+      <div>
+        <div class="ls-title">印象派音楽 — ドビュッシー（1862〜1918）</div>
+        <div class="ls-body">「クロード・ドビュッシーはフランス印象派の音楽版。"月の光""牧神の午後への前奏曲"——確定した旋律より「雰囲気・色彩・揺らぎ」を追求した。全音音階（半音のない音階）を多用し西洋音楽の調性体系に亀裂を入れた先駆者。「音楽はバッハのような建築でなく、日本版画や印象派絵画のような色彩であるべき」とジャポニスムからも影響。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🔥</div>
+      <div>
+        <div class="ls-title">無調音楽と十二音技法 — シェーンベルク（1874〜1951）</div>
+        <div class="ls-body">「全ての半音が等価——特定の音を中心とする調性そのものを廃棄せよ」という十二音技法（セリエリズム）を開発。初演時に暴動が起きた（1913年「春の祭典」——ストラヴィンスキー）。「美しい音楽」という概念を解体した20世紀最大の音楽革命。今日のクラシックを「難解」と感じさせる根本原因のひとつ。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">⬛</div>
+      <div>
+        <div class="ls-title">ミニマリズム — フィリップ・グラス・スティーヴ・ライヒ（1960s〜）</div>
+        <div class="ls-body">「複雑化した現代音楽への反動」として最小限の素材（短いフレーズの反復）でトランス状態を作る音楽が台頭。グラスの「アインシュタイン・オン・ザ・ビーチ」・ライヒの「Music for 18 Musicians」。映画音楽（「コヤニスカッツィ」）・ポストロック・電子音楽に多大な影響。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: タイムライン（ポピュラー） ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter V</span>
+    <h2 class="section-title">ポピュラー音楽の誕生と革命</h2>
+    <p class="section-desc">1877年（録音の発明）から現代まで——ブルース・ジャズ・ロック・ヒップホップの大系譜</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1877年</div>
+        <div class="tl-event">エジソンの蓄音機 — 音楽が「商品」になった</div>
+        <div class="tl-desc">トーマス・エジソンが錫箔に音を刻む蓄音機を発明。それまで音楽は「ライブで体験するもの」。録音の誕生で「保存・複製・販売」が可能になり、音楽産業が生まれた。1920年代のラジオ普及とともに音楽の民主化が始まった。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📀</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1900〜1920年代</div>
+        <div class="tl-event">ブルースの誕生 — アメリカ音楽の母</div>
+        <div class="tl-desc">アフリカ系アメリカ人の奴隷制・差別の痛みから生まれた12小節ブルース。「コール&レスポンス」「ブルーノート（微妙に低い3度・7度）」「ベンド（チョーキング）」——これらが後のジャズ・ロック・R&Bの全ての根幹。ロバート・ジョンソン「悪魔との契約」伝説。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎸</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1910〜1940年代</div>
+        <div class="tl-event">ジャズの誕生 — ニューオーリンズからハーレムへ</div>
+        <div class="tl-desc">ブルース・ゴスペル・クラシック・アフリカのリズムが融合してニューオーリンズで生まれたジャズ。「即興（インプロヴィゼーション）」が芸術として初めて認められた。1920年代「ジャズ・エイジ」でルイ・アームストロング・デューク・エリントンが台頭。禁酒法時代のスピークイージー（闇クラブ）が最大の舞台。</div>
+      </div>
+      <div class="tl-dot teal"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎷</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1940〜50年代</div>
+        <div class="tl-event">ビバップとモダンジャズ — マイルス・パーカー</div>
+        <div class="tl-desc">チャーリー・パーカー・ディジー・ガレスピーが超高速・複雑なコードのビバップを発明——「ダンス音楽からアート音楽へ」。マイルス・デイヴィスは「クールジャズ」「モード・ジャズ」「フュージョン」と10年ごとに音楽を変え続けた「イノベーター」。「カインド・オブ・ブルー（1959）」は史上最も売れたジャズアルバム。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎺</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1954〜1960年代</div>
+        <div class="tl-event">ロックンロールの誕生 — エルヴィスとビートルズ</div>
+        <div class="tl-desc">ブルースをベースに白人文化と融合したロックンロールがエルヴィス・プレスリーで爆発。1964年ビートルズがアメリカ上陸——「ブリティッシュ・インヴェイジョン」で音楽・ファッション・社会が激変。ビートルズの4年間の進化（1963〜1967）は音楽史上最速の革新。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎸</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1967〜1975年</div>
+        <div class="tl-event">サイケデリック・ロックとプログレッシヴ</div>
+        <div class="tl-desc">ジミ・ヘンドリックス（エレキギターの表現を革命）・ジム・モリソン・ピンク・フロイドが「ロックを芸術に」。ウッドストック（1969年）が世代のシンボルに。ベトナム反戦・公民権運動・ドラッグ文化と音楽が一体化した「対抗文化（カウンターカルチャー）」の頂点。</div>
+      </div>
+      <div class="tl-dot slate"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">☮️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1976〜1980年代</div>
+        <div class="tl-event">パンク・ニューウェイヴ・ヘヴィメタル</div>
+        <div class="tl-desc">「3コードあれば誰でも演奏できる——技術より怒りだ」——セックス・ピストルズのパンク革命。テクノロジーとスタジオ制作の複雑化への反動。80年代はMTV（ミュージックビデオ）でマイケル・ジャクソン・マドンナが音楽と映像の融合を完成。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚡</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1973〜1990年代</div>
+        <div class="tl-event">ヒップホップの誕生 — ブロンクスから世界へ</div>
+        <div class="tl-desc">1973年ブロンクスのパーティでDJクール・ハークがレコードの「ブレイクビーツ」を繰り返す技法を発明——ヒップホップ誕生の瞬間。MCのラップ・DJ・ブレイクダンス・グラフィティの4要素。1990年代ギャングスタ・ラップ（NWA・トゥパック）、2000年代エミネム・ジェイZ、現在は世界で最も聴かれるジャンルに。</div>
+      </div>
+      <div class="tl-dot teal"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🎤</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1980s〜現在</div>
+        <div class="tl-event">電子音楽・ダンスミュージック・ストリーミング革命</div>
+        <div class="tl-desc">シンセサイザー・ドラムマシン（ローランドTR-808）がテクノ・ハウス・EDMを生んだ。1999年ナップスター（P2P音楽共有）→iTunesによる曲単位販売→Spotifyのストリーミングで音楽の「所有」から「アクセス」へ。AIが作曲・マスタリングを行う現在、「作曲家」の定義が変わりつつある。</div>
+      </div>
+      <div class="tl-dot glow"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💻</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 概念カード ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Chapter VI</span>
+    <h2 class="section-title">音楽史の核心概念10選</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——音楽を読む10の道具</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">対位法 <span class="concept-en">Counterpoint</span></div>
+      <div class="concept-body">複数の独立したメロディーが同時進行しながら最終的に調和する作曲技法。バッハが頂点に達した。「フーガ」はその最高形態——1つの主題が様々な声部で追いかけっこをする「音の建築」。現代のポリリズムや多声的なポップスにも受け継がれている。</div>
+      <div class="concept-izakaya">「バッハの曲ってなんであんなに複雑なのかというと、複数のメロディが全部独立して動いてるのに最終的に調和してるから。フーガって"追いかけっこ"の音楽で、1つのメロディが入ってきて、また別のメロディが追いかけてくる構造。まるで数学パズルが音になったみたいな感じ」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ソナタ形式 <span class="concept-en">Sonata Form</span></div>
+      <div class="concept-body">提示部（主題の提示）→発展部（主題の変形・緊張）→再現部（主題の回帰・解決）という3部構造。古典派〜ロマン派の交響曲・ソナタの第1楽章の標準形式。「問いかけ→葛藤→解決」という物語の構造が音楽に持ち込まれた。</div>
+      <div class="concept-izakaya">「交響曲ってなんとなく難しそうだけど、映画の構成と一緒で"提示→葛藤→解決"という3幕構造になってる。ベートーヴェンの「運命」の第1楽章も、あの「ダダダダーン」から始まって最後に解放感で終わる流れがソナタ形式。」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ブルーノート <span class="concept-en">Blue Note</span></div>
+      <div class="concept-body">西洋音楽の7音音階にはない「微妙に低い3度・7度・5度」の音。アフリカ音楽の音程感覚が西洋の音階に侵入した産物。ジャズ・ブルース・ゴスペル・ロック・R&Bの感情的な「刺さる感じ」の根本的な理由。「揺れる音」「泣く音」とも。</div>
+      <div class="concept-izakaya">「ブルーノートって音楽的に"ちょっとずれた音"なんだけど、それが逆に感情を刺さらせる。ジャズのサックスやギターのチョーキング（弦を曲げる奏法）が"うわーくる"って感じるのはブルーノートのせい。西洋音楽の「正しい音」からの意図的な逸脱が美しい」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">即興（インプロヴィゼーション）<span class="concept-en">Improvisation</span></div>
+      <div class="concept-body">楽譜なしにその場で音楽を作り出すこと。ジャズの核心。コード進行という「地図」の上で演奏者が自由に旅をする。バッハの時代も即興は重要な技術だった。クラシックが「作曲家の意図を正確に再現」するなら、ジャズは「作曲家の骨組みで演奏家が踊る」。</div>
+      <div class="concept-izakaya">「ジャズって同じ曲でも演奏するたびに違う。コード進行という"ルール"の中で演奏者がその場で作曲してる——それが即興。"間違い"がないから逆に怖い世界。クラシックが"楽譜通り"なら、ジャズは"今日の俺の感情"を直接音にする表現形式」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">サンプリング <span class="concept-en">Sampling</span></div>
+      <div class="concept-body">既存の録音から一部を切り取り新しい曲に使う技法。ヒップホップの基本技法として1970年代から発展。著作権問題・クリエイティビティの定義・オリジナリティとは何かという問いを音楽から文化全体に投げかけた。「引用」か「盗用」かは今も論争中。</div>
+      <div class="concept-izakaya">「ヒップホップのビートって昔の曲の一部を切り貼りしてることが多い。これがサンプリングで、著作権問題で訴訟だらけになった歴史がある。でもサンプリングで既存曲を"変容させる"ことで全く新しい感情を作れる——コラージュを芸術にした発明」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">調性と無調 <span class="concept-en">Tonality / Atonality</span></div>
+      <div class="concept-body">「ハ長調」のような中心音への重力があるのが調性音楽。20世紀のシェーンベルクはこの「重力」を廃棄した無調音楽を開発。「なぜ現代音楽は難解か」の根本的答え——調性が作る「家に帰る感覚」がない音楽は脳が「安心できない」から疲れる。</div>
+      <div class="concept-izakaya">「なんで現代音楽って難解に聞こえるかというと、調性（「ド」に帰ってくる感覚）がないから。調性ある音楽は「家に向かって歩いてる」感じで、無調音楽は「地図なしで砂漠を歩いてる」感じ。脳が「次の音を予測できない」と不安になる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">グルーヴ <span class="concept-en">Groove</span></div>
+      <div class="concept-body">音符の長さや強弱の「微妙なずれ」が生む体が動く感覚。楽譜通りに正確に演奏するとグルーヴがない（クォンタイズしすぎた打ち込み音楽の問題）。人間の「ゆらぎ」がグルーヴを生む——これが「生演奏とデジタル音源の違い」の正体のひとつ。</div>
+      <div class="concept-izakaya">「グルーヴって「体が動く感じ」のことだけど、実は「微妙なタイミングのずれ」から生まれる。完璧に正確に演奏するとグルーヴが消える。ファンクやジャズが気持ちいいのは演奏者が意図的に"揺れてる"から——人間の不完全さが音楽を面白くする」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">楽器の発明と音楽の変容 <span class="concept-en">Instruments</span></div>
+      <div class="concept-body">ピアノの発明（1700年頃）→ベートーヴェンのピアノソナタ革命。電気ギターの発明（1931年）→ロック革命。シンセサイザー（1960年代）→電子音楽革命。ドラムマシン（1980年代）→ヒップホップ・テクノ革命。楽器の技術革新が毎回、音楽の概念を根底から変えてきた。</div>
+      <div class="concept-izakaya">「エレキギターってただの楽器の発明じゃなくて、ロックという文化丸ごとを発明した。シンセサイザーがなければテクノもヒップホップもない。楽器って"可能性の拡張"で、新しい楽器が生まれると必ず新しい音楽ジャンルが生まれる——次は何かといえばAIかも」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">音楽産業とストリーミング <span class="concept-en">Music Industry</span></div>
+      <div class="concept-body">レコード→カセット→CD→デジタル→ストリーミングと「音楽の運搬方法」が変わるたびに産業が激変。Spotifyでは1再生0.003〜0.005ドル——ビートルズのアルバムが1億回再生されても50万ドル。「1ヒット曲が1万枚売れる」と「1億再生」では収益が全く異なる。アーティストの収益モデルが根本から変わった。</div>
+      <div class="concept-izakaya">「ストリーミングって聴く側は便利だけどアーティスト側は収益が激減した。1億再生で約50万円——メジャーアーティストの夢の数字でも生活できない。だからツアー（ライブ）が唯一の収益源になって、逆説的に"音楽はライブで聴くもの"という原点に戻った」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">日本と西洋音楽 <span class="concept-en">Japan & Western Music</span></div>
+      <div class="concept-body">明治維新で西洋音楽を国家的に導入（学校唱歌）。戦後はジャズ・ロック・クラシックを吸収しシティポップ・J-POPという独自ジャンルを発明。坂本龍一・細野晴臣・山下達郎——「洋楽を日本化」というパターンは音楽でも一貫している。2020年代の「シティポップ世界的ブーム（竹内まりや・山下達郎）」は最新の逆輸出。</div>
+      <div class="concept-izakaya">「日本のシティポップがなぜ今世界でバズってるかというと、80年代の日本が西洋音楽を徹底的に研究して独自アレンジした"超精密コピー"の完成度が高すぎたから。山下達郎や竹内まりやって、AORやソウルの"理想形"を日本語でやってた。逆輸出された本家越えの副産物」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 比較表 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Special Stage</span>
+    <h2 class="section-title">音楽ジャンル系譜 完全比較表</h2>
+    <p class="section-desc">全ての音楽はブルースから生まれた——系譜と核心の違いを一覧で</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>ジャンル</th>
+          <th>誕生</th>
+          <th>起源・ルーツ</th>
+          <th>核心の特徴</th>
+          <th>代表アーティスト</th>
+          <th>現代への影響</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ブルース</td>
+          <td>1900年頃 · 南部</td>
+          <td>アフリカ音楽・奴隷制の精神的苦痛</td>
+          <td>12小節・コール&レスポンス・ブルーノート</td>
+          <td>ロバート・ジョンソン・B.B.キング</td>
+          <td>ジャズ・ロック・R&Bの全ての母体</td>
+        </tr>
+        <tr>
+          <td>ジャズ</td>
+          <td>1910年代 · ニューオーリンズ</td>
+          <td>ブルース＋ゴスペル＋ラグタイム＋クラシック</td>
+          <td>即興・スウィング・コード進行の複雑化</td>
+          <td>アームストロング・マイルス・コルトレーン</td>
+          <td>ビバップ・フュージョン・現代クラシック</td>
+        </tr>
+        <tr>
+          <td>R&B / ソウル</td>
+          <td>1940〜50年代</td>
+          <td>ブルース＋ゴスペル＋ジャズのリズム</td>
+          <td>エモーショナルな歌唱・ビート重視</td>
+          <td>レイ・チャールズ・アレサ・フランクリン</td>
+          <td>ファンク・ヒップホップ・現代R&B</td>
+        </tr>
+        <tr>
+          <td>ロックンロール</td>
+          <td>1950年代</td>
+          <td>ブルース＋カントリー＋R&B</td>
+          <td>エレキギター・反抗・若者文化</td>
+          <td>エルヴィス・チャック・ベリー・ビートルズ</td>
+          <td>ハードロック・パンク・メタル・オルタナ</td>
+        </tr>
+        <tr>
+          <td>ファンク</td>
+          <td>1960年代</td>
+          <td>R&B＋ソウル＋ジャズのリズム革命</td>
+          <td>グルーヴ重視・1拍目強調・ブラック・カルチャー</td>
+          <td>ジェームス・ブラウン・スライ・ストーン</td>
+          <td>ヒップホップのサンプリング源として直結</td>
+        </tr>
+        <tr>
+          <td>ヒップホップ</td>
+          <td>1973年 · ブロンクス</td>
+          <td>ファンク＋ソウルのサンプリング</td>
+          <td>ラップ・DJ・サンプリング・言葉の密度</td>
+          <td>NWA・トゥパック・エミネム・ケンドリック</td>
+          <td>現在最大のポピュラー音楽ジャンル</td>
+        </tr>
+        <tr>
+          <td>テクノ / ハウス</td>
+          <td>1980年代 · デトロイト/シカゴ</td>
+          <td>ファンク＋シンセサイザー＋ドラムマシン</td>
+          <td>反復リズム・4つ打ち・電子音</td>
+          <td>デリック・メイ・フランキー・ナックルズ</td>
+          <td>EDM・クラブミュージック・K-POPのビート</td>
+        </tr>
+        <tr>
+          <td>J-POP / シティポップ</td>
+          <td>1970〜80年代 · 日本</td>
+          <td>AOR＋ソウル＋ボサノヴァを日本語化</td>
+          <td>洗練された和声・日本語の発音との融合</td>
+          <td>山下達郎・竹内まりや・松田聖子</td>
+          <td>2020年代に世界的再評価（逆輸出）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:3px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🎵 <strong style="color:var(--amber-glow);">「全ての音楽はブルースから来ている」説：</strong>ジャズ・ロック・R&B・ソウル・ファンク・ヒップホップ——全てのルーツを辿るとアフリカ系アメリカ人のブルースに行き着く。つまり20世紀の西洋ポピュラー音楽の革命は全て「差別され最も貧しかった人々の音楽」から生まれた。文化的創造力と社会的抑圧の逆説的な関係。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">Encore</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">音楽史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「ビートルズってなんでそんなにすごいの？」</div>
+      <div class="test-q-text">音楽の話になったとき定番の話題</div>
+      <div class="test-a">「1963〜1967年の4年間でR&B風ポップスから始まり、インド音楽・クラシック弦楽・電子音楽・サイケデリックを経て"サージェント・ペパーズ"という音楽史上の革命作を作った。他のアーティストが一生かけてひとつのスタイルを磨く中、4年で10スタイルを発明した。あとジョン・レノン・ポール・マッカートニーという異なるタイプの天才が共存して化学反応を起こした奇跡がある。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「ジャズって難しくない？」</div>
+      <div class="test-q-text">ジャズバーや音楽の話になったとき</div>
+      <div class="test-a">「ジャズを聴く入口は"マイルス・デイヴィスのカインド・オブ・ブルー（1959）"一択。世界で最も売れたジャズアルバムで、難解なビバップではなく"モード"という余白が多い構造。コードの"外"で演奏者が自由に歌う。"なんとなく心地よい"で入って、徐々に"この人今どこを歩いてるんだろう"が気になってくるのがジャズの楽しみ方。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「クラシックってどこから聴けばいいの？」</div>
+      <div class="test-q-text">クラシックに興味あるけど難しそうという人に</div>
+      <div class="test-a">「3つの入口がある——①感情で入る：ショパンの夜想曲（ノクターン）やチャイコフスキーの白鳥の湖はメロディの美しさで誰でも入れる。②物語で入る：ベートーヴェンの伝記（難聴で第九を書いた）を知ってから聴くと全く違う。③構造で入る：バッハのインヴェンションで"対位法のパズル"を解く楽しさを知る。自分に合った入口を見つけることが大事。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なんでヒップホップが今一番人気なの？」</div>
+      <div class="test-q-text">音楽ジャンルの話になったとき</div>
+      <div class="test-a">「ヒップホップって実は最も"詩的"な音楽で、1小節に詰め込む情報量がロックの10倍以上のジャンルもある。エミネム・ケンドリック・ラマーは20世紀後半の詩人として研究されてる。あとBGMと歌詞が別々に機能するから、ラップは"語り"で感情を作り、ビートは"体"で感情を作る二重構造が強い。SNS時代との相性も最高。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「シティポップってなんで今さら世界で流行ってるの？」</div>
+      <div class="test-q-text">J-POPや日本の音楽の話になったとき</div>
+      <div class="test-a">「80年代の日本がAOR（Adult Oriented Rock）・ソウル・ボサノヴァを徹底研究して作った"洗練された洋楽の日本語版"が、今のアルゴリズム（YouTubeのオートプレイ）で世界に届いた。竹内まりや"Plastic Love"は2018年ごろからバズり始め10億回再生超え。"当時の未来感"と"今の懐かしさ"が同居するロフィーな空気感がZ世代に刺さった。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「AIは音楽を作れるの？」</div>
+      <div class="test-q-text">テクノロジーと創造性の話になったとき</div>
+      <div class="test-a">「技術的にはもう十分作れる——Suno AIやUdio AIは聴いても人間か判別困難な楽曲を生成できる。問題は"誰の表現か"という著作権・アイデンティティの問題と、"感情の証人である人間"が作った音楽に価値があるのか、という哲学的問い。バッハ風・ビートルズ風は作れるが、"AIが苦しんで生まれた"音楽は今のところない。でも"苦しみ"がなくても感動できる音楽が生まれたら、定義が変わる。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">🎵</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史・音楽史。知の九角形が完成した。</p>
+  <p style="margin-top:0.5rem; opacity:0.42; font-style:italic;">"Without music, life would be a mistake." — Friedrich Nietzsche</p>
+</div>
+
+</body>
+</html>

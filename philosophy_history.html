@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哲学史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep:  #1A0F2E;
+    --purple-mid:   #3C2A6E;
+    --purple-light: #6A4FC8;
+    --purple-pale:  #EAE6FA;
+    --purple-ghost: #F4F2FD;
+    --gold:         #B8922A;
+    --gold-light:   #E0B84A;
+    --gold-pale:    #FBF5DC;
+    --ivory:        #FAF8F2;
+    --ivory-dark:   #EEE8D4;
+    --ink:          #14100A;
+    --ink-mid:      #352A18;
+    --ink-light:    #6E5A3E;
+    --gray:         #9A9080;
+    --silver:       #B8B0C8;
+    --crimson:      #8B1A1A;
+    --teal:         #0F7878;
+    --shadow:       rgba(26,15,46,0.13);
+    --rust:         #993C1D;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Noto Sans JP',sans-serif;
+    background:var(--ivory);
+    color:var(--ink);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background:var(--purple-deep);
+    color:#fff;
+    text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:'φ';
+    position:absolute;
+    font-family:'Cinzel',serif;
+    font-size:36rem;
+    opacity:0.04;
+    top:50%; left:50%;
+    transform:translate(-50%,-52%);
+    line-height:1;
+    pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block;
+    font-size:0.68rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    border:1px solid rgba(224,184,74,0.45);
+    padding:4px 16px;
+    border-radius:2px;
+    margin-bottom:1.5rem;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem);
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff,var(--gold-light));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero-sub {
+    font-size:1rem;
+    color:rgba(255,255,255,0.5);
+    max-width:520px;
+    margin:0 auto 2.5rem;
+    font-weight:300;
+  }
+  .hero-stats {
+    display:flex;
+    justify-content:center;
+    gap:3rem;
+    flex-wrap:wrap;
+  }
+  .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-light); display:block; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block;
+    background:var(--purple-mid);
+    color:#fff;
+    font-size:0.65rem;
+    font-weight:700;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    padding:4px 14px;
+    border-radius:2px;
+    margin-bottom:0.75rem;
+  }
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+  .tip-bar {
+    background:#fff;
+    border-radius:6px;
+    border:1px solid rgba(60,42,110,0.16);
+    padding:0.85rem 1.1rem;
+    font-size:0.82rem;
+    color:var(--ink-light);
+    margin-top:1.5rem;
+    text-align:center;
+  }
+
+  /* ─── BIG QUESTION ─── */
+  .bigq-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+  }
+  .bigq-card {
+    background:var(--purple-deep);
+    border-radius:8px;
+    padding:1.5rem;
+    text-align:center;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .bigq-card::after {
+    content:attr(data-sym);
+    position:absolute;
+    bottom:-0.5rem; right:0.5rem;
+    font-family:'Cinzel',serif;
+    font-size:3.5rem;
+    opacity:0.08;
+    line-height:1;
+    color:var(--gold-light);
+  }
+  .bigq-icon  { font-size:2rem; display:block; margin-bottom:0.5rem; }
+  .bigq-q     { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; display:block; margin-bottom:0.4rem; }
+  .bigq-field { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--silver); display:block; margin-bottom:0.5rem; }
+  .bigq-body  { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.5; }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:'';
+    position:absolute;
+    left:50%; top:0; bottom:0;
+    width:2px;
+    background:linear-gradient(to bottom,transparent,var(--purple-light),var(--purple-light),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem;
+    transform:translateX(-50%);
+    width:14px; height:14px;
+    background:var(--purple-light);
+    border:3px solid var(--ivory);
+    border-radius:50%;
+    box-shadow:0 0 0 2px var(--purple-light);
+    z-index:2;
+  }
+  .tl-dot.gold   { background:var(--gold);    box-shadow:0 0 0 2px var(--gold); }
+  .tl-dot.teal   { background:var(--teal);    box-shadow:0 0 0 2px var(--teal); }
+  .tl-dot.red    { background:var(--crimson); box-shadow:0 0 0 2px var(--crimson); }
+  .tl-card {
+    width:calc(50% - 2.5rem);
+    background:#fff;
+    border:1px solid rgba(60,42,110,0.14);
+    border-radius:6px;
+    padding:1.25rem 1.5rem;
+    box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--purple-light); font-weight:700; margin-bottom:0.25rem; letter-spacing:0.05em; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── PHILOSOPHER CARDS ─── */
+  .phil-era {
+    background:var(--purple-deep);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+    margin-bottom:2rem;
+  }
+  .era-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .era-title { font-family:'Noto Serif JP',serif; font-size:1.3rem; color:var(--gold-light); font-weight:700; margin-bottom:1.25rem; }
+  .phil-row  { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1rem; }
+  .phil-card {
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:8px;
+    padding:1rem 1.1rem;
+  }
+  .phil-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.15rem; }
+  .phil-dates  { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.5rem; }
+  .phil-key    { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal-label,#1AADAD); margin-bottom:0.4rem; }
+  .phil-body   { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+  .phil-quote  { margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.45); font-style:italic; border-left:2px solid rgba(224,184,74,0.4); padding-left:0.5rem; }
+
+  /* ─── BATTLE CARDS ─── */
+  .battle-bg {
+    background:var(--purple-deep);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+  }
+  .battle-grid {
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:1rem;
+    align-items:center;
+    margin-bottom:1.5rem;
+  }
+  @media(max-width:600px){ .battle-grid{ grid-template-columns:1fr; } .vs-badge{ display:none; } }
+  .side-card {
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:8px;
+    padding:1.25rem;
+  }
+  .side-name  { font-family:'Noto Serif JP',serif; font-size:1.1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.25rem; }
+  .side-rep   { font-size:0.72rem; color:var(--silver); margin-bottom:0.6rem; }
+  .side-claim { font-size:0.8rem; color:rgba(255,255,255,0.7); line-height:1.6; }
+  .vs-badge {
+    width:44px; height:44px;
+    border-radius:50%;
+    background:rgba(224,184,74,0.15);
+    border:1px solid rgba(224,184,74,0.4);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel',serif;
+    font-size:0.75rem;
+    color:var(--gold-light);
+    flex-shrink:0;
+  }
+
+  /* ─── KANT SPECIAL ─── */
+  .kant-bg {
+    background:var(--purple-mid);
+    border-radius:10px;
+    padding:2.5rem;
+    color:#fff;
+  }
+  .kant-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+    margin-top:1.5rem;
+  }
+  .kant-book {
+    background:rgba(0,0,0,0.25);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:8px;
+    padding:1.1rem;
+  }
+  .kant-book-title { font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
+  .kant-book-sub   { font-size:0.62rem; color:var(--silver); margin-bottom:0.6rem; }
+  .kant-book-body  { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff;
+    border:1px solid rgba(60,42,110,0.15);
+    border-left:4px solid var(--purple-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem;
+    box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-de   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--purple-mid); background:rgba(60,42,110,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* ─── GREAT QUESTION MAP ─── */
+  .qmap-bg { background:var(--purple-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .qmap-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0.75rem; margin-top:1.25rem; }
+  .qmap-item { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:1rem; }
+  .qmap-q     { font-size:0.88rem; color:var(--gold-light); font-weight:700; margin-bottom:0.4rem; }
+  .qmap-thinkers { font-size:0.7rem; color:var(--silver); margin-bottom:0.4rem; letter-spacing:0.04em; }
+  .qmap-body  { font-size:0.78rem; color:rgba(255,255,255,0.62); line-height:1.5; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--purple-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q {
+    background:rgba(0,0,0,0.25);
+    border-left:3px solid var(--purple-light);
+    padding:1rem 1.25rem;
+    border-radius:0 6px 6px 0;
+    margin-bottom:1rem;
+  }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--purple-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--purple-deep); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-phi { font-size:2.5rem; display:block; margin-bottom:0.5rem; font-family:'Cinzel',serif; color:var(--gold-light); }
+
+  /* ─── LIFE-STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
+  .life-step-icon  { font-size:1.8rem; flex-shrink:0; }
+  .life-step-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .life-step-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.4</div>
+  <h1>哲学史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">「そもそも、なぜ存在するのか」を2500年考え続けた人類の記録。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">BC 600年</span><span class="hero-stat-lbl">哲学の誕生</span></div>
+    <div><span class="hero-stat-num">2500年</span><span class="hero-stat-lbl">問い続けた歴史</span></div>
+    <div><span class="hero-stat-num">3大潮流</span><span class="hero-stat-lbl">古代・近代・現代</span></div>
+    <div><span class="hero-stat-num">∞</span><span class="hero-stat-lbl">答えの数</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: なぜ哲学？ ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">哲学とは何をする学問か</h2>
+    <p class="section-desc">「役に立たない」と言われるが、実は全ての学問の母</p>
+  </div>
+  <div class="bigq-grid">
+    <div class="bigq-card" data-sym="?">
+      <span class="bigq-icon">🔍</span>
+      <span class="bigq-q">存在とは何か</span>
+      <span class="bigq-field">Metaphysics · 形而上学</span>
+      <p class="bigq-body">「なぜ何もないのではなく、何かがあるのか」。世界の根本的な構造・神の存在・自由意志を問う</p>
+    </div>
+    <div class="bigq-card" data-sym="?">
+      <span class="bigq-icon">🧠</span>
+      <span class="bigq-q">何を知れるのか</span>
+      <span class="bigq-field">Epistemology · 認識論</span>
+      <p class="bigq-body">人間はどこまで確実に知ることができるか。感覚は信頼できるか。「私が知っていることを、私はどう知るのか」</p>
+    </div>
+    <div class="bigq-card" data-sym="?">
+      <span class="bigq-icon">⚖️</span>
+      <span class="bigq-q">何が正しいのか</span>
+      <span class="bigq-field">Ethics · 倫理学</span>
+      <p class="bigq-body">何をすべきで、何を避けるべきか。「善い生き方」とは何か。道徳の根拠はどこにあるのか</p>
+    </div>
+    <div class="bigq-card" data-sym="?">
+      <span class="bigq-icon">🎨</span>
+      <span class="bigq-q">美しさとは何か</span>
+      <span class="bigq-field">Aesthetics · 美学</span>
+      <p class="bigq-body">美の本質・芸術の意味とは何か。美しいと感じることは普遍か主観か。カントが系統化した哲学の一分野</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「哲学って役に立たないと思われがちだけど、物理学も心理学も法学も経済学も、もともとは全部哲学だった。科学が独立していった後に残ったのが今の哲学。"残りもの"じゃなくて"根っこ"の話」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 古代ギリシャ ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">古代ギリシャ哲学 — すべての出発点</h2>
+    <p class="section-desc">BC 6世紀〜BC 3世紀。西洋哲学の99%がここに帰る</p>
+  </div>
+
+  <div class="phil-era">
+    <div class="era-label">PHASE 1 · BC 6〜5世紀</div>
+    <div class="era-title">自然哲学者たち — 「世界は何でできているか」</div>
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">タレス</div>
+        <div class="phil-dates">BC 624〜546頃 · ミレトス</div>
+        <div class="phil-key" style="color:#5DCAA5;">西洋哲学の父</div>
+        <div class="phil-body">「万物の根源は水である」。神話ではなく自然現象で世界を説明しようとした最初の人。ここから哲学が始まる。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ヘラクレイトス</div>
+        <div class="phil-dates">BC 540〜480頃 · エフェソス</div>
+        <div class="phil-key" style="color:#5DCAA5;">変化の哲学者</div>
+        <div class="phil-body">「万物は流転する」「同じ川に二度と入れない」。世界の根本は変化とロゴス（理性）であると主張した。</div>
+        <div class="phil-quote">「戦争はすべてものの父であり王である」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ピタゴラス</div>
+        <div class="phil-dates">BC 570〜495頃 · サモス島</div>
+        <div class="phil-key" style="color:#5DCAA5;">数と宇宙</div>
+        <div class="phil-body">「万物の根源は数」。ピタゴラスの定理で有名だが、数の神秘的な力を信じる「ピタゴラス教団」を作った宗教的哲学者でもある。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phil-era">
+    <div class="era-label">PHASE 2 · BC 5世紀 — 哲学の黄金期</div>
+    <div class="era-title">ソクラテス・プラトン・アリストテレスの三巨人</div>
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">ソクラテス</div>
+        <div class="phil-dates">BC 470〜399 · アテネ</div>
+        <div class="phil-key" style="color:#EF9F27;">無知の知・産婆術</div>
+        <div class="phil-body">「自分が何も知らないことを知っている」という「無知の知」。問答によって相手の矛盾を明らかにする「産婆術（ソクラテス的対話法）」を実践。著作ゼロ、死刑判決を受けて毒杯で死。</div>
+        <div class="phil-quote">「汝自身を知れ」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">プラトン</div>
+        <div class="phil-dates">BC 428〜348 · アテネ</div>
+        <div class="phil-key" style="color:#EF9F27;">イデア論・洞窟の比喩</div>
+        <div class="phil-body">師ソクラテスの思想を対話篇として記録。「この世は影に過ぎず、完全なイデアの世界が真の実在」というイデア論。「洞窟の比喩」で有名。アカデメイアを創設し後のアカデミーの原型に。</div>
+        <div class="phil-quote">「必要は発明の母」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">アリストテレス</div>
+        <div class="phil-dates">BC 384〜322 · スタゲイラ</div>
+        <div class="phil-key" style="color:#EF9F27;">万学の祖</div>
+        <div class="phil-body">プラトンの弟子にしてアレクサンドロス大王の家庭教師。論理学・自然科学・政治学・詩学・倫理学を体系化。「イデアは個物の中にある（形相）」とプラトンと対立。「人間はポリス的動物である」。</div>
+        <div class="phil-quote">「人間は本性上、政治的動物である」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phil-era">
+    <div class="era-label">PHASE 3 · BC 3世紀〜 — ヘレニズム期</div>
+    <div class="era-title">どう生きるべきか — 実践哲学の時代</div>
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">エピクロス</div>
+        <div class="phil-dates">BC 341〜270 · サモス島</div>
+        <div class="phil-key" style="color:#5DCAA5;">快楽主義（アタラクシア）</div>
+        <div class="phil-body">「善とは快楽、悪とは苦痛」という快楽主義。ただしそれは贅沢ではなく「心の平静（アタラクシア）」こそ最高の快楽。「庭園の哲学者」として弟子たちと共同生活を送った。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ゼノン（ストア派）</div>
+        <div class="phil-dates">BC 334〜262頃 · キプロス</div>
+        <div class="phil-key" style="color:#5DCAA5;">ストア哲学・禁欲主義</div>
+        <div class="phil-body">「感情（パトス）を理性で制御せよ」。自分でコントロールできないことに動じない「不動心（アパテイア）」が善い生。マルクス・アウレリウスら多くの指導者に影響。英語のstoicの語源。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ピュロン（懐疑主義）</div>
+        <div class="phil-dates">BC 360〜270頃 · エリス</div>
+        <div class="phil-key" style="color:#5DCAA5;">エポケー（判断保留）</div>
+        <div class="phil-body">「人間は何も確実に知ることができない」とあらゆる判断を保留（エポケー）する懐疑主義の祖。判断しないことで心の平和を得るという逆説的な哲学。後のデカルトの方法的懐疑へ影響。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 中世・近世 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">中世〜近世哲学 — 神と理性の格闘</h2>
+    <p class="section-desc">5〜17世紀。「哲学は神学の召使い」と言われた1000年と、その反乱</p>
+  </div>
+
+  <div class="phil-era" style="background:#1a1228;">
+    <div class="era-label">MIDDLE AGES · 5〜14世紀</div>
+    <div class="era-title">スコラ哲学 — 神を理性で証明しようとした時代</div>
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">アウグスティヌス</div>
+        <div class="phil-dates">354〜430 · アフリカ</div>
+        <div class="phil-key" style="color:#5DCAA5;">神学の父</div>
+        <div class="phil-body">放蕩の末にキリスト教に回心。「われ信ず、ゆえにわれ理解す」。プラトン哲学をキリスト教神学に組み込んだ。自伝的著作「告白」は世界文学の傑作。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">トマス・アクィナス</div>
+        <div class="phil-dates">1225〜1274 · イタリア</div>
+        <div class="phil-key" style="color:#5DCAA5;">「神学大全」</div>
+        <div class="phil-body">アリストテレス哲学をキリスト教神学に統合した中世最大の哲学者。「信仰と理性は矛盾しない」と主張。神の存在証明（五つの道）を構築。カトリック教会の公式哲学。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">オッカムのウィリアム</div>
+        <div class="phil-dates">1287〜1347頃 · イングランド</div>
+        <div class="phil-key" style="color:#5DCAA5;">オッカムの剃刀</div>
+        <div class="phil-body">「必要以上に存在者を増やすな（オッカムの剃刀）」という節約原理が有名。信仰と理性の分離を主張し近代科学の萌芽を開いた。「オッカムの剃刀」は今も科学や論理の世界で使われる。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <div class="life-step">
+        <div class="life-step-icon">🔬</div>
+        <div>
+          <div class="life-step-title">デカルト（1596〜1650）— 近代哲学の父</div>
+          <div class="life-step-body">「われ思う、ゆえにわれあり（コギト・エルゴ・スム）」。あらゆることを疑い（方法的懐疑）、疑っている自分だけは疑えないとして出発点にした。心と身体を完全に分離する「心身二元論」。数学的・演繹的方法で哲学を構築しようとした。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">💎</div>
+        <div>
+          <div class="life-step-title">スピノザ（1632〜1677）— 「神即自然」の汎神論</div>
+          <div class="life-step-body">「神と自然は同一（神即自然）」という汎神論で当時のユダヤ・キリスト教社会から破門と批判を受けた。レンズ磨きで生計を立てながら哲学を続けた孤高の人。感情の哲学・倫理学を数学的証明形式で展開した「エチカ」は近代最大の形而上学書のひとつ。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">🧮</div>
+        <div>
+          <div class="life-step-title">ライプニッツ（1646〜1716）— モナドと最善の世界</div>
+          <div class="life-step-body">ニュートンと独立してほぼ同時に微積分を発明した天才。哲学では世界は無数の「モナド（単子）」からなり、神は最善の世界を創造したと主張（ヴォルテールが「カンディード」で猛烈に風刺）。現代の記号論理学の先駆者でもある。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 合理論 vs 経験論 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">近代哲学最大の対決 — 合理論 vs 経験論</h2>
+    <p class="section-desc">「人間の知識はどこから来るか」という問いが哲学を二分した</p>
+  </div>
+  <div class="battle-bg">
+    <div class="battle-grid">
+      <div class="side-card">
+        <div class="side-name">合理論（大陸派）</div>
+        <div class="side-rep">デカルト・スピノザ・ライプニッツ</div>
+        <div class="side-claim">知識の源泉は「理性」。人間は生まれつき「生得観念」を持っており、感覚経験に頼らず理性だけで真理に到達できる。数学的・演繹的推論が最も確実な知識のモデル。</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="side-card">
+        <div class="side-name">経験論（イギリス派）</div>
+        <div class="side-rep">ロック・バークリー・ヒューム</div>
+        <div class="side-claim">知識の源泉は「経験」。人間の心は生まれたとき白紙（タブラ・ラサ）であり、すべての知識は感覚経験から来る。生得観念などない。実験・観察・帰納法を重視。</div>
+      </div>
+    </div>
+    <div style="background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.82rem; color:rgba(255,255,255,0.65);">
+      ⚡ <strong style="color:var(--gold-light);">カントが「独断のまどろみから目覚めた」と言って両者を統合：</strong>「経験なき概念は空虚、概念なき経験は盲目」。知識は感覚経験と理性の先天的形式（時間・空間・カテゴリー）が協働して生まれる、という「コペルニクス的転回」を果たした。
+    </div>
+    <div style="margin-top:1.25rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0.75rem;">
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem;">
+        <div style="font-size:0.82rem; color:var(--gold-light); font-weight:700; margin-bottom:0.25rem;">ロック（1632〜1704）</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.6); line-height:1.5;">「社会契約論」の先駆者。人間は「生命・自由・財産」の自然権を持ち、政府はその保護のために存在する。アメリカ独立宣言の基盤。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem;">
+        <div style="font-size:0.82rem; color:var(--gold-light); font-weight:700; margin-bottom:0.25rem;">ヒューム（1711〜1776）</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.6); line-height:1.5;">「因果関係は習慣に過ぎない」という因果否定が衝撃的。宗教批判・奇跡否定で時代を騒がせた。カントを「独断のまどろみ」から覚醒させた人物。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem;">
+        <div style="font-size:0.82rem; color:var(--gold-light); font-weight:700; margin-bottom:0.25rem;">ルソー（1712〜1778）</div>
+        <div style="font-size:0.76rem; color:rgba(255,255,255,0.6); line-height:1.5;">「自然に帰れ」「人間は自由なものとして生まれたが、至る所で鎖につながれている」。フランス革命を思想的に準備した一般意志の哲学者。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: カント〜ヘーゲル ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">カントとドイツ観念論 — 近代哲学の頂点</h2>
+    <p class="section-desc">18〜19世紀。合理論と経験論を統合し、哲学史最大の巨峰を築いた</p>
+  </div>
+  <div class="kant-bg">
+    <div style="display:flex; flex-wrap:wrap; gap:1.5rem; align-items:flex-start;">
+      <div style="flex:1; min-width:200px;">
+        <div style="font-size:0.65rem; letter-spacing:0.2em; color:var(--silver); text-transform:uppercase; margin-bottom:0.4rem;">IMMANUEL KANT · 1724〜1804</div>
+        <div style="font-family:'Noto Serif JP',serif; font-size:1.4rem; color:var(--gold-light); font-weight:700; margin-bottom:0.75rem;">カント — 哲学の頂上</div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.7;">生涯ケーニヒスベルクを離れず、毎日同じ時間に散歩して町の人が時計を合わせたという伝説の哲学者。しかし著作の影響力は天文学的。「純粋理性批判」「実践理性批判」「判断力批判」の三批判書が哲学の金字塔。</div>
+      </div>
+      <div style="flex:2; min-width:280px;">
+        <div class="kant-grid">
+          <div class="kant-book">
+            <div class="kant-book-title">純粋理性批判（1781）</div>
+            <div class="kant-book-sub">CRITIQUE OF PURE REASON</div>
+            <div class="kant-book-body">「何を知ることができるか」。人間の認識能力の限界を明らかにする。時間・空間・カテゴリーという先天的形式が経験を構成する。「物自体」は認識不可能。</div>
+          </div>
+          <div class="kant-book">
+            <div class="kant-book-title">実践理性批判（1788）</div>
+            <div class="kant-book-sub">CRITIQUE OF PRACTICAL REASON</div>
+            <div class="kant-book-body">「何をすべきか」。「汝の行動原則が普遍的法則となるよう行動せよ」という定言命法。道徳は感情ではなく理性の命令に従うべき。</div>
+          </div>
+          <div class="kant-book">
+            <div class="kant-book-title">判断力批判（1790）</div>
+            <div class="kant-book-sub">CRITIQUE OF JUDGMENT</div>
+            <div class="kant-book-body">「何を期待できるか」。美と崇高の分析・目的論的自然観。美の判断は主観的でありながら普遍的妥当性を要求するという逆説を解明。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <div class="life-step">
+        <div class="life-step-icon">🌀</div>
+        <div>
+          <div class="life-step-title">ヘーゲル（1770〜1831）— 弁証法と歴史哲学</div>
+          <div class="life-step-body">「テーゼ（正）→アンチテーゼ（反）→ジンテーゼ（合）」という「弁証法」で有名。歴史は「絶対精神」が自己実現していく過程であり、プロイセン国家がその最高形態と主張。「有名なものは知られていない」「量の変化はやがて質の変化をもたらす」。マルクスはこの弁証法を唯物論と結合させた。</div>
+        </div>
+      </div>
+      <div class="life-step">
+        <div class="life-step-icon">💔</div>
+        <div>
+          <div class="life-step-title">ショーペンハウアー（1788〜1860）— 悲観主義と意志の哲学</div>
+          <div class="life-step-body">「世界は意志と表象である」。すべての欲望（意志）は苦しみを生むという根源的悲観主義。仏教・ヒンドゥー哲学に共鳴し、意志の否定・禁欲・芸術鑑賞が救いだと説いた。ワーグナー・ニーチェ・フロイトに多大な影響を与えた「最も読まれた哲学者」のひとり。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 19世紀の巨人たち ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">19世紀の三大怪物 — 現代を作った思想家</h2>
+    <p class="section-desc">マルクス・ニーチェ・キルケゴール。現代世界への影響は計り知れない</p>
+  </div>
+  <div class="phil-era" style="background:#1a0f1a;">
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">カール・マルクス</div>
+        <div class="phil-dates">1818〜1883 · ドイツ/ロンドン</div>
+        <div class="phil-key" style="color:#EF9F27;">唯物史観・資本論</div>
+        <div class="phil-body">「哲学者たちは世界をさまざまに解釈してきたが、問題はそれを変革することだ」。ヘーゲルの弁証法を唯物論に転換。歴史は階級闘争の歴史であり、資本主義は労働者を搾取する、と批判。20世紀の共産主義革命に直結した史上最も影響力のある思想家のひとり。</div>
+        <div class="phil-quote">「宗教は民衆のアヘンである」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">フリードリヒ・ニーチェ</div>
+        <div class="phil-dates">1844〜1900 · ドイツ</div>
+        <div class="phil-key" style="color:#EF9F27;">神は死んだ・超人思想</div>
+        <div class="phil-body">「神は死んだ！そして我々が神を殺した！」。近代における価値の崩壊（ニヒリズム）を宣言し、その先に「力への意志」を持つ「超人（ユーバーメンシュ）」という新しい価値を提示。実存主義・ポスト構造主義・文学・音楽に無尽蔵の影響。晩年は精神崩壊。</div>
+        <div class="phil-quote">「深淵を覗くとき、深淵もまた汝を覗いている」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">セーレン・キルケゴール</div>
+        <div class="phil-dates">1813〜1855 · デンマーク</div>
+        <div class="phil-key" style="color:#EF9F27;">実存主義の父</div>
+        <div class="phil-body">「実存は本質に先立つ」の原型。ヘーゲルの抽象的な体系哲学を批判し、具体的・個人的な実存（生きることの問題）こそ哲学の中心だと主張。審美的・倫理的・宗教的という実存の三段階を提示。20世紀実存主義の先駆。</div>
+        <div class="phil-quote">「生きることは後ろ向きに理解されるが、前向きに生きるしかない」</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem; display:flex;flex-direction:column;gap:0.75rem;">
+    <div class="life-step">
+      <div class="life-step-icon">⚖️</div>
+      <div>
+        <div class="life-step-title">功利主義 — ベンサム（1748〜1832）とミル（1806〜1873）</div>
+        <div class="life-step-body">「最大多数の最大幸福」。道徳の基準は行為がもたらす快楽の量。ベンサムは快楽を計量化しようとし（快楽計算）、弟子のミルは質的な差異（高い快楽・低い快楽）を導入して精緻化。現代の政策評価・コスト・ベネフィット分析の哲学的根拠。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 20世紀 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">20世紀哲学 — 実存主義から言語論的転回へ</h2>
+    <p class="section-desc">二つの世界大戦が哲学を激変させた</p>
+  </div>
+
+  <div class="phil-era" style="background:#0f1a2e;">
+    <div class="era-label">CONTINENTAL PHILOSOPHY · ヨーロッパ大陸系</div>
+    <div class="era-title">現象学・実存主義・構造主義</div>
+    <div class="phil-row">
+      <div class="phil-card">
+        <div class="phil-name">フッサール</div>
+        <div class="phil-dates">1859〜1938 · ドイツ</div>
+        <div class="phil-key" style="color:#5DCAA5;">現象学の父</div>
+        <div class="phil-body">「事象そのものへ！」。意識に現れる現象をそのままに記述する現象学を創始。「エポケー（判断停止）」で先入観を括弧に入れ、意識の本質構造を明らかにしようとした。ハイデガー・サルトルに直結。</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">ハイデガー</div>
+        <div class="phil-dates">1889〜1976 · ドイツ</div>
+        <div class="phil-key" style="color:#5DCAA5;">存在と時間</div>
+        <div class="phil-body">「なぜ何もないのではなく、何かがあるのか」という存在の問いに正面から取り組んだ20世紀最大の哲学者。「死への存在」として自己の有限性に向き合うことが本来性。ナチスとの関係が今も議論される。</div>
+        <div class="phil-quote">「言語は存在の家である」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">サルトル</div>
+        <div class="phil-dates">1905〜1980 · フランス</div>
+        <div class="phil-key" style="color:#5DCAA5;">実存主義・自由の哲学</div>
+        <div class="phil-body">「実存は本質に先立つ」。人間は最初から「何者か」として生まれるのではなく、行動によって自分を作る。「人間は自由に呪われている」。ボーヴォワールとの知的パートナーシップ、左翼活動家としても有名。ノーベル文学賞を拒否。</div>
+        <div class="phil-quote">「地獄とは他者のことだ」</div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-name">フーコー</div>
+        <div class="phil-dates">1926〜1984 · フランス</div>
+        <div class="phil-key" style="color:#5DCAA5;">権力と知・系譜学</div>
+        <div class="phil-body">「知は権力である」。知識・真理とは中立ではなく常に権力関係に埋め込まれている。監獄の歴史・狂気の歴史・性の歴史を通じて、「正常」と「異常」を分ける権力メカニズムを分析した。現代の批判理論に絶大な影響。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <div class="phil-era" style="background:#0f1f1f;">
+      <div class="era-label">ANALYTIC PHILOSOPHY · 英米分析系</div>
+      <div class="era-title">言語・論理・科学哲学</div>
+      <div class="phil-row">
+        <div class="phil-card">
+          <div class="phil-name">ウィトゲンシュタイン</div>
+          <div class="phil-dates">1889〜1951 · オーストリア</div>
+          <div class="phil-key" style="color:#1AADAD;">言語哲学の革命</div>
+          <div class="phil-body">「語りえぬことについては沈黙せねばならない（前期）」→「言語の意味は使用にある（後期）」と自己の思想を根底から覆した稀有な哲学者。哲学的問題の多くは言語の誤用から来ると喝破した。</div>
+        </div>
+        <div class="phil-card">
+          <div class="phil-name">カール・ポパー</div>
+          <div class="phil-dates">1902〜1994 · ウィーン</div>
+          <div class="phil-key" style="color:#1AADAD;">反証可能性</div>
+          <div class="phil-body">「科学とは反証可能な命題である」。反証できない理論（マルクス主義・フロイト理論）は疑似科学だと批判した。「開かれた社会とその敵」でファシズム・共産主義を批判。科学哲学・社会哲学の基礎を作った。</div>
+        </div>
+        <div class="phil-card">
+          <div class="phil-name">トマス・クーン</div>
+          <div class="phil-dates">1922〜1996 · アメリカ</div>
+          <div class="phil-key" style="color:#1AADAD;">パラダイム論</div>
+          <div class="phil-body">「科学革命の構造」で「パラダイム（科学的世界観）」という概念を導入。科学は累積的に進歩するのではなく、パラダイム転換（革命）によって非連続に変化する、と主張。「パラダイムシフト」という言葉の生みの親。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 8</span>
+    <h2 class="section-title">知っておくべき哲学の核心概念</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定される10のキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">イデア論 <span class="concept-de">Platonic Forms</span></div>
+      <div class="concept-body">プラトンの中核思想。この世に存在するすべての物は、完全な「イデア（本質）」の不完全な影に過ぎない。美しいものは変化するが「美のイデア」は永遠不変。</div>
+      <div class="concept-izakaya">「プラトンのイデア論ってさ、現実はコピーで本物はイデアの世界にある、って話。あらゆる"美しいもの"には"美そのもの"という完全な原型があるって考え。なんかロマンあると思わない？」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">コギト・エルゴ・スム <span class="concept-de">Cogito ergo sum</span></div>
+      <div class="concept-body">デカルトの「われ思う、ゆえにわれあり」。あらゆることを疑い抜いた果てに、「疑っている自分の存在だけは疑えない」という絶対確実な出発点を見つけた。近代哲学の起点。</div>
+      <div class="concept-izakaya">「コギト・エルゴ・スム、つまり"我思う、ゆえに我あり"。デカルトが全部疑ったら最後に疑えなかったのが"今疑ってる自分"だけだった。シンプルだけど哲学の超重要な一手」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">弁証法 <span class="concept-de">Dialektik</span></div>
+      <div class="concept-body">ヘーゲルの「正（テーゼ）→反（アンチテーゼ）→合（ジンテーゼ）」という発展の論理。対立するものが統合されてより高い次元に進むという歴史・思想の運動法則。マルクスが「唯物弁証法」として転用。</div>
+      <div class="concept-izakaya">「弁証法って正・反・合の繰り返しで物事が発展するって考え。ビジネスで言えば新製品（正）が競合に批判され（反）、改良版が生まれる（合）みたいな。ヘーゲルは歴史全体がこれで動いてると言った」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">ニヒリズム <span class="concept-de">Nihilismus</span></div>
+      <div class="concept-body">「何も意味がない」「絶対的な価値や真理は存在しない」という立場。ニーチェは近代の神の死によって必然的にニヒリズムが訪れると診断。それを超えるために「力への意志」と「超人」を提示した。</div>
+      <div class="concept-izakaya">「ニヒリズムって"何も意味ない"ってやつ。ニーチェは神が死んだ現代社会ではニヒリズムが必然だと言った。問題はその先をどう生きるか。答えを出さず絶望するのが"受動的ニヒリズム"、乗り越えようとするのが"能動的ニヒリズム"」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">カテゴリー的命法 <span class="concept-de">Kategorischer Imperativ</span></div>
+      <div class="concept-body">カントの道徳原理。「自分の行動の原則が、いつでも普遍的な法則として通用するように行動せよ」。結果ではなく行動の原則（動機）が道徳的かどうかが重要。功利主義と対立する義務論。</div>
+      <div class="concept-izakaya">「カントの定言命法って、"自分がやることを全員がやったらどうなるか"を考えてから行動せよってこと。脱税でも"みんながやったら社会が崩壊するからアウト"って判定できる道徳の計算機」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">実存は本質に先立つ <span class="concept-de">L'existence précède l'essence</span></div>
+      <div class="concept-body">サルトルの実存主義の核心命題。ハンマーは使われる前から「釘を打つもの」という本質が先にある（本質が実存に先立つ）。だが人間は先に存在し、その後で自分が何者かを決める。自由と責任の根拠。</div>
+      <div class="concept-izakaya">「実存主義ってさ、人間だけは設計図なしで生まれてきて、生きながら自分の本質を作るって考え。"俺はこういう人間だから仕方ない"は言い訳で、何者かは選択の連続で決まる、というある意味しんどい哲学」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">パラダイムシフト <span class="concept-de">Paradigm Shift</span></div>
+      <div class="concept-body">クーンの科学哲学概念。「天動説→地動説」「ニュートン力学→相対性理論」のように、科学の基本的な世界観（パラダイム）が根本から転換すること。今では科学以外にもビジネス・社会変化に広く使われる。</div>
+      <div class="concept-izakaya">「パラダイムシフトって今ではビジネス用語みたいになってるけど、クーンという哲学者が1962年に作った概念。科学は少しずつ進歩するんじゃなくて、革命的な断絶で進む、って主張が衝撃だった」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">脱構築 <span class="concept-de">Déconstruction</span></div>
+      <div class="concept-body">デリダが提唱したポスト構造主義の手法。テキストに潜む隠れた前提・二項対立（理性/感情、中心/周辺など）を暴き出し、それが自己矛盾を含むことを示す。西洋哲学の「ロゴス中心主義」への根本的批判。</div>
+      <div class="concept-izakaya">「脱構築って難しそうに聞こえるけど、"当たり前"の裏に隠れた権力構造を暴く作業。"男性的=理性的=正しい"みたいな隠れた前提を問い直す。フェミニズム・ポストコロニアル批評の基礎にある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">功利主義 <span class="concept-de">Utilitarianism</span></div>
+      <div class="concept-body">ベンサム・ミルの「最大多数の最大幸福」。行為の道徳的価値はその結果（幸福の総量）によって決まる。現代の医療・政策・AI倫理の基本的フレームワーク。トロッコ問題はこの思想のテストケース。</div>
+      <div class="concept-izakaya">「トロッコ問題ってあるじゃん。5人を助けるために1人を犠牲にすべきか。これが功利主義のジレンマ。医療資源の配分・自動運転の倫理設計・緊急事態の政策判断、全部この問いと戦ってる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">オッカムの剃刀 <span class="concept-de">Occam's Razor</span></div>
+      <div class="concept-body">「説明に必要以上の存在者を想定するな」という節約原理。二つの等しく有効な仮説があれば、仮定の少ない簡単な方を採れ。科学・論理・デザインにおける「シンプル is ベスト」の哲学的根拠。</div>
+      <div class="concept-izakaya">「オッカムの剃刀って、余計な仮定を剃り落とせってこと。説明できてるなら複雑にするな、という原理。エンジニアが設計を削ぎ落とすとき、科学者が仮説を選ぶとき、ピッチで要素を減らすとき、全部これ」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ BIG QUESTIONS MAP ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">哲学の永遠の問いマップ</h2>
+    <p class="section-desc">2500年間、人類が取り組んできた問いと主な論客</p>
+  </div>
+  <div class="qmap-bg">
+    <div class="qmap-grid">
+      <div class="qmap-item">
+        <div class="qmap-q">神は存在するか？</div>
+        <div class="qmap-thinkers">アクィナス（存在証明）→ヒューム（批判）→カント（不可知）→ニーチェ（神は死んだ）</div>
+        <div class="qmap-body">アンセルムスの「存在論的証明」から始まり、ヒュームが奇跡を否定、カントが「物自体」として認識不可能と結論。現代では宗教哲学・分析哲学で議論が続く。</div>
+      </div>
+      <div class="qmap-item">
+        <div class="qmap-q">自由意志はあるか？</div>
+        <div class="qmap-thinkers">アリストテレス→スピノザ（決定論）→カント（自律）→サルトル（絶対的自由）→神経科学</div>
+        <div class="qmap-body">すべての出来事が因果的に決定されているなら、自由な選択は幻想か。スピノザは決定論、サルトルは絶対的自由を主張。現代神経科学は「意識より前に脳が決定している」という実験結果で揺さぶっている。</div>
+      </div>
+      <div class="qmap-item">
+        <div class="qmap-q">心と身体はどう関係するか？</div>
+        <div class="qmap-thinkers">デカルト（二元論）→スピノザ（一元論）→ライプニッツ→現代哲学・AI</div>
+        <div class="qmap-body">「心身問題」は哲学史最大の難問のひとつ。デカルトの「幽霊と機械」問題は未解決。AIが意識を持てるかという問いは、この問題の現代版。</div>
+      </div>
+      <div class="qmap-item">
+        <div class="qmap-q">正義とは何か？</div>
+        <div class="qmap-thinkers">プラトン→アリストテレス→ロック→ルソー→ロールズ（無知のヴェール）</div>
+        <div class="qmap-body">20世紀最大の政治哲学者ロールズは「無知のヴェール」（自分がどの立場に生まれるか知らない状態で社会設計せよ）という思考実験で正義論を構築。格差原理・機会均等を導出。</div>
+      </div>
+      <div class="qmap-item">
+        <div class="qmap-q">言語と思考はどう関係するか？</div>
+        <div class="qmap-thinkers">ウィトゲンシュタイン→ソシュール→チョムスキー→デリダ</div>
+        <div class="qmap-body">「言語がなければ思考できない」か「思考が言語を作る」か。「言語論的転回」以降、哲学の中心テーマに。AIの大規模言語モデルが突きつける問いでもある。</div>
+      </div>
+      <div class="qmap-item">
+        <div class="qmap-q">他者の心は存在するか？</div>
+        <div class="qmap-thinkers">デカルト（懐疑）→フッサール（間主観性）→ウィトゲンシュタイン→レヴィナス</div>
+        <div class="qmap-body">「他人が痛みを感じているという確証はあるか」という「他我問題」。自分以外の意識の存在を証明できない。レヴィナスは「他者の顔」を윤리の出発点にした。AIに感情があるかという問いと直結。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA TEST ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">哲学を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「哲学って何の役に立つの？」</div>
+      <div class="test-q-text">哲学の話になったとき必ず出る定番の疑問</div>
+      <div class="test-a">「物理学・心理学・経済学・政治学、全部もとは哲学だった。問いが大きすぎて哲学のままでは解けないから、方法論を確立して独立していったのが各科学。今の哲学は"科学になれなかった残り物"じゃなくて、まだ方法論すら確立できていない最前線の問いを扱ってる。AIに意識があるか、自由意志は幻想か、正義とは何か。全部哲学の問い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「ソクラテスってどんな人？」</div>
+      <div class="test-q-text">哲学者の名前が出たとき</div>
+      <div class="test-a">「著作ゼロなのに西洋哲学の父という最高の矛盾した人。"自分が無知であることを知っている"という"無知の知"が有名。街で人をつかまえて問答を繰り返し、"あなたが正しいと思ってることは本当に根拠あるの？"と追い詰めて回ったのが最終的に死刑を招いた。今の学術研究の批判的思考の原型。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「ニーチェって何を言った人？」</div>
+      <div class="test-q-text">ニーチェの名前が出たとき（よくある）</div>
+      <div class="test-a">「"神は死んだ"が有名だけど、これは無神論宣言じゃなくて近代社会への診断書。宗教が絶対的価値を保証していた時代が終わった、じゃあ人間はどうやって生きるのか、という問い。ニヒリズム（何も意味ない）に陥るのか、それを超えて自分で価値を作る"超人"になるのか。今でもリアルな問いだと思う。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「カントって何をした人？」</div>
+      <div class="test-q-text">ドイツ哲学の話になったとき</div>
+      <div class="test-a">「生涯故郷のケーニヒスベルクから出なかったのに、哲学史の流れを変えた人。それまで"外の世界がどうあるか"を議論してたのを、"人間の認識はどう機能するか"に問いを転換した。これを"コペルニクス的転回"という。道徳では"動機が純粋ならOK、結果がどうでも"という義務論を確立。今の医療倫理の基本もここから来てる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「実存主義って何？」</div>
+      <div class="test-q-text">カフェ哲学・読書の話になったとき</div>
+      <div class="test-a">「サルトルの"実存は本質に先立つ"が核心。ハンマーは使われる前から"釘を打つもの"として設計されてる。でも人間は先に生まれて、その後で何者かを自分で決める。だから"俺はこういう性格だから"は言い訳で、人間は常に選択し続けている。自由だけど全部自分の責任でもある。それがしんどいし、面白い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「マルクスは何で今も語られるの？」</div>
+      <div class="test-q-text">格差・資本主義の話になったとき</div>
+      <div class="test-a">「20世紀の共産主義革命は全部失敗したけど、資本主義の構造分析は今でも鋭い。"労働者は自分の労働の産物から疎外される""資本は生きた労働を吸い取る死んだ労働だ"という洞察は、GAFAの時代にも通じる。フランスの経済学者ピケティの格差論もマルクスの問題意識を引き継いでいる。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-phi">φ</span>
+  <p>宗教・哲学・次は政治思想か、美術史か。知の巨人への道は続く。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「無知の知こそ、最大の知恵である。— ソクラテス」</p>
+</div>
+
+</body>
+</html>

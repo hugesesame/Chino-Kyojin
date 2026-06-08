@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本史 — 知の巨人への道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo-deep:  #080C1E;
+    --indigo-mid:   #121E48;
+    --indigo-rich:  #1E3070;
+    --indigo-light: #3050A0;
+    --indigo-pale:  #D0D8F0;
+    --vermilion:    #C03020;
+    --vermilion-lt: #E05030;
+    --vermilion-pale:#F5DDD8;
+    --gold:         #B8922A;
+    --gold-light:   #E0B84A;
+    --gold-pale:    #FBF5DC;
+    --ivory:        #FAF8F2;
+    --ivory-dark:   #EDE8D0;
+    --ink:          #100C06;
+    --ink-mid:      #2E2010;
+    --ink-light:    #685040;
+    --gray:         #9A9080;
+    --silver:       #C0B8A8;
+    --shadow:       rgba(8,12,30,0.15);
+    --jade:         #0A3020;
+    --jade-mid:     #1A6040;
+    --jade-light:   #30A070;
+    --cedar:        #6A3010;
+    --cedar-light:  #A05020;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--ivory); color:var(--ink); line-height:1.7; overflow-x:hidden; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--indigo-deep);
+    color:#fff; text-align:center;
+    padding:4.5rem 2rem 3.5rem;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'⛩';
+    position:absolute; font-size:28rem; opacity:0.05;
+    top:50%; left:50%; transform:translate(-50%,-52%);
+    line-height:1; pointer-events:none;
+  }
+  .hero-tag {
+    display:inline-block; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold-light); border:1px solid rgba(224,184,74,0.45);
+    padding:4px 16px; border-radius:2px; margin-bottom:1.5rem;
+  }
+  .hero h1 {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(2rem,6vw,4rem); font-weight:700; line-height:1.2; margin-bottom:1rem;
+    background:linear-gradient(135deg,#fff,var(--gold-light));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:540px; margin:0 auto 2.5rem; font-weight:300; }
+  .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+  .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-light); display:block; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width:960px; margin:0 auto; padding:0 2rem; }
+  section { padding:4rem 0; }
+  .section-header { text-align:center; margin-bottom:3rem; }
+  .section-badge {
+    display:inline-block; background:var(--indigo-mid); color:var(--indigo-pale);
+    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
+  }
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+  .bg-warm  { background:var(--ivory-dark); }
+  .bg-white { background:#fff; }
+  .tip-bar {
+    background:#fff; border-radius:6px; border:1px solid rgba(8,12,30,0.14);
+    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+  }
+
+  /* ─── DARK PANEL ─── */
+  .dark-panel { background:var(--indigo-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--gold-light); font-weight:700; margin-bottom:1.25rem; }
+
+  /* ─── ERA BANDS ─── */
+  .era-band { border-radius:10px; padding:2rem 2.5rem; margin-bottom:1.5rem; color:#fff; }
+  .eb-jomon  { background:linear-gradient(135deg,#180C04,#3C2008); }
+  .eb-nara   { background:linear-gradient(135deg,#080C18,#142040); }
+  .eb-heian  { background:linear-gradient(135deg,#140820,#301848); }
+  .eb-kamak  { background:linear-gradient(135deg,#180408,#401018); }
+  .eb-edo    { background:linear-gradient(135deg,#081410,#163028); }
+  .eb-meiji  { background:linear-gradient(135deg,#101820,#1E3848); }
+  .eb-war    { background:linear-gradient(135deg,#180808,#381010); }
+  .eb-post   { background:linear-gradient(135deg,#081018,#101E30); }
+  .eb-label  { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.3rem; }
+  .eb-title  { font-family:'Noto Serif JP',serif; font-size:1.15rem; color:var(--gold-light); font-weight:700; margin-bottom:0.3rem; }
+  .eb-period { font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
+  .eb-row    { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.75rem; }
+  .eb-card   { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem; }
+  .ebc-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--gold-light); font-weight:700; margin-bottom:0.15rem; }
+  .ebc-dates { font-size:0.6rem; color:var(--silver); margin-bottom:0.35rem; }
+  .ebc-key   { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--jade-light); margin-bottom:0.35rem; }
+  .ebc-body  { font-size:0.76rem; color:rgba(255,255,255,0.65); line-height:1.5; }
+  .ebc-fact  { margin-top:0.5rem; font-size:0.72rem; color:rgba(224,184,74,0.7); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position:relative; padding:1rem 0; }
+  .timeline::before {
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom,transparent,var(--vermilion-lt),var(--vermilion-lt),transparent);
+    transform:translateX(-50%);
+  }
+  .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
+  .tl-item.right { flex-direction:row-reverse; }
+  .tl-item.right .tl-card { text-align:right; }
+  .tl-dot {
+    position:absolute; left:50%; top:1rem; transform:translateX(-50%);
+    width:14px; height:14px; background:var(--vermilion-lt);
+    border:3px solid var(--ivory); border-radius:50%;
+    box-shadow:0 0 0 2px var(--vermilion-lt); z-index:2;
+  }
+  .tl-dot.gold  { background:var(--gold);       box-shadow:0 0 0 2px var(--gold); }
+  .tl-dot.indigo{ background:var(--indigo-light);box-shadow:0 0 0 2px var(--indigo-light); }
+  .tl-dot.jade  { background:var(--jade-mid);    box-shadow:0 0 0 2px var(--jade-mid); }
+  .tl-card {
+    width:calc(50% - 2.5rem); background:#fff;
+    border:1px solid rgba(8,12,30,0.14); border-radius:6px;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+  }
+  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--vermilion-lt); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
+  .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
+  .tl-item.right .tl-emoji        { left:-2.2rem; }
+  @media(max-width:640px){
+    .timeline::before { left:1.5rem; }
+    .tl-item,.tl-item.right { flex-direction:column; padding-left:3.5rem; }
+    .tl-card,.tl-item.right .tl-card { width:100%; text-align:left; }
+    .tl-dot { left:1.5rem; }
+    .tl-item .tl-emoji,.tl-item.right .tl-emoji { display:none; }
+  }
+
+  /* ─── FIGURE CARDS ─── */
+  .figure-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1rem; }
+  .figure-card {
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
+    border-top:3px solid var(--gold-light);
+    border-radius:0 0 8px 8px; padding:1rem 1.1rem;
+  }
+  .fc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.15rem; }
+  .fc-dates  { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .fc-key    { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--jade-light); margin-bottom:0.4rem; }
+  .fc-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+  .fc-quote  { margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.42); font-style:italic; border-left:2px solid rgba(224,184,74,0.4); padding-left:0.5rem; }
+
+  /* ─── CONCEPT CARDS ─── */
+  .concept-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .concept-card {
+    background:#fff; border:1px solid rgba(8,12,30,0.14);
+    border-left:4px solid var(--indigo-mid);
+    border-radius:0 8px 8px 0;
+    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+  }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-sub  { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--indigo-mid); background:rgba(8,12,30,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+
+  /* ─── LIFE STEP ─── */
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
+  .ls-icon  { font-size:1.8rem; flex-shrink:0; }
+  .ls-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+
+  /* ─── CULTURE GRID ─── */
+  .culture-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .culture-card {
+    background:var(--indigo-deep); color:#fff;
+    border-radius:8px; padding:1.5rem;
+    position:relative; overflow:hidden;
+  }
+  .culture-card::after {
+    content:attr(data-sym); position:absolute; bottom:-0.5rem; right:0.5rem;
+    font-size:3.5rem; opacity:0.08; line-height:1; color:var(--gold-light);
+  }
+  .cc-era    { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--silver); display:block; margin-bottom:0.4rem; }
+  .cc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; display:block; margin-bottom:0.4rem; }
+  .cc-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+
+  /* ─── COMPARE TABLE ─── */
+  .cmp-bg { background:var(--indigo-deep); border-radius:10px; padding:2.5rem; color:#fff; overflow-x:auto; }
+  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:500px; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.67rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-light); border-bottom:1px solid rgba(255,255,255,0.12); white-space:nowrap; }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-table tr:last-child td { border-bottom:none; }
+  .cmp-table td:first-child { color:var(--gold-light); font-weight:700; white-space:nowrap; }
+
+  /* ─── IZAKAYA ─── */
+  .test-bg { background:var(--indigo-deep); border-radius:10px; padding:2.5rem; color:#fff; }
+  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--vermilion-lt); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--indigo-pale); margin-bottom:0.3rem; }
+  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
+  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-a::before { content:'💡 '; }
+
+  /* ─── FOOTER ─── */
+  .footer { background:var(--indigo-deep); color:var(--silver); text-align:center; padding:2rem; font-size:0.77rem; }
+  .footer-icon { font-size:2rem; display:block; margin-bottom:0.5rem; }
+
+  /* ─── SHOGUN LIST ─── */
+  .shogun-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:0.6rem; margin-top:1rem; }
+  .shogun-item { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.7rem 0.9rem; text-align:center; }
+  .si-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--gold-light); font-weight:700; display:block; margin-bottom:0.2rem; }
+  .si-years { font-size:0.6rem; color:var(--silver); margin-bottom:0.3rem; display:block; }
+  .si-key   { font-size:0.72rem; color:rgba(255,255,255,0.62); line-height:1.4; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ Vol.8</div>
+  <h1>日本史<br>完全攻略ガイド</h1>
+  <p class="hero-sub">縄文から令和まで——2万年の島国が生み出した「日本」という奇跡を一気に理解する。</p>
+  <div class="hero-stats">
+    <div><span class="hero-stat-num">約2万年</span><span class="hero-stat-lbl">縄文時代の始まり</span></div>
+    <div><span class="hero-stat-num">660年</span><span class="hero-stat-lbl">建国神話（神武天皇）</span></div>
+    <div><span class="hero-stat-num">7つの幕府・朝廷</span><span class="hero-stat-lbl">主要な政治体制</span></div>
+    <div><span class="hero-stat-num">1度も植民地化されず</span><span class="hero-stat-lbl">島国の奇跡</span></div>
+  </div>
+</div>
+
+<!-- ═══ CH1: 日本史を学ぶ意味 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 1</span>
+    <h2 class="section-title">日本史を学ぶとはどういうことか</h2>
+    <p class="section-desc">「なぜ日本は日本なのか」——この問いへの答えが詰まっている</p>
+  </div>
+  <div class="culture-grid">
+    <div class="culture-card" data-sym="①">
+      <span class="cc-era">UNIQUENESS</span>
+      <span class="cc-name">なぜ島国で独自文化？</span>
+      <p class="cc-body">海という天然の防壁が外来文化を「選択的に取り込む」余裕を生んだ。中国・朝鮮・西洋の文化を受け入れながら独自にアレンジし続けた「ハイブリッド文化の国」の歴史。</p>
+    </div>
+    <div class="culture-card" data-sym="②">
+      <span class="cc-era">RESILIENCE</span>
+      <span class="cc-name">なぜ一度も植民地化されなかった？</span>
+      <p class="cc-body">地理的条件・中央集権化の成功・明治維新という奇跡的な近代化の組み合わせ。アジアで近代的自立を達成した数少ない国。その代償として帝国主義への道も開いた。</p>
+    </div>
+    <div class="culture-card" data-sym="③">
+      <span class="cc-era">CONTINUITY</span>
+      <span class="cc-name">なぜ天皇は2000年続く？</span>
+      <p class="cc-body">世界最古の王朝。政治的実権を手放し「権威」として存続した天皇制の柔軟性。武士・幕府が実権を握っても「天皇」を権威の源として必要とし続けたという構造。</p>
+    </div>
+    <div class="culture-card" data-sym="④">
+      <span class="cc-era">TRANSFORMATION</span>
+      <span class="cc-name">なぜ明治に急変できた？</span>
+      <p class="cc-body">江戸260年の識字率・行政能力・商品経済の蓄積が明治の「インフラ」になった。「変化」が「伝統の破壊」でなく「天皇への回帰」という保守的形式で行われた逆説。</p>
+    </div>
+  </div>
+  <div class="tip-bar">
+    🍺 <strong>居酒屋ポイント：</strong>「日本って世界史的に見るとめちゃくちゃ特殊な国でさ。アジアで唯一西洋に植民地化されなかった・世界最古の王朝が続いてる・中国文化を受け取りながら全部自分流にアレンジした。この"特殊さ"の理由を知ると日本って面白くなる」
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH2: 縄文〜飛鳥 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 2</span>
+    <h2 class="section-title">縄文〜飛鳥 — 「日本」の形成</h2>
+    <p class="section-desc">BC 1万4000年〜700年頃。稲作・国家・仏教が列島を変えた</p>
+  </div>
+
+  <div class="era-band eb-jomon">
+    <div class="eb-label">JOMON → ASUKA · 縄文〜飛鳥</div>
+    <div class="eb-title">農業・文字・仏教——3つの「輸入」が日本を作った</div>
+    <div class="eb-period">BC 1万4000年〜AD 710年</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">縄文時代</div>
+        <div class="ebc-dates">BC 1万4000〜BC 300年頃</div>
+        <div class="ebc-key">世界最古の土器文明</div>
+        <div class="ebc-body">約1万4000年前から始まった世界最古の土器文化のひとつ。定住・採集・漁労が中心。縄文土器は世界最古の土器級。「縄文人は野蛮」は誤解で、定住・貯蔵・交易を行う高度な文化を持った。遺伝的には現代日本人の約10〜20%が縄文人由来とも。</div>
+        <div class="ebc-fact">→ 世界最古級の土器・定住文化</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">弥生時代</div>
+        <div class="ebc-dates">BC 300〜AD 250年頃</div>
+        <div class="ebc-key">稲作・金属・階級社会の誕生</div>
+        <div class="ebc-body">大陸から稲作・鉄器・青銅器が伝来。余剰食料が生まれ→貯蔵→争い→貧富の差→階級社会→「くに」の形成。邪馬台国の卑弥呼が魏志倭人伝に登場（239年頃）。邪馬台国の場所は今も畿内説と九州説が対立する最大のミステリー。</div>
+        <div class="ebc-fact">→ 邪馬台国の謎——畿内説 vs 九州説</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">大和朝廷・古墳時代</div>
+        <div class="ebc-dates">3〜7世紀</div>
+        <div class="ebc-key">統一国家の形成・仁徳天皇陵</div>
+        <div class="ebc-body">ヤマト政権が列島を統一。仁徳天皇陵（大仙陵古墳）は全長486mで世界最大級の墳墓——エジプトのピラミッドより大きい。渡来人（朝鮮・中国から来た技術者・学者）が漢字・儒教・各種技術を伝えた。</div>
+        <div class="ebc-fact">→ 仁徳天皇陵はピラミッドより大きい</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">飛鳥時代・聖徳太子</div>
+        <div class="ebc-dates">593〜710年</div>
+        <div class="ebc-key">仏教公伝・十七条憲法・遣隋使</div>
+        <div class="ebc-body">聖徳太子（厩戸皇子）が仏教・儒教を取り入れ「和を以て貴しとなす」の十七条憲法を制定（604年）。遣隋使・遣唐使で中国文化を積極的に輸入。蘇我氏と物部氏の仏教受容をめぐる対立が最初の「文化戦争」。大化の改新（645年）で中央集権化が始まる。</div>
+        <div class="ebc-fact">→「和を以て貴しとなす」が日本の基本精神に</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH3: 奈良〜平安 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 3</span>
+    <h2 class="section-title">奈良〜平安 — 貴族文化の黄金時代</h2>
+    <p class="section-desc">710〜1185年。日本文化の「原型」が生まれた500年</p>
+  </div>
+
+  <div class="dark-panel">
+    <div class="dp-label">NARA · HEIAN · 奈良・平安時代</div>
+    <div class="dp-title">中国文化を「日本化」した時代——仮名文字・源氏物語・武士の萌芽</div>
+    <div class="figure-grid">
+      <div class="figure-card">
+        <div class="fc-name">奈良時代（710〜794）</div>
+        <div class="fc-dates">平城京遷都〜長岡京遷都</div>
+        <div class="fc-key">律令国家・東大寺・万葉集</div>
+        <div class="fc-body">唐の都・長安を模した平城京を造営。聖武天皇が国分寺・東大寺大仏建立（752年開眼供養）。万葉集（最古の歌集）・古事記・日本書紀が編纂され「日本の歴史」が書かれた。奈良の大仏は今でも世界最大級の金銅仏。</div>
+        <div class="fc-quote">→ 東大寺大仏は奈良時代の国家プロジェクト</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">平安時代前期（794〜900頃）</div>
+        <div class="fc-dates">平安京遷都〜藤原氏台頭</div>
+        <div class="fc-key">遣唐使廃止・国風文化の開始</div>
+        <div class="fc-body">桓武天皇が平安京（現京都）に遷都。最澄・空海が唐から帰国し天台宗・真言宗を開く。894年、菅原道真の建議で遣唐使廃止。中国文化の直接輸入が止まり「日本独自の文化（国風文化）」が育ち始める転換点。</div>
+        <div class="fc-quote">→ 遣唐使廃止が「日本化」の決定的な転換点</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">藤原氏の摂関政治</div>
+        <div class="fc-dates">9〜11世紀</div>
+        <div class="fc-key">摂政・関白・外戚支配</div>
+        <div class="fc-body">「この世をば わが世とぞ思ふ 望月の 欠けたることも なしと思へば」（藤原道長、1018年）。天皇の外戚（母方の祖父）として摂政・関白を独占した藤原氏の全盛期。政治的安定が貴族文化の開花を可能にした。</div>
+        <div class="fc-quote">「この世をば わが世とぞ思ふ 望月の…」道長</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">平安文化の黄金期</div>
+        <div class="fc-dates">10〜11世紀</div>
+        <div class="fc-key">かな文字・源氏物語・枕草子</div>
+        <div class="fc-body">仮名文字（ひらがな・カタカナ）の発達が女性の文学活動を可能に。紫式部「源氏物語」（世界最古の長編小説のひとつ）、清少納言「枕草子」が誕生。日本独自の美意識「もののあはれ」「をかし」が確立した。</div>
+        <div class="fc-quote">→ 源氏物語は世界初の長編小説のひとつ</div>
+      </div>
+      <div class="figure-card">
+        <div class="fc-name">武士の台頭</div>
+        <div class="fc-dates">10〜12世紀</div>
+        <div class="fc-key">平将門・源平・武士団の形成</div>
+        <div class="fc-body">地方統治の実力者として武士が成長。939年に平将門が関東で反乱。保元・平治の乱（1156・1159）で武士が中央政治に介入。源頼朝と平清盛の源平合戦（1180〜1185）で武士の時代が幕を開ける。壇ノ浦の戦いで平家滅亡。</div>
+        <div class="fc-quote">→「諸行無常の響きあり」平家物語の冒頭</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH4: 鎌倉〜戦国 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 4</span>
+    <h2 class="section-title">鎌倉〜戦国 — 武士の時代</h2>
+    <p class="section-desc">1185〜1600年。400年間の権力闘争と文化の爆発</p>
+  </div>
+
+  <div class="era-band eb-kamak">
+    <div class="eb-label">KAMAKURA → SENGOKU · 鎌倉〜戦国</div>
+    <div class="eb-title">武士道・禅・茶・能——「日本らしさ」の多くがここで誕生した</div>
+    <div class="eb-period">1185〜1600年（約400年間）</div>
+    <div class="eb-row">
+      <div class="eb-card">
+        <div class="ebc-name">鎌倉幕府（源頼朝）</div>
+        <div class="ebc-dates">1185〜1333年</div>
+        <div class="ebc-key">武家政権の誕生・御恩と奉公</div>
+        <div class="ebc-body">頼朝が鎌倉に幕府を開き、武家政権の原型を作る。「御恩と奉公」という主従関係が封建制度の基本に。承久の乱（1221）で幕府が朝廷を打ち破り武家の優位が確定。元寇（1274・1281）——神風という偶然が幕府を救ったが経済的疲弊で崩壊の原因にも。</div>
+        <div class="ebc-fact">→ 元寇の「神風」——実は台風という自然現象</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">南北朝・室町幕府</div>
+        <div class="ebc-dates">1336〜1573年</div>
+        <div class="ebc-key">足利・金閣・銀閣・日明貿易</div>
+        <div class="ebc-body">足利尊氏が室町幕府を開くが、後醍醐天皇との争いで南北朝（60年）が続く。義満（3代将軍）が統一し金閣寺・日明貿易で全盛期。義政（8代）の銀閣寺・東山文化が侘びの美学の原点。応仁の乱（1467〜）で戦国時代へ。</div>
+        <div class="ebc-fact">→ 金閣（武家）・銀閣（公家）文化の融合</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">戦国時代</div>
+        <div class="ebc-dates">1467〜1590年頃</div>
+        <div class="ebc-key">下剋上・群雄割拠・鉄砲伝来</div>
+        <div class="ebc-body">「下剋上（身分が下の者が上位者を倒す）」の時代。1543年種子島に鉄砲伝来、1549年フランシスコ・ザビエルがキリスト教伝来。群雄割拠の混乱を武田信玄・上杉謙信・毛利元就らが割拠。そこへ織田信長が登場し天下統一に向けて動き出す。</div>
+        <div class="ebc-fact">→ 1543年の鉄砲伝来が戦争様式を根本から変えた</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">織田信長（1534〜1582）</div>
+        <div class="ebc-dates">天下布武・比叡山焼き討ち</div>
+        <div class="ebc-key">革命児・革命的合理主義者</div>
+        <div class="ebc-body">「是非もなし」——本能寺の変で明智光秀に討たれた言葉とされる。楽市楽座で商業自由化、比叡山焼き討ちで仏教勢力を制圧、長篠の戦いで鉄砲の組織的運用を完成させた。中世の秩序を破壊し近世の扉を開いた「革命児」。</div>
+        <div class="ebc-fact">→「天下布武」——武力で天下を統一するの意</div>
+      </div>
+      <div class="eb-card">
+        <div class="ebc-name">豊臣秀吉（1537〜1598）</div>
+        <div class="ebc-dates">天下統一・朝鮮出兵</div>
+        <div class="ebc-key">農民→天下人・刀狩り</div>
+        <div class="ebc-body">農民出身から関白・太閤へ。1590年全国統一。刀狩り（武士・農民の身分を固定）・太閤検地（土地と生産力を把握）で近世の基盤を整備。晩年の朝鮮出兵（文禄・慶長の役）は失敗し日韓関係の歴史的傷に。子・秀頼を残して死去、徳川家康に権力が移る。</div>
+        <div class="ebc-fact">→ 「人の一生は重荷を負って遠き道を行くがごとし」（家康語録）</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH5: 江戸時代 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 5</span>
+    <h2 class="section-title">江戸時代 — 「平和」と「鎖国」の260年</h2>
+    <p class="section-desc">1603〜1868年。世界史的に見ても稀有な「平和な近世」</p>
+  </div>
+
+  <div class="dark-panel" style="margin-bottom:2rem;">
+    <div class="dp-label">EDO PERIOD · 江戸時代</div>
+    <div class="dp-title">世界が戦乱の中で、日本だけが260年の平和を享受した奇跡の時代</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1.5rem;">
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--gold-light); border-radius:0 8px 8px 0; padding:1.1rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--gold-light); font-weight:700; margin-bottom:0.4rem;">参勤交代制度</div>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6;">大名を1年おきに江戸と地元を往復させる制度。大名の経済力を消耗させ、反乱を防ぐ巧妙な設計。副作用として五街道の整備・宿場町の発展・江戸の消費経済の活性化をもたらした。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--gold-light); border-radius:0 8px 8px 0; padding:1.1rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--gold-light); font-weight:700; margin-bottom:0.4rem;">鎖国と「開かれた窓」</div>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6;">1639年にポルトガル船来航禁止で「鎖国」が完成。ただし長崎・出島でオランダ・中国との貿易は継続。「完全な鎖国」ではなく、朝鮮・琉球・蝦夷地との交流も維持した「四つの口」の外交。蘭学（西洋学問）がこの窓口から入った。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--gold-light); border-radius:0 8px 8px 0; padding:1.1rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--gold-light); font-weight:700; margin-bottom:0.4rem;">元禄文化と化政文化</div>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6;">元禄文化（17c末）は上方（大阪・京都）の町人文化——松尾芭蕉・井原西鶴・近松門左衛門。化政文化（19c初）は江戸の庶民文化——葛飾北斎・歌川広重・十返舎一九。浮世絵はのちにモネ・ドガ・ゴッホなど印象派に大きな影響を与えた。</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-left:3px solid var(--gold-light); border-radius:0 8px 8px 0; padding:1.1rem;">
+        <div style="font-family:'Noto Serif JP',serif; font-size:0.95rem; color:var(--gold-light); font-weight:700; margin-bottom:0.4rem;">江戸時代の識字率と教育</div>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6;">19世紀初頭の江戸の識字率は男性70〜80%と推定され、当時の欧米をはるかに超えていた。寺子屋（私塾）が庶民教育を担い、「読み・書き・そろばん」が普及。この教育インフラが明治の急速な近代化を可能にした隠れた主役。</div>
+      </div>
+    </div>
+    <div style="background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      ⚡ <strong style="color:var(--gold-light);">1853年・ペリーの黒船来航：</strong>アメリカの蒸気船4隻が浦賀に現れた衝撃は「泰平の眠りを覚ます上喜撰（蒸気船）たった四杯で夜も眠れず」という狂歌に残る。260年の平和が一夜で終わり、「開国か攘夷か」「幕府か倒幕か」という激動の15年（幕末）が始まった。
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="life-step">
+      <div class="ls-icon">🗡</div>
+      <div>
+        <div class="ls-title">江戸三大改革 — 幕府が繰り返した「改革と失敗」</div>
+        <div class="ls-body">享保の改革（8代・吉宗）・寛政の改革（松平定信）・天保の改革（水野忠邦）。いずれも財政再建・風俗粛正・倹約令が中心で、いずれも庶民・商人の反発を受けて失敗した。「改革→失敗→元に戻る」というサイクルが幕府の体力を奪っていった。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH6: 明治〜戦前 ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 6</span>
+    <h2 class="section-title">明治〜戦前 — 急速な近代化と帝国主義</h2>
+    <p class="section-desc">1868〜1945年。わずか80年で世界列強から壊滅まで</p>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1868年</div>
+        <div class="tl-event">明治維新 — 「文明開化」と「富国強兵」</div>
+        <div class="tl-desc">大政奉還・王政復古で江戸幕府が終わり明治政府が誕生。「廃藩置県」で藩を廃止し中央集権化。岩倉使節団が欧米視察。「殖産興業・富国強兵・文明開化」の三本柱で近代化を急速推進。福沢諭吉「学問のすゝめ」が近代精神を普及。</div>
+      </div>
+      <div class="tl-dot gold"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🌐</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1889年</div>
+        <div class="tl-event">大日本帝国憲法発布</div>
+        <div class="tl-desc">プロイセン（ドイツ）型の欽定憲法。天皇主権・帝国議会・内閣制度が確立。伊藤博文が設計の中心。民権運動が求めた「欽定憲法」の枠内での議会制度。翌年に教育勅語が発布され「忠君愛国」が国民教育の基本に。</div>
+      </div>
+      <div class="tl-dot"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">📜</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1894〜1905年</div>
+        <div class="tl-event">日清・日露戦争 — 列強入りと帝国主義化</div>
+        <div class="tl-desc">日清戦争（1894〜95）勝利→台湾・遼東半島割譲。三国干渉でロシア・仏・独に遼東半島返還を迫られる屈辱。日露戦争（1904〜05）——アジアで初めて白人大国（ロシア）に勝った衝撃は世界のアジア・アフリカ独立運動に影響を与えた。韓国併合（1910）へ。</div>
+      </div>
+      <div class="tl-dot indigo"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">⚔️</div>
+    </div>
+
+    <div class="tl-item right">
+      <div class="tl-card">
+        <div class="tl-year">1923〜1932年</div>
+        <div class="tl-event">関東大震災・恐慌・満州事変</div>
+        <div class="tl-desc">1923年関東大震災で東京・横浜壊滅（死者10万人超）。朝鮮人虐殺事件も発生。1929年世界恐慌が日本を直撃。1932年満州事変→満州国建国（傀儡国家）。軍部が政治を主導し始め、五・一五事件（犬養毅首相暗殺）で政党政治が終わる。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">💥</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card">
+        <div class="tl-year">1937〜1945年</div>
+        <div class="tl-event">日中戦争・太平洋戦争・敗戦</div>
+        <div class="tl-desc">1937年盧溝橋事件で日中全面戦争。1941年真珠湾攻撃で対米英戦争へ。初期の快進撃も1942年ミッドウェー海戦の敗北が転換点。1945年東京大空襲・広島・長崎原爆投下・ソ連参戦で8月15日「終戦の玉音放送」。死者約310万人。</div>
+      </div>
+      <div class="tl-dot red"></div>
+      <div style="width:calc(50% - 2.5rem);"></div>
+      <div class="tl-emoji">🕊</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH7: 戦後〜現代 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 7</span>
+    <h2 class="section-title">戦後〜現代 — 奇跡の復興と「失われた時代」</h2>
+    <p class="section-desc">1945年〜現在。廃墟から世界第2位の経済大国へ、そして迷走の30年</p>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+    <div class="life-step">
+      <div class="ls-icon">🏛</div>
+      <div>
+        <div class="ls-title">占領期とGHQの改革（1945〜1952年）</div>
+        <div class="ls-body">マッカーサー率いるGHQが間接統治。日本国憲法（1947年施行）——第9条の戦争放棄・主権在民・基本的人権の保障はアメリカが設計したが、日本人も多くが支持した。農地改革（地主制廃止）・財閥解体・婦人参政権付与は「上からの民主主義革命」。朝鮮戦争（1950）による特需が経済復興を加速。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">📈</div>
+      <div>
+        <div class="ls-title">高度経済成長（1955〜1973年）——「奇跡」の18年</div>
+        <div class="ls-body">年平均10%超の経済成長率。1968年にGNPで西ドイツを抜き資本主義世界第2位に。1964年東京オリンピック・東海道新幹線開業が象徴。MITI（通産省）による産業政策・終身雇用・系列・輸出主導型成長モデル。「三種の神器（白黒TV・洗濯機・冷蔵庫）」が普及し大衆消費社会が誕生。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🫧</div>
+      <div>
+        <div class="ls-title">バブル経済と崩壊（1986〜1991年）——「狂乱」と「失われた30年」</div>
+        <div class="ls-body">プラザ合意（1985年）後の円高対策の低金利政策が土地・株のバブルを生んだ。「土地は必ず上がる」という神話の下で東京の土地価格がアメリカ全土を買える水準に。1991年バブル崩壊→不良債権問題→デフレ→「失われた10年→20年→30年」。デフレと低成長が続き、1990年代に40歳だった日本の名目GDPは2024年現在もほぼ同水準。</div>
+      </div>
+    </div>
+    <div class="life-step">
+      <div class="ls-icon">🗾</div>
+      <div>
+        <div class="ls-title">平成〜令和の日本（1989〜現在）——課題の山積</div>
+        <div class="ls-body">阪神淡路大震災（1995）・地下鉄サリン事件（1995）・リーマンショック（2008）・東日本大震災・原発事故（2011）・コロナ（2020）と相次ぐ危機。少子高齢化・人口減少（2008年から減少開始）・財政赤字・デジタル化の遅れが構造的課題。一方でアニメ・ゲーム・食文化などのソフトパワーは世界的に高評価。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CH8: CONCEPT CARDS ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">CHAPTER 8</span>
+    <h2 class="section-title">日本史の核心概念と「日本らしさ」の源泉</h2>
+    <p class="section-desc">これを言えたら「詳しい人」認定——日本を読む10のキーワード</p>
+  </div>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-term">和魂洋才 <span class="concept-sub">わこんようさい</span></div>
+      <div class="concept-body">「日本の精神を保ちながら西洋の技術・知識を取り入れる」という明治時代の文明開化の基本原理。中国文化をアレンジした奈良時代から一貫する日本の文化受容のパターン——「外来文化を選択的に取り込み、独自化する」。</div>
+      <div class="concept-izakaya">「和魂洋才って明治の言葉だけど、実は縄文から令和まで一貫した日本の戦略なんよ。漢字をひらがなに変えた・中国仏教を日本仏教にした・西洋科学を取り込んで電子産業を作った。"オリジナルを尊重しつつ改良する"ってDNAに刻まれてる」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">武士道 <span class="concept-sub">ぶしどう</span></div>
+      <div class="concept-body">武士の倫理規範——忠義・礼節・廉恥・名誉・潔さ。新渡戸稲造「武士道（1900年・英文）」が欧米に紹介し日本人の精神文化として世界に広まった。ただし「武士道」という体系的規範は江戸時代に武士が暇になってから整備された側面が強い。</div>
+      <div class="concept-izakaya">「武士道って面白くて、戦国時代の武士は普通に騙し合い・裏切り・虐殺をしてた。武士道という精神論が体系化されたのは江戸時代に武士が戦わなくなってから。"戦えない武士"が精神的アイデンティティとして作り上げたものかもしれない」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">もののあはれ <span class="concept-sub">もののあわれ</span></div>
+      <div class="concept-body">本居宣長が「源氏物語」を通じて発見した日本文学の本質。「ものごとのはかなさ・無常を深く感じ取る感受性」。桜が散るから美しい・月は欠けるから愛でる。諸行無常の仏教的感覚と結びついた日本独自の美意識。</div>
+      <div class="concept-izakaya">「もののあはれってなんで日本人は桜をあんなに好きかの答えかも。満開より散り際に美を感じる感性——散るから美しい。欧米の「美しいものは永続すべき」とは真逆の発想。はかなさをポジティブに受け取る日本人のメンタリティの原点」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">幕藩体制 <span class="concept-sub">ばくはんたいせい</span></div>
+      <div class="concept-body">江戸幕府の政治体制。全国を約270の藩に分け、大名が藩内を統治しながら幕府に従属する二重構造。参勤交代・大名同士の婚姻規制などで大名を統制。「分権的中央集権」という逆説的な安定システムが260年の平和を支えた。</div>
+      <div class="concept-izakaya">「江戸の幕藩体制って今の日本の都道府県制度の原型。藩という単位が今の県になった。だから「京都人」「大阪人」「江戸っ子」というアイデンティティが今も強いのは藩のなごり。コンビニのメニューが地域で違うのも藩文化の残影かも」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">大政奉還 <span class="concept-sub">たいせいほうかん</span></div>
+      <div class="concept-body">1867年、15代将軍・徳川慶喜が政権を天皇に返上。「血まみれの革命」でなく話し合いによる権力移譲という世界史的に稀な政権交代。ただし薩長が「王政復古の大号令」で慶喜追い落としを図り、戊辰戦争（内戦）が続いた。</div>
+      <div class="concept-izakaya">「大政奉還って"平和な政権交代"のイメージあるけど、その後ちゃんと戊辰戦争（内戦）があったんよ。函館・箱館戦争まで1年半かかった。"革命"というより"交渉と内戦のハイブリッド"で明治政府が生まれた」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">臥薪嘗胆 <span class="concept-sub">がしんしょうたん</span></div>
+      <div class="concept-body">日清戦争後の三国干渉（1895年）で遼東半島をロシア・独・仏に返還させられた屈辱に対して「臥薪嘗胆（苦労に耐えて復讐を期す）」というスローガンで国民が団結。この怨恨が日露戦争（1904〜05）の国民的動員の原動力になった。</div>
+      <div class="concept-izakaya">「三国干渉→臥薪嘗胆→日露戦争という連鎖は、"屈辱が10年後の戦争の燃料になる"という歴史のパターン。今の中国の"百年の屈辱"スローガンと構造が全く同じで、歴史は繰り返すなと思う」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">玉音放送と「一億総懺悔」 <span class="concept-sub">ぎょくおんほうそう</span></div>
+      <div class="concept-body">1945年8月15日、昭和天皇が初めてラジオで「終戦の詔書」を読み上げた（玉音放送）。「耐え難きを耐え、忍び難きを忍び……」。「一億総懺悔」——戦争の責任を国民全体が等しく負うという論理が、個人の責任追及を曖昧にする機能を果たした、という歴史的批判もある。</div>
+      <div class="concept-izakaya">「玉音放送を聞いて"負けた"と知った人は少なく、ほとんどが初めて天皇の声を聞いたことに感動したという証言が多い。"一億総懺悔"は戦争責任をみんなの責任にすることで誰も責任を取らない構造を生んだ、という批判は今でも有効な問い」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">55年体制 <span class="concept-sub">ごじゅうごねんたいせい</span></div>
+      <div class="concept-body">1955年に自由民主党が結党し、社会党が万年野党として対立した政治体制。「保守対革新」という対立軸が日本政治を規定し、1993年まで続く。自民党が政権を独占し続けたことで「政権交代なき民主主義」と批判された一方、高度経済成長を実現したという評価もある。</div>
+      <div class="concept-izakaya">「55年体制って、自民党が1955年から93年まで38年間一度も負けなかった政治体制。その間に日本はGNP2位の経済大国になった。"政権交代なき民主主義"というパラドックスだけど、安定と成長を同時に実現したのは事実。今の"何度交代しても変わらない感"の原因でもある」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">失われた30年 <span class="concept-sub">うしなわれた30ねん</span></div>
+      <div class="concept-body">1991年バブル崩壊後の長期停滞。経済成長率ほぼゼロ・デフレ・賃金停滞が続いた。「失われた10年」が「20年」になり「30年」になった。構造的原因は不良債権処理の遅延・デフレ期待の定着・人口減少・デジタル化の遅れ・終身雇用による労働流動性の低さ。2024年頃からようやくインフレと賃上げが始まった。</div>
+      <div class="concept-izakaya">「日本の失われた30年って、バブル崩壊から2020年代まで名目GDPがほぼ横ばいという先進国では前例がない長期停滞。同じ期間に中国は40倍・韓国は5倍になった。デフレに慣れた社会が"値段を上げてはいけない"という空気を作り、そのまま30年沈んだという話」</div>
+    </div>
+    <div class="concept-card">
+      <div class="concept-term">日本のソフトパワー <span class="concept-sub">ソフトパワー</span></div>
+      <div class="concept-body">経済的には停滞する日本が世界的に影響力を持ち続けている分野——アニメ・マンガ・ゲーム・料理・建築・ファッション。「クールジャパン」。GDPや軍事力でなく文化的魅力が国際影響力を生む「ソフトパワー（ジョセフ・ナイ）」の典型例として研究される。</div>
+      <div class="concept-izakaya">「日本って経済は停滞してるのに、世界中で日本のアニメ・寿司・任天堂・茶道が人気というチグハグな状況が面白い。ソフトパワーって軍事・経済と別次元の影響力で、アメリカのハリウッドと同じ構造で日本の文化産業が機能してる」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ SPECIAL: 日本の文化史 ═══ -->
+<section class="bg-white">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">SPECIAL</span>
+    <h2 class="section-title">日本の時代と文化・政治体制 対照表</h2>
+    <p class="section-desc">政治の変化と文化の変化を同時に理解する</p>
+  </div>
+  <div class="cmp-bg">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>時代</th>
+          <th>政治の中心</th>
+          <th>代表的文化</th>
+          <th>外来文化との関係</th>
+          <th>終わりの原因</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>飛鳥・奈良</td>
+          <td>天皇・貴族（律令国家）</td>
+          <td>万葉集・東大寺・古事記</td>
+          <td>唐文化を全面的に輸入</td>
+          <td>藤原氏の台頭・平安京遷都</td>
+        </tr>
+        <tr>
+          <td>平安</td>
+          <td>藤原氏摂関政治</td>
+          <td>源氏物語・仮名文字・枕草子</td>
+          <td>国風化——「日本化」が進む</td>
+          <td>武士の台頭・源平の争乱</td>
+        </tr>
+        <tr>
+          <td>鎌倉</td>
+          <td>源氏・北条氏（武家政権）</td>
+          <td>鎌倉仏教・武士文学・禅</td>
+          <td>宋文化（禅・墨絵・茶）を選択的輸入</td>
+          <td>元寇の疲弊・後醍醐天皇討幕</td>
+        </tr>
+        <tr>
+          <td>室町</td>
+          <td>足利氏（武家政権）</td>
+          <td>能・茶道・金閣・銀閣・水墨画</td>
+          <td>明文化との交流・日明貿易</td>
+          <td>応仁の乱→戦国時代へ</td>
+        </tr>
+        <tr>
+          <td>江戸</td>
+          <td>徳川幕府（武家政権）</td>
+          <td>浮世絵・歌舞伎・俳句・蘭学</td>
+          <td>鎖国（出島のみ）——選択的輸入</td>
+          <td>黒船来航・攘夷運動・倒幕</td>
+        </tr>
+        <tr>
+          <td>明治〜大正</td>
+          <td>天皇・藩閥政府→政党政治</td>
+          <td>文明開化・鹿鳴館・漱石・鷗外</td>
+          <td>西洋文化を全面的に輸入（和魂洋才）</td>
+          <td>昭和軍部の台頭・戦争</td>
+        </tr>
+        <tr>
+          <td>戦後〜現在</td>
+          <td>55年体制→政権交代→自民党回帰</td>
+          <td>アニメ・マンガ・J-POP・和食ブーム</td>
+          <td>アメリカ文化を大量輸入→再び「日本化」</td>
+          <td>（現在進行中——少子化・デジタル化）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
+      🔁 <strong style="color:var(--gold-light);">日本史のパターン：</strong>「外来文化を受け入れ→独自化→アイデンティティを確立→次の外来文化と出会う」という繰り返し。中国文化→鎌倉仏教の独自化→室町文化→西洋文化→現代サブカルチャーへの昇華。「コピー＆改良」が日本の一貫した戦略。
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ IZAKAYA ═══ -->
+<section class="bg-warm">
+<div class="container">
+  <div class="section-header">
+    <span class="section-badge">FINAL CHAPTER</span>
+    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <p class="section-desc">日本史を制覇した「あなた」が使えるトークシナリオ集</p>
+  </div>
+  <div class="test-bg">
+    <div class="test-q">
+      <div class="test-q-label">Q1 — 「邪馬台国ってどこにあったの？」</div>
+      <div class="test-q-text">歴史の話になったとき定番の話題</div>
+      <div class="test-a">「これは日本史最大のミステリーで、今でも決着していない。魏志倭人伝の記述を真剣に辿ると九州説になり、文化・遺跡の規模からは畿内（大和・奈良）説が有力で、最近は纒向遺跡（奈良）が有力候補。ただし両説とも決定的な証拠がない。"答えが出ない"ことが日本史の入口として面白い。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q2 — 「なんで戦国武将はあんなに人気なの？」</div>
+      <div class="test-q-text">ゲームや大河ドラマの話になったとき</div>
+      <div class="test-a">「戦国時代は"実力主義の時代"で、農民・下級武士でも能力次第で天下人になれた（秀吉がその象徴）。身分社会の日本でそれが起きた特異な100年。あと信長・秀吉・家康という個性の全く違うトップ3が同時代に存在したのが奇跡的。信長はイノベーター、秀吉はコミュ力の鬼、家康は超長期的視点の戦略家——現代のビジネス論として語れる。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q3 — 「明治維新ってどれくらい凄かったの？」</div>
+      <div class="test-q-text">日本の近代化・外交の話になったとき</div>
+      <div class="test-a">「黒船来航（1853年）から日露戦争勝利（1905年）まで52年。ほぼ農業社会から鉄道・軍艦・大学を持つ工業国家になった。アジア・アフリカ・南米でほぼ全ての国が植民地化された時代に独立を維持してただけでなく、列強入りしてしまった。当時の識字率の高さと教育インフラが"奇跡"を可能にした。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q4 — 「なんで日本は太平洋戦争に突入したの？」</div>
+      <div class="test-q-text">歴史・政治の話になったとき</div>
+      <div class="test-a">「"誰が決めたか"という問いに答えるのが難しいのが特徴。天皇・内閣・軍部・財閥・国民世論が複雑に絡み合って"誰も止められなかった"構造。ABCD包囲網（アメリカ・英国・中国・オランダが石油禁輸）という経済的追い詰めと、"このまま引けば軍部・国民に殺される"という指導者の判断が絡んだ。"組織が暴走して誰も責任を取らない"という日本的意思決定の最悪の事例。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q5 — 「なんで日本のGDPは30年間伸びなかったの？」</div>
+      <div class="test-q-text">経済・社会の話になったとき</div>
+      <div class="test-a">「複合的な原因があるけど、①バブル崩壊後の不良債権処理の失敗で金融システムが10年機能不全、②デフレ期待の定着で"今買わずに待つ"行動が蔓延、③終身雇用・年功序列で労働力が流動化せずITに対応できなかった、④人口が2008年から減少し内需が縮小。全部同時に起きた。ケインズ的財政出動と緩和を繰り返したが構造変化には至らなかった。」</div>
+    </div>
+    <div class="test-q">
+      <div class="test-q-label">Q6 — 「天皇制って今後も続くの？」</div>
+      <div class="test-q-text">皇室・憲法の話になったとき</div>
+      <div class="test-a">「世界最古の王朝（神話上は約2700年）が女系天皇問題で揺れている。現在の皇室典範は男系男子のみを皇位継承者としているため、悠仁親王以降の継承者が問題に。戦後に皇族の数を大幅に減らしたGHQの設計のツケ。"象徴天皇制"という戦後の形態を維持するか、女系天皇を認めるかが与野党の論点。ただし国民の皇室支持率は依然高く、制度としては安定している。」</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <span class="footer-icon">⛩</span>
+  <p>宗教・哲学・政治・経済・世界史・日本史。知の六角形が完成した。</p>
+  <p style="margin-top:0.35rem; opacity:0.45;">「歴史とは現在と過去との絶え間ない対話である。— E.H.カー」</p>
+</div>
+
+</body>
+</html>

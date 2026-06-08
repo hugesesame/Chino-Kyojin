@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>知の巨人 居酒屋の星 — 全20巻完全収録</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #06060A;
+    --bg-card:   #0E0C14;
+    --gold:      #C89830;
+    --gold-lt:   #E8B840;
+    --gold-dim:  #7A6020;
+    --red:       #C01828;
+    --red-lt:    #E03040;
+    --white:     #F4F0E8;
+    --dim:       rgba(244,240,232,0.45);
+    --dimmer:    rgba(244,240,232,0.25);
+    --border:    rgba(200,152,48,0.18);
+    --shadow:    rgba(0,0,0,0.5);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content:'';
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 150px;
+    opacity: 0.4;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  /* radial glow */
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200,152,48,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(192,24,40,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 10%, rgba(200,152,48,0.08) 0%, transparent 60%);
+    pointer-events:none;
+  }
+
+  /* background kanji */
+  .hero-bg-kanji {
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(18rem, 40vw, 38rem);
+    font-weight:700; line-height:1;
+    color: rgba(200,152,48,0.035);
+    white-space:nowrap;
+    pointer-events:none; user-select:none;
+    letter-spacing:-0.05em;
+  }
+
+  .hero-content { position:relative; z-index:1; max-width:780px; }
+
+  .series-label {
+    font-family:'Cinzel',serif;
+    font-size:0.65rem; letter-spacing:0.4em; text-transform:uppercase;
+    color: var(--gold-dim);
+    margin-bottom:1.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family:'Noto Serif JP',serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight:700;
+    line-height:1.1;
+    margin-bottom: 0.25rem;
+    background: linear-gradient(160deg, var(--white) 0%, var(--gold-lt) 60%, var(--gold) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .hero-subtitle {
+    font-family:'Noto Serif JP',serif;
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    color: var(--red-lt);
+    font-weight:700;
+    letter-spacing:0.1em;
+    margin-bottom:2.5rem;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-copy {
+    font-size: clamp(0.82rem, 1.5vw, 0.95rem);
+    color: var(--dim);
+    line-height: 2;
+    max-width: 580px;
+    margin: 0 auto 1.5rem;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-copy strong { color: var(--gold-lt); font-weight:700; }
+
+  .hero-warning {
+    display:inline-block;
+    border:1px solid rgba(192,24,40,0.4);
+    background:rgba(192,24,40,0.08);
+    border-radius:2px;
+    padding:0.85rem 1.5rem;
+    font-size:0.8rem;
+    color:rgba(244,240,232,0.55);
+    line-height:1.8;
+    max-width:540px;
+    margin-bottom:2.5rem;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-warning .warn-title {
+    font-family:'Cinzel',serif;
+    font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--red-lt); display:block; margin-bottom:0.4rem;
+  }
+
+  .hero-warning em { color: var(--red-lt); font-style:normal; font-weight:700; }
+
+  .scroll-hint {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    z-index:1;
+    font-family:'Cinzel',serif;
+    font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--gold-dim);
+    display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+  .scroll-hint::after {
+    content:'';
+    display:block; width:1px; height:40px;
+    background:linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollLine 2s 1.5s infinite;
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats {
+    position:relative; z-index:1;
+    display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap;
+    margin-bottom:2rem;
+    animation: fadeUp 1s 0.35s ease both;
+  }
+  .stat-num {
+    font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-lt);
+    display:block; line-height:1;
+  }
+  .stat-lbl {
+    font-size:0.68rem; color:var(--dimmer);
+    letter-spacing:0.1em; text-transform:uppercase;
+  }
+
+  /* ─── VOLUMES SECTION ─── */
+  .volumes-section {
+    position:relative; z-index:1;
+    padding: 5rem 2rem 6rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    text-align:center; margin-bottom:3rem;
+  }
+  .section-head-label {
+    font-family:'Cinzel',serif;
+    font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold-dim); display:block; margin-bottom:0.6rem;
+  }
+  .section-head-title {
+    font-family:'Noto Serif JP',serif;
+    font-size:clamp(1.4rem,3vw,2rem); color:var(--gold-lt); font-weight:700;
+  }
+  .section-head-rule {
+    width:60px; height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:1rem auto 0;
+  }
+
+  /* ─── VOLUME GRID ─── */
+  .vol-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:0.85rem;
+  }
+
+  .vol-card {
+    display:block;
+    background: var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:2px;
+    padding:1.25rem 1.25rem 1rem;
+    text-decoration:none;
+    color:inherit;
+    position:relative;
+    overflow:hidden;
+    transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+  }
+  .vol-card::before {
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(135deg, rgba(200,152,48,0.04) 0%, transparent 60%);
+    opacity:0; transition:opacity 0.3s;
+    pointer-events:none;
+  }
+  .vol-card:hover {
+    border-color:rgba(200,152,48,0.5);
+    transform:translateY(-3px);
+    box-shadow:0 12px 40px rgba(0,0,0,0.4);
+  }
+  .vol-card:hover::before { opacity:1; }
+
+  /* left accent stripe */
+  .vol-card::after {
+    content:'';
+    position:absolute; top:0; left:0; bottom:0; width:3px;
+    background:var(--accent, var(--gold));
+    transform:scaleY(0); transform-origin:bottom;
+    transition:transform 0.3s ease;
+  }
+  .vol-card:hover::after { transform:scaleY(1); }
+
+  .vol-num {
+    font-family:'Cinzel',serif;
+    font-size:0.58rem; letter-spacing:0.2em;
+    color:var(--gold-dim);
+    display:block; margin-bottom:0.5rem;
+  }
+  .vol-title {
+    font-family:'Noto Serif JP',serif;
+    font-size:0.95rem; font-weight:700;
+    color:var(--white);
+    display:block; margin-bottom:0.3rem;
+    line-height:1.4;
+  }
+  .vol-desc {
+    font-size:0.7rem;
+    color:var(--dimmer);
+    line-height:1.5;
+    display:block;
+  }
+  .vol-arrow {
+    position:absolute; bottom:0.9rem; right:1rem;
+    font-size:0.7rem; color:var(--gold-dim);
+    transition:color 0.2s, transform 0.2s;
+  }
+  .vol-card:hover .vol-arrow {
+    color:var(--gold-lt);
+    transform:translateX(3px);
+  }
+
+  /* ─── CATEGORY DIVIDERS ─── */
+  .cat-label {
+    font-family:'Cinzel',serif;
+    font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold-dim);
+    display:flex; align-items:center; gap:1rem;
+    margin:2rem 0 0.85rem;
+  }
+  .cat-label::before, .cat-label::after {
+    content:''; flex:1; height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold-dim));
+  }
+  .cat-label::after {
+    background:linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    position:relative; z-index:1;
+    text-align:center;
+    padding:3rem 2rem;
+    border-top:1px solid var(--border);
+  }
+  .footer-title {
+    font-family:'Noto Serif JP',serif;
+    font-size:1.1rem; color:var(--gold-lt);
+    font-weight:700; margin-bottom:0.5rem;
+  }
+  .footer-copy {
+    font-size:0.75rem; color:var(--dimmer); line-height:2;
+  }
+  .footer-cheers {
+    font-size:1.5rem; display:block; margin:1rem 0 0.5rem;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes scrollLine {
+    0%   { opacity:1; transform:scaleY(0);   transform-origin:top; }
+    50%  { opacity:1; transform:scaleY(1);   transform-origin:top; }
+    51%  { transform-origin:bottom; }
+    100% { opacity:0; transform:scaleY(0);   transform-origin:bottom; }
+  }
+
+  /* card appear animation */
+  .vol-card {
+    opacity:0;
+    animation:fadeUp 0.5s ease both;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg-kanji">知</div>
+
+  <div class="hero-content">
+    <span class="series-label">居酒屋で語れる教養シリーズ — 全20巻完全収録</span>
+
+    <h1 class="hero-title">知の巨人</h1>
+    <p class="hero-subtitle">居酒屋の星</p>
+
+    <p class="hero-copy">
+      総合知が問われる時代。<br>
+      <strong>「浅くていい。広く知れ。」</strong><br><br>
+      庶民の知的底上げのために——<br>
+      隣でバカ話をしている連中に<br>
+      <strong>理知的な話をぶつけて黙らせる</strong>、<br>
+      そのための全20巻シリーズ。<br>
+      居酒屋の雑談レベルでいい。<br>
+      まず<strong>あなたの周囲を静かにしよう。</strong>
+    </p>
+
+    <div class="stats">
+      <div>
+        <span class="stat-num">20</span>
+        <span class="stat-lbl">巻</span>
+      </div>
+      <div>
+        <span class="stat-num">200+</span>
+        <span class="stat-lbl">居酒屋ネタ</span>
+      </div>
+      <div>
+        <span class="stat-num">∞</span>
+        <span class="stat-lbl">隣の沈黙</span>
+      </div>
+    </div>
+
+    <div class="hero-warning">
+      <span class="warn-title">⚠️ 使用上の注意</span>
+      決して<em>ダイニングバー</em>や、
+      間違っても<em>オーセンティックなバー</em>では使用しないこと。<br>
+      ホンモノの知の巨人たちに踏みつぶされます。<br>
+      <span style="color:rgba(244,240,232,0.38); font-size:0.75rem;">※ 当シリーズはあくまで居酒屋限定でお楽しみください。健闘を祈る。</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Vol.01 〜 Vol.20</div>
+</section>
+
+<!-- ─── VOLUMES ─── -->
+<div class="volumes-section">
+  <div class="section-head">
+    <span class="section-head-label">Complete Library</span>
+    <h2 class="section-head-title">全20巻ラインナップ</h2>
+    <div class="section-head-rule"></div>
+  </div>
+
+  <!-- 三大宗教 -->
+  <div class="cat-label">三大宗教</div>
+  <div class="vol-grid">
+    <a class="vol-card" href="buddhism_history.html" style="--accent:#B89030; animation-delay:0.05s">
+      <span class="vol-num">Vol.01</span>
+      <span class="vol-title">仏教の歴史</span>
+      <span class="vol-desc">釈迦からチベットまで、2500年の悟りの旅</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="christianity_history.html" style="--accent:#3060A0; animation-delay:0.1s">
+      <span class="vol-num">Vol.02</span>
+      <span class="vol-title">キリスト教の歴史</span>
+      <span class="vol-desc">イエスの誕生から現代まで、世界最大宗教の全貌</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="islam_history.html" style="--accent:#1A6040; animation-delay:0.15s">
+      <span class="vol-num">Vol.03</span>
+      <span class="vol-title">イスラム教の歴史</span>
+      <span class="vol-desc">ムハンマドから現代イスラムまで完全解説</span>
+      <span class="vol-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 思想 -->
+  <div class="cat-label">思想</div>
+  <div class="vol-grid">
+    <a class="vol-card" href="philosophy_history.html" style="--accent:#7840C8; animation-delay:0.05s">
+      <span class="vol-num">Vol.04</span>
+      <span class="vol-title">哲学史</span>
+      <span class="vol-desc">ソクラテスからニーチェ、現代哲学まで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="political_thought_history.html" style="--accent:#B02840; animation-delay:0.1s">
+      <span class="vol-num">Vol.05</span>
+      <span class="vol-title">政治思想史</span>
+      <span class="vol-desc">民主主義・共産主義・自由主義を一気に把握</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="economic_thought_history.html" style="--accent:#C07820; animation-delay:0.15s">
+      <span class="vol-num">Vol.06</span>
+      <span class="vol-title">経済思想史</span>
+      <span class="vol-desc">スミスからケインズ、新自由主義まで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 歴史 -->
+  <div class="cat-label">歴史</div>
+  <div class="vol-grid">
+    <a class="vol-card" href="world_history.html" style="--accent:#A05030; animation-delay:0.05s">
+      <span class="vol-num">Vol.07</span>
+      <span class="vol-title">世界史概論</span>
+      <span class="vol-desc">メソポタミアから現代まで、人類史を一気読み</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="japan_history.html" style="--accent:#3050A0; animation-delay:0.1s">
+      <span class="vol-num">Vol.08</span>
+      <span class="vol-title">日本史</span>
+      <span class="vol-desc">縄文から令和まで、2万年の島国の物語</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="science_history.html" style="--accent:#18A8C0; animation-delay:0.15s">
+      <span class="vol-num">Vol.09</span>
+      <span class="vol-title">科学史</span>
+      <span class="vol-desc">ニュートンから量子力学・AIまで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 芸術・文化 -->
+  <div class="cat-label">芸術・文化</div>
+  <div class="vol-grid">
+    <a class="vol-card" href="western_art_history.html" style="--accent:#9A2040; animation-delay:0.05s">
+      <span class="vol-num">Vol.10</span>
+      <span class="vol-title">西洋美術史</span>
+      <span class="vol-desc">ギリシャ彫刻からバンクシーまで、美の革命史</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="music_history.html" style="--accent:#C07820; animation-delay:0.1s">
+      <span class="vol-num">Vol.11</span>
+      <span class="vol-title">音楽史</span>
+      <span class="vol-desc">バッハからヒップホップ、シティポップまで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="world_literature_history.html" style="--accent:#8A6840; animation-delay:0.15s">
+      <span class="vol-num">Vol.12</span>
+      <span class="vol-title">世界文学史</span>
+      <span class="vol-desc">ホメロスからカフカ、マルケスまで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="architecture_history.html" style="--accent:#C07830; animation-delay:0.2s">
+      <span class="vol-num">Vol.13</span>
+      <span class="vol-title">建築史</span>
+      <span class="vol-desc">パルテノンからザハ・ハディド、安藤忠雄まで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 人間科学 -->
+  <div class="cat-label">人間科学</div>
+  <div class="vol-grid">
+    <a class="vol-card" href="psychology_history.html" style="--accent:#7840C8; animation-delay:0.05s">
+      <span class="vol-num">Vol.14</span>
+      <span class="vol-title">心理学史</span>
+      <span class="vol-desc">フロイトからカーネマン、188の認知バイアスまで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="sociology_history.html" style="--accent:#18A080; animation-delay:0.1s">
+      <span class="vol-num">Vol.15</span>
+      <span class="vol-title">社会学史</span>
+      <span class="vol-desc">デュルケームからボードリヤール、SNS社会まで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="technology_history.html" style="--accent:#00C8FF; animation-delay:0.15s">
+      <span class="vol-num">Vol.16</span>
+      <span class="vol-title">テクノロジー史</span>
+      <span class="vol-desc">火の発見からAIまで、道具が変えた300万年</span>
+      <span class="vol-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 日本の魂 -->
+  <div class="cat-label">日本の魂</div>
+  <div class="vol-grid">
+    <a class="vol-card" href="japanese_aesthetics_history.html" style="--accent:#C09030; animation-delay:0.05s">
+      <span class="vol-num">Vol.17</span>
+      <span class="vol-title">日本の美意識史</span>
+      <span class="vol-desc">もののあはれ・わびさびから現代デザインまで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="bushido_japanese_ethics.html" style="--accent:#B09060; animation-delay:0.1s">
+      <span class="vol-num">Vol.18</span>
+      <span class="vol-title">武士道と日本人の倫理観</span>
+      <span class="vol-desc">葉隠・五輪書から現代企業文化まで</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="japanese_literature_history.html" style="--accent:#8A6840; animation-delay:0.15s">
+      <span class="vol-num">Vol.19</span>
+      <span class="vol-title">日本文学史</span>
+      <span class="vol-desc">万葉集・源氏物語から村上春樹まで1300年</span>
+      <span class="vol-arrow">→</span>
+    </a>
+    <a class="vol-card" href="japan_modern_contemporary_history.html" style="--accent:#C01828; animation-delay:0.2s">
+      <span class="vol-num">Vol.20</span>
+      <span class="vol-title">日本の近現代史</span>
+      <span class="vol-desc">明治維新から令和まで、150年の光と影</span>
+      <span class="vol-arrow">→</span>
+    </a>
+  </div>
+
+</div><!-- /volumes-section -->
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <span class="footer-cheers">🍺</span>
+  <p class="footer-title">健闘を祈る</p>
+  <p class="footer-copy">
+    このシリーズを完走したあなたは、<br>
+    居酒屋においてほぼ無敵です。<br>
+    <span style="color:rgba(192,24,40,0.7); font-size:0.72rem;">
+      ※ただし繰り返しますが、オーセンティックバーには持ち込まないこと。
+    </span>
+  </p>
+  <p style="margin-top:1.5rem; font-size:0.65rem; color:rgba(244,240,232,0.2); letter-spacing:0.15em; font-family:'Cinzel',serif;">
+    知の巨人への道 — 居酒屋で語れる教養シリーズ 全20巻
+  </p>
+</footer>
+
+<script>
+  // staggered card entrance on scroll
+  const cards = document.querySelectorAll('.vol-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(c => io.observe(c));
+</script>
+</body>
+</html>
