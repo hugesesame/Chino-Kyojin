@@ -247,6 +247,21 @@
   /* ─── FOOTER ─── */
   .footer { background: var(--nuri-deep); color: var(--silver); text-align: center; padding: 2.5rem; font-size: 0.77rem; border-top: 1px solid rgba(192,144,48,0.12); }
   .footer-icon { font-family: 'Noto Serif JP', serif; font-size: 2rem; display: block; margin-bottom: 0.5rem; color: var(--kin-light); }
+
+  /* ─── MOBILE TIMELINE FIX ─── */
+  @media (max-width: 768px) {
+    .timeline::before { left: 1.2rem !important; }
+    .tl-item, .tl-item.right {
+      flex-direction: column !important;
+      padding-left: 3rem !important;
+    }
+    .tl-card, .tl-item.right .tl-card {
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .tl-dot { left: 1.2rem !important; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none !important; }
+  }
 </style>
 </head>
 <body>

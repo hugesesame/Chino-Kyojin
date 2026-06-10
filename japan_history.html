@@ -220,6 +220,21 @@
   .si-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--gold-light); font-weight:700; display:block; margin-bottom:0.2rem; }
   .si-years { font-size:0.6rem; color:var(--silver); margin-bottom:0.3rem; display:block; }
   .si-key   { font-size:0.72rem; color:rgba(255,255,255,0.62); line-height:1.4; }
+
+  /* ─── MOBILE TIMELINE FIX ─── */
+  @media (max-width: 768px) {
+    .timeline::before { left: 1.2rem !important; }
+    .tl-item, .tl-item.right {
+      flex-direction: column !important;
+      padding-left: 3rem !important;
+    }
+    .tl-card, .tl-item.right .tl-card {
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .tl-dot { left: 1.2rem !important; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none !important; }
+  }
 </style>
 </head>
 <body>

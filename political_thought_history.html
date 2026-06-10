@@ -250,6 +250,21 @@
   .quad { padding:1rem; display:flex; flex-direction:column; justify-content:center; gap:0.4rem; }
   .q-tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:3px 8px; border-radius:4px; margin-bottom:2px; }
   .q-desc { font-size:0.72rem; color:var(--ink-light); line-height:1.4; }
+
+  /* ─── MOBILE TIMELINE FIX ─── */
+  @media (max-width: 768px) {
+    .timeline::before { left: 1.2rem !important; }
+    .tl-item, .tl-item.right {
+      flex-direction: column !important;
+      padding-left: 3rem !important;
+    }
+    .tl-card, .tl-item.right .tl-card {
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .tl-dot { left: 1.2rem !important; }
+    .tl-item .tl-emoji, .tl-item.right .tl-emoji { display: none !important; }
+  }
 </style>
 </head>
 <body>
