@@ -295,6 +295,30 @@
     .cmp-table td:first-child { white-space: normal; }
     .cmp-table th { white-space: normal; letter-spacing: 0; }
   }
+
+  /* ─── MOBILE CARD FIX ─── */
+  @media (max-width: 768px) {
+    /* グリッド系を1列に */
+    .book-row, .soc-row, .inv-row, .arch-row,
+    .composer-row, .writer-row, .thinker-row,
+    .figure-row, .eb-row, .tb-row, .sb-row,
+    .bldg-row, .genre-grid, .theory-grid,
+    .style-grid, .era-grid, .bias-grid,
+    .concept-grid, .aes-grid, .virtue-grid {
+      grid-template-columns: 1fr !important;
+    }
+    /* dark panel内のカードも */
+    [class*="-row"], [class*="-grid"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* パネルのpadding調整 */
+    .dark-panel, .era-band, .tech-band,
+    .school-band, .cmp-bg, .test-bg {
+      padding: 1.25rem !important;
+    }
+    /* コンテナのpadding */
+    .container { padding: 0 1rem !important; }
+  }
 </style>
 </head>
 <body>
