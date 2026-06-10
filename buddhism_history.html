@@ -607,6 +607,19 @@
     .cmp-bg { padding: 1.25rem; }
   }
 
+  /* ─── MOBILE SPREAD-FLOW FIX ─── */
+  @media (max-width: 768px) {
+    .spread-flow {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    .spread-arrow {
+      transform: rotate(90deg);
+      padding: 0 !important;
+    }
+    .spread-node { padding: 0.25rem 0 !important; }
+  }
+
   /* ─── MOBILE CARD FIX ─── */
   @media (max-width: 768px) {
     /* グリッド系を1列に */
