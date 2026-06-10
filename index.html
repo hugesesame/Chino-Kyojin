@@ -71,11 +71,11 @@
     font-family:'Noto Serif JP',serif;
     font-size:clamp(18rem, 40vw, 38rem);
     font-weight:700; line-height:1;
-    color: rgba(200,152,48,0.035);
+    color: rgba(200,152,48,0.08);
     white-space:nowrap;
     pointer-events:none; user-select:none;
     letter-spacing:-0.05em;
-    animation: kanjiBreathe 9s ease-in-out infinite;
+    animation: kanjiBreathe 7s ease-in-out infinite;
   }
 
   .hero-content { position:relative; z-index:1; max-width:780px; }
@@ -132,7 +132,7 @@
     line-height:1.8;
     max-width:540px;
     margin-bottom:2.5rem;
-    animation: fadeUp 1s 0.4s ease both, warnPulse 4s 2s ease-in-out infinite;
+    animation: fadeUp 1s 0.4s ease both, warnPulse 3s 2s ease-in-out infinite;
   }
 
   .hero-warning .warn-title {
@@ -322,16 +322,23 @@
   .hero-image-wrap img {
     width: 100%; display: block;
     filter: brightness(0.9) contrast(1.06) saturate(1.05);
-    animation: kenBurns 24s ease-in-out infinite alternate;
+    animation: kenBurns 12s ease-in-out infinite alternate;
     will-change: transform;
   }
   .hero-image-wrap {
-    transition: box-shadow 0.5s ease, border-color 0.5s ease;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
   }
   .hero-image-wrap:hover {
-    border-color: rgba(200,152,48,0.5);
-    box-shadow: 0 28px 90px rgba(0,0,0,0.8), 0 0 60px rgba(200,152,48,0.16);
+    border-color: rgba(232,184,64,0.95);
+    box-shadow: 0 32px 100px rgba(0,0,0,0.85),
+                0 0 70px rgba(232,184,64,0.45),
+                inset 0 0 30px rgba(232,184,64,0.12);
+    transform: translateY(-6px) scale(1.015);
   }
+  .hero-image-wrap:hover img {
+    filter: brightness(1.05) contrast(1.08) saturate(1.15);
+  }
+  .hero-image-wrap img { transition: filter 0.4s ease; }
   .hero-image-wrap::after {
     content:'';
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -352,20 +359,24 @@
     100% { opacity:0; transform:scaleY(0);   transform-origin:bottom; }
   }
   @keyframes kanjiBreathe {
-    0%, 100% { opacity:1;   transform:translate(-50%,-50%) scale(1); }
-    50%      { opacity:0.55; transform:translate(-50%,-50%) scale(1.03); }
+    0%, 100% { opacity:0.35; transform:translate(-50%,-50%) scale(1); }
+    50%      { opacity:1;    transform:translate(-50%,-50%) scale(1.07); }
   }
   @keyframes goldShimmer {
     0%, 100% { background-position: 0% 50%; }
     50%      { background-position: 100% 50%; }
   }
   @keyframes kenBurns {
-    from { transform: scale(1); }
-    to   { transform: scale(1.06); }
+    from { transform: scale(1)    translateY(0); }
+    to   { transform: scale(1.14) translateY(-1.5%); }
   }
   @keyframes warnPulse {
-    0%, 100% { border-color: rgba(192,24,40,0.4);  box-shadow: 0 0 0 rgba(192,24,40,0); }
-    50%      { border-color: rgba(224,48,64,0.75); box-shadow: 0 0 18px rgba(192,24,40,0.18); }
+    0%, 100% { border-color: rgba(192,24,40,0.35);
+               background: rgba(192,24,40,0.06);
+               box-shadow: 0 0 0 rgba(192,24,40,0); }
+    50%      { border-color: rgba(224,48,64,1);
+               background: rgba(192,24,40,0.16);
+               box-shadow: 0 0 28px rgba(224,48,64,0.45); }
   }
 
   /* card appear: scroll-triggered reveal */
