@@ -228,7 +228,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
-    align-items: start;
+    align-items: stretch;
   }
   @media (max-width: 640px) {
     .founder-grid { grid-template-columns: 1fr; }
@@ -243,6 +243,9 @@
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: var(--gold-pale);
   }
   .founder-symbol {
@@ -695,8 +698,8 @@
         </div>
       </div>
     </div>
-    <div>
-      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div style="display:flex; flex-direction:column;">
+      <div style="display:flex; flex-direction:column; flex:1; justify-content:space-between;">
         <div style="display:flex; gap:1rem; align-items:flex-start; background:var(--paper-dark); border-radius:8px; padding:1rem;">
           <div style="font-size:2rem; flex-shrink:0;">🏰</div>
           <div>
@@ -1160,7 +1163,14 @@
   </div>
 </div>
 </section>
-
+<!-- ─── NEXT LIBRARY ─── -->
+<div style="background:rgba(0,0,0,0.35);border-top:1px solid rgba(200,152,48,0.18);padding:2rem;text-align:center;">
+  <a href="christianity_history.html" style="display:inline-flex;align-items:center;gap:1.2rem;text-decoration:none;padding:0.9rem 2rem;border:1px solid rgba(200,152,48,0.3);border-radius:4px;color:rgba(244,240,232,0.75);">
+    <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#C89830;">NEXT</span>
+    <span style="font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#F4F0E8;">キリスト教の歴史</span>
+    <span style="color:#C89830;font-size:1.1rem;">→</span>
+  </a>
+</div>
 <!-- FOOTER -->
 <div class="footer">
   <span class="footer-dharma">☸</span>
