@@ -68,65 +68,64 @@
     -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     position:relative; z-index:1;
   }
-  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:540px; margin:0 auto 2.5rem; font-weight:300; position:relative; z-index:1; }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.74); max-width:540px; margin:0 auto 2.5rem; font-weight:300; position:relative; z-index:1; }
   .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; position:relative; z-index:1; }
   .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--cyan-glow); display:block; }
-  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.74); letter-spacing:0.08em; }
 
   /* ─── LAYOUT ─── */
   .container { max-width:960px; margin:0 auto; padding:0 2rem; }
   section { padding:4rem 0; }
   .section-header { text-align:center; margin-bottom:3rem; }
   .section-badge {
-    display:inline-block; background:var(--space-rich); color:var(--cyan-pale);
-    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
-    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
-  }
-  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
-  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+    display:inline-block; background: transparent; color: var(--t-accent-ink);
+    font-size: 0.75rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;border:1px solid var(--t-rule) !important;border-radius:2px !important;}
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color: var(--t-ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color: var(--t-ink-2); margin-top:0.5rem; }
   .bg-warm  { background:var(--ivory-dark); }
   .bg-white { background:#fff; }
   .tip-bar {
     background:#fff; border-radius:6px; border:1px solid rgba(8,20,40,0.14);
-    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+    padding:0.85rem 1.1rem; font-size: 0.95rem; color: var(--t-ink-2); margin-top:1.5rem; text-align:center;
   }
 
   /* ─── DARK PANEL ─── */
-  .dark-panel { background:var(--space-deep); border-radius:10px; padding:2.5rem; color:#fff; }
-  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
-  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--cyan-glow); font-weight:700; margin-bottom:1.25rem; }
+  .dark-panel { background: transparent; border-radius:10px; padding:2.5rem; color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .dp-label { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.2em; color: var(--t-ink-3); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color: var(--t-ink); font-weight:700; margin-bottom:1.25rem; }
 
   /* ─── SCIENTIST CARDS ─── */
-  .sci-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:1rem; }
+  .sci-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
   .sci-card {
-    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-    border-top:3px solid var(--cyan-light);
+    background: transparent; border:1px solid rgba(38,34,28,.16);
+    border-top:3px solid var(--t-accent);
     border-radius:0 0 8px 8px; padding:1rem 1.1rem;
   }
-  .sc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.15rem; }
-  .sc-dates  { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
-  .sc-field  { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-light); margin-bottom:0.4rem; }
-  .sc-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
-  .sc-legacy { margin-top:0.6rem; font-size:0.72rem; color:rgba(48,208,232,0.65); }
+  .sc-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.15rem; }
+  .sc-dates  { font-size: 0.75rem; color: var(--t-ink-3); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .sc-field  { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.1em; color: var(--t-accent-ink); margin-bottom:0.4rem; }
+  .sc-body   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .sc-legacy { margin-top:0.6rem; font-size: 0.95rem; color: var(--t-ink-2); }
 
   /* ─── ERA BANDS ─── */
-  .era-band { border-radius:10px; padding:2rem 2.5rem; margin-bottom:1.5rem; color:#fff; }
-  .eb-ancient { background:linear-gradient(135deg,#100C08,#28200A); }
-  .eb-islamic { background:linear-gradient(135deg,#08100A,#102008); }
-  .eb-revol   { background:linear-gradient(135deg,#080C18,#101C38); }
-  .eb-19c     { background:linear-gradient(135deg,#0A0818,#180A28); }
-  .eb-modern  { background:linear-gradient(135deg,#040810,#08142A); }
-  .eb-21c     { background:linear-gradient(135deg,#041010,#082828); }
-  .eb-label  { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.3rem; }
-  .eb-title  { font-family:'Noto Serif JP',serif; font-size:1.15rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.3rem; }
-  .eb-period { font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
-  .eb-row    { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.75rem; }
-  .eb-card   { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.9rem; }
-  .ebc-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.15rem; }
-  .ebc-dates { font-size:0.6rem; color:var(--silver); margin-bottom:0.35rem; }
-  .ebc-field { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--gold-light); margin-bottom:0.35rem; }
-  .ebc-body  { font-size:0.76rem; color:rgba(255,255,255,0.65); line-height:1.5; }
-  .ebc-fact  { margin-top:0.5rem; font-size:0.72rem; color:rgba(48,208,232,0.65); }
+  .era-band { border-radius:10px; padding:2rem 2.5rem; margin-bottom:1.5rem; color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .eb-ancient { background: transparent; }
+  .eb-islamic { background: transparent; }
+  .eb-revol   { background: transparent; }
+  .eb-19c     { background: transparent; }
+  .eb-modern  { background: transparent; }
+  .eb-21c     { background: transparent; }
+  .eb-label  { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.2em; color: var(--t-ink-3); margin-bottom:0.3rem; }
+  .eb-title  { font-family:'Noto Serif JP',serif; font-size:1.15rem; color: var(--t-ink); font-weight:700; margin-bottom:0.3rem; }
+  .eb-period { font-size: 0.95rem; color: var(--t-ink-2); margin-bottom:1rem; }
+  .eb-row    { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:0.75rem; }
+  .eb-card   { background: transparent; border:1px solid rgba(38,34,28,.16); border-radius:6px; padding:0.9rem; }
+  .ebc-name  { font-family:'Noto Serif JP',serif; font-size:0.9rem; color: var(--t-ink); font-weight:700; margin-bottom:0.15rem; }
+  .ebc-dates { font-size: 0.75rem; color: var(--t-ink-3); margin-bottom:0.35rem; }
+  .ebc-field { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.09em; color: var(--t-accent-ink); margin-bottom:0.35rem; }
+  .ebc-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .ebc-fact  { margin-top:0.5rem; font-size: 0.95rem; color: var(--t-ink-2); }
 
   /* ─── TIMELINE ─── */
   .timeline { position:relative; padding:1rem 0; }
@@ -141,21 +140,21 @@
   .tl-dot {
     position:absolute; left:50%; top:1rem; transform:translateX(-50%);
     width:14px; height:14px; background:var(--cyan-light);
-    border:3px solid var(--ivory); border-radius:50%;
-    box-shadow:0 0 0 2px var(--cyan-light); z-index:2;
+    border:3px solid rgba(38,34,28,.16); border-radius:50%;
+    box-shadow: none; z-index:2;
   }
-  .tl-dot.gold  { background:var(--gold);         box-shadow:0 0 0 2px var(--gold); }
-  .tl-dot.red   { background:var(--red-accent);    box-shadow:0 0 0 2px var(--red-accent); }
-  .tl-dot.green { background:var(--green-accent);  box-shadow:0 0 0 2px var(--green-accent); }
-  .tl-dot.glow  { background:var(--cyan-glow);     box-shadow:0 0 0 2px var(--cyan-glow); }
+  .tl-dot.gold  { background:var(--gold);         box-shadow: none; }
+  .tl-dot.red   { background: transparent;    box-shadow: none; }
+  .tl-dot.green { background:var(--green-accent);  box-shadow: none; }
+  .tl-dot.glow  { background:var(--cyan-glow);     box-shadow: none; }
   .tl-card {
     width:calc(50% - 2.5rem); background:#fff;
     border:1px solid rgba(8,20,40,0.14); border-radius:6px;
-    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+    padding:1.25rem 1.5rem; box-shadow: none;
   }
-  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--cyan-mid); font-weight:700; margin-bottom:0.25rem; }
-  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
-  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-year  { font-family:'Cinzel',serif; font-size: 0.95rem; color: var(--t-accent-ink); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color: var(--t-ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
   .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
   .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
   .tl-item.right .tl-emoji        { left:-2.2rem; }
@@ -173,49 +172,48 @@
     background:#fff; border:1px solid rgba(8,20,40,0.14);
     border-left:4px solid var(--cyan-mid);
     border-radius:0 8px 8px 0;
-    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+    padding:1.25rem 1.5rem; box-shadow: none;
   }
-  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
-  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
-  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
-  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--cyan-dark); background:rgba(8,56,64,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color: var(--t-ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size: 0.75rem; color: var(--t-ink-3); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size: 0.95rem; color: var(--t-ink); background:rgba(8,56,64,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
 
   /* ─── BREAKTHROUGH CARDS ─── */
-  .break-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .break-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
   .break-card {
-    background:var(--space-deep); color:#fff;
+    background: transparent; color: var(--t-ink);
     border-radius:8px; padding:1.5rem;
-    position:relative; overflow:hidden;
-  }
+    position:relative; overflow:hidden;border:1px solid var(--t-rule) !important;border-radius:2px !important;}
   .break-card::after {
     content:attr(data-sym); position:absolute; bottom:-0.5rem; right:0.5rem;
-    font-size:3.5rem; opacity:0.07; line-height:1; color:var(--cyan-glow);
+    font-size:3.5rem; opacity:0.07; line-height:1; color: var(--t-ink-2);
   }
-  .bk-num    { font-family:'Cinzel',serif; font-size:0.72rem; color:var(--cyan-glow); letter-spacing:0.15em; display:block; margin-bottom:0.4rem; }
-  .bk-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--cyan-glow); font-weight:700; margin-bottom:0.4rem; }
-  .bk-year   { font-size:0.65rem; color:var(--silver); display:block; margin-bottom:0.5rem; }
-  .bk-body   { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.55; }
+  .bk-num    { font-family:'Cinzel',serif; font-size: 0.95rem; color: var(--t-accent-ink); letter-spacing:0.15em; display:block; margin-bottom:0.4rem; }
+  .bk-name   { font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.4rem; }
+  .bk-year   { font-size: 0.75rem; color: var(--t-ink-3); display:block; margin-bottom:0.5rem; }
+  .bk-body   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* ─── COMPARE TABLE ─── */
-  .cmp-bg { background:var(--space-deep); border-radius:10px; padding:2.5rem; color:#fff; overflow-x:auto; }
-  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:500px; }
-  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.67rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--cyan-glow); border-bottom:1px solid rgba(255,255,255,0.12); white-space:nowrap; }
-  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-bg { background: transparent; border-radius:10px; padding:2.5rem; color: var(--t-ink); overflow-x:auto;border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .cmp-table { width:100%; border-collapse:collapse; font-size: 0.95rem; margin-top:1rem; min-width:500px; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size: 0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color: var(--t-accent-ink); border-bottom:1px solid rgba(38,34,28,.16); white-space:nowrap; }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(38,34,28,.16); color: var(--t-ink-2); vertical-align:top; line-height: 1.8; }
   .cmp-table tr:last-child td { border-bottom:none; }
-  .cmp-table td:first-child { color:var(--cyan-glow); font-weight:700; white-space:nowrap; }
+  .cmp-table td:first-child { color: var(--t-accent-ink); font-weight:700; white-space:nowrap; }
 
   /* ─── LIFE STEP ─── */
   .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
   .ls-icon  { font-size:1.8rem; flex-shrink:0; }
-  .ls-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
-  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .ls-title { font-weight:700; font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* ─── IZAKAYA ─── */
-  .test-bg { background:var(--space-deep); border-radius:10px; padding:2.5rem; color:#fff; }
-  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--cyan-light); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
-  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--cyan-pale); margin-bottom:0.3rem; }
-  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
-  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-bg { background: transparent; border-radius:10px; padding:2.5rem; color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .test-q { background: rgba(38,34,28,0.054); border-left:3px solid var(--t-accent); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); margin-bottom:0.3rem; }
+  .test-q-text  { font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.5rem; }
+  .test-a       { font-size: 0.95rem; color: var(--t-ink-2); padding-left:0.5rem; }
   .test-a::before { content:'💡 '; }
 
   /* ─── FOOTER ─── */
@@ -239,7 +237,7 @@
 
   /* ─── MOBILE TABLE FIX ─── */
   @media (max-width: 768px) {
-    .cmp-table, .cmp-bg { font-size: 0.72rem; }
+    .cmp-table, .cmp-bg { font-size: 0.95rem; }
     .cmp-bg { padding: 1.25rem; }
     .cmp-table th, .cmp-table td { padding: 0.5rem 0.6rem; }
     .cmp-table td:first-child { white-space: normal; }
@@ -270,8 +268,78 @@
     .container { padding: 0 1rem !important; }
   }
 </style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+/* chapter labels: plain small caps instead of filled pills */
+.section-badge{background:none !important;color:inherit !important;padding:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important}
+
+/* decorative emoji icon columns */
+.tl-emoji,.ls-icon,.life-step-icon,.bigq-icon{display:none !important}
+
+/* 居酒屋ポイント: ruled note instead of a box */
+.tip-bar{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:.9rem 0 !important;text-align:left !important}
+
+/* 実戦テスト: Q&A separated by rules, not left-bar callouts */
+.test-q{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1.15rem 0 !important;margin:0 !important}
+.test-q:first-child{border-top:0 !important;padding-top:0 !important}
+.test-q:last-child{padding-bottom:0 !important}
+.test-a{padding-left:0 !important}
+.test-a::before{content:none !important}
+
+/* life steps: rules instead of tinted boxes */
+.life-step{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 !important;margin:0 !important}
+
+.concept-grid{column-gap:2rem !important;row-gap:2.25rem !important}
+.concept-izakaya{background:none !important;border:0 !important;border-top:1px dashed color-mix(in srgb,currentColor 35%,transparent) !important;border-radius:0 !important;padding:.6rem 0 0 !important}
+.sci-card{background:transparent !important;border:0 !important;border-top:3px solid var(--cyan-light) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.eb-card{background:transparent !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.concept-card{background:none !important;border:0 !important;border-top:2px solid var(--cyan-mid) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 0 !important}
+.hero h1{background:none !important;-webkit-text-fill-color:currentColor !important;color:var(--cyan-glow) !important}
+
+/* ═══ series theme: paperback (paper + ink + one accent) ═══ */
+:root{--t-paper:#F8F5EE;--t-paper-2:#F0EBE0;--t-ink:#26221C;--t-ink-2:#4A443A;--t-ink-3:#6A6356;--t-rule:rgba(38,34,28,.16);--t-accent:#18A8C0;--t-accent-ink:#0d5965}
+body{background:var(--t-paper) !important;color:var(--t-ink)}
+.bg-white{background:var(--t-paper) !important}
+.bg-warm{background:var(--t-paper-2) !important}
+.section-title{color:var(--t-ink) !important}
+.section-desc{color:var(--t-ink-2) !important}
+.section-badge{color:var(--t-accent-ink) !important}
+.concept-card{border-top-color:var(--t-accent) !important}
+.tip-bar strong{color:var(--t-accent-ink)}
+
+</style>
 </head>
 <body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>全20巻</a><span class="kit-here">Vol.09<b>科学史</b></span><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>科学とはどういう営みか</a></li><li><a href="#ch-2"><span>2</span>古代ギリシャ〜イスラム黄金時代</a></li><li><a href="#ch-3"><span>3</span>科学革命 — 世界観が根本から覆った100年</a></li><li><a href="#ch-4"><span>4</span>科学史2500年タイムライン</a></li><li><a href="#ch-5"><span>5</span>19〜20世紀の科学の巨人たち</a></li><li><a href="#ch-6"><span>6</span>現代科学の最前線</a></li><li><a href="#ch-7"><span>7</span>科学史の核心概念10選</a></li><li><a href="#ch-8"><span>＊</span>科学史の4大パラダイムシフト比較表</a></li><li><a href="#ch-9"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
@@ -287,7 +355,7 @@
 </div>
 
 <!-- ═══ CH1: 科学とは何か ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-1">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 1</span>
@@ -317,13 +385,13 @@
     </div>
   </div>
   <div class="tip-bar">
-    🍺 <strong>居酒屋ポイント：</strong>「科学って"証明する"学問だと思われがちだけど、実は"反証する試みに耐え続ける"学問なんよ。今の科学的事実は全部"今のところ反証されていない"もの。ニュートン力学も200年間正しかったのに相対性理論で更新された。科学は謙虚さが前提」
+    <strong>居酒屋ポイント：</strong>「科学って"証明する"学問だと思われがちだけど、実は"反証する試みに耐え続ける"学問なんよ。今の科学的事実は全部"今のところ反証されていない"もの。ニュートン力学も200年間正しかったのに相対性理論で更新された。科学は謙虚さが前提」
   </div>
 </div>
 </section>
 
 <!-- ═══ CH2: 古代〜中世 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-2">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 2</span>
@@ -413,7 +481,7 @@
 </section>
 
 <!-- ═══ CH3: 科学革命 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-3">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 3</span>
@@ -470,14 +538,14 @@
     </div>
   </div>
 
-  <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem 1.5rem; font-size:0.82rem; color:var(--ink-light);">
-    ⚡ <strong style="color:var(--cyan-dark);">なぜ科学革命はヨーロッパで起きたのか？</strong>——印刷術（グーテンベルク）による知識の爆発的拡散、大学制度の発達、宗教改革による教会権威の弱体化、海洋探検による実測データの蓄積、そしてイスラム黄金時代の知的遺産がアラビア語からラテン語に翻訳されたこと。「ヨーロッパ人が賢かった」のではなく「条件が重なった」のが正確。
+  <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem 1.5rem; font-size: 0.95rem; color: var(--t-ink-2);">
+    <strong style="color: var(--t-ink);">なぜ科学革命はヨーロッパで起きたのか？</strong>——印刷術（グーテンベルク）による知識の爆発的拡散、大学制度の発達、宗教改革による教会権威の弱体化、海洋探検による実測データの蓄積、そしてイスラム黄金時代の知的遺産がアラビア語からラテン語に翻訳されたこと。「ヨーロッパ人が賢かった」のではなく「条件が重なった」のが正確。
   </div>
 </div>
 </section>
 
 <!-- ═══ CH4: タイムライン ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-4">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 4</span>
@@ -601,7 +669,7 @@
 </section>
 
 <!-- ═══ CH5: 19〜20世紀の巨人 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-5">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 5</span>
@@ -684,7 +752,7 @@
 </section>
 
 <!-- ═══ CH6: 現代科学 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-6">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 6</span>
@@ -733,7 +801,7 @@
 </section>
 
 <!-- ═══ CH7: CONCEPT CARDS ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-7">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 7</span>
@@ -796,7 +864,7 @@
 </section>
 
 <!-- ═══ SPECIAL: 4大革命 比較 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-8">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">SPECIAL</span>
@@ -850,19 +918,19 @@
         </tr>
       </tbody>
     </table>
-    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
-      ⚡ <strong style="color:var(--cyan-glow);">最大の未解決問題：</strong>相対性理論（大きなスケールの宇宙を記述）と量子力学（小さなスケールの粒子を記述）は数学的に「矛盾」しており、両者を統一する「量子重力理論（万物の理論）」はまだ存在しない。これを解くことが現代物理学最大の挑戦。「神の数式」と呼ぶ人もいる。
+    <div style="margin-top:1.25rem; background: rgba(38,34,28,0.045); border-radius:6px; padding:1rem; font-size: 0.95rem; color: var(--t-ink-2);">
+      <strong style="color: var(--t-accent-ink);">最大の未解決問題：</strong>相対性理論（大きなスケールの宇宙を記述）と量子力学（小さなスケールの粒子を記述）は数学的に「矛盾」しており、両者を統一する「量子重力理論（万物の理論）」はまだ存在しない。これを解くことが現代物理学最大の挑戦。「神の数式」と呼ぶ人もいる。
     </div>
   </div>
 </div>
 </section>
 
 <!-- ═══ IZAKAYA ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-9">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">FINAL CHAPTER</span>
-    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <h2 class="section-title">居酒屋実戦テスト</h2>
     <p class="section-desc">科学史を制覇した「あなた」が使えるトークシナリオ集</p>
   </div>
   <div class="test-bg">
@@ -899,20 +967,24 @@
   </div>
 </div>
 </section>
-<!-- ─── NEXT LIBRARY ─── -->
-<div style="background:rgba(0,0,0,0.35);border-top:1px solid rgba(200,152,48,0.18);padding:2rem;text-align:center;">
-  <a href="western_art_history.html" style="display:inline-flex;align-items:center;gap:1.2rem;text-decoration:none;padding:0.9rem 2rem;border:1px solid rgba(200,152,48,0.3);border-radius:4px;color:rgba(244,240,232,0.75);">
-    <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#C89830;">NEXT</span>
-    <span style="font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#F4F0E8;">西洋美術史</span>
-    <span style="color:#C89830;font-size:1.1rem;">→</span>
-  </a>
-</div>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="japan_history.html"><span class="kit-pager-dir">← 前の巻 Vol.08</span><span class="kit-pager-title">日本史</span></a><a class="kit-pager-home" href="index.html">全20巻の目次</a><a class="kit-pager-next" href="western_art_history.html"><span class="kit-pager-dir">次の巻 → Vol.10</span><span class="kit-pager-title">西洋美術史</span></a></nav>
 <!-- ═══ FOOTER ═══ -->
 <div class="footer">
   <span class="footer-icon">⚛</span>
   <p>宗教・哲学・政治・経済・世界史・日本史・科学史。知の七角形が完成した。</p>
-  <p style="margin-top:0.35rem; opacity:0.45;">「神は微妙だが、悪意はない。— アルベルト・アインシュタイン」</p>
+  <p style="margin-top:0.35rem; opacity:0.92;">「神は微妙だが、悪意はない。— アルベルト・アインシュタイン」</p>
 </div>
 
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
 </body>
 </html>

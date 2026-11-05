@@ -66,80 +66,77 @@
     background:linear-gradient(135deg,#fff,var(--gold-light));
     -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
   }
-  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.5); max-width:520px; margin:0 auto 2.5rem; font-weight:300; }
+  .hero-sub { font-size:1rem; color:rgba(255,255,255,0.74); max-width:520px; margin:0 auto 2.5rem; font-weight:300; }
   .hero-stats { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
   .hero-stat-num { font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-light); display:block; }
-  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.42); letter-spacing:0.08em; }
+  .hero-stat-lbl { font-size:0.72rem; color:rgba(255,255,255,0.74); letter-spacing:0.08em; }
 
   /* LAYOUT */
   .container { max-width:960px; margin:0 auto; padding:0 2rem; }
   section { padding:4rem 0; }
   .section-header { text-align:center; margin-bottom:3rem; }
   .section-badge {
-    display:inline-block; background:var(--navy-mid); color:#fff;
-    font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
-    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;
-  }
-  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color:var(--ink); font-weight:700; }
-  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; }
+    display:inline-block; background: transparent; color: var(--t-ink);
+    font-size: 0.75rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase;
+    padding:4px 14px; border-radius:2px; margin-bottom:0.75rem;border:1px solid var(--t-rule) !important;border-radius:2px !important;}
+  .section-title { font-family:'Noto Serif JP',serif; font-size:clamp(1.5rem,3vw,2.2rem); color: var(--t-ink); font-weight:700; }
+  .section-desc { font-size:0.92rem; color: var(--t-ink-2); margin-top:0.5rem; }
   .bg-warm  { background:var(--ivory-dark); }
   .bg-white { background:#fff; }
   .tip-bar {
     background:#fff; border-radius:6px; border:1px solid rgba(13,27,46,0.14);
-    padding:0.85rem 1.1rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem; text-align:center;
+    padding:0.85rem 1.1rem; font-size: 0.95rem; color: var(--t-ink-2); margin-top:1.5rem; text-align:center;
   }
 
   /* DARK CARD BASE */
   .dark-panel {
-    background:var(--navy);
+    background: transparent;
     border-radius:10px;
     padding:2.5rem;
-    color:#fff;
-  }
-  .dp-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--silver); margin-bottom:0.4rem; }
-  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color:var(--gold-light); font-weight:700; margin-bottom:1.25rem; }
+    color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .dp-label { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.2em; color: var(--t-ink-3); margin-bottom:0.4rem; }
+  .dp-title { font-family:'Noto Serif JP',serif; font-size:1.25rem; color: var(--t-ink); font-weight:700; margin-bottom:1.25rem; }
 
   /* PHILOSOPHER ROW */
-  .phil-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:1rem; }
+  .phil-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
   .phil-card {
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    border:1px solid rgba(38,34,28,.16);
     border-radius:8px; padding:1rem 1.1rem;
   }
-  .phil-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.15rem; }
-  .phil-dates { font-size:0.62rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.4rem; }
-  .phil-key   { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal-light); margin-bottom:0.4rem; }
-  .phil-body  { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
-  .phil-quote { margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.42); font-style:italic; border-left:2px solid rgba(224,184,74,0.4); padding-left:0.5rem; }
+  .phil-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.15rem; }
+  .phil-dates { font-size: 0.75rem; color: var(--t-ink-3); letter-spacing:0.06em; margin-bottom:0.4rem; }
+  .phil-key   { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.1em; color: var(--t-accent-ink); margin-bottom:0.4rem; }
+  .phil-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .phil-quote { margin-top:0.6rem; font-size: 0.95rem; color: var(--t-ink-2); font-style:italic; border-left:2px solid var(--t-accent); padding-left:0.5rem; }
 
   /* IDEOLOGY CARDS */
   .ideo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
   .ideo-card {
     border-radius:8px; padding:1.5rem;
-    position:relative; overflow:hidden; color:#fff;
-  }
+    position:relative; overflow:hidden; color: var(--t-ink);border:1px solid var(--t-rule) !important;border-radius:2px !important;}
   .ideo-card::after {
     content:attr(data-sym);
     position:absolute; bottom:-0.5rem; right:0.5rem;
     font-size:3.5rem; opacity:0.08; line-height:1;
-    color:var(--gold-light);
+    color: var(--t-ink-2);
   }
-  .ic-red    { background:linear-gradient(135deg, #5C1010, #8B1A1A); }
-  .ic-blue   { background:linear-gradient(135deg, #0D1B2E, #1A3658); }
-  .ic-green  { background:linear-gradient(135deg, #0E2E14, #1A6E32); }
-  .ic-gold   { background:linear-gradient(135deg, #2A1A00, #5C3A00); }
-  .ic-purple { background:linear-gradient(135deg, #1A0F2E, #3C2A6E); }
-  .ic-teal   { background:linear-gradient(135deg, #0A2020, #0E6E6E); }
-  .ideo-name   { font-family:'Noto Serif JP',serif; font-size:1.1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
-  .ideo-en     { font-size:0.62rem; letter-spacing:0.1em; color:var(--silver); text-transform:uppercase; margin-bottom:0.6rem; display:block; }
-  .ideo-core   { font-size:0.8rem; color:rgba(255,255,255,0.75); line-height:1.6; margin-bottom:0.5rem; }
-  .ideo-thinker{ font-size:0.72rem; color:rgba(255,255,255,0.45); }
+  .ic-red    { background: transparent; }
+  .ic-blue   { background: transparent; }
+  .ic-green  { background: transparent; }
+  .ic-gold   { background: transparent; }
+  .ic-purple { background: transparent; }
+  .ic-teal   { background: transparent; }
+  .ideo-name   { font-family:'Noto Serif JP',serif; font-size:1.1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.2rem; }
+  .ideo-en     { font-size: 0.75rem; letter-spacing:0.1em; color: var(--t-ink-3); text-transform:uppercase; margin-bottom:0.6rem; display:block; }
+  .ideo-core   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; margin-bottom:0.5rem; }
+  .ideo-thinker{ font-size: 0.95rem; color: var(--t-ink-2); }
 
   /* TIMELINE */
   .timeline { position:relative; padding:1rem 0; }
   .timeline::before {
     content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
-    background:linear-gradient(to bottom,transparent,var(--red-light),var(--red-light),transparent);
+    background: transparent;
     transform:translateX(-50%);
   }
   .tl-item { display:flex; align-items:flex-start; gap:1.5rem; margin-bottom:2.5rem; position:relative; }
@@ -147,22 +144,22 @@
   .tl-item.right .tl-card { text-align:right; }
   .tl-dot {
     position:absolute; left:50%; top:1rem; transform:translateX(-50%);
-    width:14px; height:14px; background:var(--red-light);
-    border:3px solid var(--ivory); border-radius:50%;
-    box-shadow:0 0 0 2px var(--red-light); z-index:2;
+    width:14px; height:14px; background: transparent;
+    border:3px solid rgba(38,34,28,.16); border-radius:50%;
+    box-shadow: none; z-index:2;
   }
-  .tl-dot.gold  { background:var(--gold);       box-shadow:0 0 0 2px var(--gold); }
-  .tl-dot.navy  { background:var(--navy-light);  box-shadow:0 0 0 2px var(--navy-light); }
-  .tl-dot.teal  { background:var(--teal);        box-shadow:0 0 0 2px var(--teal); }
-  .tl-dot.green { background:var(--green-mid);   box-shadow:0 0 0 2px var(--green-mid); }
+  .tl-dot.gold  { background:var(--gold);       box-shadow: none; }
+  .tl-dot.navy  { background: transparent;  box-shadow: none; }
+  .tl-dot.teal  { background: transparent;        box-shadow: none; }
+  .tl-dot.green { background: transparent;   box-shadow: none; }
   .tl-card {
     width:calc(50% - 2.5rem); background:#fff;
     border:1px solid rgba(13,27,46,0.14); border-radius:6px;
-    padding:1.25rem 1.5rem; box-shadow:0 2px 12px var(--shadow);
+    padding:1.25rem 1.5rem; box-shadow: none;
   }
-  .tl-year  { font-family:'Cinzel',serif; font-size:0.82rem; color:var(--red-light); font-weight:700; margin-bottom:0.25rem; }
-  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
-  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-year  { font-family:'Cinzel',serif; font-size: 0.95rem; color: var(--t-accent-ink); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; color: var(--t-ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
   .tl-emoji { position:absolute; top:1rem; font-size:1.5rem; }
   .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
   .tl-item.right .tl-emoji        { left:-2.2rem; }
@@ -177,15 +174,15 @@
   /* BATTLE */
   .battle-wrap { display:grid; grid-template-columns:1fr auto 1fr; gap:1rem; align-items:center; margin-bottom:1.25rem; }
   @media(max-width:600px){ .battle-wrap{ grid-template-columns:1fr; } .vs-badge{ display:none; } }
-  .side { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:1.25rem; }
-  .side-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
-  .side-rep   { font-size:0.65rem; color:var(--silver); margin-bottom:0.6rem; }
-  .side-claim { font-size:0.78rem; color:rgba(255,255,255,0.68); line-height:1.6; }
+  .side { background: transparent; border:1px solid rgba(38,34,28,.16); border-radius:8px; padding:1.25rem; }
+  .side-name  { font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.2rem; }
+  .side-rep   { font-size: 0.75rem; color: var(--t-ink-3); margin-bottom:0.6rem; }
+  .side-claim { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
   .vs-badge {
     width:44px; height:44px; border-radius:50%;
-    background:rgba(224,184,74,0.15); border:1px solid rgba(224,184,74,0.4);
+    background:rgba(224,184,74,0.15); border:1px solid var(--t-accent);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Cinzel',serif; font-size:0.75rem; color:var(--gold-light); flex-shrink:0;
+    font-family:'Cinzel',serif; font-size: 0.95rem; color: var(--t-ink-2); flex-shrink:0;
   }
 
   /* CONCEPT CARDS */
@@ -194,44 +191,43 @@
     background:#fff; border:1px solid rgba(13,27,46,0.14);
     border-left:4px solid var(--navy-mid);
     border-radius:0 8px 8px 0;
-    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+    padding:1.25rem 1.5rem; box-shadow: none;
   }
-  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
-  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
-  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
-  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--navy-mid); background:rgba(13,27,46,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
+  .concept-term { font-family:'Noto Serif JP',serif; font-size:1.1rem; font-weight:700; color: var(--t-ink); display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size: 0.75rem; color: var(--t-ink-3); font-family:sans-serif; font-weight:400; letter-spacing:0.04em; }
+  .concept-body { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size: 0.95rem; color: var(--t-ink-2); background:rgba(13,27,46,0.07); border-radius:4px; padding:0.4rem 0.6rem; }
 
   /* REVOLUTION BAND */
   .rev-band {
-    background: linear-gradient(135deg, #1a0808, #3a0a0a);
-    border-radius:10px; padding:2.5rem; color:#fff;
-  }
-  .rev-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.25rem; }
-  .rev-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:1.1rem; }
-  .rev-name { font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--gold-light); font-weight:700; margin-bottom:0.2rem; }
-  .rev-year { font-size:0.62rem; color:var(--silver); letter-spacing:0.08em; margin-bottom:0.5rem; }
-  .rev-body { font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.55; }
+    background: transparent;
+    border-radius:10px; padding:2.5rem; color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .rev-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; margin-top:1.25rem; }
+  .rev-card { background: transparent; border:1px solid rgba(38,34,28,.16); border-radius:8px; padding:1.1rem; }
+  .rev-name { font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.2rem; }
+  .rev-year { font-size: 0.75rem; color: var(--t-ink-3); letter-spacing:0.08em; margin-bottom:0.5rem; }
+  .rev-body { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* COMPARE TABLE */
-  .cmp-bg { background:var(--navy); border-radius:10px; padding:2.5rem; color:#fff; overflow-x:auto; }
-  .cmp-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-top:1rem; }
-  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-light); border-bottom:1px solid rgba(255,255,255,0.12); }
-  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); vertical-align:top; }
+  .cmp-bg { background: transparent; border-radius:10px; padding:2.5rem; color: var(--t-ink); overflow-x:auto;border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .cmp-table { width:100%; border-collapse:collapse; font-size: 0.95rem; margin-top:1rem; }
+  .cmp-table th { padding:0.6rem 0.8rem; text-align:left; font-size: 0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color: var(--t-accent-ink); border-bottom:1px solid rgba(38,34,28,.16); }
+  .cmp-table td { padding:0.65rem 0.8rem; border-bottom:1px solid rgba(38,34,28,.16); color: var(--t-ink-2); vertical-align:top; }
   .cmp-table tr:last-child td { border-bottom:none; }
-  .cmp-table td:first-child { color:var(--gold-light); font-weight:700; white-space:nowrap; }
+  .cmp-table td:first-child { color: var(--t-accent-ink); font-weight:700; white-space:nowrap; }
 
   /* LIFE STEP */
   .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--ivory-dark); border-radius:8px; padding:1rem; margin-bottom:0.75rem; }
   .life-step-icon  { font-size:1.8rem; flex-shrink:0; }
-  .life-step-title { font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.2rem; }
-  .life-step-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .life-step-title { font-weight:700; font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.2rem; }
+  .life-step-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* IZAKAYA */
-  .test-bg { background:var(--navy); border-radius:10px; padding:2.5rem; color:#fff; }
-  .test-q { background:rgba(0,0,0,0.3); border-left:3px solid var(--navy-light); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
-  .test-q-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.15em; color:#B5D4F4; margin-bottom:0.3rem; }
-  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
-  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-bg { background: transparent; border-radius:10px; padding:2.5rem; color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .test-q { background: rgba(38,34,28,0.054); border-left:3px solid var(--t-accent); padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1rem; }
+  .test-q-label { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); margin-bottom:0.3rem; }
+  .test-q-text  { font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.5rem; }
+  .test-a       { font-size: 0.95rem; color: var(--t-ink-2); padding-left:0.5rem; }
   .test-a::before { content:'💡 '; }
 
   /* FOOTER */
@@ -240,16 +236,16 @@
 
   /* AXIS MAP */
   .axis-wrap { position:relative; background:#fff; border:1px solid rgba(13,27,46,0.14); border-radius:10px; padding:2rem; margin-bottom:1.5rem; }
-  .axis-title { font-family:'Noto Serif JP',serif; font-size:0.9rem; font-weight:700; color:var(--ink); text-align:center; margin-bottom:1.5rem; }
+  .axis-title { font-family:'Noto Serif JP',serif; font-size:0.9rem; font-weight:700; color: var(--t-ink); text-align:center; margin-bottom:1.5rem; }
   .axis-grid { display:grid; grid-template-columns:1fr 40px 1fr; grid-template-rows:1fr 40px 1fr; gap:0; position:relative; min-height:280px; }
   .axis-line-h { grid-column:1/4; grid-row:2/3; display:flex; align-items:center; justify-content:center; }
   .axis-line-v { grid-column:2/3; grid-row:1/4; display:flex; align-items:center; justify-content:center; flex-direction:column; }
   .hline { height:2px; width:100%; background:rgba(13,27,46,0.2); position:relative; }
   .vline { width:2px; height:100%; background:rgba(13,27,46,0.2); position:relative; }
-  .axis-lbl { font-size:0.72rem; color:var(--ink-light); padding:4px 8px; font-weight:700; }
+  .axis-lbl { font-size: 0.95rem; color: var(--t-ink-2); padding:4px 8px; font-weight:700; }
   .quad { padding:1rem; display:flex; flex-direction:column; justify-content:center; gap:0.4rem; }
-  .q-tag { display:inline-block; font-size:0.72rem; font-weight:700; padding:3px 8px; border-radius:4px; margin-bottom:2px; }
-  .q-desc { font-size:0.72rem; color:var(--ink-light); line-height:1.4; }
+  .q-tag { display:inline-block; font-size: 0.95rem; font-weight:700; padding:3px 8px; border-radius:4px; margin-bottom:2px; }
+  .q-desc { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* ─── MOBILE TIMELINE FIX ─── */
   @media (max-width: 768px) {
@@ -268,7 +264,7 @@
 
   /* ─── MOBILE TABLE FIX ─── */
   @media (max-width: 768px) {
-    .cmp-table, .cmp-bg { font-size: 0.72rem; }
+    .cmp-table, .cmp-bg { font-size: 0.95rem; }
     .cmp-bg { padding: 1.25rem; }
     .cmp-table th, .cmp-table td { padding: 0.5rem 0.6rem; }
     .cmp-table td:first-child { white-space: normal; }
@@ -299,8 +295,79 @@
     .container { padding: 0 1rem !important; }
   }
 </style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+/* chapter labels: plain small caps instead of filled pills */
+.section-badge{background:none !important;color:inherit !important;padding:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important}
+
+/* decorative emoji icon columns */
+.tl-emoji,.ls-icon,.life-step-icon,.bigq-icon{display:none !important}
+
+/* 居酒屋ポイント: ruled note instead of a box */
+.tip-bar{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:.9rem 0 !important;text-align:left !important}
+
+/* 実戦テスト: Q&A separated by rules, not left-bar callouts */
+.test-q{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1.15rem 0 !important;margin:0 !important}
+.test-q:first-child{border-top:0 !important;padding-top:0 !important}
+.test-q:last-child{padding-bottom:0 !important}
+.test-a{padding-left:0 !important}
+.test-a::before{content:none !important}
+
+/* life steps: rules instead of tinted boxes */
+.life-step{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 !important;margin:0 !important}
+
+.concept-grid{column-gap:2rem !important;row-gap:2.25rem !important}
+.concept-izakaya{background:none !important;border:0 !important;border-top:1px dashed color-mix(in srgb,currentColor 35%,transparent) !important;border-radius:0 !important;padding:.6rem 0 0 !important}
+.phil-card{background:transparent !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.side{background:transparent !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.rev-card{background:transparent !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.concept-card{background:none !important;border:0 !important;border-top:2px solid var(--navy-mid) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 0 !important}
+.hero h1{background:none !important;-webkit-text-fill-color:currentColor !important;color:var(--gold-light) !important}
+
+/* ═══ series theme: paperback (paper + ink + one accent) ═══ */
+:root{--t-paper:#F8F5EE;--t-paper-2:#F0EBE0;--t-ink:#26221C;--t-ink-2:#4A443A;--t-ink-3:#6A6356;--t-rule:rgba(38,34,28,.16);--t-accent:#B02840;--t-accent-ink:#9b2338}
+body{background:var(--t-paper) !important;color:var(--t-ink)}
+.bg-white{background:var(--t-paper) !important}
+.bg-warm{background:var(--t-paper-2) !important}
+.section-title{color:var(--t-ink) !important}
+.section-desc{color:var(--t-ink-2) !important}
+.section-badge{color:var(--t-accent-ink) !important}
+.concept-card{border-top-color:var(--t-accent) !important}
+.tip-bar strong{color:var(--t-accent-ink)}
+
+</style>
 </head>
 <body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>全20巻</a><span class="kit-here">Vol.05<b>政治思想史</b></span><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>政治思想とは何を問うのか</a></li><li><a href="#ch-2"><span>2</span>古代〜中世 — 支配の正当性を問う</a></li><li><a href="#ch-3"><span>3</span>社会契約論の三巨人</a></li><li><a href="#ch-4"><span>4</span>革命の時代 — 思想が世界を変えた18〜19世紀</a></li><li><a href="#ch-5"><span>5</span>六大イデオロギー完全解剖</a></li><li><a href="#ch-6"><span>6</span>20世紀の政治思想 — 全体主義との闘い</a></li><li><a href="#ch-7"><span>7</span>現代の政治思想地図</a></li><li><a href="#ch-8"><span>8</span>知っておくべき政治思想の核心概念</a></li><li><a href="#ch-9"><span>＊</span>社会契約三者比較 × 現代の政治体制</a></li><li><a href="#ch-10"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+
 
 <!-- HERO -->
 <div class="hero">
@@ -316,7 +383,7 @@
 </div>
 
 <!-- CH1: なぜ政治思想を学ぶか -->
-<section class="bg-white">
+<section class="bg-white" id="ch-1">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 1</span>
@@ -350,13 +417,13 @@
     </div>
   </div>
   <div class="tip-bar">
-    🍺 <strong>居酒屋ポイント：</strong>「ニュースで左派・右派・リベラル・保守って言葉が飛び交うけど、何が軸かわかる？ 大ざっぱに言うと、縦軸が"国家の力を強くするか弱くするか"、横軸が"格差を容認するか是正するか"。ここさえわかればほぼ全ての政治論争が読める」
+    <strong>居酒屋ポイント：</strong>「ニュースで左派・右派・リベラル・保守って言葉が飛び交うけど、何が軸かわかる？ 大ざっぱに言うと、縦軸が"国家の力を強くするか弱くするか"、横軸が"格差を容認するか是正するか"。ここさえわかればほぼ全ての政治論争が読める」
   </div>
 </div>
 </section>
 
 <!-- CH2: 古代〜中世 -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-2">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 2</span>
@@ -416,48 +483,48 @@
 </section>
 
 <!-- CH3: 社会契約論 -->
-<section class="bg-white">
+<section class="bg-white" id="ch-3">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 3</span>
     <h2 class="section-title">社会契約論の三巨人</h2>
     <p class="section-desc">17〜18世紀。「なぜ国家に従わなければならないか」を理性で答えた</p>
   </div>
-  <div class="dark-panel" style="background:var(--red-deep);">
+  <div class="dark-panel" style="background: transparent;">
     <div class="dp-label">SOCIAL CONTRACT THEORY · 社会契約論</div>
     <div class="dp-title">共通の問い：「自然状態」から「政治社会」はどう生まれるか</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1.25rem;">
       <div class="phil-card">
         <div class="phil-name">トマス・ホッブズ</div>
         <div class="phil-dates">1588〜1679 · イングランド</div>
-        <div class="phil-key" style="color:#EF9F27;">リヴァイアサン・絶対主権</div>
+        <div class="phil-key" style="color: var(--t-accent-ink);">リヴァイアサン・絶対主権</div>
         <div class="phil-body">自然状態は「万人の万人に対する戦争（bellum omnium contra omnes）」。人間は本来利己的・暴力的な生き物で、社会なければ「生は孤独・貧困・汚辱・野蛮・短命」。だからこそ絶対的権力（リヴァイアサン）に全権委譲することで安全を買う。民主主義より強い権威を支持。</div>
         <div class="phil-quote">「人間の生は孤独で、貧しく、汚く、残忍で、短い」</div>
       </div>
       <div class="phil-card">
         <div class="phil-name">ジョン・ロック</div>
         <div class="phil-dates">1632〜1704 · イングランド</div>
-        <div class="phil-key" style="color:#EF9F27;">自然権・抵抗権・立憲主義</div>
+        <div class="phil-key" style="color: var(--t-accent-ink);">自然権・抵抗権・立憲主義</div>
         <div class="phil-body">自然状態は比較的平和で、人間は生命・自由・財産の「自然権」を持つ。政府はその保護のために人民が「信託」した存在。もし政府が自然権を侵害すれば人民には「抵抗権・革命権」がある。アメリカ独立宣言の直接の哲学的源泉。自由民主主義の礎。</div>
         <div class="phil-quote">「政府なきところに自由はない、しかし自由なきところに政府の正当性もない」</div>
       </div>
       <div class="phil-card">
         <div class="phil-name">ジャン＝ジャック・ルソー</div>
         <div class="phil-dates">1712〜1778 · ジュネーヴ</div>
-        <div class="phil-key" style="color:#EF9F27;">一般意志・直接民主主義</div>
+        <div class="phil-key" style="color: var(--t-accent-ink);">一般意志・直接民主主義</div>
         <div class="phil-body">「人間は自由なものとして生まれたが、至る所で鎖につながれている」。自然状態の人間は善良で、文明が堕落させた（性善説）。国家は「一般意志（volonté générale）」——個人の意思の総和ではなく共同体全体の利益——によって統治されるべき。フランス革命・ナショナリズムの思想的父。ルソーの「一般意志」が独裁の正当化に使われた危険な側面も。</div>
         <div class="phil-quote">「人間は自由なものとして生まれたが、至る所で鎖につながれている」</div>
       </div>
     </div>
-    <div style="background:rgba(0,0,0,0.3); border-radius:6px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.65); margin-top:0.5rem;">
-      ⚡ <strong style="color:var(--gold-light);">三者の違いの核心：</strong>ホッブズは「人間は悪だから強い国家が必要」→ 権威主義的。ロックは「国家は個人の権利を守る手段」→ 自由主義的。ルソーは「一般意志こそ主権者」→ 民主主義的・かつ全体主義的危険も孕む。アメリカ建国はロック、フランス革命はルソー、中国・ロシア型体制はある意味でホッブズ。
+    <div style="background: rgba(38,34,28,0.054); border-radius:6px; padding:1rem; font-size: 0.95rem; color: var(--t-ink-2); margin-top:0.5rem;">
+      <strong style="color: var(--t-accent-ink);">三者の違いの核心：</strong>ホッブズは「人間は悪だから強い国家が必要」→ 権威主義的。ロックは「国家は個人の権利を守る手段」→ 自由主義的。ルソーは「一般意志こそ主権者」→ 民主主義的・かつ全体主義的危険も孕む。アメリカ建国はロック、フランス革命はルソー、中国・ロシア型体制はある意味でホッブズ。
     </div>
   </div>
 </div>
 </section>
 
 <!-- CH4: 革命の時代 -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-4">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 4</span>
@@ -494,7 +561,7 @@
 </section>
 
 <!-- CH5: イデオロギー六大潮流 -->
-<section class="bg-white">
+<section class="bg-white" id="ch-5">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 5</span>
@@ -543,7 +610,7 @@
 </section>
 
 <!-- CH6: 20世紀の政治思想 -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-6">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 6</span>
@@ -588,7 +655,7 @@
     </div>
   </div>
 
-  <div class="dark-panel" style="background:#0d1f10;">
+  <div class="dark-panel" style="background: transparent;">
     <div class="dp-label">COLD WAR BATTLE · 冷戦の思想対決</div>
     <div class="dp-title">自由主義 vs 共産主義 — 20世紀最大のイデオロギー戦争</div>
     <div class="battle-wrap">
@@ -609,7 +676,7 @@
 </section>
 
 <!-- CH7: 現代の政治思想 -->
-<section class="bg-white">
+<section class="bg-white" id="ch-7">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 7</span>
@@ -654,33 +721,33 @@
       <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
         <div style="font-size:2rem;">↕</div>
         <div>
-          <div style="font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.25rem;">縦軸：国家の強さ（権威主義 ↔ 自由主義）</div>
-          <div style="font-size:0.8rem; color:var(--ink-light);">上：国家・権威・集団を重視。下：個人・自由・多様性を重視。独裁者もここに位置する。</div>
+          <div style="font-weight:700; font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.25rem;">縦軸：国家の強さ（権威主義 ↔ 自由主義）</div>
+          <div style="font-size: 0.95rem; color: var(--t-ink-2);">上：国家・権威・集団を重視。下：個人・自由・多様性を重視。独裁者もここに位置する。</div>
         </div>
       </div>
       <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
         <div style="font-size:2rem;">↔</div>
         <div>
-          <div style="font-weight:700; font-size:0.88rem; color:var(--ink); margin-bottom:0.25rem;">横軸：経済政策（右派 ↔ 左派）</div>
-          <div style="font-size:0.8rem; color:var(--ink-light);">右：市場・私有財産・競争を重視。左：再分配・規制・平等を重視。「左右」はもともとフランス革命時の議会の座席位置が語源。</div>
+          <div style="font-weight:700; font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.25rem;">横軸：経済政策（右派 ↔ 左派）</div>
+          <div style="font-size: 0.95rem; color: var(--t-ink-2);">右：市場・私有財産・競争を重視。左：再分配・規制・平等を重視。「左右」はもともとフランス革命時の議会の座席位置が語源。</div>
         </div>
       </div>
       <div style="background:var(--ivory-dark); border-radius:8px; padding:1.25rem; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.5rem;">
         <div style="text-align:center;">
-          <div style="background:var(--red-mid); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">権威主義的右派</div>
-          <div style="font-size:0.68rem; color:var(--ink-light);">ファシズム・ナショナリズム・中国共産党（経済は国家主導）</div>
+          <div style="background: transparent; color: var(--t-ink); font-size: 0.95rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">権威主義的右派</div>
+          <div style="font-size: 0.75rem; color: var(--t-ink-2);">ファシズム・ナショナリズム・中国共産党（経済は国家主導）</div>
         </div>
         <div style="text-align:center;">
-          <div style="background:var(--red-deep); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">権威主義的左派</div>
-          <div style="font-size:0.68rem; color:var(--ink-light);">スターリン主義・毛沢東主義・共産独裁</div>
+          <div style="background: transparent; color: var(--t-ink); font-size: 0.95rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">権威主義的左派</div>
+          <div style="font-size: 0.75rem; color: var(--t-ink-2);">スターリン主義・毛沢東主義・共産独裁</div>
         </div>
         <div style="text-align:center;">
-          <div style="background:var(--navy-mid); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">自由主義的右派</div>
-          <div style="font-size:0.68rem; color:var(--ink-light);">新自由主義・古典的自由主義・小さな政府</div>
+          <div style="background: transparent; color: var(--t-ink); font-size: 0.95rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">自由主義的右派</div>
+          <div style="font-size: 0.75rem; color: var(--t-ink-2);">新自由主義・古典的自由主義・小さな政府</div>
         </div>
         <div style="text-align:center;">
-          <div style="background:var(--green-mid); color:#fff; font-size:0.72rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">自由主義的左派</div>
-          <div style="font-size:0.68rem; color:var(--ink-light);">社会民主主義・福祉国家・リベラル左派</div>
+          <div style="background: transparent; color: var(--t-ink); font-size: 0.95rem; font-weight:700; padding:4px 6px; border-radius:4px; margin-bottom:4px;">自由主義的左派</div>
+          <div style="font-size: 0.75rem; color: var(--t-ink-2);">社会民主主義・福祉国家・リベラル左派</div>
         </div>
       </div>
     </div>
@@ -689,7 +756,7 @@
 </section>
 
 <!-- CH8: CONCEPT CARDS -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-8">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">CHAPTER 8</span>
@@ -752,7 +819,7 @@
 </section>
 
 <!-- COMPARE TABLE -->
-<section class="bg-white">
+<section class="bg-white" id="ch-9">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">SPECIAL</span>
@@ -819,11 +886,11 @@
 </section>
 
 <!-- IZAKAYA -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-10">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">FINAL CHAPTER</span>
-    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <h2 class="section-title">居酒屋実戦テスト</h2>
     <p class="section-desc">政治思想を制覇した「あなた」が使えるトークシナリオ集</p>
   </div>
   <div class="test-bg">
@@ -860,20 +927,24 @@
   </div>
 </div>
 </section>
-<!-- ─── NEXT LIBRARY ─── -->
-<div style="background:rgba(0,0,0,0.35);border-top:1px solid rgba(200,152,48,0.18);padding:2rem;text-align:center;">
-  <a href="economic_thought_history.html" style="display:inline-flex;align-items:center;gap:1.2rem;text-decoration:none;padding:0.9rem 2rem;border:1px solid rgba(200,152,48,0.3);border-radius:4px;color:rgba(244,240,232,0.75);">
-    <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#C89830;">NEXT</span>
-    <span style="font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#F4F0E8;">経済思想史</span>
-    <span style="color:#C89830;font-size:1.1rem;">→</span>
-  </a>
-</div>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="philosophy_history.html"><span class="kit-pager-dir">← 前の巻 Vol.04</span><span class="kit-pager-title">哲学史</span></a><a class="kit-pager-home" href="index.html">全20巻の目次</a><a class="kit-pager-next" href="economic_thought_history.html"><span class="kit-pager-dir">次の巻 → Vol.06</span><span class="kit-pager-title">経済思想史</span></a></nav>
 <!-- FOOTER -->
 <div class="footer">
   <span class="footer-icon">⚖</span>
   <p>宗教・哲学・政治思想。知の三角形が完成した。次は経済か、美術か。</p>
-  <p style="margin-top:0.35rem; opacity:0.45;">「権力は腐敗する。絶対権力は絶対に腐敗する。— アクトン卿」</p>
+  <p style="margin-top:0.35rem; opacity:0.92;">「権力は腐敗する。絶対権力は絶対に腐敗する。— アクトン卿」</p>
 </div>
 
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
 </body>
 </html>

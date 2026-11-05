@@ -82,7 +82,7 @@
     position:relative; z-index:1;
   }
   .hero-sub {
-    font-size:1rem; color:rgba(255,255,255,0.48);
+    font-size:1rem; color:rgba(255,255,255,0.74);
     max-width:560px; margin:0 auto 3rem; font-weight:300;
     position:relative; z-index:1;
     font-style:italic;
@@ -92,7 +92,7 @@
     position:relative; z-index:1;
   }
   .hero-stat-num { font-family:'Playfair Display',serif; font-size:2rem; color:var(--ochre-light); display:block; }
-  .hero-stat-lbl { font-size:0.7rem; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; }
+  .hero-stat-lbl { font-size:0.7rem; color:rgba(255,255,255,0.74); letter-spacing:0.1em; text-transform:uppercase; }
 
   /* ─── LAYOUT ─── */
   .container { max-width:960px; margin:0 auto; padding:0 2rem; }
@@ -101,16 +101,15 @@
   .section-badge {
     display:inline-block;
     font-family:'Cinzel',serif;
-    background:var(--museum-mid); color:var(--ochre-light);
-    font-size:0.62rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase;
+    background: transparent; color: var(--t-accent-ink);
+    font-size: 0.75rem; font-weight:700; letter-spacing:0.3em; text-transform:uppercase;
     padding:4px 14px; border-radius:1px; margin-bottom:0.75rem;
-    border:1px solid rgba(200,168,64,0.2);
-  }
+    border:1px solid var(--t-accent);border:1px solid var(--t-rule) !important;border-radius:2px !important;}
   .section-title {
     font-family:'Playfair Display',serif;
-    font-size:clamp(1.6rem,3vw,2.3rem); color:var(--ink); font-weight:700;
+    font-size:clamp(1.6rem,3vw,2.3rem); color: var(--t-ink); font-weight:700;
   }
-  .section-desc { font-size:0.92rem; color:var(--ink-light); margin-top:0.5rem; font-style:italic; }
+  .section-desc { font-size:0.92rem; color: var(--t-ink-2); margin-top:0.5rem; font-style:italic; }
   .bg-warm  { background:var(--canvas-dark); }
   .bg-white { background:#fff; }
   .bg-canvas { background:var(--canvas); }
@@ -119,55 +118,53 @@
   .tip-bar {
     background:#fff; border-radius:2px;
     border:1px solid rgba(14,10,6,0.12);
-    border-left:4px solid var(--ochre);
-    padding:0.85rem 1.25rem; font-size:0.82rem; color:var(--ink-light); margin-top:1.5rem;
+    border-left:4px solid var(--t-accent);
+    padding:0.85rem 1.25rem; font-size: 0.95rem; color: var(--t-ink-2); margin-top:1.5rem;
   }
 
   /* ─── DARK PANEL ─── */
   .dark-panel {
-    background:var(--museum-deep);
-    border-radius:4px; padding:2.5rem; color:#fff;
-    border:1px solid rgba(200,168,64,0.12);
-  }
-  .dp-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.25em; color:var(--silver); margin-bottom:0.4rem; font-family:'Cinzel',serif; }
-  .dp-title { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--ochre-light); font-weight:700; margin-bottom:1.25rem; }
+    background: transparent;
+    border-radius:4px; padding:2.5rem; color: var(--t-ink);
+    border:1px solid var(--t-accent);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .dp-label { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.25em; color: var(--t-ink-3); margin-bottom:0.4rem; font-family:'Cinzel',serif; }
+  .dp-title { font-family:'Playfair Display',serif; font-size:1.3rem; color: var(--t-ink); font-weight:700; margin-bottom:1.25rem; }
 
   /* ─── MOVEMENT CARDS (framed look) ─── */
-  .movement-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1rem; }
+  .movement-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
   .movement-card {
-    background:var(--museum-mid);
+    background: transparent;
     border:2px solid var(--frame-dark);
     border-radius:2px;
     padding:1.25rem 1.1rem;
     position:relative;
-    box-shadow: 3px 3px 0 rgba(106,80,16,0.3);
-  }
+    box-shadow: none;border:1px solid var(--t-rule) !important;border-radius:2px !important;}
   .movement-card::before {
     content:'';
     position:absolute; inset:4px;
-    border:1px solid rgba(200,168,64,0.12);
+    border:1px solid var(--t-accent);
     pointer-events:none;
   }
-  .mc-era    { font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--ochre-light); display:block; margin-bottom:0.4rem; }
-  .mc-name   { font-family:'Playfair Display',serif; font-size:1rem; color:var(--ochre-light); font-weight:700; margin-bottom:0.4rem; display:block; }
-  .mc-period { font-size:0.62rem; color:var(--silver); margin-bottom:0.5rem; display:block; }
-  .mc-body   { font-size:0.77rem; color:rgba(255,255,255,0.65); line-height:1.55; }
-  .mc-key    { margin-top:0.6rem; font-size:0.72rem; color:rgba(200,168,64,0.7); }
+  .mc-era    { font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); display:block; margin-bottom:0.4rem; }
+  .mc-name   { font-family:'Playfair Display',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.4rem; display:block; }
+  .mc-period { font-size: 0.75rem; color: var(--t-ink-3); margin-bottom:0.5rem; display:block; }
+  .mc-body   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .mc-key    { margin-top:0.6rem; font-size: 0.95rem; color: var(--t-ink-2); }
 
   /* ─── ARTIST CARDS ─── */
-  .artist-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:0.9rem; }
+  .artist-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:0.9rem; }
   .artist-card {
-    background:rgba(255,255,255,0.07);
-    border:1px solid rgba(255,255,255,0.1);
-    border-top:3px solid var(--ochre);
+    background: transparent;
+    border:1px solid rgba(38,34,28,.16);
+    border-top:3px solid var(--t-accent);
     border-radius:0 0 4px 4px;
     padding:1rem 1.1rem;
   }
-  .ac-name   { font-family:'Playfair Display',serif; font-size:0.95rem; color:var(--ochre-light); font-weight:700; margin-bottom:0.15rem; }
-  .ac-dates  { font-size:0.6rem; color:var(--silver); letter-spacing:0.06em; margin-bottom:0.35rem; }
-  .ac-field  { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.09em; color:var(--viridian-lt); margin-bottom:0.35rem; font-family:'Cinzel',serif; }
-  .ac-body   { font-size:0.77rem; color:rgba(255,255,255,0.65); line-height:1.5; }
-  .ac-work   { margin-top:0.55rem; font-size:0.72rem; color:rgba(200,168,64,0.65); font-style:italic; }
+  .ac-name   { font-family:'Playfair Display',serif; font-size:0.95rem; color: var(--t-ink); font-weight:700; margin-bottom:0.15rem; }
+  .ac-dates  { font-size: 0.75rem; color: var(--t-ink-3); letter-spacing:0.06em; margin-bottom:0.35rem; }
+  .ac-field  { font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.09em; color: var(--t-accent-ink); margin-bottom:0.35rem; font-family:'Cinzel',serif; }
+  .ac-body   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .ac-work   { margin-top:0.55rem; font-size: 0.95rem; color: var(--t-ink-2); font-style:italic; }
 
   /* ─── MASTERPIECE CARDS ─── */
   .masterpiece-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
@@ -176,20 +173,20 @@
     border:1px solid rgba(14,10,6,0.12);
     border-radius:2px;
     padding:1.5rem;
-    box-shadow:0 2px 12px var(--shadow);
+    box-shadow: none;
     position:relative;
     overflow:hidden;
   }
   .masterpiece-card::before {
     content:'';
     position:absolute; top:0; left:0; right:0; height:4px;
-    background:linear-gradient(90deg,var(--bordeaux),var(--ochre),var(--prussian));
+    background: transparent;
   }
-  .mp-movement { font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--ochre); display:block; margin-bottom:0.4rem; }
-  .mp-title  { font-family:'Playfair Display',serif; font-size:1rem; color:var(--ink); font-weight:700; font-style:italic; margin-bottom:0.2rem; }
-  .mp-artist { font-size:0.72rem; color:var(--ink-light); margin-bottom:0.6rem; }
-  .mp-body   { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
-  .mp-izakaya{ margin-top:0.75rem; font-size:0.75rem; color:var(--bordeaux); background:rgba(106,20,40,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--bordeaux-lt); }
+  .mp-movement { font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); display:block; margin-bottom:0.4rem; }
+  .mp-title  { font-family:'Playfair Display',serif; font-size:1rem; color: var(--t-ink); font-weight:700; font-style:italic; margin-bottom:0.2rem; }
+  .mp-artist { font-size: 0.95rem; color: var(--t-ink-2); margin-bottom:0.6rem; }
+  .mp-body   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .mp-izakaya{ margin-top:0.75rem; font-size: 0.95rem; color: var(--t-ink-2); background:rgba(106,20,40,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--t-accent); }
 
   /* ─── TIMELINE ─── */
   .timeline { position:relative; padding:1rem 0; }
@@ -204,22 +201,22 @@
   .tl-dot {
     position:absolute; left:50%; top:1rem; transform:translateX(-50%);
     width:14px; height:14px; background:var(--ochre);
-    border:3px solid var(--canvas); border-radius:50%;
-    box-shadow:0 0 0 2px var(--ochre); z-index:2;
+    border:3px solid rgba(38,34,28,.16); border-radius:50%;
+    box-shadow: none; z-index:2;
   }
-  .tl-dot.bordeaux { background:var(--bordeaux-lt); box-shadow:0 0 0 2px var(--bordeaux-lt); }
-  .tl-dot.prussian { background:var(--prussian-lt); box-shadow:0 0 0 2px var(--prussian-lt); }
-  .tl-dot.viridian { background:var(--viridian-lt); box-shadow:0 0 0 2px var(--viridian-lt); }
-  .tl-dot.frame    { background:var(--frame-gold);  box-shadow:0 0 0 2px var(--frame-gold); }
+  .tl-dot.bordeaux { background: transparent; box-shadow: none; }
+  .tl-dot.prussian { background: transparent; box-shadow: none; }
+  .tl-dot.viridian { background: transparent; box-shadow: none; }
+  .tl-dot.frame    { background:var(--frame-gold);  box-shadow: none; }
   .tl-card {
     width:calc(50% - 2.5rem); background:#fff;
     border:1px solid rgba(14,10,6,0.12);
     border-radius:2px; padding:1.25rem 1.5rem;
-    box-shadow:0 2px 12px var(--shadow);
+    box-shadow: none;
   }
-  .tl-year  { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--ochre); font-weight:700; margin-bottom:0.25rem; }
-  .tl-event { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:0.4rem; }
-  .tl-desc  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .tl-year  { font-family:'Cinzel',serif; font-size: 0.95rem; color: var(--t-accent-ink); font-weight:700; margin-bottom:0.25rem; }
+  .tl-event { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color: var(--t-ink); margin-bottom:0.4rem; }
+  .tl-desc  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
   .tl-emoji { position:absolute; top:1rem; font-size:1.4rem; }
   .tl-item:not(.right) .tl-emoji { right:-2.2rem; }
   .tl-item.right .tl-emoji        { left:-2.2rem; }
@@ -237,37 +234,37 @@
     background:#fff; border:1px solid rgba(14,10,6,0.12);
     border-left:4px solid var(--bordeaux);
     border-radius:0 4px 4px 0;
-    padding:1.25rem 1.5rem; box-shadow:0 2px 8px var(--shadow);
+    padding:1.25rem 1.5rem; box-shadow: none;
   }
-  .concept-term { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--ink); display:flex; align-items:baseline; gap:0.5rem; margin-bottom:0.25rem; }
-  .concept-en   { font-size:0.62rem; color:var(--gray); font-family:'Cinzel',serif; font-weight:400; letter-spacing:0.06em; }
-  .concept-body { font-size:0.82rem; color:var(--ink-light); line-height:1.6; margin-top:0.5rem; }
-  .concept-izakaya { margin-top:0.75rem; font-size:0.77rem; color:var(--bordeaux); background:rgba(106,20,40,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--bordeaux-lt); }
+  .concept-term { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color: var(--t-ink); display:flex; align-items:baseline; gap:0.5rem; margin-bottom:0.25rem; }
+  .concept-en   { font-size: 0.75rem; color: var(--t-ink-3); font-family:'Cinzel',serif; font-weight:400; letter-spacing:0.06em; }
+  .concept-body { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; margin-top:0.5rem; }
+  .concept-izakaya { margin-top:0.75rem; font-size: 0.95rem; color: var(--t-ink-2); background:rgba(106,20,40,0.06); border-radius:2px; padding:0.4rem 0.6rem; border-left:3px solid var(--t-accent); }
 
   /* ─── COMPARE TABLE ─── */
-  .cmp-bg { background:var(--museum-deep); border-radius:4px; padding:2.5rem; color:#fff; overflow-x:auto; border:1px solid rgba(200,168,64,0.12); }
-  .cmp-table { width:100%; border-collapse:collapse; font-size:0.79rem; margin-top:1rem; min-width:520px; }
-  .cmp-table th { padding:0.7rem 0.9rem; text-align:left; font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--ochre-light); border-bottom:1px solid rgba(200,168,64,0.2); white-space:nowrap; font-family:'Cinzel',serif; }
-  .cmp-table td { padding:0.7rem 0.9rem; border-bottom:1px solid rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); vertical-align:top; line-height:1.5; }
+  .cmp-bg { background: transparent; border-radius:4px; padding:2.5rem; color: var(--t-ink); overflow-x:auto; border:1px solid var(--t-accent);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .cmp-table { width:100%; border-collapse:collapse; font-size: 0.95rem; margin-top:1rem; min-width:520px; }
+  .cmp-table th { padding:0.7rem 0.9rem; text-align:left; font-size: 0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color: var(--t-accent-ink); border-bottom:1px solid var(--t-accent); white-space:nowrap; font-family:'Cinzel',serif; }
+  .cmp-table td { padding:0.7rem 0.9rem; border-bottom:1px solid rgba(38,34,28,.16); color: var(--t-ink-2); vertical-align:top; line-height: 1.8; }
   .cmp-table tr:last-child td { border-bottom:none; }
-  .cmp-table td:first-child { color:var(--ochre-light); font-weight:700; white-space:nowrap; font-family:'Playfair Display',serif; font-style:italic; }
+  .cmp-table td:first-child { color: var(--t-accent-ink); font-weight:700; white-space:nowrap; font-family:'Playfair Display',serif; font-style:italic; }
 
   /* ─── LIFE STEP ─── */
-  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--canvas-dark); border-radius:4px; padding:1rem; margin-bottom:0.75rem; border-left:3px solid var(--ochre); }
+  .life-step { display:flex; gap:1rem; align-items:flex-start; background:var(--canvas-dark); border-radius:4px; padding:1rem; margin-bottom:0.75rem; border-left:3px solid var(--t-accent); }
   .ls-icon  { font-size:1.8rem; flex-shrink:0; }
-  .ls-title { font-family:'Playfair Display',serif; font-weight:700; font-size:0.95rem; color:var(--ink); margin-bottom:0.2rem; }
-  .ls-body  { font-size:0.8rem; color:var(--ink-light); line-height:1.6; }
+  .ls-title { font-family:'Playfair Display',serif; font-weight:700; font-size:0.95rem; color: var(--t-ink); margin-bottom:0.2rem; }
+  .ls-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* ─── IZAKAYA ─── */
-  .test-bg { background:var(--museum-deep); border-radius:4px; padding:2.5rem; color:#fff; border:1px solid rgba(200,168,64,0.12); }
-  .test-q { background:rgba(0,0,0,0.25); border-left:3px solid var(--ochre); padding:1rem 1.25rem; border-radius:0 4px 4px 0; margin-bottom:1rem; }
-  .test-q-label { font-family:'Cinzel',serif; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--ochre-pale); margin-bottom:0.3rem; }
-  .test-q-text  { font-size:0.88rem; color:rgba(255,255,255,0.9); margin-bottom:0.5rem; }
-  .test-a       { font-size:0.8rem; color:rgba(255,255,255,0.62); padding-left:0.5rem; }
+  .test-bg { background: transparent; border-radius:4px; padding:2.5rem; color: var(--t-ink); border:1px solid var(--t-accent);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .test-q { background: rgba(38,34,28,0.045); border-left:3px solid var(--t-accent); padding:1rem 1.25rem; border-radius:0 4px 4px 0; margin-bottom:1rem; }
+  .test-q-label { font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.2em; color: var(--t-accent-ink); margin-bottom:0.3rem; }
+  .test-q-text  { font-size: 0.95rem; color: var(--t-ink); margin-bottom:0.5rem; }
+  .test-a       { font-size: 0.95rem; color: var(--t-ink-2); padding-left:0.5rem; }
   .test-a::before { content:'💡 '; }
 
   /* ─── DIVIDER ─── */
-  .ornament-divider { text-align:center; color:var(--frame-gold); opacity:0.4; letter-spacing:1em; font-size:0.8rem; margin:1.5rem 0; }
+  .ornament-divider { text-align:center; color: var(--t-accent-ink); opacity:0.4; letter-spacing:1em; font-size: 0.95rem; margin:1.5rem 0; }
 
   /* ─── FOOTER ─── */
   .footer { background:var(--museum-deep); color:var(--silver); text-align:center; padding:2.5rem; font-size:0.77rem; border-top:1px solid rgba(200,168,64,0.15); }
@@ -291,7 +288,7 @@
 
   /* ─── MOBILE TABLE FIX ─── */
   @media (max-width: 768px) {
-    .cmp-table, .cmp-bg { font-size: 0.72rem; }
+    .cmp-table, .cmp-bg { font-size: 0.95rem; }
     .cmp-bg { padding: 1.25rem; }
     .cmp-table th, .cmp-table td { padding: 0.5rem 0.6rem; }
     .cmp-table td:first-child { white-space: normal; }
@@ -322,8 +319,79 @@
     .container { padding: 0 1rem !important; }
   }
 </style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+/* chapter labels: plain small caps instead of filled pills */
+.section-badge{background:none !important;color:inherit !important;padding:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important}
+
+/* decorative emoji icon columns */
+.tl-emoji,.ls-icon,.life-step-icon,.bigq-icon{display:none !important}
+
+/* 居酒屋ポイント: ruled note instead of a box */
+.tip-bar{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:.9rem 0 !important;text-align:left !important}
+
+/* 実戦テスト: Q&A separated by rules, not left-bar callouts */
+.test-q{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1.15rem 0 !important;margin:0 !important}
+.test-q:first-child{border-top:0 !important;padding-top:0 !important}
+.test-q:last-child{padding-bottom:0 !important}
+.test-a{padding-left:0 !important}
+.test-a::before{content:none !important}
+
+/* life steps: rules instead of tinted boxes */
+.life-step{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 !important;margin:0 !important}
+
+.concept-grid{column-gap:2rem !important;row-gap:2.25rem !important}
+.concept-izakaya{background:none !important;border:0 !important;border-top:1px dashed color-mix(in srgb,currentColor 35%,transparent) !important;border-radius:0 !important;padding:.6rem 0 0 !important}
+.artist-card{background:transparent !important;border:0 !important;border-top:3px solid var(--ochre) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.concept-card{background:none !important;border:0 !important;border-top:2px solid var(--bordeaux) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 0 !important}
+.hero h1{background:none !important;-webkit-text-fill-color:currentColor !important;color:var(--ochre-light) !important}
+
+/* ═══ series theme: paperback (paper + ink + one accent) ═══ */
+:root{--t-paper:#F8F5EE;--t-paper-2:#F0EBE0;--t-ink:#26221C;--t-ink-2:#4A443A;--t-ink-3:#6A6356;--t-rule:rgba(38,34,28,.16);--t-accent:#9A2040;--t-accent-ink:#9a2040}
+body{background:var(--t-paper) !important;color:var(--t-ink)}
+.bg-white{background:var(--t-paper) !important}
+.bg-warm{background:var(--t-paper-2) !important}
+.section-title{color:var(--t-ink) !important}
+.section-desc{color:var(--t-ink-2) !important}
+.section-badge{color:var(--t-accent-ink) !important}
+.concept-card{border-top-color:var(--t-accent) !important}
+.tip-bar strong{color:var(--t-accent-ink)}
+
+/* contrast: same hue, lightness adjusted to ≥4.5:1 */
+.footer-ornament{color:#947a31 !important;opacity:1 !important}
+</style>
 </head>
 <body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>全20巻</a><span class="kit-here">Vol.10<b>西洋美術史</b></span><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>美術史を学ぶとはどういうことか</a></li><li><a href="#ch-2"><span>2</span>古代〜中世 — 神・人間・象徴</a></li><li><a href="#ch-3"><span>3</span>ルネサンス — 「人間の再発見」と視覚革命</a></li><li><a href="#ch-4"><span>4</span>バロック〜ロマン主義 — 動・光・感情の爆発</a></li><li><a href="#ch-5"><span>5</span>印象派 — 光を描いた革命</a></li><li><a href="#ch-6"><span>6</span>20世紀美術タイムライン</a></li><li><a href="#ch-7"><span>7</span>居酒屋で語れる名画10選</a></li><li><a href="#ch-8"><span>8</span>美術史の核心概念10選</a></li><li><a href="#ch-9"><span>＊</span>西洋美術史 様式・運動 完全比較表</a></li><li><a href="#ch-10"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
@@ -339,7 +407,7 @@
 </div>
 
 <!-- ═══ CH1: なぜ美術史か ═══ -->
-<section class="bg-canvas">
+<section class="bg-canvas" id="ch-1">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter I</span>
@@ -369,13 +437,13 @@
     </div>
   </div>
   <div class="tip-bar">
-    🍺 <strong>居酒屋ポイント：</strong>「美術って好き嫌いで語るもんだと思ってたけど、実は"読む"ものなんよね。なんでモナリザの背景は霧がかかってるのか、なんで中世の絵は平面的なのか——全部意味がある。美術史って時代の世界観の地図帳みたいなもの」
+    <strong>居酒屋ポイント：</strong>「美術って好き嫌いで語るもんだと思ってたけど、実は"読む"ものなんよね。なんでモナリザの背景は霧がかかってるのか、なんで中世の絵は平面的なのか——全部意味がある。美術史って時代の世界観の地図帳みたいなもの」
   </div>
 </div>
 </section>
 
 <!-- ═══ CH2: 古代〜中世 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-2">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter II</span>
@@ -420,7 +488,7 @@
 </section>
 
 <!-- ═══ CH3: ルネサンス ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-3">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter III</span>
@@ -497,7 +565,7 @@
 </section>
 
 <!-- ═══ CH4: バロック〜新古典主義 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-4">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter IV</span>
@@ -545,15 +613,15 @@
         <div class="ac-work">代表：「1808年5月3日の処刑」「我が子を喰らうサトゥルヌス」</div>
       </div>
     </div>
-    <div style="margin-top:1.5rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
-      🎭 <strong style="color:var(--ochre-light);">ロマン主義（19世紀前半）：</strong>ドラクロワ「民衆を率いる自由の女神」・ターナーの嵐の海——「理性より感情、規則より自由」。フランス革命・ナポレオン・産業革命への反動として生まれた「崇高さ・自然・英雄」への憧憬。
+    <div style="margin-top:1.5rem; background: rgba(38,34,28,0.045); border-radius:2px; padding:1rem; font-size: 0.95rem; color: var(--t-ink-2);">
+      <strong style="color: var(--t-accent-ink);">ロマン主義（19世紀前半）：</strong>ドラクロワ「民衆を率いる自由の女神」・ターナーの嵐の海——「理性より感情、規則より自由」。フランス革命・ナポレオン・産業革命への反動として生まれた「崇高さ・自然・英雄」への憧憬。
     </div>
   </div>
 </div>
 </section>
 
 <!-- ═══ CH5: 印象派 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-5">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter V</span>
@@ -561,14 +629,14 @@
     <p class="section-desc">1860〜1890年代。「見えるように描く」から「感じるように描く」への転換</p>
   </div>
 
-  <div style="background:var(--canvas-dark); border-radius:4px; padding:2rem; margin-bottom:1.5rem; border-left:4px solid var(--ochre);">
-    <div style="font-family:'Cinzel',serif; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.2em; color:var(--ochre); margin-bottom:0.5rem;">The Context · 背景</div>
-    <div style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:0.75rem;">「落選展（Salon des Refusés）」から始まった革命</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; font-size:0.82rem; color:var(--ink-light);">
-      <div>📸 <strong>写真の発明（1839年）</strong>——「写実的に描く」という絵画の役割が突然奪われた。画家は「写真にできないこと」を探し始めた。</div>
-      <div>🚂 <strong>チューブ絵具（1841年）</strong>——それ以前の画家は屋外に出られなかった。携帯できる絵具が「戸外制作（アン・プレイン・エール）」を可能に。</div>
-      <div>🏛 <strong>アカデミーの拒絶（1863年）</strong>——落選展でマネ「草上の昼食」が展示されスキャンダルに。この「拒絶と反発」が印象派誕生の引き金。</div>
-      <div>🎑 <strong>日本の浮世絵（ジャポニスム）</strong>——輸入された浮世絵の平面性・大胆な構図・鮮やかな色彩がモネ・ゴッホ・ドガに衝撃を与えた。</div>
+  <div style="background:var(--canvas-dark); border-radius:4px; padding:2rem; margin-bottom:1.5rem; border-left:4px solid var(--t-accent);">
+    <div style="font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.2em; color: var(--t-accent-ink); margin-bottom:0.5rem;">The Context · 背景</div>
+    <div style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color: var(--t-ink); margin-bottom:0.75rem;">「落選展（Salon des Refusés）」から始まった革命</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; font-size: 0.95rem; color: var(--t-ink-2);">
+      <div><strong>写真の発明（1839年）</strong>——「写実的に描く」という絵画の役割が突然奪われた。画家は「写真にできないこと」を探し始めた。</div>
+      <div><strong>チューブ絵具（1841年）</strong>——それ以前の画家は屋外に出られなかった。携帯できる絵具が「戸外制作（アン・プレイン・エール）」を可能に。</div>
+      <div><strong>アカデミーの拒絶（1863年）</strong>——落選展でマネ「草上の昼食」が展示されスキャンダルに。この「拒絶と反発」が印象派誕生の引き金。</div>
+      <div><strong>日本の浮世絵（ジャポニスム）</strong>——輸入された浮世絵の平面性・大胆な構図・鮮やかな色彩がモネ・ゴッホ・ドガに衝撃を与えた。</div>
     </div>
   </div>
 
@@ -617,7 +685,7 @@
 </section>
 
 <!-- ═══ CH6: タイムライン ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-6">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter VI</span>
@@ -697,7 +765,7 @@
 </section>
 
 <!-- ═══ CH7: 名画と解説 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-7">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter VII</span>
@@ -780,7 +848,7 @@
 </section>
 
 <!-- ═══ CH8: CONCEPT CARDS ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-8">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter VIII</span>
@@ -843,7 +911,7 @@
 </section>
 
 <!-- ═══ SPECIAL: 様式比較表 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-9">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Special Exhibition</span>
@@ -934,19 +1002,19 @@
         </tr>
       </tbody>
     </table>
-    <div style="margin-top:1.25rem; background:rgba(0,0,0,0.25); border-radius:2px; padding:1rem; font-size:0.8rem; color:rgba(255,255,255,0.62);">
-      🔁 <strong style="color:var(--ochre-light);">美術史のパターン：</strong>各様式は「前の様式への反動」として生まれる。ルネサンスは中世への反動、バロックはルネサンスへの反動、印象派はアカデミーへの反動——「反抗の連鎖」が西洋美術史を駆動している。「今日の異端が明日の古典」という構造が2500年続いている。
+    <div style="margin-top:1.25rem; background: rgba(38,34,28,0.045); border-radius:2px; padding:1rem; font-size: 0.95rem; color: var(--t-ink-2);">
+      <strong style="color: var(--t-accent-ink);">美術史のパターン：</strong>各様式は「前の様式への反動」として生まれる。ルネサンスは中世への反動、バロックはルネサンスへの反動、印象派はアカデミーへの反動——「反抗の連鎖」が西洋美術史を駆動している。「今日の異端が明日の古典」という構造が2500年続いている。
     </div>
   </div>
 </div>
 </section>
 
 <!-- ═══ IZAKAYA ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-10">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Final Chapter</span>
-    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <h2 class="section-title">居酒屋実戦テスト</h2>
     <p class="section-desc">美術史を制覇した「あなた」が使えるトークシナリオ集</p>
   </div>
   <div class="test-bg">
@@ -983,22 +1051,26 @@
   </div>
 </div>
 </section>
-<!-- ─── NEXT LIBRARY ─── -->
-<div style="background:rgba(0,0,0,0.35);border-top:1px solid rgba(200,152,48,0.18);padding:2rem;text-align:center;">
-  <a href="music_history.html" style="display:inline-flex;align-items:center;gap:1.2rem;text-decoration:none;padding:0.9rem 2rem;border:1px solid rgba(200,152,48,0.3);border-radius:4px;color:rgba(244,240,232,0.75);">
-    <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#C89830;">NEXT</span>
-    <span style="font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#F4F0E8;">音楽史</span>
-    <span style="color:#C89830;font-size:1.1rem;">→</span>
-  </a>
-</div>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="science_history.html"><span class="kit-pager-dir">← 前の巻 Vol.09</span><span class="kit-pager-title">科学史</span></a><a class="kit-pager-home" href="index.html">全20巻の目次</a><a class="kit-pager-next" href="music_history.html"><span class="kit-pager-dir">次の巻 → Vol.11</span><span class="kit-pager-title">音楽史</span></a></nav>
 <!-- ═══ FOOTER ═══ -->
 <div class="footer">
   <span class="footer-icon">🎨</span>
   <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術史。知の八角形が完成した。</p>
-  <p style="margin-top:0.5rem; opacity:0.45; font-style:italic;">"Every artist dips his brush in his own soul, and paints his own nature into his pictures."</p>
-  <p style="opacity:0.3; font-size:0.72rem; margin-top:0.3rem;">— Henry Ward Beecher</p>
+  <p style="margin-top:0.5rem; opacity:0.92; font-style:italic;">"Every artist dips his brush in his own soul, and paints his own nature into his pictures."</p>
+  <p style="opacity:0.92; font-size:0.72rem; margin-top:0.3rem;">— Henry Ward Beecher</p>
   <span class="footer-ornament">✦ ✦ ✦</span>
 </div>
 
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
 </body>
 </html>

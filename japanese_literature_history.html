@@ -87,13 +87,13 @@
     position: relative; z-index: 1;
   }
   .hero-sub {
-    font-size: 1rem; color: rgba(255,255,255,0.48);
+    font-size: 1rem; color: rgba(255,255,255,0.74);
     max-width: 560px; margin: 0 auto 3rem; font-weight: 300;
     position: relative; z-index: 1;
   }
   .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; z-index: 1; }
   .hero-stat-num { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--sepia-glow); display: block; }
-  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.1em; text-transform: uppercase; }
+  .hero-stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.74); letter-spacing: 0.1em; text-transform: uppercase; }
 
   /* ─── LAYOUT ─── */
   .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
@@ -102,68 +102,66 @@
   .section-badge {
     display: inline-block;
     font-family: 'Cinzel', serif;
-    background: var(--sumi-mid); color: var(--sepia-glow);
-    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+    background: transparent; color: var(--t-accent-ink);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
     padding: 4px 14px; border-radius: 1px; margin-bottom: 0.75rem;
-    border: 1px solid rgba(138,104,64,0.2);
-  }
+    border: 1px solid var(--t-accent);border:1px solid var(--t-rule) !important;border-radius:2px !important;}
   .section-title {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--ink); font-weight: 700;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--t-ink); font-weight: 700;
   }
-  .section-desc { font-size: 0.92rem; color: var(--ink-light); margin-top: 0.5rem; }
+  .section-desc { font-size: 0.92rem; color: var(--t-ink-2); margin-top: 0.5rem; }
   .bg-warm  { background: var(--washi-dark); }
   .bg-white { background: #fff; }
 
   .tip-bar {
     background: #fff; border-radius: 2px;
     border: 1px solid rgba(8,6,8,0.1);
-    border-left: 4px solid var(--beni);
-    padding: 0.85rem 1.25rem; font-size: 0.82rem; color: var(--ink-light); margin-top: 1.5rem;
+    border-left: 4px solid var(--t-accent);
+    padding: 0.85rem 1.25rem; font-size: 0.95rem; color: var(--t-ink-2); margin-top: 1.5rem;
   }
 
   /* ─── DARK PANEL ─── */
   .dark-panel {
-    background: var(--sumi-deep);
-    border-radius: 2px; padding: 2.5rem; color: #fff;
-    border: 1px solid rgba(138,104,64,0.12);
-  }
-  .dp-label { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--silver); margin-bottom: 0.4rem; }
-  .dp-title { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 1.25rem; }
+    background: transparent;
+    border-radius: 2px; padding: 2.5rem; color: var(--t-ink);
+    border: 1px solid var(--t-accent);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .dp-label { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--t-ink-3); margin-bottom: 0.4rem; }
+  .dp-title { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--t-ink); font-weight: 700; margin-bottom: 1.25rem; }
 
   /* ─── ERA BANDS ─── */
-  .era-band { border-radius: 2px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: #fff; }
-  .eb-kodai  { background: linear-gradient(135deg, #080608, #140A10); }
-  .eb-heian  { background: linear-gradient(135deg, #080612, #100E28); }
-  .eb-chuse  { background: linear-gradient(135deg, #080808, #141010); }
-  .eb-edo    { background: linear-gradient(135deg, #0C0808, #1C1008); }
-  .eb-kindai { background: linear-gradient(135deg, #06080C, #0E1420); }
-  .eb-sengo  { background: linear-gradient(135deg, #060808, #0C1210); }
-  .eb-label  { font-family: 'Cinzel', serif; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 0.3rem; }
-  .eb-title  { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 0.3rem; }
-  .eb-period { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
-  .eb-row    { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 0.75rem; }
-  .eb-card   { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; padding: 0.9rem; }
-  .ebc-title { font-family: 'Noto Serif JP', serif; font-size: 0.92rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 0.15rem; font-style: italic; }
-  .ebc-auth  { font-size: 0.62rem; color: var(--silver); margin-bottom: 0.35rem; }
-  .ebc-key   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--midori-glow); margin-bottom: 0.35rem; }
-  .ebc-body  { font-size: 0.76rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
-  .ebc-quote { margin-top: 0.5rem; font-size: 0.72rem; color: rgba(216,176,112,0.55); font-style: italic; border-left: 2px solid rgba(216,176,112,0.3); padding-left: 0.45rem; }
+  .era-band { border-radius: 2px; padding: 2rem 2.5rem; margin-bottom: 1.5rem; color: var(--t-ink);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .eb-kodai  { background: transparent; }
+  .eb-heian  { background: transparent; }
+  .eb-chuse  { background: transparent; }
+  .eb-edo    { background: transparent; }
+  .eb-kindai { background: transparent; }
+  .eb-sengo  { background: transparent; }
+  .eb-label  { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t-ink-3); margin-bottom: 0.3rem; }
+  .eb-title  { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; color: var(--t-ink); font-weight: 700; margin-bottom: 0.3rem; }
+  .eb-period { font-size: 0.95rem; color: var(--t-ink-2); margin-bottom: 1rem; }
+  .eb-row    { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.75rem; }
+  .eb-card   { background: transparent; border: 1px solid rgba(38,34,28,.16); border-radius: 2px; padding: 0.9rem; }
+  .ebc-title { font-family: 'Noto Serif JP', serif; font-size: 0.92rem; color: var(--t-ink); font-weight: 700; margin-bottom: 0.15rem; font-style: italic; }
+  .ebc-auth  { font-size: 0.75rem; color: var(--t-ink-3); margin-bottom: 0.35rem; }
+  .ebc-key   { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--t-accent-ink); margin-bottom: 0.35rem; }
+  .ebc-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .ebc-quote { margin-top: 0.5rem; font-size: 0.95rem; color: var(--t-ink-2); font-style: italic; border-left: 2px solid var(--t-accent); padding-left: 0.45rem; }
 
   /* ─── WRITER CARDS ─── */
-  .writer-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.9rem; }
+  .writer-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.9rem; }
   .writer-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-top: 3px solid var(--sepia-lt);
+    background: transparent;
+    border: 1px solid rgba(38,34,28,.16);
+    border-top: 3px solid var(--t-accent);
     border-radius: 0 0 2px 2px;
     padding: 1rem 1.1rem;
   }
-  .wc-name   { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--sepia-glow); font-weight: 700; margin-bottom: 0.15rem; }
-  .wc-dates  { font-size: 0.6rem; color: var(--silver); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
-  .wc-move   { font-family: 'Cinzel', serif; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--midori-glow); margin-bottom: 0.35rem; }
-  .wc-body   { font-size: 0.77rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
-  .wc-quote  { margin-top: 0.55rem; font-size: 0.72rem; color: rgba(216,176,112,0.55); font-style: italic; border-left: 2px solid rgba(216,176,112,0.3); padding-left: 0.5rem; }
+  .wc-name   { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; color: var(--t-ink); font-weight: 700; margin-bottom: 0.15rem; }
+  .wc-dates  { font-size: 0.75rem; color: var(--t-ink-3); letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+  .wc-move   { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t-accent-ink); margin-bottom: 0.35rem; }
+  .wc-body   { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
+  .wc-quote  { margin-top: 0.55rem; font-size: 0.95rem; color: var(--t-ink-2); font-style: italic; border-left: 2px solid var(--t-accent); padding-left: 0.5rem; }
 
   /* ─── TIMELINE ─── */
   .timeline { position: relative; padding: 1rem 0; }
@@ -178,21 +176,21 @@
   .tl-dot {
     position: absolute; left: 50%; top: 1rem; transform: translateX(-50%);
     width: 14px; height: 14px; background: var(--sepia-lt);
-    border: 3px solid var(--washi); border-radius: 50%;
-    box-shadow: 0 0 0 2px var(--sepia-lt); z-index: 2;
+    border: 3px solid rgba(38,34,28,.16); border-radius: 50%;
+    box-shadow: none; z-index: 2;
   }
-  .tl-dot.beni   { background: var(--beni-lt);    box-shadow: 0 0 0 2px var(--beni-lt); }
-  .tl-dot.ai     { background: var(--ai-light);   box-shadow: 0 0 0 2px var(--ai-light); }
-  .tl-dot.midori { background: var(--midori-lt);  box-shadow: 0 0 0 2px var(--midori-lt); }
-  .tl-dot.glow   { background: var(--sepia-glow); box-shadow: 0 0 0 2px var(--sepia-glow); }
+  .tl-dot.beni   { background: transparent;    box-shadow: none; }
+  .tl-dot.ai     { background: transparent;   box-shadow: none; }
+  .tl-dot.midori { background: transparent;  box-shadow: none; }
+  .tl-dot.glow   { background: var(--sepia-glow); box-shadow: none; }
   .tl-card {
     width: calc(50% - 2.5rem); background: #fff;
     border: 1px solid rgba(8,6,8,0.1); border-radius: 2px;
-    padding: 1.25rem 1.5rem; box-shadow: 0 2px 12px var(--shadow);
+    padding: 1.25rem 1.5rem; box-shadow: none;
   }
-  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--sepia); font-weight: 700; margin-bottom: 0.25rem; }
-  .tl-event { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
-  .tl-desc  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .tl-year  { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--t-accent-ink); font-weight: 700; margin-bottom: 0.25rem; }
+  .tl-event { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: var(--t-ink); margin-bottom: 0.4rem; }
+  .tl-desc  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
   .tl-emoji { position: absolute; top: 1rem; font-size: 1.4rem; }
   .tl-item:not(.right) .tl-emoji { right: -2.2rem; }
   .tl-item.right .tl-emoji        { left: -2.2rem; }
@@ -208,35 +206,35 @@
   .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
   .concept-card {
     background: #fff; border: 1px solid rgba(8,6,8,0.1);
-    border-left: 4px solid var(--beni);
+    border-left: 4px solid var(--t-accent);
     border-radius: 0 2px 2px 0;
-    padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px var(--shadow);
+    padding: 1.25rem 1.5rem; box-shadow: none;
   }
-  .concept-term { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
-  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.6rem; color: var(--gray); font-weight: 400; letter-spacing: 0.06em; }
-  .concept-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; margin-top: 0.5rem; }
-  .concept-izakaya { margin-top: 0.75rem; font-size: 0.77rem; color: var(--beni); background: rgba(140,24,48,0.06); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--beni-lt); }
+  .concept-term { font-family: 'Noto Serif JP', serif; font-size: 1.15rem; font-weight: 700; color: var(--t-ink); display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .concept-en   { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--t-ink-3); font-weight: 400; letter-spacing: 0.06em; }
+  .concept-body { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; margin-top: 0.5rem; }
+  .concept-izakaya { margin-top: 0.75rem; font-size: 0.95rem; color: var(--t-ink-2); background: rgba(140,24,48,0.06); border-radius: 2px; padding: 0.4rem 0.6rem; border-left: 3px solid var(--t-accent); }
 
   /* ─── COMPARE TABLE ─── */
-  .cmp-bg { background: var(--sumi-deep); border-radius: 2px; padding: 2.5rem; color: #fff; overflow-x: auto; border: 1px solid rgba(138,104,64,0.12); }
-  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; margin-top: 1rem; min-width: 520px; }
-  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia-glow); border-bottom: 1px solid rgba(138,104,64,0.2); white-space: nowrap; }
-  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); vertical-align: top; line-height: 1.5; }
+  .cmp-bg { background: transparent; border-radius: 2px; padding: 2.5rem; color: var(--t-ink); overflow-x: auto; border: 1px solid var(--t-accent);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-top: 1rem; min-width: 520px; }
+  .cmp-table th { padding: 0.7rem 0.9rem; text-align: left; font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--t-accent-ink); border-bottom: 1px solid var(--t-accent); white-space: nowrap; }
+  .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(38,34,28,.16); color: var(--t-ink-2); vertical-align: top; line-height: 1.8; }
   .cmp-table tr:last-child td { border-bottom: none; }
-  .cmp-table td:first-child { color: var(--sepia-glow); font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 700; font-style: italic; white-space: nowrap; }
+  .cmp-table td:first-child { color: var(--t-ink); font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 700; font-style: italic; white-space: nowrap; }
 
   /* ─── LIFE STEP ─── */
-  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--washi-dark); border-radius: 2px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--sepia-lt); }
+  .life-step { display: flex; gap: 1rem; align-items: flex-start; background: var(--washi-dark); border-radius: 2px; padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--t-accent); }
   .ls-icon  { font-size: 1.8rem; flex-shrink: 0; }
-  .ls-title { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.2rem; }
-  .ls-body  { font-size: 0.8rem; color: var(--ink-light); line-height: 1.65; }
+  .ls-title { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 0.95rem; color: var(--t-ink); margin-bottom: 0.2rem; }
+  .ls-body  { font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8; }
 
   /* ─── IZAKAYA ─── */
-  .test-bg { background: var(--sumi-deep); border-radius: 2px; padding: 2.5rem; color: #fff; border: 1px solid rgba(138,104,64,0.12); }
-  .test-q { background: rgba(0,0,0,0.28); border-left: 3px solid var(--sepia-lt); padding: 1rem 1.25rem; border-radius: 0 2px 2px 0; margin-bottom: 1rem; }
-  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--sepia-pale); margin-bottom: 0.3rem; }
-  .test-q-text  { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
-  .test-a       { font-size: 0.8rem; color: rgba(255,255,255,0.62); padding-left: 0.5rem; }
+  .test-bg { background: transparent; border-radius: 2px; padding: 2.5rem; color: var(--t-ink); border: 1px solid var(--t-accent);border:0 !important;border-top:2px solid var(--t-accent) !important;border-radius:0 !important;padding:1.75rem 0 0 !important;}
+  .test-q { background: rgba(38,34,28,0.05); border-left: 3px solid var(--t-accent); padding: 1rem 1.25rem; border-radius: 0 2px 2px 0; margin-bottom: 1rem; }
+  .test-q-label { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t-ink-3); margin-bottom: 0.3rem; }
+  .test-q-text  { font-size: 0.95rem; color: var(--t-ink); margin-bottom: 0.5rem; }
+  .test-a       { font-size: 0.95rem; color: var(--t-ink-2); padding-left: 0.5rem; }
   .test-a::before { content: '💡 '; }
 
   /* ─── FOOTER ─── */
@@ -260,7 +258,7 @@
 
   /* ─── MOBILE TABLE FIX ─── */
   @media (max-width: 768px) {
-    .cmp-table, .cmp-bg { font-size: 0.72rem; }
+    .cmp-table, .cmp-bg { font-size: 0.95rem; }
     .cmp-bg { padding: 1.25rem; }
     .cmp-table th, .cmp-table td { padding: 0.5rem 0.6rem; }
     .cmp-table td:first-child { white-space: normal; }
@@ -291,8 +289,78 @@
     .container { padding: 0 1rem !important; }
   }
 </style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+/* chapter labels: plain small caps instead of filled pills */
+.section-badge{background:none !important;color:inherit !important;padding:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important}
+
+/* decorative emoji icon columns */
+.tl-emoji,.ls-icon,.life-step-icon,.bigq-icon{display:none !important}
+
+/* 居酒屋ポイント: ruled note instead of a box */
+.tip-bar{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:.9rem 0 !important;text-align:left !important}
+
+/* 実戦テスト: Q&A separated by rules, not left-bar callouts */
+.test-q{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1.15rem 0 !important;margin:0 !important}
+.test-q:first-child{border-top:0 !important;padding-top:0 !important}
+.test-q:last-child{padding-bottom:0 !important}
+.test-a{padding-left:0 !important}
+.test-a::before{content:none !important}
+
+/* life steps: rules instead of tinted boxes */
+.life-step{background:none !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 !important;margin:0 !important}
+
+.concept-grid{column-gap:2rem !important;row-gap:2.25rem !important}
+.concept-izakaya{background:none !important;border:0 !important;border-top:1px dashed color-mix(in srgb,currentColor 35%,transparent) !important;border-radius:0 !important;padding:.6rem 0 0 !important}
+.eb-card{background:transparent !important;border:0 !important;border-top:1px solid color-mix(in srgb,currentColor 20%,transparent) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.writer-card{background:transparent !important;border:0 !important;border-top:3px solid var(--sepia-lt) !important;border-radius:0 !important;box-shadow:none !important;padding-left:0 !important;padding-right:0 !important}
+.concept-card{background:none !important;border:0 !important;border-top:2px solid var(--beni) !important;border-radius:0 !important;box-shadow:none !important;padding:1rem 0 0 !important}
+.hero h1{background:none !important;-webkit-text-fill-color:currentColor !important;color:var(--sepia-glow) !important}
+
+/* ═══ series theme: paperback (paper + ink + one accent) ═══ */
+:root{--t-paper:#F8F5EE;--t-paper-2:#F0EBE0;--t-ink:#26221C;--t-ink-2:#4A443A;--t-ink-3:#6A6356;--t-rule:rgba(38,34,28,.16);--t-accent:#8A6840;--t-accent-ink:#674e30}
+body{background:var(--t-paper) !important;color:var(--t-ink)}
+.bg-white{background:var(--t-paper) !important}
+.bg-warm{background:var(--t-paper-2) !important}
+.section-title{color:var(--t-ink) !important}
+.section-desc{color:var(--t-ink-2) !important}
+.section-badge{color:var(--t-accent-ink) !important}
+.concept-card{border-top-color:var(--t-accent) !important}
+.tip-bar strong{color:var(--t-accent-ink)}
+
+</style>
 </head>
 <body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>全20巻</a><span class="kit-here">Vol.19<b>日本文学史</b></span><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>日本文学史を学ぶとはどういうことか</a></li><li><a href="#ch-2"><span>2</span>古代〜奈良——日本語文学の誕生</a></li><li><a href="#ch-3"><span>3</span>平安文学——世界に誇る黄金時代</a></li><li><a href="#ch-4"><span>4</span>中世〜江戸——無常・武士・庶民文学の展開</a></li><li><a href="#ch-5"><span>5</span>明治〜大正——「近代文学」の誕生</a></li><li><a href="#ch-6"><span>6</span>昭和〜現代文学タイムライン</a></li><li><a href="#ch-7"><span>7</span>戦後〜現代の重要作家たち</a></li><li><a href="#ch-8"><span>8</span>日本文学の核心概念10選</a></li><li><a href="#ch-9"><span>＊</span>日本文学史 時代別 完全比較表</a></li><li><a href="#ch-10"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+
 
 <!-- ═══ HERO ═══ -->
 <div class="hero">
@@ -308,43 +376,43 @@
 </div>
 
 <!-- ═══ CH1: 日本文学史とは ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-1">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter I</span>
     <h2 class="section-title">日本文学史を学ぶとはどういうことか</h2>
     <p class="section-desc">「読む」ことが「日本人を理解する」ことに直結する——1300年の魂の記録</p>
   </div>
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-bottom:1.5rem;">
-    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
-      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">Language</div>
-      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">日本語の豊かさの源泉</div>
-      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">「もののあはれ」「わびさび」「いき」——日本語にしか訳せない感情語の多くは文学の中で生まれ磨かれた。万葉仮名からひらがな・カタカナへの変遷が日本語表現の可能性を広げた歴史。</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; margin-bottom:1.5rem;">
+    <div style="background: transparent; color: var(--t-ink); border-radius:2px; padding:1.5rem; border:1px solid var(--t-accent);">
+      <div style="font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); display:block; margin-bottom:0.4rem;">Language</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.4rem;">日本語の豊かさの源泉</div>
+      <p style="font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8;">「もののあはれ」「わびさび」「いき」——日本語にしか訳せない感情語の多くは文学の中で生まれ磨かれた。万葉仮名からひらがな・カタカナへの変遷が日本語表現の可能性を広げた歴史。</p>
     </div>
-    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
-      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">World Record</div>
-      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">世界最古の長編小説</div>
-      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">「源氏物語」（1000〜1008年頃）はドン・キホーテより600年早い。紫式部という女性が「かな文字」という日本独自の文字で書いた——世界文学の原点のひとつが日本から生まれた事実。</p>
+    <div style="background: transparent; color: var(--t-ink); border-radius:2px; padding:1.5rem; border:1px solid var(--t-accent);">
+      <div style="font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); display:block; margin-bottom:0.4rem;">World Record</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.4rem;">世界最古の長編小説</div>
+      <p style="font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8;">「源氏物語」（1000〜1008年頃）はドン・キホーテより600年早い。紫式部という女性が「かな文字」という日本独自の文字で書いた——世界文学の原点のひとつが日本から生まれた事実。</p>
     </div>
-    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
-      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">Gender</div>
-      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">女性が作った黄金時代</div>
-      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">平安文学の頂点——源氏物語（紫式部）・枕草子（清少納言）・土佐日記影響下の女性文学——は女性が担った。男性が漢文を書く時代に女性がかな文字で書いた「非公式な文学」が後世の最高峰になった逆説。</p>
+    <div style="background: transparent; color: var(--t-ink); border-radius:2px; padding:1.5rem; border:1px solid var(--t-accent);">
+      <div style="font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); display:block; margin-bottom:0.4rem;">Gender</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.4rem;">女性が作った黄金時代</div>
+      <p style="font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8;">平安文学の頂点——源氏物語（紫式部）・枕草子（清少納言）・土佐日記影響下の女性文学——は女性が担った。男性が漢文を書く時代に女性がかな文字で書いた「非公式な文学」が後世の最高峰になった逆説。</p>
     </div>
-    <div style="background:var(--sumi-deep); color:#fff; border-radius:2px; padding:1.5rem; border:1px solid rgba(138,104,64,0.1);">
-      <div style="font-family:'Cinzel',serif; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--sepia-glow); display:block; margin-bottom:0.4rem;">Global</div>
-      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color:var(--sepia-glow); font-weight:700; margin-bottom:0.4rem;">世界に発信される文学</div>
-      <p style="font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;">川端康成（1968年）・大江健三郎（1994年）のノーベル文学賞。村上春樹の50以上の言語への翻訳。カズオ・イシグロ（日本生まれ）の2017年受賞——日本文学は今や世界文学の主要な声のひとつ。</p>
+    <div style="background: transparent; color: var(--t-ink); border-radius:2px; padding:1.5rem; border:1px solid var(--t-accent);">
+      <div style="font-family:'Cinzel',serif; font-size: 0.75rem; text-transform:uppercase; letter-spacing:0.15em; color: var(--t-accent-ink); display:block; margin-bottom:0.4rem;">Global</div>
+      <div style="font-family:'Noto Serif JP',serif; font-size:1rem; color: var(--t-ink); font-weight:700; margin-bottom:0.4rem;">世界に発信される文学</div>
+      <p style="font-size: 0.95rem; color: var(--t-ink-2); line-height: 1.8;">川端康成（1968年）・大江健三郎（1994年）のノーベル文学賞。村上春樹の50以上の言語への翻訳。カズオ・イシグロ（日本生まれ）の2017年受賞——日本文学は今や世界文学の主要な声のひとつ。</p>
     </div>
   </div>
   <div class="tip-bar">
-    🍺 <strong>居酒屋ポイント：</strong>「日本文学史って世界史上でも特殊で、1000年前に女性が世界初の長編小説を書いた国なんよ。しかもかな文字という"非公式な女性文字"で書いたから残った——男性の公式文章（漢文）は記録として残りにくかった。歴史的偶然が最高の文学を残した」
+    <strong>居酒屋ポイント：</strong>「日本文学史って世界史上でも特殊で、1000年前に女性が世界初の長編小説を書いた国なんよ。しかもかな文字という"非公式な女性文字"で書いたから残った——男性の公式文章（漢文）は記録として残りにくかった。歴史的偶然が最高の文学を残した」
   </div>
 </div>
 </section>
 
 <!-- ═══ CH2: 古代〜奈良 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-2">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter II</span>
@@ -389,7 +457,7 @@
 </section>
 
 <!-- ═══ CH3: 平安文学 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-3">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter III</span>
@@ -441,7 +509,7 @@
 </section>
 
 <!-- ═══ CH4: 中世〜江戸 ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-4">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter IV</span>
@@ -514,7 +582,7 @@
 </section>
 
 <!-- ═══ CH5: 明治〜大正 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-5">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter V</span>
@@ -565,7 +633,7 @@
 </section>
 
 <!-- ═══ CH6: タイムライン ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-6">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter VI</span>
@@ -656,7 +724,7 @@
 </section>
 
 <!-- ═══ CH7: 戦後〜現代の作家 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-7">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter VII</span>
@@ -697,7 +765,7 @@
 </section>
 
 <!-- ═══ CH8: CONCEPT CARDS ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-8">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Chapter VIII</span>
@@ -760,7 +828,7 @@
 </section>
 
 <!-- ═══ SPECIAL: 時代別比較表 ═══ -->
-<section class="bg-white">
+<section class="bg-white" id="ch-9">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">Special</span>
@@ -842,11 +910,11 @@
 </section>
 
 <!-- ═══ IZAKAYA ═══ -->
-<section class="bg-warm">
+<section class="bg-warm" id="ch-10">
 <div class="container">
   <div class="section-header">
     <span class="section-badge">最終章</span>
-    <h2 class="section-title">🍺 居酒屋実戦テスト</h2>
+    <h2 class="section-title">居酒屋実戦テスト</h2>
     <p class="section-desc">日本文学史を制覇した「あなた」が使えるトークシナリオ集</p>
   </div>
   <div class="test-bg">
@@ -883,20 +951,24 @@
   </div>
 </div>
 </section>
-<!-- ─── NEXT LIBRARY ─── -->
-<div style="background:rgba(0,0,0,0.35);border-top:1px solid rgba(200,152,48,0.18);padding:2rem;text-align:center;">
-  <a href="japan_modern_contemporary_history.html" style="display:inline-flex;align-items:center;gap:1.2rem;text-decoration:none;padding:0.9rem 2rem;border:1px solid rgba(200,152,48,0.3);border-radius:4px;color:rgba(244,240,232,0.75);">
-    <span style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:#C89830;">NEXT</span>
-    <span style="font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#F4F0E8;">日本の近現代史</span>
-    <span style="color:#C89830;font-size:1.1rem;">→</span>
-  </a>
-</div>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="bushido_japanese_ethics.html"><span class="kit-pager-dir">← 前の巻 Vol.18</span><span class="kit-pager-title">武士道と日本人の倫理観</span></a><a class="kit-pager-home" href="index.html">全20巻の目次</a><a class="kit-pager-next" href="japan_modern_contemporary_history.html"><span class="kit-pager-dir">次の巻 → Vol.20</span><span class="kit-pager-title">日本の近現代史</span></a></nav>
 <!-- ═══ FOOTER ═══ -->
 <div class="footer">
   <span class="footer-icon">言葉</span>
   <p>宗教・哲学・政治・経済・世界史・日本史・科学・美術・音楽・文学・建築・心理学・社会学・テクノロジー・日本美意識・武士道・日本文学。知の十七角形が完成した。</p>
-  <p style="margin-top:0.5rem; opacity:0.42;">「月日は百代の過客にして、行きかふ年もまた旅人なり。— 松尾芭蕉『奥の細道』」</p>
+  <p style="margin-top:0.5rem; opacity:0.92;">「月日は百代の過客にして、行きかふ年もまた旅人なり。— 松尾芭蕉『奥の細道』」</p>
 </div>
 
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
 </body>
 </html>

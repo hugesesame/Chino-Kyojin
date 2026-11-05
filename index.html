@@ -11,18 +11,16 @@
     --bg-card:   #0E0C14;
     --gold:      #C89830;
     --gold-lt:   #E8B840;
-    --gold-dim:  #7A6020;
+    --gold-dim:  #A8873A;
     --red:       #C01828;
-    --red-lt:    #E03040;
+    --red-lt:    #E6424F;
     --white:     #F4F0E8;
-    --dim:       rgba(244,240,232,0.45);
-    --dimmer:    rgba(244,240,232,0.25);
-    --border:    rgba(200,152,48,0.18);
-    --shadow:    rgba(0,0,0,0.5);
+    --dim:       rgba(244,240,232,0.74);
+    --dimmer:    rgba(244,240,232,0.62);
+    --border:    rgba(200,152,48,0.22);
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
-
   html { scroll-behavior:smooth; }
 
   body {
@@ -33,7 +31,7 @@
     overflow-x: hidden;
   }
 
-  /* ─── NOISE TEXTURE OVERLAY ─── */
+  /* paper-grain texture */
   body::before {
     content:'';
     position:fixed; inset:0; z-index:0; pointer-events:none;
@@ -42,49 +40,38 @@
     opacity: 0.4;
   }
 
+  :focus-visible { outline:2px solid var(--gold-lt); outline-offset:3px; }
+
   /* ─── HERO ─── */
   .hero {
     position: relative; z-index: 1;
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
+    display: flex; flex-direction: column; align-items: center;
     text-align: center;
-    padding: 5rem 2rem 4rem;
+    padding: 4.5rem 1rem 3rem;
     overflow: hidden;
   }
 
-  /* radial glow */
-  .hero::before {
-    content:'';
-    position:absolute; inset:0;
-    background:
-      radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200,152,48,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(192,24,40,0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 30% at 80% 10%, rgba(200,152,48,0.08) 0%, transparent 60%);
-    pointer-events:none;
-  }
-
-  /* background kanji */
+  /* the 知 seal behind the copy — static */
   .hero-bg-kanji {
     position:absolute; top:76%; left:50%;
     transform:translate(-50%,-50%);
     font-family:'Noto Serif JP',serif;
     font-size:clamp(18rem, 40vw, 38rem);
     font-weight:700; line-height:1;
-    color: rgba(200,152,48,0.18);
+    color: rgba(200,152,48,0.09);
     white-space:nowrap;
     pointer-events:none; user-select:none;
     letter-spacing:-0.05em;
-    animation: kanjiBreathe 7s ease-in-out infinite;
   }
 
-  .hero-content { position:relative; z-index:1; max-width:780px; }
+  .hero-content { position:relative; z-index:1; max-width:780px; width:100%; }
 
   .series-label {
+    display:block;
     font-family:'Cinzel',serif;
-    font-size:0.65rem; letter-spacing:0.4em; text-transform:uppercase;
+    font-size:0.7rem; letter-spacing:0.36em;
     color: var(--gold-dim);
-    margin-bottom:1.5rem;
+    margin-bottom:1.25rem;
     animation: fadeUp 0.8s ease both;
   }
 
@@ -94,10 +81,8 @@
     font-weight:700;
     line-height:1.1;
     margin-bottom: 0.25rem;
-    background: linear-gradient(120deg, var(--white) 0%, var(--gold-lt) 35%, var(--white) 50%, var(--gold-lt) 65%, var(--gold) 100%);
-    background-size: 250% 100%;
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    animation: fadeUp 0.9s 0.1s ease both, goldShimmer 8s 2s ease-in-out infinite;
+    color: var(--gold-lt);
+    animation: fadeUp 0.9s 0.1s ease both;
   }
 
   .hero-subtitle {
@@ -106,86 +91,79 @@
     color: var(--red-lt);
     font-weight:700;
     letter-spacing:0.1em;
-    margin-bottom:2.5rem;
     animation: fadeUp 1s 0.2s ease both;
   }
 
+  .hero-image-wrap {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 680px;
+    margin: 2.5rem auto 0;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(200,152,48,0.25);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+  .hero-image-wrap img {
+    width: 100%; display: block;
+    filter: brightness(0.92) contrast(1.05);
+  }
+  .hero-image-wrap::after {
+    content:'';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events: none;
+  }
+
   .hero-copy {
-    font-size: clamp(0.82rem, 1.5vw, 0.95rem);
+    font-size: clamp(0.88rem, 1.5vw, 0.98rem);
     color: var(--dim);
     line-height: 2;
     max-width: 580px;
-    margin: 4rem auto 1.5rem;
-    animation: fadeUp 1s 0.3s ease both;
+    margin: 2.5rem auto 2rem;
   }
-
   .hero-copy strong { color: var(--gold-lt); font-weight:700; }
-
-  .hero-warning {
-    display:inline-block;
-    border:1px solid rgba(192,24,40,0.4);
-    background:rgba(192,24,40,0.08);
-    border-radius:2px;
-    padding:0.85rem 1.5rem;
-    font-size:0.8rem;
-    color:rgba(244,240,232,0.55);
-    line-height:1.8;
-    max-width:540px;
-    margin-bottom:2.5rem;
-    animation: fadeUp 1s 0.4s ease both, warnPulse 3s 2s ease-in-out infinite;
-  }
-
-  .hero-warning .warn-title {
-    font-family:'Cinzel',serif;
-    font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;
-    color:var(--red-lt); display:block; margin-bottom:0.4rem;
-  }
-
-  .hero-warning em { color: var(--red-lt); font-style:normal; font-weight:700; }
-
-  .scroll-hint {
-    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
-    z-index:1;
-    font-family:'Cinzel',serif;
-    font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase;
-    color:var(--gold-dim);
-    display:flex; flex-direction:column; align-items:center; gap:0.5rem;
-    animation: fadeUp 1s 0.8s ease both;
-  }
-  .scroll-hint::after {
-    content:'';
-    display:block; width:1px; height:40px;
-    background:linear-gradient(to bottom, var(--gold-dim), transparent);
-    animation: scrollLine 2s 1.5s infinite;
-  }
 
   /* ─── STATS ROW ─── */
   .stats {
     position:relative; z-index:1;
     display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap;
-    margin-bottom:2rem;
-    animation: fadeUp 1s 0.35s ease both;
+    margin-bottom:2.25rem;
   }
   .stat-num {
     font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-lt);
     display:block; line-height:1;
   }
-  .stat-lbl {
-    font-size:0.68rem; color:var(--dimmer);
-    letter-spacing:0.1em; text-transform:uppercase;
+  .stat-lbl { font-size:0.72rem; color:var(--dimmer); letter-spacing:0.1em; }
+
+  /* 使用上の注意 — set like the caution line in a product manual */
+  .hero-warning {
+    max-width:540px;
+    margin:0 auto;
+    padding:1rem 0.25rem;
+    border-top:1px solid rgba(224,48,64,0.55);
+    border-bottom:1px solid rgba(224,48,64,0.55);
+    font-size:0.82rem;
+    color:var(--dim);
+    line-height:1.8;
   }
+  .hero-warning .warn-title {
+    display:block; margin-bottom:0.35rem;
+    font-weight:700; font-size:0.78rem; letter-spacing:0.2em;
+    color:var(--red-lt);
+  }
+  .hero-warning em { color: var(--red-lt); font-style:normal; font-weight:700; }
+  .hero-warning .warn-note { display:block; margin-top:0.35rem; color:var(--dimmer); font-size:0.76rem; }
 
   /* ─── VOLUMES SECTION ─── */
   .volumes-section {
     position:relative; z-index:1;
-    padding: 5rem 2rem 6rem;
+    padding: 4rem 2rem 5rem;
     max-width: 1100px;
     margin: 0 auto;
   }
 
-  .section-head {
-    text-align:center; margin-bottom:3rem;
-  }
+  .section-head { text-align:center; margin-bottom:2.5rem; }
   .section-head-label {
     font-family:'Cinzel',serif;
     font-size:0.78rem; letter-spacing:0.3em; text-transform:uppercase;
@@ -194,11 +172,6 @@
   .section-head-title {
     font-family:'Noto Serif JP',serif;
     font-size:clamp(1.4rem,3vw,2rem); color:var(--gold-lt); font-weight:700;
-  }
-  .section-head-rule {
-    width:60px; height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-    margin:1rem auto 0;
   }
 
   /* ─── VOLUME GRID ─── */
@@ -210,90 +183,68 @@
 
   .vol-card {
     display:block;
+    position:relative;
     background: var(--bg-card);
     border:1px solid var(--border);
+    border-top:2px solid var(--accent, var(--gold));
     border-radius:2px;
-    padding:1.25rem 1.25rem 1rem;
+    padding:1.15rem 1.25rem 1rem;
     text-decoration:none;
     color:inherit;
-    position:relative;
-    overflow:hidden;
-    transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+    transition: border-color 0.2s, background-color 0.2s;
   }
-  .vol-card::before {
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(135deg, rgba(200,152,48,0.04) 0%, transparent 60%);
-    opacity:0; transition:opacity 0.3s;
-    pointer-events:none;
-  }
-  .vol-card:hover {
-    border-color:rgba(200,152,48,0.5);
-    transform:translateY(-3px);
-    box-shadow:0 12px 40px rgba(0,0,0,0.4);
-  }
-  .vol-card:hover::before { opacity:1; }
-
-  /* left accent stripe */
-  .vol-card::after {
-    content:'';
-    position:absolute; top:0; left:0; bottom:0; width:3px;
-    background:var(--accent, var(--gold));
-    transform:scaleY(0); transform-origin:bottom;
-    transition:transform 0.3s ease;
-  }
-  .vol-card:hover::after { transform:scaleY(1); }
+  .vol-card:active { background:#17131F; }
+  .vol-card:focus-visible { outline:2px solid var(--gold-lt); outline-offset:3px; }
 
   .vol-num {
     font-family:'Cinzel',serif;
-    font-size:0.58rem; letter-spacing:0.2em;
+    font-size:0.66rem; letter-spacing:0.2em;
     color:var(--gold-dim);
-    display:block; margin-bottom:0.5rem;
+    display:block; margin-bottom:0.45rem;
   }
   .vol-title {
     font-family:'Noto Serif JP',serif;
-    font-size:0.95rem; font-weight:700;
+    font-size:1rem; font-weight:700;
     color:var(--white);
     display:block; margin-bottom:0.3rem;
     line-height:1.4;
   }
   .vol-desc {
-    font-size:0.7rem;
+    font-size:0.76rem;
     color:var(--dimmer);
-    line-height:1.5;
+    line-height:1.6;
     display:block;
+    padding-right:1rem;
   }
   .vol-arrow {
     position:absolute; bottom:0.9rem; right:1rem;
-    font-size:0.7rem; color:var(--gold-dim);
+    font-size:0.75rem; color:var(--gold-dim);
     transition:color 0.2s, transform 0.2s;
   }
-  .vol-card:hover .vol-arrow {
-    color:var(--gold-lt);
-    transform:translateX(3px);
+
+  @media (hover:hover) {
+    .vol-card:hover { background:#13101A; border-color:rgba(200,152,48,0.5); border-top-color:var(--accent, var(--gold)); }
+    .vol-card:hover .vol-arrow { color:var(--gold-lt); transform:translateX(3px); }
   }
 
   /* ─── CATEGORY DIVIDERS ─── */
   .cat-label {
-    font-family:'Cinzel',serif;
-    font-size:0.9rem; letter-spacing:0.3em; text-transform:uppercase;
+    font-family:'Noto Serif JP',serif;
+    font-size:0.9rem; letter-spacing:0.3em;
     color:var(--gold-dim);
     display:flex; align-items:center; gap:1rem;
-    margin:2rem 0 0.85rem;
+    margin:2.25rem 0 0.85rem;
   }
   .cat-label::before, .cat-label::after {
     content:''; flex:1; height:1px;
-    background:linear-gradient(90deg, transparent, var(--gold-dim));
-  }
-  .cat-label::after {
-    background:linear-gradient(90deg, var(--gold-dim), transparent);
+    background:rgba(200,152,48,0.28);
   }
 
   /* ─── FOOTER ─── */
   .footer {
     position:relative; z-index:1;
     text-align:center;
-    padding:3rem 2rem;
+    padding:3rem 1rem;
     border-top:1px solid var(--border);
   }
   .footer-title {
@@ -301,120 +252,41 @@
     font-size:1.1rem; color:var(--gold-lt);
     font-weight:700; margin-bottom:0.5rem;
   }
-  .footer-copy {
-    font-size:0.75rem; color:var(--dimmer); line-height:2;
-  }
-  .footer-cheers {
-    font-size:1.5rem; display:block; margin:1rem 0 0.5rem;
-  }
-
-  /* ─── HERO IMAGE ─── */
-  .hero-image-wrap {
-    position: relative; z-index: 1;
-    width: 100%; max-width: 680px;
-    margin: 2.5rem auto 0;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid rgba(200,152,48,0.25);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.75), 0 0 40px rgba(200,152,48,0.08);
-    animation: fadeUp 1s 0.5s ease both;
-  }
-  .hero-image-wrap img {
-    width: 100%; display: block;
-    filter: brightness(0.9) contrast(1.06) saturate(1.05);
-    animation: kenBurns 8s ease-in-out infinite alternate;
-    will-change: transform;
-  }
-  .hero-image-wrap {
-    transition: box-shadow 0.35s ease, border-color 0.35s ease,
-                translate 0.35s ease, scale 0.35s ease;
-  }
-  .hero-image-wrap:hover {
-    border-color: rgba(232,184,64,1);
-    box-shadow: 0 36px 110px rgba(0,0,0,0.9),
-                0 0 90px rgba(232,184,64,0.6),
-                0 0 30px rgba(232,184,64,0.4);
-    translate: 0 -8px;
-    scale: 1.02;
-  }
-  .hero-image-wrap:hover img {
-    filter: brightness(1.12) contrast(1.08) saturate(1.2);
-  }
-  .hero-image-wrap img { transition: filter 0.35s ease; }
-  .hero-image-wrap::after {
-    content:'';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 42%;
-    background: linear-gradient(to bottom, transparent, var(--bg));
-    pointer-events: none;
+  .footer-copy { font-size:0.8rem; color:var(--dim); line-height:2; }
+  .footer-note { display:block; color:#F0727E; font-size:0.76rem; }
+  .footer-series {
+    margin-top:1.5rem;
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.15em;
+    color:var(--dimmer);
   }
 
-  /* ─── ANIMATIONS ─── */
+  @media (max-width:520px) {
+    .volumes-section { padding:3rem 1rem 4rem; }
+    .stats { gap:1.75rem; }
+  }
+
+  /* ─── MOTION: one-time entrance only ─── */
   @keyframes fadeUp {
-    from { opacity:0; transform:translateY(20px); }
+    from { opacity:0; transform:translateY(16px); }
     to   { opacity:1; transform:translateY(0); }
   }
-  @keyframes scrollLine {
-    0%   { opacity:1; transform:scaleY(0);   transform-origin:top; }
-    50%  { opacity:1; transform:scaleY(1);   transform-origin:top; }
-    51%  { transform-origin:bottom; }
-    100% { opacity:0; transform:scaleY(0);   transform-origin:bottom; }
-  }
-  @keyframes kanjiBreathe {
-    0%, 100% { opacity:0.5;  transform:translate(-50%,-50%) scale(1); }
-    50%      { opacity:1;    transform:translate(-50%,-50%) scale(1.07); }
-  }
-  @keyframes goldShimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
-  }
-  @keyframes kenBurns {
-    from { scale: 1;    translate: 0 0; }
-    to   { scale: 1.16; translate: 0 -2%; }
-  }
-  @keyframes warnPulse {
-    0%, 100% { border-color: rgba(192,24,40,0.35);
-               background: rgba(192,24,40,0.06);
-               box-shadow: 0 0 0 rgba(192,24,40,0); }
-    50%      { border-color: rgba(224,48,64,1);
-               background: rgba(192,24,40,0.16);
-               box-shadow: 0 0 28px rgba(224,48,64,0.45); }
-  }
 
-  /* card appear: scroll-triggered reveal */
-  .vol-card {
-    opacity:0;
-    transform:translateY(18px);
-    transition: opacity 0.55s ease, transform 0.55s ease,
-                border-color 0.3s, box-shadow 0.3s;
-    transition-delay: var(--reveal-delay, 0s);
-    pointer-events: auto;
-  }
-  .vol-card.is-visible {
-    opacity:1;
-    transform:translateY(0);
-  }
-  /* hover transform must win after reveal */
-  .vol-card.is-visible:hover { transform:translateY(-3px); transition-delay:0s; }
-
-  .cat-label, .section-head {
+  /* cards fade in once as they scroll into view — only when JS is running */
+  .js-reveal .vol-card, .js-reveal .cat-label, .js-reveal .section-head {
     opacity:0;
     transform:translateY(14px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, background-color 0.2s;
+    transition-delay: var(--reveal-delay, 0s);
   }
-  .cat-label.is-visible, .section-head.is-visible {
-    opacity:1;
-    transform:translateY(0);
-  }
+  .js-reveal .is-visible { opacity:1; transform:none; }
+  .js-reveal .vol-card.is-visible:hover { transition-delay:0s; }
 
-  /* accessibility: respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    .vol-card, .cat-label, .section-head { opacity:1; transform:none; }
   }
 </style>
 </head>
@@ -461,15 +333,14 @@
     </div>
 
     <div class="hero-warning">
-      <span class="warn-title">⚠️ 使用上の注意</span>
+      <span class="warn-title">使用上の注意</span>
       決して<em>ダイニングバー</em>や、
       間違っても<em>オーセンティックなバー</em>では使用しないこと。<br>
       ホンモノの知の巨人たちに踏みつぶされます。<br>
-      <span style="color:rgba(244,240,232,0.38); font-size:0.75rem;">※ 当シリーズはあくまで居酒屋限定でお楽しみください。健闘を祈る。</span>
+      <span class="warn-note">※ 当シリーズはあくまで居酒屋限定でお楽しみください。健闘を祈る。</span>
     </div>
   </div>
 
-  <div class="scroll-hint">Vol.01 〜 Vol.20</div>
 </section>
 
 <!-- ─── VOLUMES ─── -->
@@ -477,25 +348,24 @@
   <div class="section-head">
     <span class="section-head-label">Complete Library</span>
     <h2 class="section-head-title">全20巻ラインナップ</h2>
-    <div class="section-head-rule"></div>
   </div>
 
   <!-- 三大宗教 -->
   <div class="cat-label">三大宗教</div>
   <div class="vol-grid">
-    <a class="vol-card" href="buddhism_history.html" style="--accent:#B89030; animation-delay:0.05s">
+    <a class="vol-card" href="buddhism_history.html" style="--accent:#B89030">
       <span class="vol-num">Vol.01</span>
       <span class="vol-title">仏教の歴史</span>
       <span class="vol-desc">釈迦からチベットまで、2500年の悟りの旅</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="christianity_history.html" style="--accent:#3060A0; animation-delay:0.1s">
+    <a class="vol-card" href="christianity_history.html" style="--accent:#3060A0">
       <span class="vol-num">Vol.02</span>
       <span class="vol-title">キリスト教の歴史</span>
       <span class="vol-desc">イエスの誕生から現代まで、世界最大宗教の全貌</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="islam_history.html" style="--accent:#1A6040; animation-delay:0.15s">
+    <a class="vol-card" href="islam_history.html" style="--accent:#1A6040">
       <span class="vol-num">Vol.03</span>
       <span class="vol-title">イスラム教の歴史</span>
       <span class="vol-desc">ムハンマドから現代イスラムまで完全解説</span>
@@ -506,19 +376,19 @@
   <!-- 思想 -->
   <div class="cat-label">思想</div>
   <div class="vol-grid">
-    <a class="vol-card" href="philosophy_history.html" style="--accent:#7840C8; animation-delay:0.05s">
+    <a class="vol-card" href="philosophy_history.html" style="--accent:#7840C8">
       <span class="vol-num">Vol.04</span>
       <span class="vol-title">哲学史</span>
       <span class="vol-desc">ソクラテスからニーチェ、現代哲学まで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="political_thought_history.html" style="--accent:#B02840; animation-delay:0.1s">
+    <a class="vol-card" href="political_thought_history.html" style="--accent:#B02840">
       <span class="vol-num">Vol.05</span>
       <span class="vol-title">政治思想史</span>
       <span class="vol-desc">民主主義・共産主義・自由主義を一気に把握</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="economic_thought_history.html" style="--accent:#C07820; animation-delay:0.15s">
+    <a class="vol-card" href="economic_thought_history.html" style="--accent:#C07820">
       <span class="vol-num">Vol.06</span>
       <span class="vol-title">経済思想史</span>
       <span class="vol-desc">スミスからケインズ、新自由主義まで</span>
@@ -529,19 +399,19 @@
   <!-- 歴史 -->
   <div class="cat-label">歴史</div>
   <div class="vol-grid">
-    <a class="vol-card" href="world_history.html" style="--accent:#A05030; animation-delay:0.05s">
+    <a class="vol-card" href="world_history.html" style="--accent:#A05030">
       <span class="vol-num">Vol.07</span>
       <span class="vol-title">世界史概論</span>
       <span class="vol-desc">メソポタミアから現代まで、人類史を一気読み</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="japan_history.html" style="--accent:#3050A0; animation-delay:0.1s">
+    <a class="vol-card" href="japan_history.html" style="--accent:#3050A0">
       <span class="vol-num">Vol.08</span>
       <span class="vol-title">日本史</span>
       <span class="vol-desc">縄文から令和まで、2万年の島国の物語</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="science_history.html" style="--accent:#18A8C0; animation-delay:0.15s">
+    <a class="vol-card" href="science_history.html" style="--accent:#18A8C0">
       <span class="vol-num">Vol.09</span>
       <span class="vol-title">科学史</span>
       <span class="vol-desc">ニュートンから量子力学・AIまで</span>
@@ -552,25 +422,25 @@
   <!-- 芸術・文化 -->
   <div class="cat-label">芸術・文化</div>
   <div class="vol-grid">
-    <a class="vol-card" href="western_art_history.html" style="--accent:#9A2040; animation-delay:0.05s">
+    <a class="vol-card" href="western_art_history.html" style="--accent:#9A2040">
       <span class="vol-num">Vol.10</span>
       <span class="vol-title">西洋美術史</span>
       <span class="vol-desc">ギリシャ彫刻からバンクシーまで、美の革命史</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="music_history.html" style="--accent:#C07820; animation-delay:0.1s">
+    <a class="vol-card" href="music_history.html" style="--accent:#C07820">
       <span class="vol-num">Vol.11</span>
       <span class="vol-title">音楽史</span>
       <span class="vol-desc">バッハからヒップホップ、シティポップまで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="world_literature_history.html" style="--accent:#8A6840; animation-delay:0.15s">
+    <a class="vol-card" href="world_literature_history.html" style="--accent:#8A6840">
       <span class="vol-num">Vol.12</span>
       <span class="vol-title">世界文学史</span>
       <span class="vol-desc">ホメロスからカフカ、マルケスまで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="architecture_history.html" style="--accent:#C07830; animation-delay:0.2s">
+    <a class="vol-card" href="architecture_history.html" style="--accent:#C07830">
       <span class="vol-num">Vol.13</span>
       <span class="vol-title">建築史</span>
       <span class="vol-desc">パルテノンからザハ・ハディド、安藤忠雄まで</span>
@@ -581,19 +451,19 @@
   <!-- 人間科学 -->
   <div class="cat-label">人間科学</div>
   <div class="vol-grid">
-    <a class="vol-card" href="psychology_history.html" style="--accent:#7840C8; animation-delay:0.05s">
+    <a class="vol-card" href="psychology_history.html" style="--accent:#7840C8">
       <span class="vol-num">Vol.14</span>
       <span class="vol-title">心理学史</span>
       <span class="vol-desc">フロイトからカーネマン、188の認知バイアスまで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="sociology_history.html" style="--accent:#18A080; animation-delay:0.1s">
+    <a class="vol-card" href="sociology_history.html" style="--accent:#18A080">
       <span class="vol-num">Vol.15</span>
       <span class="vol-title">社会学史</span>
       <span class="vol-desc">デュルケームからボードリヤール、SNS社会まで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="technology_history.html" style="--accent:#00C8FF; animation-delay:0.15s">
+    <a class="vol-card" href="technology_history.html" style="--accent:#00C8FF">
       <span class="vol-num">Vol.16</span>
       <span class="vol-title">テクノロジー史</span>
       <span class="vol-desc">火の発見からAIまで、道具が変えた300万年</span>
@@ -604,25 +474,25 @@
   <!-- 日本の魂 -->
   <div class="cat-label">日本の魂</div>
   <div class="vol-grid">
-    <a class="vol-card" href="japanese_aesthetics_history.html" style="--accent:#C09030; animation-delay:0.05s">
+    <a class="vol-card" href="japanese_aesthetics_history.html" style="--accent:#C09030">
       <span class="vol-num">Vol.17</span>
       <span class="vol-title">日本の美意識史</span>
       <span class="vol-desc">もののあはれ・わびさびから現代デザインまで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="bushido_japanese_ethics.html" style="--accent:#B09060; animation-delay:0.1s">
+    <a class="vol-card" href="bushido_japanese_ethics.html" style="--accent:#B09060">
       <span class="vol-num">Vol.18</span>
       <span class="vol-title">武士道と日本人の倫理観</span>
       <span class="vol-desc">葉隠・五輪書から現代企業文化まで</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="japanese_literature_history.html" style="--accent:#8A6840; animation-delay:0.15s">
+    <a class="vol-card" href="japanese_literature_history.html" style="--accent:#8A6840">
       <span class="vol-num">Vol.19</span>
       <span class="vol-title">日本文学史</span>
       <span class="vol-desc">万葉集・源氏物語から村上春樹まで1300年</span>
       <span class="vol-arrow">→</span>
     </a>
-    <a class="vol-card" href="japan_modern_contemporary_history.html" style="--accent:#C01828; animation-delay:0.2s">
+    <a class="vol-card" href="japan_modern_contemporary_history.html" style="--accent:#C01828">
       <span class="vol-num">Vol.20</span>
       <span class="vol-title">日本の近現代史</span>
       <span class="vol-desc">明治維新から令和まで、150年の光と影</span>
@@ -642,16 +512,13 @@
 
 <!-- ─── FOOTER ─── -->
 <footer class="footer">
-  <span class="footer-cheers">🍺</span>
   <p class="footer-title">健闘を祈る</p>
   <p class="footer-copy">
     このシリーズを完走したあなたは、<br>
     居酒屋においてほぼ無敵です。<br>
-    <span style="color:rgba(192,24,40,0.7); font-size:0.72rem;">
-      ※ただし繰り返しますが、オーセンティックバーには持ち込まないこと。
-    </span>
+    <span class="footer-note">※ただし繰り返しますが、オーセンティックバーには持ち込まないこと。</span>
   </p>
-  <p style="margin-top:1.5rem; font-size:0.65rem; color:rgba(244,240,232,0.2); letter-spacing:0.15em; font-family:'Cinzel',serif;">
+  <p class="footer-series">
     知の巨人への道 — 居酒屋で語れる教養シリーズ 全20巻
   </p>
 </footer>
@@ -659,62 +526,22 @@
 <script>
 (function(){
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── scroll reveal ── */
-  var targets = document.querySelectorAll('.vol-card, .cat-label, .section-head');
-  if (reduced || !('IntersectionObserver' in window)) {
-    targets.forEach(function(el){ el.classList.add('is-visible'); });
-  } else {
-    /* stagger cards within each grid */
-    document.querySelectorAll('.vol-grid').forEach(function(grid){
-      grid.querySelectorAll('.vol-card').forEach(function(card, i){
-        card.style.setProperty('--reveal-delay', (i * 0.08) + 's');
-      });
+  if (reduced || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-reveal');
+  document.querySelectorAll('.vol-grid').forEach(function(grid){
+    grid.querySelectorAll('.vol-card').forEach(function(card, i){
+      card.style.setProperty('--reveal-delay', (i * 0.06) + 's');
     });
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
-    targets.forEach(function(el){ io.observe(el); });
-  }
-
-  /* ── stat count-up ── */
-  var stats = document.querySelectorAll('.stat-num');
-  if (!stats.length) return;
-
-  function animateNum(el){
-    var raw = el.textContent.trim();
-    var m = raw.match(/^(\d+)(.*)$/);
-    if (!m) return;                      /* 「∞」などはそのまま */
-    var end = parseInt(m[1], 10), suffix = m[2] || '';
-    if (reduced) { return; }
-    var dur = 1400, start = null;
-    function step(ts){
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      var eased = 1 - Math.pow(1 - p, 3);   /* easeOutCubic */
-      el.textContent = Math.round(end * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    el.textContent = '0' + suffix;
-    requestAnimationFrame(step);
-  }
-
-  if ('IntersectionObserver' in window && !reduced) {
-    var statIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          animateNum(entry.target);
-          statIO.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.6 });
-    stats.forEach(function(el){ statIO.observe(el); });
-  }
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.vol-card, .cat-label, .section-head').forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
