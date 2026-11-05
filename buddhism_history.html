@@ -708,10 +708,26 @@ body{background:var(--t-paper) !important;color:var(--t-ink)}
 .concept-card{border-top-color:var(--t-accent) !important}
 .tip-bar strong{color:var(--t-accent-ink)}
 
+
+/* volume switcher (the volume name in the bar) */
+.kit-vols{flex:1;min-width:0}
+.kit-vols summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;min-height:44px;max-width:100%;width:max-content;padding:0 .5rem;margin-left:-.5rem;border-radius:2px;user-select:none}
+.kit-vols summary::-webkit-details-marker{display:none}
+.kit-vols summary::after{content:'';flex:none;width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-vols[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-vols .kit-here{flex:0 1 auto}
+.kit-vols ol{position:absolute;left:16px;top:calc(100% + 6px);width:min(360px,calc(100vw - 32px));max-height:min(75vh,640px);overflow:auto;margin:0;padding:.25rem 0 .5rem;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-vols .kit-vols-cat{padding:.8rem 1rem .3rem;font-size:.72rem;letter-spacing:.2em;color:#C9C2B4}
+.kit-vols .kit-vols-cat:not(:first-child){border-top:1px solid rgba(244,240,232,.08);margin-top:.25rem}
+.kit-vols a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.55rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-vols a span{flex:0 0 1.5rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-vols a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+.kit-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (hover:hover){.kit-vols summary:hover{background:rgba(200,152,48,.1)}.kit-vols a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}}
 </style>
 </head>
 <body>
-<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>全20巻</a><span class="kit-here">Vol.01<b>仏教の歴史</b></span><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>始まりは一人の王子から</a></li><li><a href="#ch-2"><span>2</span>仏教の三大柱「三宝」</a></li><li><a href="#ch-3"><span>3</span>四諦 — 苦しみの構造と解法</a></li><li><a href="#ch-4"><span>4</span>仏教2500年の歴史タイムライン</a></li><li><a href="#ch-5"><span>5</span>仏教の世界拡散マップ</a></li><li><a href="#ch-6"><span>6</span>日本仏教の宗派マップ</a></li><li><a href="#ch-7"><span>7</span>知っておくべき仏教の核心概念</a></li><li><a href="#ch-8"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>全20巻</a><details class="kit-vols"><summary><span class="kit-here">Vol.01<b>仏教の歴史</b></span><span class="kit-sr">（巻を選ぶ）</span></summary><ol aria-label="全20巻"><li class="kit-vols-cat" aria-hidden="true">三大宗教</li><li><a href="buddhism_history.html" aria-current="page"><span>1</span>仏教の歴史</a></li><li><a href="christianity_history.html"><span>2</span>キリスト教の歴史</a></li><li><a href="islam_history.html"><span>3</span>イスラム教の歴史</a></li><li class="kit-vols-cat" aria-hidden="true">思想</li><li><a href="philosophy_history.html"><span>4</span>哲学史</a></li><li><a href="political_thought_history.html"><span>5</span>政治思想史</a></li><li><a href="economic_thought_history.html"><span>6</span>経済思想史</a></li><li class="kit-vols-cat" aria-hidden="true">歴史</li><li><a href="world_history.html"><span>7</span>世界史概論</a></li><li><a href="japan_history.html"><span>8</span>日本史</a></li><li><a href="science_history.html"><span>9</span>科学史</a></li><li class="kit-vols-cat" aria-hidden="true">芸術・文化</li><li><a href="western_art_history.html"><span>10</span>西洋美術史</a></li><li><a href="music_history.html"><span>11</span>音楽史</a></li><li><a href="world_literature_history.html"><span>12</span>世界文学史</a></li><li><a href="architecture_history.html"><span>13</span>建築史</a></li><li class="kit-vols-cat" aria-hidden="true">人間科学</li><li><a href="psychology_history.html"><span>14</span>心理学史</a></li><li><a href="sociology_history.html"><span>15</span>社会学史</a></li><li><a href="technology_history.html"><span>16</span>テクノロジー史</a></li><li class="kit-vols-cat" aria-hidden="true">日本の魂</li><li><a href="japanese_aesthetics_history.html"><span>17</span>日本の美意識史</a></li><li><a href="bushido_japanese_ethics.html"><span>18</span>武士道と日本人の倫理観</a></li><li><a href="japanese_literature_history.html"><span>19</span>日本文学史</a></li><li><a href="japan_modern_contemporary_history.html"><span>20</span>日本の近現代史</a></li></ol></details><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>始まりは一人の王子から</a></li><li><a href="#ch-2"><span>2</span>仏教の三大柱「三宝」</a></li><li><a href="#ch-3"><span>3</span>四諦 — 苦しみの構造と解法</a></li><li><a href="#ch-4"><span>4</span>仏教2500年の歴史タイムライン</a></li><li><a href="#ch-5"><span>5</span>仏教の世界拡散マップ</a></li><li><a href="#ch-6"><span>6</span>日本仏教の宗派マップ</a></li><li><a href="#ch-7"><span>7</span>知っておくべき仏教の核心概念</a></li><li><a href="#ch-8"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
 
 
 <!-- HERO -->
@@ -1245,6 +1261,12 @@ d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('hre
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
 for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
 for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
+<script>
+(function(){var d=document.querySelector('.kit-vols');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+d.addEventListener('toggle',function(){if(d.open){var c=d.querySelector('[aria-current]');if(c)c.scrollIntoView({block:'nearest'});}});})();
 </script>
 </body>
 </html>
