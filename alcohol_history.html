@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酒の世界史 — 知の巨人への道</title>
+<meta name="description" content="居酒屋で語れる教養シリーズ 二軒目 Vol.1。メソポタミアのビールから日本酒、ウイスキー、禁酒法まで、人類と酒の1万年。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F8F5EE;--paper-2:#F0EBE0;--ink:#26221C;--ink-2:#4A443A;--ink-3:#6A6356;--rule:rgba(38,34,28,.16);
+  --accent:#B5651D;--accent-ink:#774313;--hero-bg:#140E08;--hero-accent:#df883a;
+  --serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-size:.95rem;line-height:1.8;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+.wrap{max-width:928px;margin:0 auto;padding:0 16px}
+
+/* cover */
+.hero{background:var(--hero-bg);color:#EDE7DA;text-align:center;padding:5.5rem 16px 4.5rem}
+.hero-tag{display:inline-block;padding:.3rem .9rem;border:1px solid color-mix(in srgb,var(--hero-accent) 55%,transparent);font-size:.75rem;font-weight:700;letter-spacing:.18em;color:var(--hero-accent)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,7vw,4rem);line-height:1.25;color:var(--hero-accent);margin:1.4rem 0 1rem}
+.hero-sub{max-width:36em;margin:0 auto;color:#CFC8BA;font-size:1rem}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem 3rem;margin-top:2.75rem}
+.hero-stats div{display:flex;flex-direction:column;align-items:center}
+.hero-stats b{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.3;color:var(--hero-accent)}
+.hero-stats span{font-size:.78rem;color:#C9C2B4;margin-top:.35rem}
+
+/* chapters */
+.ch{padding:5rem 0}
+.ch.alt{background:var(--paper-2)}
+.ch-head{text-align:center;margin-bottom:3rem}
+.badge{font-size:.75rem;font-weight:700;letter-spacing:.2em;color:var(--accent-ink)}
+.ch-head h2{font-family:var(--serif);font-size:clamp(1.55rem,4vw,2rem);font-weight:700;line-height:1.45;margin:.6rem 0 .5rem}
+.ch-head p{color:var(--ink-2)}
+
+.angles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.angle{border:1px solid var(--rule);padding:1.35rem 1.4rem 1.5rem}
+.angle .lbl{font-size:.72rem;letter-spacing:.16em;color:var(--ink-3)}
+.angle h3{font-family:var(--serif);font-size:1.02rem;line-height:1.55;margin:.45rem 0 .55rem}
+.angle p{font-size:.9rem;color:var(--ink-2)}
+
+.tip{margin-top:2.5rem;padding:.95rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);color:var(--ink-2)}
+.tip strong{color:var(--accent-ink)}
+
+.band{border-top:2px solid var(--accent);padding-top:1.75rem;margin-top:3.5rem}
+.ch-head+.band{margin-top:0}
+.band-label{font-size:.75rem;letter-spacing:.16em;color:var(--ink-3)}
+.band h3{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:.35rem 0 .3rem}
+.band-desc{color:var(--ink-2);margin-bottom:1.5rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem 2rem}
+.entry{border-top:1px solid var(--rule);padding-top:1rem}
+.entry h4{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.entry .meta{font-size:.8rem;color:var(--ink-3);margin-top:.15rem}
+.entry .key{font-size:.8rem;color:var(--accent-ink);margin:.35rem 0 .45rem}
+.entry p{color:var(--ink-2)}
+.entry blockquote{margin-top:.75rem;padding-left:.8rem;border-left:2px solid var(--accent);font-family:var(--serif);font-size:.92rem;color:var(--ink)}
+
+.timeline{list-style:none;border-left:2px solid var(--accent);margin-left:.25rem}
+.timeline li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:1.25rem;padding:.9rem 0 .9rem 1.4rem;border-bottom:1px solid var(--rule)}
+.timeline li:last-child{border-bottom:0}
+.timeline .yr{font-family:var(--serif);font-weight:700;color:var(--accent-ink)}
+.timeline h4{font-family:var(--serif);font-size:1rem;line-height:1.55}
+.timeline p{font-size:.9rem;color:var(--ink-2);margin-top:.15rem}
+
+.concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.25rem 2rem}
+.concept{border-top:2px solid var(--accent);padding-top:1rem}
+.concept h4{font-family:var(--serif);font-size:1.08rem;line-height:1.5}
+.concept h4 small{font-family:var(--sans);font-weight:400;font-size:.75rem;color:var(--ink-3);margin-left:.5rem;letter-spacing:.04em}
+.concept p{color:var(--ink-2);margin-top:.4rem}
+.concept .izk{margin-top:.7rem;padding-top:.6rem;border-top:1px dashed var(--rule);color:var(--ink-2)}
+
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:.88rem}
+th{text-align:left;font-weight:700;font-size:.8rem;color:var(--ink-3);padding:.6rem .7rem;border-bottom:2px solid var(--ink)}
+td{padding:.75rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+td:first-child{font-family:var(--serif);font-weight:700;color:var(--ink);white-space:nowrap}
+.note{margin-top:1.25rem;font-size:.88rem;color:var(--ink-2)}
+
+.qa{max-width:760px;margin:0 auto}
+.qa div{padding:1.25rem 0;border-top:1px solid var(--rule)}
+.qa div:first-child{border-top:0;padding-top:0}
+.qa dt{font-family:var(--serif);font-weight:700;font-size:1.05rem;line-height:1.6}
+.qa dt span{display:block;font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;color:var(--accent-ink)}
+.qa dd{color:var(--ink-2);margin-top:.4rem}
+
+/* back cover */
+.footer{background:var(--hero-bg);color:#CFC8BA;text-align:center;padding:3.5rem 16px}
+.footer-quote{font-family:var(--serif);font-size:1.1rem;color:#EDE7DA;max-width:30em;margin:0 auto}
+.footer-quote cite{display:block;font-style:normal;font-size:.8rem;color:#C9C2B4;margin-top:.5rem}
+.footer-series{margin-top:1.5rem;font-size:.78rem;letter-spacing:.12em}
+
+@media (max-width:640px){
+  .ch{padding:3.75rem 0}
+  .timeline li{grid-template-columns:minmax(0,1fr);gap:.2rem}
+  .hero{padding:4rem 16px 3.5rem}
+}
+</style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+
+/* volume switcher (the volume name in the bar) */
+.kit-vols{flex:1;min-width:0}
+.kit-vols summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;min-height:44px;max-width:100%;width:max-content;padding:0 .5rem;margin-left:-.5rem;border-radius:2px;user-select:none}
+.kit-vols summary::-webkit-details-marker{display:none}
+.kit-vols summary::after{content:'';flex:none;width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-vols[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-vols .kit-here{flex:0 1 auto}
+.kit-vols ol{position:absolute;left:16px;top:calc(100% + 6px);width:min(360px,calc(100vw - 32px));max-height:min(75vh,640px);overflow:auto;margin:0;padding:.25rem 0 .5rem;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-vols .kit-vols-cat{padding:.8rem 1rem .3rem;font-size:.72rem;letter-spacing:.2em;color:#C9C2B4}
+.kit-vols .kit-vols-cat:not(:first-child){border-top:1px solid rgba(244,240,232,.08);margin-top:.25rem}
+.kit-vols a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.55rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-vols a span{flex:0 0 1.5rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-vols a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+.kit-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (hover:hover){.kit-vols summary:hover{background:rgba(200,152,48,.1)}.kit-vols a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}}
+</style>
+</head>
+<body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>目次</a><details class="kit-vols"><summary><span class="kit-here">二軒目 Vol.1<b>酒の世界史</b></span><span class="kit-sr">（巻を選ぶ）</span></summary><ol aria-label="全巻"><li class="kit-vols-cat" aria-hidden="true">三大宗教</li><li><a href="buddhism_history.html"><span>1</span>仏教の歴史</a></li><li><a href="christianity_history.html"><span>2</span>キリスト教の歴史</a></li><li><a href="islam_history.html"><span>3</span>イスラム教の歴史</a></li><li class="kit-vols-cat" aria-hidden="true">思想</li><li><a href="philosophy_history.html"><span>4</span>哲学史</a></li><li><a href="political_thought_history.html"><span>5</span>政治思想史</a></li><li><a href="economic_thought_history.html"><span>6</span>経済思想史</a></li><li class="kit-vols-cat" aria-hidden="true">歴史</li><li><a href="world_history.html"><span>7</span>世界史概論</a></li><li><a href="japan_history.html"><span>8</span>日本史</a></li><li><a href="science_history.html"><span>9</span>科学史</a></li><li class="kit-vols-cat" aria-hidden="true">芸術・文化</li><li><a href="western_art_history.html"><span>10</span>西洋美術史</a></li><li><a href="music_history.html"><span>11</span>音楽史</a></li><li><a href="world_literature_history.html"><span>12</span>世界文学史</a></li><li><a href="architecture_history.html"><span>13</span>建築史</a></li><li class="kit-vols-cat" aria-hidden="true">人間科学</li><li><a href="psychology_history.html"><span>14</span>心理学史</a></li><li><a href="sociology_history.html"><span>15</span>社会学史</a></li><li><a href="technology_history.html"><span>16</span>テクノロジー史</a></li><li class="kit-vols-cat" aria-hidden="true">日本の魂</li><li><a href="japanese_aesthetics_history.html"><span>17</span>日本の美意識史</a></li><li><a href="bushido_japanese_ethics.html"><span>18</span>武士道と日本人の倫理観</a></li><li><a href="japanese_literature_history.html"><span>19</span>日本文学史</a></li><li><a href="japan_modern_contemporary_history.html"><span>20</span>日本の近現代史</a></li><li class="kit-vols-cat" aria-hidden="true">二軒目</li><li><a href="alcohol_history.html" aria-current="page"><span>1</span>酒の世界史</a></li><li><a href="china_history.html"><span>2</span>中国史と中国思想</a></li><li><a href="mythology_history.html"><span>3</span>神話の世界</a></li></ol></details><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>酒の歴史を学ぶとはどういうことか</a></li><li><a href="#ch-2"><span>2</span>古代——ビールとワインの誕生</a></li><li><a href="#ch-3"><span>3</span>中世——修道院の醸造とイスラムの蒸留</a></li><li><a href="#ch-4"><span>4</span>日本の酒——神の酒から居酒屋へ</a></li><li><a href="#ch-5"><span>5</span>近代——蒸留酒と帝国、そして禁酒法</a></li><li><a href="#ch-6"><span>6</span>現代——グローバル化とクラフト</a></li><li><a href="#ch-7"><span>7</span>酒の世界史タイムライン</a></li><li><a href="#ch-8"><span>8</span>酒の核心概念10選</a></li><li><a href="#ch-9"><span>＊</span>世界の主な酒 完全比較表</a></li><li><a href="#ch-10"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+<header class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ 二軒目 Vol.1</div>
+  <h1>酒の世界史</h1>
+  <p class="hero-sub">メソポタミアのビールから日本酒、ウイスキー、禁酒法まで——人類は1万年、酔いながら文明を作ってきた。手元の一杯から、世界史を語ろう。</p>
+  <div class="hero-stats"><div><b>約9000年前</b><span>最古の酒の痕跡（中国・賈湖）</span></div><div><b>約8000年前</b><span>最古のワイン（ジョージア）</span></div><div><b>13年</b><span>アメリカ禁酒法の期間</span></div><div><b>∞</b><span>乾杯の回数</span></div></div>
+</header>
+<main>
+<section class="ch" id="ch-1" aria-labelledby="ch-1-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 1</div><h2 id="ch-1-h">酒の歴史を学ぶとはどういうことか</h2><p>「とりあえずビール」の一杯には、1万年分の文明が詰まっている</p></header><div class="angles"><div class="angle"><div class="lbl">CIVILIZATION</div><h3>酒が先か、パンが先か</h3><p>人類が農耕を始めたのはパンより酒のため、という「ビール仮説」がある。トルコのギョベクリ・テペ遺跡（約1万1千年前）の大きな石の槽を、発酵に使ったとみる研究者もいる。</p></div><div class="angle"><div class="lbl">ECONOMY</div><h3>酒は国の財布</h3><p>酒は昔から重要な税源だった。日本でも明治30年代には酒税が地租を抜いて国税収入の1位になり、日露戦争の戦費も支えた。</p></div><div class="angle"><div class="lbl">RITUAL</div><h3>酔いは神に近づく道</h3><p>神道の御神酒、キリストの血としてのワイン、ギリシャの酒神ディオニュソス。酔いは日常から抜け出し、神に近づく手段だった。</p></div><div class="angle"><div class="lbl">REGULATION</div><h3>どこまで許すか</h3><p>イスラムの禁酒、アメリカの禁酒法、日本の20歳未満の飲酒禁止。酒の歴史は、社会が「どこまで許すか」の線を引き直してきた歴史でもある。</p></div></div><p class="tip"><strong>居酒屋ポイント：</strong>人類最古級の文字記録には、ビールの配給記録がある。メソポタミアの労働者は給料の一部をビールで受け取っていた。「給料日に一杯」は5000年前からの伝統だ。</p></div></section><section class="ch alt" id="ch-2" aria-labelledby="ch-2-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 2</div><h2 id="ch-2-h">古代——ビールとワインの誕生</h2><p>約9000年前〜5世紀。最初の一杯は、たぶん偶然だった</p></header><div class="band"><div class="band-label">ORIGINS · 約9000〜5000年前</div><h3>発酵の発見</h3><p class="band-desc">果実や穀物の糖は、放っておけば空気中の酵母で勝手に発酵する。人類はそれを「飲み物」に変えた。</p><div class="cols"><div class="entry"><h4>賈湖遺跡の酒</h4><div class="meta">約9000年前・中国河南省</div><div class="key">世界最古の酒の痕跡</div><p>新石器時代の土器の残留物から、米・蜂蜜・果実を混ぜた発酵飲料の成分が見つかった。いまわかる限り、人類最古の酒だ。</p></div><div class="entry"><h4>ジョージアのワイン</h4><div class="meta">約8000年前・南コーカサス</div><div class="key">最古のワイン</div><p>土器からブドウ酒の痕跡が見つかっている。素焼きの大甕「クヴェヴリ」を地中に埋めて造る伝統製法は、ユネスコ無形文化遺産になった。</p></div><div class="entry"><h4>シュメールのビール</h4><div class="meta">紀元前4千年紀〜・メソポタミア</div><div class="key">液体のパン</div><p>濁ったビールをストローで飲んでいた。ビールの女神ニンカシへの賛歌は、それ自体が醸造の手順書になっている。</p></div></div></div><div class="band"><div class="band-label">ANCIENT EMPIRES · 紀元前3000年〜5世紀</div><h3>帝国を回した酒</h3><p class="band-desc">ビールは労働者の栄養と給料、ワインは貴族の教養。酒は社会の階層をそのまま映した。</p><div class="cols"><div class="entry"><h4>エジプトのビール</h4><div class="meta">ピラミッドの時代</div><div class="key">労働者への配給</div><p>ピラミッド建設の労働者には、パンとビールが毎日配給された。ビールは栄養源であり、薬であり、給料だった。</p></div><div class="entry"><h4>ギリシャのワイン</h4><div class="meta">ディオニュソスとシュンポシオン</div><div class="key">水で割るのが文明人</div><p>ギリシャ人はワインを水で割って飲み、生で飲むのは野蛮とされた。酒宴「シュンポシオン」は哲学談義の場で、プラトン『饗宴』の舞台でもある。</p></div><div class="entry"><h4>ローマのワイン</h4><div class="meta">帝国の拡大とともに</div><div class="key">ブドウ畑の輸出</div><p>ローマの進出とともに、ブドウ栽培はガリア（いまのフランス）やライン川沿いへ広がった。ボルドーもブルゴーニュも、ルーツをたどればローマに行き着く。</p><blockquote>In vino veritas（酒の中に真実あり）</blockquote></div></div></div></div></section><section class="ch" id="ch-3" aria-labelledby="ch-3-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 3</div><h2 id="ch-3-h">中世——修道院の醸造とイスラムの蒸留</h2><p>6〜15世紀。祈る人が酒を造り、酒を禁じた世界で蒸留が磨かれた</p></header><div class="band"><div class="band-label">MONASTERIES · 6〜16世紀</div><h3>修道士は醸造家だった</h3><p class="band-desc">ミサにはワインが欠かせず、修道院は自給自足の拠点だった。ヨーロッパの酒造りは祈りの場で守られた。</p><div class="cols"><div class="entry"><h4>修道院のワイン</h4><div class="meta">ベネディクト会・シトー会</div><div class="key">ミサのワイン</div><p>修道院がブドウ畑を開き、記録を取り、品質を磨いた。ブルゴーニュの名畑クロ・ド・ヴージョは、シトー会の修道士が切り開いた畑だ。</p></div><div class="entry"><h4>ホップの採用</h4><div class="meta">中世ヨーロッパ</div><div class="key">苦味と保存性</div><p>中世にビールへホップを加える製法が広まり、あの苦味と日持ちのよさが生まれた。12世紀の修道女ヒルデガルトも、ホップの効用を書き残している。</p></div><div class="entry"><h4>ビール純粋令</h4><div class="meta">1516年・バイエルン</div><div class="key">現存する最古級の食品規制</div><p>「ビールは大麦・ホップ・水だけで造ること」と定めた。酵母の存在はまだ知られていなかった。今もドイツビールの誇りとして語られる。</p></div></div></div><div class="band"><div class="band-label">ALCHEMY · 8〜13世紀</div><h3>蒸留はイスラム世界で磨かれた</h3><p class="band-desc">酒を禁じるイスラム世界で、蒸留の技術が発展したのは歴史の皮肉だ。目的は酒ではなく、香水と薬だった。</p><div class="cols"><div class="entry"><h4>アランビック</h4><div class="meta">イスラム世界</div><div class="key">蒸留器</div><p>蒸留器「アランビック」の名はアラビア語に由来する。イスラム世界の学者たちが、古代ギリシャの技術を受け継いで発展させた。</p></div><div class="entry"><h4>アルコールの語源</h4><div class="meta">アラビア語「アル・クフル」</div><div class="key">目元の黒い粉</div><p>語源は、目元に塗る黒い粉を指す「アル・クフル」。とても細かい粉→物の精髄→蒸留で取り出した酒精、と意味が移っていった。</p></div><div class="entry"><h4>生命の水</h4><div class="meta">中世ヨーロッパ</div><div class="key">アクア・ヴィテ</div><p>ヨーロッパに伝わった蒸留酒は、ラテン語で「アクア・ヴィテ（命の水）」と呼ばれ、薬として扱われた。ゲール語に訳すと「ウシュクベーハー」。これがウイスキーの語源だ。</p></div></div></div></div></section><section class="ch alt" id="ch-4" aria-labelledby="ch-4-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 4</div><h2 id="ch-4-h">日本の酒——神の酒から居酒屋へ</h2><p>古代〜江戸時代。米と麹と水が、世界でも独特の酒を生んだ</p></header><div class="band"><div class="band-label">ANCIENT JAPAN · 古代〜平安</div><h3>神と分け合う酒</h3><p class="band-desc">日本の酒は、まず神に供えるものだった。</p><div class="cols"><div class="entry"><h4>口噛み酒</h4><div class="meta">古代</div><div class="key">唾液で発酵</div><p>米を口で噛み、唾液の酵素でデンプンを糖に変えて発酵させた原始的な酒。『大隅国風土記』の逸文に記録がある。</p></div><div class="entry"><h4>造酒司</h4><div class="meta">奈良〜平安・朝廷</div><div class="key">国の醸造所</div><p>律令制のもとで宮内省に造酒司（さけのつかさ）が置かれ、朝廷の儀式に使う酒を造った。</p></div><div class="entry"><h4>御神酒と直会</h4><div class="meta">神道</div><div class="key">神と同じものをいただく</div><p>祭りで神に供えた酒を、あとで皆でいただくのが「直会（なおらい）」。宴会の原点は、神との共食だった。</p></div></div></div><div class="band"><div class="band-label">SAKE CULTURE · 室町〜江戸</div><h3>日本酒の技術革命</h3><p class="band-desc">寺院の技術が商人の酒造りへ受け継がれ、江戸で一大産業になった。</p><div class="cols"><div class="entry"><h4>僧坊酒</h4><div class="meta">室町時代・奈良</div><div class="key">清酒の原点</div><p>奈良の正暦寺などの寺院で、仕込みを数回に分ける段仕込みや、加熱殺菌の「火入れ」など、いまの清酒につながる技術が生まれた。</p></div><div class="entry"><h4>灘の下り酒</h4><div class="meta">江戸時代・摂津</div><div class="key">江戸への一大ブランド</div><p>六甲の「宮水」と寒造りで、灘・伊丹の酒が名声を得た。樽廻船で江戸へ運ばれた上方の「下り酒」は高級品だった。</p></div><div class="entry"><h4>居酒屋の誕生</h4><div class="meta">18世紀・江戸</div><div class="key">酒屋で飲む</div><p>量り売りの酒屋が、店先でそのまま飲ませたのが「居酒」。そこに肴が付いて居酒屋になった。独身男性の多い江戸で一気に増えた。</p></div></div></div><p class="tip"><strong>居酒屋ポイント：</strong>「くだらない」の語源は、上方から江戸へ"下ってこない"二流の酒、という説がある。真偽はさておき、居酒屋で口にするには最適の一言だ。</p></div></section><section class="ch" id="ch-5" aria-labelledby="ch-5-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 5</div><h2 id="ch-5-h">近代——蒸留酒と帝国、そして禁酒法</h2><p>17〜20世紀前半。酒は貿易の商品になり、科学の対象になり、ついに禁止された</p></header><div class="band"><div class="band-label">SPIRITS &amp; EMPIRE · 17〜19世紀</div><h3>蒸留酒が世界を回した</h3><p class="band-desc">度数が高く腐らない蒸留酒は、長い航海と遠い貿易にうってつけだった。</p><div class="cols"><div class="entry"><h4>ジン・クレイズ</h4><div class="meta">18世紀前半・ロンドン</div><div class="key">安酒の社会問題</div><p>オランダ由来のジンが安く出回り、ロンドンで泥酔が社会問題になった。ホガースの版画「ジン横丁」（1751年）はその惨状を描いている。</p></div><div class="entry"><h4>ラム酒と三角貿易</h4><div class="meta">17〜18世紀・カリブ海</div><div class="key">砂糖の副産物</div><p>サトウキビから砂糖を取った残りの糖蜜で造るラムは、砂糖・奴隷・酒が回る大西洋三角貿易の一角を担った。イギリス海軍では水兵にラムが配給された。</p></div><div class="entry"><h4>ウイスキーと密造</h4><div class="meta">18〜19世紀・スコットランド</div><div class="key">税との戦い</div><p>重い酒税を逃れ、山奥での密造が横行した。1823年の法改正で合法の蒸留所が増え、スコッチは一大産業になった。</p></div></div></div><div class="band"><div class="band-label">SCIENCE &amp; PROHIBITION · 19〜20世紀</div><h3>科学と禁止の時代</h3><div class="cols"><div class="entry"><h4>パスツール</h4><div class="meta">1860年代・フランス</div><div class="key">発酵の正体</div><p>ワインの腐敗を研究し、発酵が酵母という微生物の働きであることを示した。加熱殺菌「パスチャライゼーション」は彼の名に由来する。日本酒の火入れは、それより300年ほど早い。</p></div><div class="entry"><h4>フィロキセラ</h4><div class="meta">19世紀後半・ヨーロッパ</div><div class="key">ブドウ畑の壊滅</div><p>アメリカから渡った害虫が、フランスのブドウ畑の大半を壊滅させた。救ったのは、虫に強いアメリカ産の台木に接ぎ木する方法だった。</p></div><div class="entry"><h4>アメリカ禁酒法</h4><div class="meta">1920〜1933年</div><div class="key">「高貴な実験」の失敗</div><p>憲法修正第18条で酒の製造・販売を禁止した。結果は密造酒と闇酒場（スピークイージー）の繁盛、アル・カポネらギャングの台頭。修正第21条で廃止された。</p></div></div></div></div></section><section class="ch alt" id="ch-6" aria-labelledby="ch-6-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 6</div><h2 id="ch-6-h">現代——グローバル化とクラフト</h2><p>20世紀〜現在。世界中の酒が、どこでも、誰でも飲める時代</p></header><div class="band"><div class="band-label">MODERN · 1920年代〜現在</div><h3>新しい産地と小さな醸造所</h3><p class="band-desc">大量生産の時代を経て、「どこの誰が造ったか」に価値が戻ってきた。</p><div class="cols"><div class="entry"><h4>ジャパニーズウイスキー</h4><div class="meta">1923年〜</div><div class="key">山崎から世界へ</div><p>寿屋（現サントリー）が山崎に蒸留所を建て、スコットランドで学んだ竹鶴政孝が技術を担った。竹鶴はのちにニッカを創業。21世紀には国際コンクールで受賞が相次いだ。</p></div><div class="entry"><h4>パリスの審判</h4><div class="meta">1976年・パリ</div><div class="key">ワイン新世界の台頭</div><p>目隠しの試飲会で、カリフォルニアワインがフランスの一流銘柄を上回った。以後、チリやオーストラリアなど「新世界」のワインが世界に広がった。</p></div><div class="entry"><h4>クラフトビール</h4><div class="meta">1990年代〜</div><div class="key">小さな醸造所の反撃</div><p>大手の均一なラガーへの反動として、小さな醸造所が個性的なビールを造る流れが世界に広がった。日本では1994年の酒税法改正で「地ビール」が生まれた。</p></div></div></div><p class="tip"><strong>居酒屋ポイント：</strong>最近は、あえて飲まない「ソバーキュリアス」という生き方も広がっている。1万年の酒の歴史で初めて、「飲まない」がかっこいい選択肢になりつつある。</p></div></section><section class="ch" id="ch-7" aria-labelledby="ch-7-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 7</div><h2 id="ch-7-h">酒の世界史タイムライン</h2><p>1万年を、15の出来事で</p></header><ol class="timeline"><li><div class="yr">約9000年前</div><div><h4>中国・賈湖で最古の酒</h4><p>米・蜂蜜・果実の発酵飲料。</p></div></li><li><div class="yr">約8000年前</div><div><h4>ジョージアでワイン造り</h4><p>土器にブドウ酒の痕跡。</p></div></li><li><div class="yr">紀元前4千年紀</div><div><h4>メソポタミアでビール</h4><p>労働者に配給される「液体のパン」。</p></div></li><li><div class="yr">紀元前1800年頃</div><div><h4>「ニンカシ賛歌」</h4><p>ビールの女神への賛歌に醸造の手順が残る。</p></div></li><li><div class="yr">8〜10世紀</div><div><h4>イスラム世界で蒸留が発展</h4><p>目的は香水と薬だった。</p></div></li><li><div class="yr">1494年</div><div><h4>スコットランド最古のウイスキーの記録</h4><p>麦芽から「アクア・ヴィテ」を造る記録。</p></div></li><li><div class="yr">1516年</div><div><h4>バイエルンのビール純粋令</h4><p>原料を大麦・ホップ・水に限る。</p></div></li><li><div class="yr">1568年</div><div><h4>『多聞院日記』に火入れの記録</h4><p>日本酒の加熱殺菌。パスツールより300年早い。</p></div></li><li><div class="yr">1751年</div><div><h4>ホガース「ジン横丁」</h4><p>ロンドンのジン禍を描いた版画。</p></div></li><li><div class="yr">1863年頃</div><div><h4>フランスでフィロキセラ被害が始まる</h4><p>ヨーロッパのブドウ畑が壊滅していく。</p></div></li><li><div class="yr">1866年</div><div><h4>パスツール『ワインの研究』</h4><p>発酵と腐敗の正体を解明。</p></div></li><li><div class="yr">1920年</div><div><h4>アメリカで禁酒法施行</h4><p>1933年に廃止。</p></div></li><li><div class="yr">1923年</div><div><h4>山崎蒸留所の建設開始</h4><p>ジャパニーズウイスキーの始まり。</p></div></li><li><div class="yr">1976年</div><div><h4>パリスの審判</h4><p>カリフォルニアワインがフランスを破る。</p></div></li><li><div class="yr">1994年</div><div><h4>日本で地ビール解禁</h4><p>酒税法改正で小さな醸造所が可能に。</p></div></li></ol></div></section><section class="ch alt" id="ch-8" aria-labelledby="ch-8-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 8</div><h2 id="ch-8-h">酒の核心概念10選</h2><p>これを知っていれば「詳しい人」と思われる10のキーワード</p></header><div class="concepts"><div class="concept"><h4>発酵<small>Fermentation</small></h4><p>酵母が糖を食べて、アルコールと炭酸ガスを出す働き。すべての酒はここから始まる。</p><p class="izk">「酒もパンも味噌も、全部"菌の仕事"。人類は1万年、菌に世話になりっぱなし」</p></div><div class="concept"><h4>糖化<small>Saccharification</small></h4><p>米や麦の主成分はデンプンなので、先に糖へ変えないと発酵しない。ビールは麦芽の酵素で、日本酒は麹で糖化する。</p><p class="izk">「ワインはブドウがもともと甘いから話が早い。米や麦は一手間かかる。その一手間が文化の差になった」</p></div><div class="concept"><h4>並行複発酵<small>Multiple parallel fermentation</small></h4><p>日本酒は、糖化と発酵を一つのタンクで同時に進める。そのため醸造酒としては高い20度前後まで達する。</p><p class="izk">「日本酒は"同時進行"の天才。だから度数がワインやビールより高い」</p></div><div class="concept"><h4>蒸留<small>Distillation</small></h4><p>アルコールは水より低い温度で沸騰する。温めて先に出た蒸気を冷やせば、強い酒が取り出せる。</p><p class="izk">「ウイスキーも焼酎も、元をたどれば"ビールやもろみを煮詰めて濃くしたもの"」</p></div><div class="concept"><h4>テロワール<small>Terroir</small></h4><p>土地・気候・地形がワインの味を決めるという考え方。ブルゴーニュの畑の格付けはその極致だ。</p><p class="izk">「同じ村でも、畑の区画が違えば値段が10倍変わる。完全に土地ガチャの世界」</p></div><div class="concept"><h4>樽熟成<small>Cask aging</small></h4><p>木の樽で寝かせると、色・香り・まろやかさが生まれる。ウイスキーの琥珀色は、ほぼ樽からもらった色だ。</p><p class="izk">「蒸留したてのウイスキーは無色透明。あの色は"時間の色"なんだよ」</p></div><div class="concept"><h4>麹<small>Koji</small></h4><p>蒸した米などに麹菌を繁殖させたもの。日本酒・焼酎・味噌・醤油の要。麹菌は2006年に日本醸造学会で「国菌」に認定された。</p><p class="izk">「日本には"国の菌"がある。国鳥がキジなら、国菌はコウジカビ」</p></div><div class="concept"><h4>酒税<small>Liquor tax</small></h4><p>多くの国で酒は重要な税源。密造や安酒の流行は、たいてい重税の裏返しだ。</p><p class="izk">「スコッチの密造も"第3のビール"も、根っこは同じ。税金との知恵比べ」</p></div><div class="concept"><h4>禁酒運動<small>Temperance movement</small></h4><p>19世紀の英米で、酒害への反発から起きた社会運動。女性の権利運動と結びつき、アメリカの禁酒法につながった。</p><p class="izk">「禁酒運動と女性参政権運動はセットで盛り上がった。酒は"家庭を壊すもの"と見られていたんだ」</p></div><div class="concept"><h4>乾杯<small>Toast</small></h4><p>杯を掲げる習慣は世界中にある。英語で乾杯を「トースト」と言うのは、ワインに焼いたパンを浮かべた昔の習慣に由来するとされる。</p><p class="izk">「乾杯がトーストなのは、本当にパンを入れてたから。今夜の一杯にパンは入ってないけど」</p></div></div></div></section><section class="ch" id="ch-9" aria-labelledby="ch-9-h"><div class="wrap"><header class="ch-head"><div class="badge">SPECIAL</div><h2 id="ch-9-h">世界の主な酒 完全比較表</h2><p>醸造酒・蒸留酒の違いがひと目でわかる</p></header><div class="table-wrap"><table><thead><tr><th scope="col">酒</th><th scope="col">主な原料</th><th scope="col">造り方</th><th scope="col">主な産地</th><th scope="col">ひとこと</th></tr></thead><tbody><tr><td>ビール</td><td>大麦麦芽・ホップ</td><td>醸造（糖化してから発酵）</td><td>ドイツ・チェコ・ベルギー</td><td>1人あたり消費量の世界一はチェコ</td></tr><tr><td>ワイン</td><td>ブドウ</td><td>醸造（そのまま発酵）</td><td>フランス・イタリア・スペイン</td><td>原料が甘いので、造りはいちばん単純</td></tr><tr><td>日本酒</td><td>米・麹</td><td>醸造（並行複発酵）</td><td>兵庫・新潟・京都</td><td>醸造酒としては度数が高い</td></tr><tr><td>ウイスキー</td><td>大麦麦芽・穀物</td><td>蒸留して樽で熟成</td><td>スコットランド・アイルランド・米国・日本</td><td>whisky と whiskey、二つの綴りがある</td></tr><tr><td>焼酎</td><td>芋・麦・米・黒糖など</td><td>蒸留</td><td>鹿児島・宮崎・熊本</td><td>本格焼酎は単式蒸留で原料の香りが残る</td></tr><tr><td>テキーラ</td><td>アガベ（竜舌蘭）</td><td>蒸留</td><td>メキシコ・ハリスコ州</td><td>名乗れる産地が法律で決まっている</td></tr><tr><td>ラム</td><td>サトウキビ・糖蜜</td><td>蒸留</td><td>カリブ海の国々</td><td>海軍と海賊の酒</td></tr><tr><td>ウォッカ</td><td>穀物・ジャガイモ</td><td>蒸留してろ過</td><td>ロシア・ポーランド</td><td>発祥はどちらか、今も論争中</td></tr></tbody></table></div><p class="note">醸造酒は発酵させたままの酒、蒸留酒はそれを蒸留して度数を高めた酒。梅酒やリキュールのように、酒に果実や香りを漬け込んだものは混成酒と呼ぶ。</p></div></section><section class="ch alt" id="ch-10" aria-labelledby="ch-10-h"><div class="wrap"><header class="ch-head"><div class="badge">FINAL CHAPTER</div><h2 id="ch-10-h">居酒屋実戦テスト</h2><p>隣の席で聞こえてきたら、こう返せ</p></header><dl class="qa"><div><dt><span>Q1</span>「最初の一杯って、なんでいつもビールなの？」</dt><dd>江戸の居酒屋の主役は日本酒だった。ビールが庶民の「とりあえず」になったのは戦後、冷蔵庫と一緒に家庭や店に広まってから。冷えた炭酸が最初の一杯に合う、という実用的な理由もある。</dd></div><div><dt><span>Q2</span>「日本酒とワイン、どっちが歴史古いの？」</dt><dd>ワインは約8000年前のジョージアまでさかのぼる。日本の米の酒は稲作が伝わってから。ただ「米の酒」でいえば、9000年前の中国・賈湖の酒が世界最古で、ワインより古い。</dd></div><div><dt><span>Q3</span>「ウイスキーって、なんで茶色いの？」</dt><dd>樽の色。蒸留した直後は無色透明で、木の樽で何年も寝かせるうちに色と香りが移る。その間に少しずつ蒸発して減る分を「天使の分け前」と呼ぶ。</dd></div><div><dt><span>Q4</span>「禁酒法って結局どうなったの？」</dt><dd>13年で廃止された。酒は闇で売られ、闇酒場とギャングが儲かり、国は酒税を失った。大恐慌で税収が必要になったことも、廃止を後押しした。</dd></div><div><dt><span>Q5</span>「&quot;酒は百薬の長&quot;って本当？」</dt><dd>出典は中国の歴史書『漢書』。皇帝が酒を国の専売にするとき、その理由づけに使った言葉だ。いまは少量でも健康リスクがあるという研究が増え、WHOも「安全な飲酒量はない」としている。2000年前の国の宣伝文句、と覚えておくと話が深まる。</dd></div></dl></div></section>
+</main>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="japan_modern_contemporary_history.html"><span class="kit-pager-dir">← 一軒目 Vol.20</span><span class="kit-pager-title">日本の近現代史</span></a><a class="kit-pager-home" href="index.html">目次へ戻る</a><a class="kit-pager-next" href="china_history.html"><span class="kit-pager-dir">次の巻 二軒目 Vol.2 →</span><span class="kit-pager-title">中国史と中国思想</span></a></nav>
+<footer class="footer">
+  <p class="footer-quote">「酒は百薬の長」——ただし出典は、酒を国の専売にしたかった皇帝の言葉である。<cite>『漢書』食貨志より</cite></p>
+  <p class="footer-series">知の巨人への道 — 居酒屋で語れる教養シリーズ 二軒目 Vol.1</p>
+</footer>
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
+<script>
+(function(){var d=document.querySelector('.kit-vols');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+d.addEventListener('toggle',function(){if(d.open){var c=d.querySelector('[aria-current]');if(c)c.scrollIntoView({block:'nearest'});}});})();
+</script>
+</body>
+</html>

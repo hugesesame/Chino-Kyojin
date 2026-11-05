@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国史と中国思想 — 知の巨人への道</title>
+<meta name="description" content="居酒屋で語れる教養シリーズ 二軒目 Vol.2。甲骨文字から孔子・老子、三国志、科挙、毛沢東、現代中国まで。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F8F5EE;--paper-2:#F0EBE0;--ink:#26221C;--ink-2:#4A443A;--ink-3:#6A6356;--rule:rgba(38,34,28,.16);
+  --accent:#B23A2E;--accent-ink:#922f26;--hero-bg:#150B0A;--hero-accent:#dd867d;
+  --serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-size:.95rem;line-height:1.8;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+.wrap{max-width:928px;margin:0 auto;padding:0 16px}
+
+/* cover */
+.hero{background:var(--hero-bg);color:#EDE7DA;text-align:center;padding:5.5rem 16px 4.5rem}
+.hero-tag{display:inline-block;padding:.3rem .9rem;border:1px solid color-mix(in srgb,var(--hero-accent) 55%,transparent);font-size:.75rem;font-weight:700;letter-spacing:.18em;color:var(--hero-accent)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,7vw,4rem);line-height:1.25;color:var(--hero-accent);margin:1.4rem 0 1rem}
+.hero-sub{max-width:36em;margin:0 auto;color:#CFC8BA;font-size:1rem}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem 3rem;margin-top:2.75rem}
+.hero-stats div{display:flex;flex-direction:column;align-items:center}
+.hero-stats b{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.3;color:var(--hero-accent)}
+.hero-stats span{font-size:.78rem;color:#C9C2B4;margin-top:.35rem}
+
+/* chapters */
+.ch{padding:5rem 0}
+.ch.alt{background:var(--paper-2)}
+.ch-head{text-align:center;margin-bottom:3rem}
+.badge{font-size:.75rem;font-weight:700;letter-spacing:.2em;color:var(--accent-ink)}
+.ch-head h2{font-family:var(--serif);font-size:clamp(1.55rem,4vw,2rem);font-weight:700;line-height:1.45;margin:.6rem 0 .5rem}
+.ch-head p{color:var(--ink-2)}
+
+.angles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.angle{border:1px solid var(--rule);padding:1.35rem 1.4rem 1.5rem}
+.angle .lbl{font-size:.72rem;letter-spacing:.16em;color:var(--ink-3)}
+.angle h3{font-family:var(--serif);font-size:1.02rem;line-height:1.55;margin:.45rem 0 .55rem}
+.angle p{font-size:.9rem;color:var(--ink-2)}
+
+.tip{margin-top:2.5rem;padding:.95rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);color:var(--ink-2)}
+.tip strong{color:var(--accent-ink)}
+
+.band{border-top:2px solid var(--accent);padding-top:1.75rem;margin-top:3.5rem}
+.ch-head+.band{margin-top:0}
+.band-label{font-size:.75rem;letter-spacing:.16em;color:var(--ink-3)}
+.band h3{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:.35rem 0 .3rem}
+.band-desc{color:var(--ink-2);margin-bottom:1.5rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem 2rem}
+.entry{border-top:1px solid var(--rule);padding-top:1rem}
+.entry h4{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.entry .meta{font-size:.8rem;color:var(--ink-3);margin-top:.15rem}
+.entry .key{font-size:.8rem;color:var(--accent-ink);margin:.35rem 0 .45rem}
+.entry p{color:var(--ink-2)}
+.entry blockquote{margin-top:.75rem;padding-left:.8rem;border-left:2px solid var(--accent);font-family:var(--serif);font-size:.92rem;color:var(--ink)}
+
+.timeline{list-style:none;border-left:2px solid var(--accent);margin-left:.25rem}
+.timeline li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:1.25rem;padding:.9rem 0 .9rem 1.4rem;border-bottom:1px solid var(--rule)}
+.timeline li:last-child{border-bottom:0}
+.timeline .yr{font-family:var(--serif);font-weight:700;color:var(--accent-ink)}
+.timeline h4{font-family:var(--serif);font-size:1rem;line-height:1.55}
+.timeline p{font-size:.9rem;color:var(--ink-2);margin-top:.15rem}
+
+.concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.25rem 2rem}
+.concept{border-top:2px solid var(--accent);padding-top:1rem}
+.concept h4{font-family:var(--serif);font-size:1.08rem;line-height:1.5}
+.concept h4 small{font-family:var(--sans);font-weight:400;font-size:.75rem;color:var(--ink-3);margin-left:.5rem;letter-spacing:.04em}
+.concept p{color:var(--ink-2);margin-top:.4rem}
+.concept .izk{margin-top:.7rem;padding-top:.6rem;border-top:1px dashed var(--rule);color:var(--ink-2)}
+
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:.88rem}
+th{text-align:left;font-weight:700;font-size:.8rem;color:var(--ink-3);padding:.6rem .7rem;border-bottom:2px solid var(--ink)}
+td{padding:.75rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+td:first-child{font-family:var(--serif);font-weight:700;color:var(--ink);white-space:nowrap}
+.note{margin-top:1.25rem;font-size:.88rem;color:var(--ink-2)}
+
+.qa{max-width:760px;margin:0 auto}
+.qa div{padding:1.25rem 0;border-top:1px solid var(--rule)}
+.qa div:first-child{border-top:0;padding-top:0}
+.qa dt{font-family:var(--serif);font-weight:700;font-size:1.05rem;line-height:1.6}
+.qa dt span{display:block;font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;color:var(--accent-ink)}
+.qa dd{color:var(--ink-2);margin-top:.4rem}
+
+/* back cover */
+.footer{background:var(--hero-bg);color:#CFC8BA;text-align:center;padding:3.5rem 16px}
+.footer-quote{font-family:var(--serif);font-size:1.1rem;color:#EDE7DA;max-width:30em;margin:0 auto}
+.footer-quote cite{display:block;font-style:normal;font-size:.8rem;color:#C9C2B4;margin-top:.5rem}
+.footer-series{margin-top:1.5rem;font-size:.78rem;letter-spacing:.12em}
+
+@media (max-width:640px){
+  .ch{padding:3.75rem 0}
+  .timeline li{grid-template-columns:minmax(0,1fr);gap:.2rem}
+  .hero{padding:4rem 16px 3.5rem}
+}
+</style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+
+/* volume switcher (the volume name in the bar) */
+.kit-vols{flex:1;min-width:0}
+.kit-vols summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;min-height:44px;max-width:100%;width:max-content;padding:0 .5rem;margin-left:-.5rem;border-radius:2px;user-select:none}
+.kit-vols summary::-webkit-details-marker{display:none}
+.kit-vols summary::after{content:'';flex:none;width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-vols[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-vols .kit-here{flex:0 1 auto}
+.kit-vols ol{position:absolute;left:16px;top:calc(100% + 6px);width:min(360px,calc(100vw - 32px));max-height:min(75vh,640px);overflow:auto;margin:0;padding:.25rem 0 .5rem;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-vols .kit-vols-cat{padding:.8rem 1rem .3rem;font-size:.72rem;letter-spacing:.2em;color:#C9C2B4}
+.kit-vols .kit-vols-cat:not(:first-child){border-top:1px solid rgba(244,240,232,.08);margin-top:.25rem}
+.kit-vols a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.55rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-vols a span{flex:0 0 1.5rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-vols a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+.kit-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (hover:hover){.kit-vols summary:hover{background:rgba(200,152,48,.1)}.kit-vols a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}}
+</style>
+</head>
+<body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>目次</a><details class="kit-vols"><summary><span class="kit-here">二軒目 Vol.2<b>中国史と中国思想</b></span><span class="kit-sr">（巻を選ぶ）</span></summary><ol aria-label="全巻"><li class="kit-vols-cat" aria-hidden="true">三大宗教</li><li><a href="buddhism_history.html"><span>1</span>仏教の歴史</a></li><li><a href="christianity_history.html"><span>2</span>キリスト教の歴史</a></li><li><a href="islam_history.html"><span>3</span>イスラム教の歴史</a></li><li class="kit-vols-cat" aria-hidden="true">思想</li><li><a href="philosophy_history.html"><span>4</span>哲学史</a></li><li><a href="political_thought_history.html"><span>5</span>政治思想史</a></li><li><a href="economic_thought_history.html"><span>6</span>経済思想史</a></li><li class="kit-vols-cat" aria-hidden="true">歴史</li><li><a href="world_history.html"><span>7</span>世界史概論</a></li><li><a href="japan_history.html"><span>8</span>日本史</a></li><li><a href="science_history.html"><span>9</span>科学史</a></li><li class="kit-vols-cat" aria-hidden="true">芸術・文化</li><li><a href="western_art_history.html"><span>10</span>西洋美術史</a></li><li><a href="music_history.html"><span>11</span>音楽史</a></li><li><a href="world_literature_history.html"><span>12</span>世界文学史</a></li><li><a href="architecture_history.html"><span>13</span>建築史</a></li><li class="kit-vols-cat" aria-hidden="true">人間科学</li><li><a href="psychology_history.html"><span>14</span>心理学史</a></li><li><a href="sociology_history.html"><span>15</span>社会学史</a></li><li><a href="technology_history.html"><span>16</span>テクノロジー史</a></li><li class="kit-vols-cat" aria-hidden="true">日本の魂</li><li><a href="japanese_aesthetics_history.html"><span>17</span>日本の美意識史</a></li><li><a href="bushido_japanese_ethics.html"><span>18</span>武士道と日本人の倫理観</a></li><li><a href="japanese_literature_history.html"><span>19</span>日本文学史</a></li><li><a href="japan_modern_contemporary_history.html"><span>20</span>日本の近現代史</a></li><li class="kit-vols-cat" aria-hidden="true">二軒目</li><li><a href="alcohol_history.html"><span>1</span>酒の世界史</a></li><li><a href="china_history.html" aria-current="page"><span>2</span>中国史と中国思想</a></li><li><a href="mythology_history.html"><span>3</span>神話の世界</a></li></ol></details><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>中国を学ぶとはどういうことか</a></li><li><a href="#ch-2"><span>2</span>古代——殷・周から諸子百家へ</a></li><li><a href="#ch-3"><span>3</span>帝国の形成——秦・漢から隋・唐へ</a></li><li><a href="#ch-4"><span>4</span>宋から清へ——成熟と閉塞</a></li><li><a href="#ch-5"><span>5</span>近現代——革命から大国へ</a></li><li><a href="#ch-6"><span>6</span>中国史タイムライン</a></li><li><a href="#ch-7"><span>7</span>中国の核心概念10選</a></li><li><a href="#ch-8"><span>＊</span>主な王朝と日本 完全比較表</a></li><li><a href="#ch-9"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+<header class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ 二軒目 Vol.2</div>
+  <h1>中国史と中国思想</h1>
+  <p class="hero-sub">甲骨文字から孔子・老子、三国志、科挙、毛沢東、そして現代中国まで——日本の「元ネタ」の国を、3000年で一気にたどる。</p>
+  <div class="hero-stats"><div><b>紀元前1300年頃</b><span>甲骨文字（漢字の祖先）</span></div><div><b>約2100年</b><span>皇帝の時代（秦〜清）</span></div><div><b>約1300年</b><span>科挙が続いた期間</span></div><div><b>∞</b><span>三国志の推し論争</span></div></div>
+</header>
+<main>
+<section class="ch" id="ch-1" aria-labelledby="ch-1-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 1</div><h2 id="ch-1-h">中国を学ぶとはどういうことか</h2><p>漢字も箸もお茶も律令も——日本文化の多くは、中国から来て日本流に変わった</p></header><div class="angles"><div class="angle"><div class="lbl">NEIGHBOR</div><h3>日本の「元ネタ」</h3><p>漢字、律令、儒教、中国を経由した仏教、箸、茶。日本文化の土台の多くは中国から入り、日本流に作り変えられた。</p></div><div class="angle"><div class="lbl">CONTINUITY</div><h3>王朝は変わっても続く</h3><p>王朝は何度も倒れたが、漢字・官僚制・皇帝という仕組みは受け継がれた。天命が移れば王朝が替わる、という理屈が交代を支えた。</p></div><div class="angle"><div class="lbl">THOUGHT</div><h3>哲学は「どう治めるか」</h3><p>西洋哲学が「世界とは何か」を問うたのに対し、中国思想の中心は「どう生き、どう国を治めるか」。思想はいつも政治と隣り合わせだった。</p></div><div class="angle"><div class="lbl">TODAY</div><h3>現代中国を読む鍵</h3><p>共産党の統治の下にも、試験で人を選ぶ文化、自分たちを世界の中心とみる天下観、家族を重んじる儒教の価値観が今も生きている。</p></div></div><p class="tip"><strong>居酒屋ポイント：</strong>「矛盾」も「蛇足」も「杞憂」も中国の故事成語。日本人は毎日、2000年以上前の中国の話を口にしている。</p></div></section><section class="ch alt" id="ch-2" aria-labelledby="ch-2-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 2</div><h2 id="ch-2-h">古代——殷・周から諸子百家へ</h2><p>紀元前1600年頃〜紀元前221年。乱世が、思想の黄金期を生んだ</p></header><div class="band"><div class="band-label">ANCIENT DYNASTIES · 紀元前1600年頃〜紀元前771年</div><h3>神託の王と天命の王</h3><p class="band-desc">確認できる最古の王朝・殷と、「天命」で王朝交代を正当化した周。</p><div class="cols"><div class="entry"><h4>殷</h4><div class="meta">紀元前1600年頃〜紀元前1046年頃</div><div class="key">甲骨文字</div><p>亀の甲羅や牛の骨を焼いて占い、その結果を刻んだのが甲骨文字。いまの漢字の祖先で、実在が確かめられる最古の王朝だ。</p></div><div class="entry"><h4>周</h4><div class="meta">紀元前1046年頃〜紀元前256年</div><div class="key">天命思想</div><p>殷を倒した周は「天は徳のある者に統治を命じる」という天命思想で自らを正当化した。以後3000年、中国の王朝交代の理屈になる。</p></div><div class="entry"><h4>封建制</h4><div class="meta">西周</div><div class="key">一族に土地を分ける</div><p>王が一族や功臣に土地を与えて諸侯とした。周の力が衰えると諸侯が争い合い、春秋・戦国の乱世へ入っていく。</p></div></div></div><div class="band"><div class="band-label">HUNDRED SCHOOLS · 紀元前770年〜紀元前221年（春秋・戦国）</div><h3>諸子百家——乱世の思想家たち</h3><p class="band-desc">諸侯は生き残りのため、出自を問わず知恵のある者を求めた。思想家たちは国から国へ渡り歩き、自説を売り込んだ。</p><div class="cols"><div class="entry"><h4>孔子</h4><div class="meta">紀元前551年頃〜紀元前479年・魯</div><div class="key">儒家・仁と礼</div><p>人への思いやり（仁）と秩序（礼）による政治を説いた。弟子がまとめた言行録が『論語』。生前は不遇だったが、のちに国の正統思想になった。</p><blockquote>己の欲せざる所は人に施すこと勿れ</blockquote></div><div class="entry"><h4>老子</h4><div class="meta">生没年不詳</div><div class="key">道家・無為自然</div><p>人為を捨て、自然の「道（タオ）」に従えと説いた。実在も含めて謎の人物。『老子（道徳経）』は世界で最も多く翻訳された書物の一つ。</p><blockquote>上善は水の如し</blockquote></div><div class="entry"><h4>韓非子</h4><div class="meta">紀元前280年頃〜紀元前233年・韓</div><div class="key">法家・法と賞罰</div><p>徳ではなく、法と賞罰で国を治めよと説いた。秦の始皇帝が愛読し、中国統一の理論的な支柱になった。「矛盾」の故事も『韓非子』から。</p></div><div class="entry"><h4>孫子</h4><div class="meta">紀元前500年頃・呉</div><div class="key">兵家・兵法</div><p>『孫子』は「戦わずして勝つ」ことを最上とした兵法書。2500年たった今も、ビジネス書の定番として読まれている。</p><blockquote>彼を知り己を知れば百戦殆うからず</blockquote></div></div></div></div></section><section class="ch" id="ch-3" aria-labelledby="ch-3-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 3</div><h2 id="ch-3-h">帝国の形成——秦・漢から隋・唐へ</h2><p>紀元前221年〜907年。「皇帝」が発明され、三国志の英雄が駆け抜け、唐は世界帝国になった</p></header><div class="band"><div class="band-label">UNIFICATION · 紀元前221年〜220年</div><h3>皇帝という発明</h3><div class="cols"><div class="entry"><h4>始皇帝</h4><div class="meta">紀元前259年〜紀元前210年・秦</div><div class="key">最初の皇帝</div><p>中国を初めて統一し「皇帝」を名乗った。文字・度量衡・貨幣を統一し、焚書坑儒で思想を弾圧したとされる。秦は統一からわずか15年で滅んだ。</p></div><div class="entry"><h4>劉邦と漢</h4><div class="meta">紀元前202年〜220年</div><div class="key">400年の帝国</div><p>農民出身の劉邦が建てた漢は、前後あわせて約400年続いた。中国の主要民族を「漢民族」、文字を「漢字」と呼ぶのはこの王朝から。</p></div><div class="entry"><h4>武帝</h4><div class="meta">紀元前141年〜紀元前87年在位</div><div class="key">儒教の国教化</div><p>武帝の時代に、儒教が国家の正統な学問になったとされる。西域へ張騫を送り、のちのシルクロードにつながる道を開いた。</p></div></div></div><div class="band"><div class="band-label">THREE KINGDOMS · 184年〜280年</div><h3>三国志——日本人がいちばん好きな中国史</h3><p class="band-desc">漢が衰えると、群雄が割拠する乱世へ。魏・呉・蜀の三国が天下を争った。</p><div class="cols"><div class="entry"><h4>曹操</h4><div class="meta">155年〜220年・魏</div><div class="key">乱世の奸雄</div><p>家柄を問わず人材を集め、華北を制した。小説では悪役だが、実像は詩人でもある有能な政治家・軍略家だった。</p></div><div class="entry"><h4>劉備と諸葛亮</h4><div class="meta">蜀</div><div class="key">三顧の礼</div><p>劉備は無名の諸葛亮を三度訪ねて軍師に迎えた。諸葛亮の「天下三分の計」で、魏・呉・蜀が並び立つ形ができた。</p></div><div class="entry"><h4>正史と演義</h4><div class="meta">3世紀と14世紀</div><div class="key">二つの三国志</div><p>陳寿の歴史書『三国志』と、千年以上あとにまとめられた小説『三国志演義』は別物。関羽の神格化や赤壁の派手な場面の多くは、演義の脚色だ。</p></div></div></div><div class="band"><div class="band-label">SUI &amp; TANG · 581年〜907年</div><h3>世界帝国・唐と、日本の手本</h3><p class="band-desc">分裂の時代を終わらせた隋と、国際色豊かな唐。日本は遣隋使・遣唐使を送り、国の形を学んだ。</p><div class="cols"><div class="entry"><h4>科挙の始まり</h4><div class="meta">隋・6世紀末〜</div><div class="key">試験で官僚を選ぶ</div><p>家柄ではなく試験で官僚を選ぶ制度が隋で始まり、1905年まで約1300年続いた。</p></div><div class="entry"><h4>長安</h4><div class="meta">唐の都</div><div class="key">国際都市</div><p>人口100万ともいわれ、ペルシャ人やソグド人が行き交った。平城京も平安京も、この長安を手本に造られた。</p></div><div class="entry"><h4>李白と杜甫</h4><div class="meta">8世紀</div><div class="key">漢詩の黄金期</div><p>酒と月を詠んだ「詩仙」李白と、戦乱と民の苦しみを詠んだ「詩聖」杜甫。漢詩の頂点は唐にある。</p><blockquote>国破れて山河在り（杜甫「春望」）</blockquote></div></div></div></div></section><section class="ch alt" id="ch-4" aria-labelledby="ch-4-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 4</div><h2 id="ch-4-h">宋から清へ——成熟と閉塞</h2><p>960年〜1912年。世界一豊かな国から、「屈辱の100年」へ</p></header><div class="band"><div class="band-label">SONG · 960年〜1279年</div><h3>経済と朱子学の時代</h3><p class="band-desc">武より文を重んじた宋は、経済と学問で花開いた。</p><div class="cols"><div class="entry"><h4>宋の経済革命</h4><div class="meta">10〜13世紀</div><div class="key">紙幣と印刷</div><p>世界で最初期の紙幣（交子）、活字印刷、羅針盤、火薬の実用化。宋は当時、世界で最も豊かな国の一つだった。</p></div><div class="entry"><h4>朱子（朱熹）</h4><div class="meta">1130年〜1200年</div><div class="key">朱子学</div><p>儒教を宇宙論から体系づけ直した。江戸幕府の正学になり、日本の武士の倫理や身分秩序にも深く影響した。</p></div><div class="entry"><h4>禅と喫茶</h4><div class="meta">宋</div><div class="key">日本への贈り物</div><p>宋で学んだ栄西や道元が禅を日本に伝えた。栄西は茶の種と飲み方も持ち帰り、『喫茶養生記』を書いた。</p></div></div></div><div class="band"><div class="band-label">YUAN &amp; MING · 1271年〜1644年</div><h3>モンゴルの支配と、海を閉じた明</h3><div class="cols"><div class="entry"><h4>元</h4><div class="meta">1271年〜1368年</div><div class="key">モンゴル帝国の中国支配</div><p>フビライが建てた元が中国全土を支配した。日本へも二度攻め寄せた（元寇）。マルコ・ポーロが訪れたと伝えられる。</p></div><div class="entry"><h4>鄭和の大航海</h4><div class="meta">1405年〜1433年・明</div><div class="key">コロンブスより大きな船団</div><p>明の宦官・鄭和は大艦隊を率い、東南アジアからアフリカ東岸まで7回航海した。だが明はその後、民間の海外渡航を厳しく制限していく。</p></div><div class="entry"><h4>王陽明</h4><div class="meta">1472年〜1529年・明</div><div class="key">陽明学・知行合一</div><p>知ることと行うことは一つ、と説いて朱子学を批判した。幕末の吉田松陰や西郷隆盛にも影響を与えた。</p></div></div></div><div class="band"><div class="band-label">QING · 1644年〜1912年</div><h3>最後の王朝</h3><p class="band-desc">満洲人の清は領土を最大に広げ、そして列強に屈した。</p><div class="cols"><div class="entry"><h4>康熙帝と乾隆帝</h4><div class="meta">17〜18世紀</div><div class="key">清の最盛期</div><p>満洲人の清は、モンゴル・チベット・新疆まで支配を広げた。いまの中国の国境の原型は、このとき形作られた。</p></div><div class="entry"><h4>アヘン戦争</h4><div class="meta">1840年〜1842年</div><div class="key">屈辱の始まり</div><p>イギリスとの戦争に敗れ、香港を割譲した。以後の不平等条約と列強の進出を、中国は「屈辱の100年」と呼ぶ。</p></div><div class="entry"><h4>辛亥革命</h4><div class="meta">1911年〜1912年</div><div class="key">皇帝の時代の終わり</div><p>孫文らの革命で清が倒れ、アジア初の共和国とされる中華民国が成立した。2000年以上続いた皇帝の時代が終わった。</p></div></div></div></div></section><section class="ch" id="ch-5" aria-labelledby="ch-5-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 5</div><h2 id="ch-5-h">近現代——革命から大国へ</h2><p>1912年〜現在。内戦と革命を経て、世界第2の経済大国へ</p></header><div class="band"><div class="band-label">REVOLUTION · 1912年〜1976年</div><h3>二つの中国と毛沢東</h3><div class="cols"><div class="entry"><h4>孫文</h4><div class="meta">1866年〜1925年</div><div class="key">三民主義</div><p>民族・民権・民生の三民主義を掲げた「革命の父」。中国本土でも台湾でも尊敬される数少ない人物で、日本に亡命していた時期も長い。</p></div><div class="entry"><h4>国共内戦と台湾</h4><div class="meta">1946年〜1949年</div><div class="key">二つの中国</div><p>日中戦争後、国民党と共産党が再び戦い、敗れた蔣介石の国民党は台湾へ移った。今に続く台湾問題の起点だ。</p></div><div class="entry"><h4>毛沢東</h4><div class="meta">1893年〜1976年</div><div class="key">中華人民共和国の建国</div><p>内戦に勝ち、1949年に中華人民共和国を建国した。一方で大躍進政策と文化大革命では、膨大な犠牲者を出した。</p></div></div></div><div class="band"><div class="band-label">REFORM · 1978年〜現在</div><h3>改革開放と大国化</h3><div class="cols"><div class="entry"><h4>鄧小平</h4><div class="meta">1904年〜1997年</div><div class="key">改革開放</div><p>市場経済を取り入れ、経済特区を設けて外国資本を呼び込んだ。共産党の支配は保ったまま、経済だけを開いた。</p><blockquote>白い猫でも黒い猫でも、鼠を捕るのが良い猫だ</blockquote></div><div class="entry"><h4>天安門事件</h4><div class="meta">1989年</div><div class="key">民主化運動の弾圧</div><p>民主化を求める学生や市民の運動が、軍によって武力で鎮圧された。中国国内では今も、この事件を語ることが厳しく制限されている。</p></div><div class="entry"><h4>世界第2の経済大国</h4><div class="meta">2010年〜</div><div class="key">日本を抜く</div><p>2010年に国内総生産（GDP）で日本を抜いて世界第2位になった。一帯一路、IT大国化、そして米中対立の時代へ。</p></div></div></div></div></section><section class="ch alt" id="ch-6" aria-labelledby="ch-6-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 6</div><h2 id="ch-6-h">中国史タイムライン</h2><p>3000年を、17の出来事で</p></header><ol class="timeline"><li><div class="yr">紀元前1300年頃</div><div><h4>殷で甲骨文字</h4><p>漢字の祖先。</p></div></li><li><div class="yr">紀元前1046年頃</div><div><h4>周が殷を倒す</h4><p>天命思想の始まり。</p></div></li><li><div class="yr">紀元前551年頃</div><div><h4>孔子が生まれる</h4><p>諸子百家の時代へ。</p></div></li><li><div class="yr">紀元前221年</div><div><h4>秦の始皇帝が中国を統一</h4><p>「皇帝」の誕生。</p></div></li><li><div class="yr">紀元前202年</div><div><h4>漢の成立</h4><p>約400年続く。</p></div></li><li><div class="yr">220年</div><div><h4>漢が滅び、三国時代へ</h4><p>魏・呉・蜀が並び立つ。</p></div></li><li><div class="yr">589年</div><div><h4>隋が中国を再統一</h4><p>科挙が始まる。</p></div></li><li><div class="yr">618年</div><div><h4>唐の成立</h4><p>長安は世界の中心に。</p></div></li><li><div class="yr">960年</div><div><h4>宋の成立</h4><p>紙幣と印刷の時代。</p></div></li><li><div class="yr">1271年</div><div><h4>元の成立</h4><p>モンゴルの中国支配。</p></div></li><li><div class="yr">1368年</div><div><h4>明の成立</h4><p>鄭和の大航海。</p></div></li><li><div class="yr">1644年</div><div><h4>清が北京に入る</h4><p>最後の王朝。</p></div></li><li><div class="yr">1840年</div><div><h4>アヘン戦争</h4><p>「屈辱の100年」の始まり。</p></div></li><li><div class="yr">1912年</div><div><h4>中華民国の成立、清の滅亡</h4><p>皇帝の時代が終わる。</p></div></li><li><div class="yr">1949年</div><div><h4>中華人民共和国の成立</h4><p>国民党は台湾へ。</p></div></li><li><div class="yr">1978年</div><div><h4>改革開放</h4><p>鄧小平の市場経済化。</p></div></li><li><div class="yr">2010年</div><div><h4>GDPで世界第2位に</h4><p>日本を抜く。</p></div></li></ol></div></section><section class="ch" id="ch-7" aria-labelledby="ch-7-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 7</div><h2 id="ch-7-h">中国の核心概念10選</h2><p>これを知っていれば「詳しい人」と思われる10のキーワード</p></header><div class="concepts"><div class="concept"><h4>天命と易姓革命<small>Mandate of Heaven</small></h4><p>天は徳のある者に統治を命じ、徳を失えばその命は別の者に移る。王朝の交代を正当化する理屈だ。</p><p class="izk">「天災や反乱が続くと"天命が尽きた"と言われる。いわば支持率の古代版」</p></div><div class="concept"><h4>中華思想<small>Sinocentrism</small></h4><p>中国が世界の中心で、周辺は文化の遅れた国々だとみる世界観。周辺国が貢ぎ物を持ってくる朝貢は、その外交版。</p><p class="izk">「"中国"という国名自体が、"真ん中の国"という意味」</p></div><div class="concept"><h4>仁<small>Ren</small></h4><p>孔子の中心概念で、人への思いやり。まず親や兄弟を大切にし、その心を社会へ広げていく。</p><p class="izk">「孔子の"仁"は博愛じゃない。まず親と兄を大事にしろ、という順番付きの愛」</p></div><div class="concept"><h4>道<small>Dao</small></h4><p>老子・荘子の根本概念。名前を付けられない宇宙の根源で、無理をしない生き方の手本。</p><p class="izk">「"上善は水の如し"。水は争わず低い所へ流れるのに、最後は岩をも削る。老子の理想はそういう強さ」</p></div><div class="concept"><h4>性善説と性悪説<small>Mencius vs Xunzi</small></h4><p>孟子は人の本性は善だとし、荀子は放っておけば欲に流れるから礼で正すべきだとした。</p><p class="izk">「性悪説は"人は悪人"という意味じゃない。"だから教育が大事"という話。よく誤解される」</p></div><div class="concept"><h4>科挙<small>Imperial examination</small></h4><p>儒教の経典の知識で官僚を選ぶ試験。合格は極めて難しく、一生受け続ける人もいた。</p><p class="izk">「中国の受験戦争は1300年の伝統。びっしり経典を書き込んだカンニング用の下着が、今も博物館に残っている」</p></div><div class="concept"><h4>冊封と朝貢<small>Tributary system</small></h4><p>周辺国の王が中国の皇帝に貢ぎ物を送り、王として認めてもらう国際秩序。</p><p class="izk">「卑弥呼の"親魏倭王"も、足利義満の"日本国王"も、この仕組みの中でもらった称号」</p></div><div class="concept"><h4>陰陽五行<small>Yin-yang and five phases</small></h4><p>万物を陰と陽、そして木・火・土・金・水の五つの要素で説明する思想。暦、医学、風水の土台になった。</p><p class="izk">「曜日の"日月火水木金土"は、陰陽と五行そのもの」</p></div><div class="concept"><h4>宦官<small>Eunuch</small></h4><p>去勢されて宮廷に仕えた男性。皇帝の側近として権力を握り、王朝を傾けることもあった。</p><p class="izk">「紙を改良した蔡倫も、大航海の鄭和も宦官。歴史を動かした人が意外に多い」</p></div><div class="concept"><h4>一国二制度<small>One country, two systems</small></h4><p>香港・マカオに資本主義の仕組みを残すため、鄧小平が考えた枠組み。2020年の香港国家安全維持法で形だけになったと批判されている。</p><p class="izk">「"50年は変えない"と約束した制度が、半分もたたずに大きく変わった。ここは今も揉めている話題」</p></div></div></div></section><section class="ch alt" id="ch-8" aria-labelledby="ch-8-h"><div class="wrap"><header class="ch-head"><div class="badge">SPECIAL</div><h2 id="ch-8-h">主な王朝と日本 完全比較表</h2><p>「この時代、日本では何があった？」に答えられる</p></header><div class="table-wrap"><table><thead><tr><th scope="col">王朝</th><th scope="col">期間</th><th scope="col">都</th><th scope="col">有名な人物</th><th scope="col">日本との関係</th></tr></thead><tbody><tr><td>殷</td><td>紀元前1600年頃〜紀元前1046年頃</td><td>殷墟（安陽）</td><td>紂王</td><td>—</td></tr><tr><td>周</td><td>紀元前1046年頃〜紀元前256年</td><td>鎬京 → 洛邑</td><td>孔子・老子（春秋・戦国時代）</td><td>—</td></tr><tr><td>秦</td><td>紀元前221年〜紀元前206年</td><td>咸陽</td><td>始皇帝</td><td>不老不死の薬を求めて渡来したという徐福伝説</td></tr><tr><td>漢</td><td>紀元前202年〜220年</td><td>長安・洛陽</td><td>武帝・司馬遷</td><td>「漢委奴国王」の金印</td></tr><tr><td>三国（魏）</td><td>220年〜265年</td><td>洛陽</td><td>曹操・諸葛亮</td><td>卑弥呼が魏に使いを送る</td></tr><tr><td>隋</td><td>581年〜618年</td><td>大興城（長安）</td><td>煬帝</td><td>遣隋使・小野妹子</td></tr><tr><td>唐</td><td>618年〜907年</td><td>長安</td><td>玄宗・李白・杜甫</td><td>遣唐使、鑑真の来日</td></tr><tr><td>宋</td><td>960年〜1279年</td><td>開封 → 臨安</td><td>朱熹</td><td>日宋貿易、禅宗の伝来</td></tr><tr><td>元</td><td>1271年〜1368年</td><td>大都（北京）</td><td>フビライ</td><td>元寇</td></tr><tr><td>明</td><td>1368年〜1644年</td><td>南京 → 北京</td><td>永楽帝・鄭和・王陽明</td><td>勘合貿易</td></tr><tr><td>清</td><td>1644年〜1912年</td><td>北京</td><td>康熙帝・西太后</td><td>日清戦争</td></tr></tbody></table></div><p class="note">※ 三国時代は魏・呉・蜀が並び立った。表には日本と関わりの深い魏を載せている。</p></div></section><section class="ch" id="ch-9" aria-labelledby="ch-9-h"><div class="wrap"><header class="ch-head"><div class="badge">FINAL CHAPTER</div><h2 id="ch-9-h">居酒屋実戦テスト</h2><p>隣の席で聞こえてきたら、こう返せ</p></header><dl class="qa"><div><dt><span>Q1</span>「三国志って、結局誰が勝ったの？」</dt><dd>魏でも呉でも蜀でもない。魏の重臣・司馬懿の孫の司馬炎が魏から帝位を奪って晋を建て、280年に呉を滅ぼして天下を統一した。勝ったのは、ずっと脇役だった司馬一族だ。</dd></div><div><dt><span>Q2</span>「孔子と老子って、どっちが偉いの？」</dt><dd>そもそも向きが逆。孔子は礼で社会の秩序を作れと言い、老子はそういう作為を捨てろと言った。中国の知識人は「表では儒、裏では道」と使い分けた、とよく言われる。</dd></div><div><dt><span>Q3</span>「なんで中国は&quot;中国&quot;っていうの？」</dt><dd>「世界の真ん中の国」という意味。今の国名「中華人民共和国」の略でもある。周りを文化の遅れた国とみる中華思想が、名前そのものに入っている。</dd></div><div><dt><span>Q4</span>「日本の漢字って中国と同じなの？」</dt><dd>もとは同じだが、中国本土は1950〜60年代に画数を減らした簡体字に、日本は戦後に新字体に変えた。台湾や香港は昔ながらの繁体字を使う。同じ字でも意味が違うことがあり、中国語の「手紙」はトイレットペーパーのことだ。</dd></div><div><dt><span>Q5</span>「科挙って、そんなに難しかったの？」</dt><dd>最終試験まで進んで合格できるのは、受験者のごく一部だった。四書五経を中心に数十万字を暗記する必要があり、何十年も受け続ける人もいた。合格者は「進士」と呼ばれ、一族の誇りになった。</dd></div></dl></div></section>
+</main>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="alcohol_history.html"><span class="kit-pager-dir">← 前の巻 二軒目 Vol.1</span><span class="kit-pager-title">酒の世界史</span></a><a class="kit-pager-home" href="index.html">目次へ戻る</a><a class="kit-pager-next" href="mythology_history.html"><span class="kit-pager-dir">次の巻 二軒目 Vol.3 →</span><span class="kit-pager-title">神話の世界</span></a></nav>
+<footer class="footer">
+  <p class="footer-quote">「己の欲せざる所は人に施すこと勿れ」——自分がされて嫌なことは、人にもするな。<cite>孔子『論語』より</cite></p>
+  <p class="footer-series">知の巨人への道 — 居酒屋で語れる教養シリーズ 二軒目 Vol.2</p>
+</footer>
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
+<script>
+(function(){var d=document.querySelector('.kit-vols');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+d.addEventListener('toggle',function(){if(d.open){var c=d.querySelector('[aria-current]');if(c)c.scrollIntoView({block:'nearest'});}});})();
+</script>
+</body>
+</html>
