@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医学と病の歴史 — 知の巨人への道</title>
+<meta name="description" content="居酒屋で語れる教養シリーズ 二軒目 Vol.5。ペスト、天然痘、コレラ、パンデミック。病が変えた歴史と、病に挑んだ医学の歩み。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F8F5EE;--paper-2:#F0EBE0;--ink:#26221C;--ink-2:#4A443A;--ink-3:#6A6356;--rule:rgba(38,34,28,.16);
+  --accent:#8A4A63;--accent-ink:#794157;--hero-bg:#140A0F;--hero-accent:#c28da1;
+  --serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-size:.95rem;line-height:1.8;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+.wrap{max-width:928px;margin:0 auto;padding:0 16px}
+
+/* cover */
+.hero{background:var(--hero-bg);color:#EDE7DA;text-align:center;padding:5.5rem 16px 4.5rem}
+.hero-tag{display:inline-block;padding:.3rem .9rem;border:1px solid color-mix(in srgb,var(--hero-accent) 55%,transparent);font-size:.75rem;font-weight:700;letter-spacing:.18em;color:var(--hero-accent)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.4rem,7vw,4rem);line-height:1.25;color:var(--hero-accent);margin:1.4rem 0 1rem}
+.hero-sub{max-width:36em;margin:0 auto;color:#CFC8BA;font-size:1rem}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem 3rem;margin-top:2.75rem}
+.hero-stats div{display:flex;flex-direction:column;align-items:center}
+.hero-stats b{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.3;color:var(--hero-accent)}
+.hero-stats span{font-size:.78rem;color:#C9C2B4;margin-top:.35rem}
+
+/* chapters */
+.ch{padding:5rem 0}
+.ch.alt{background:var(--paper-2)}
+.ch-head{text-align:center;margin-bottom:3rem}
+.badge{font-size:.75rem;font-weight:700;letter-spacing:.2em;color:var(--accent-ink)}
+.ch-head h2{font-family:var(--serif);font-size:clamp(1.55rem,4vw,2rem);font-weight:700;line-height:1.45;margin:.6rem 0 .5rem}
+.ch-head p{color:var(--ink-2)}
+
+.angles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.angle{border:1px solid var(--rule);padding:1.35rem 1.4rem 1.5rem}
+.angle .lbl{font-size:.72rem;letter-spacing:.16em;color:var(--ink-3)}
+.angle h3{font-family:var(--serif);font-size:1.02rem;line-height:1.55;margin:.45rem 0 .55rem}
+.angle p{font-size:.9rem;color:var(--ink-2)}
+
+.tip{margin-top:2.5rem;padding:.95rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);color:var(--ink-2)}
+.tip strong{color:var(--accent-ink)}
+
+.band{border-top:2px solid var(--accent);padding-top:1.75rem;margin-top:3.5rem}
+.ch-head+.band{margin-top:0}
+.band-label{font-size:.75rem;letter-spacing:.16em;color:var(--ink-3)}
+.band h3{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:.35rem 0 .3rem}
+.band-desc{color:var(--ink-2);margin-bottom:1.5rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem 2rem}
+.entry{border-top:1px solid var(--rule);padding-top:1rem}
+.entry h4{font-family:var(--serif);font-size:1.05rem;line-height:1.5}
+.entry .meta{font-size:.8rem;color:var(--ink-3);margin-top:.15rem}
+.entry .key{font-size:.8rem;color:var(--accent-ink);margin:.35rem 0 .45rem}
+.entry p{color:var(--ink-2)}
+.entry blockquote{margin-top:.75rem;padding-left:.8rem;border-left:2px solid var(--accent);font-family:var(--serif);font-size:.92rem;color:var(--ink)}
+
+.timeline{list-style:none;border-left:2px solid var(--accent);margin-left:.25rem}
+.timeline li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:1.25rem;padding:.9rem 0 .9rem 1.4rem;border-bottom:1px solid var(--rule)}
+.timeline li:last-child{border-bottom:0}
+.timeline .yr{font-family:var(--serif);font-weight:700;color:var(--accent-ink)}
+.timeline h4{font-family:var(--serif);font-size:1rem;line-height:1.55}
+.timeline p{font-size:.9rem;color:var(--ink-2);margin-top:.15rem}
+
+.concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.25rem 2rem}
+.concept{border-top:2px solid var(--accent);padding-top:1rem}
+.concept h4{font-family:var(--serif);font-size:1.08rem;line-height:1.5}
+.concept h4 small{font-family:var(--sans);font-weight:400;font-size:.75rem;color:var(--ink-3);margin-left:.5rem;letter-spacing:.04em}
+.concept p{color:var(--ink-2);margin-top:.4rem}
+.concept .izk{margin-top:.7rem;padding-top:.6rem;border-top:1px dashed var(--rule);color:var(--ink-2)}
+
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:.88rem}
+th{text-align:left;font-weight:700;font-size:.8rem;color:var(--ink-3);padding:.6rem .7rem;border-bottom:2px solid var(--ink)}
+td{padding:.75rem .7rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+td:first-child{font-family:var(--serif);font-weight:700;color:var(--ink);white-space:nowrap}
+.note{margin-top:1.25rem;font-size:.88rem;color:var(--ink-2)}
+
+.qa{max-width:760px;margin:0 auto}
+.qa div{padding:1.25rem 0;border-top:1px solid var(--rule)}
+.qa div:first-child{border-top:0;padding-top:0}
+.qa dt{font-family:var(--serif);font-weight:700;font-size:1.05rem;line-height:1.6}
+.qa dt span{display:block;font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;color:var(--accent-ink)}
+.qa dd{color:var(--ink-2);margin-top:.4rem}
+
+/* back cover */
+.footer{background:var(--hero-bg);color:#CFC8BA;text-align:center;padding:3.5rem 16px}
+.footer-quote{font-family:var(--serif);font-size:1.1rem;color:#EDE7DA;max-width:30em;margin:0 auto}
+.footer-quote cite{display:block;font-style:normal;font-size:.8rem;color:#C9C2B4;margin-top:.5rem}
+.footer-series{margin-top:1.5rem;font-size:.78rem;letter-spacing:.12em}
+
+@media (max-width:640px){
+  .ch{padding:3.75rem 0}
+  .timeline li{grid-template-columns:minmax(0,1fr);gap:.2rem}
+  .hero{padding:4rem 16px 3.5rem}
+}
+</style>
+<style id="unslop-kit">
+/* ═══ unslop kit: series navigation + plan-B overrides (generated) ═══ */
+html{scroll-padding-top:60px}
+.kit-bar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:.75rem;height:52px;padding:0 16px;background:#0E0C14;border-bottom:1px solid rgba(200,152,48,.28);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;line-height:1.4;color:#D9D3C7}
+.kit-home{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .25rem;color:#E8B840;text-decoration:none;white-space:nowrap;font-weight:700}
+.kit-here{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#A9A396;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.1em}
+.kit-here b{margin-left:.5rem;font-family:'Noto Serif JP',serif;font-size:.86rem;letter-spacing:0;color:#F4F0E8}
+.kit-toc summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;height:40px;padding:0 .9rem;border:1px solid rgba(200,152,48,.45);border-radius:2px;color:#F4F0E8;white-space:nowrap;user-select:none}
+.kit-toc summary::-webkit-details-marker{display:none}
+.kit-toc summary::after{content:'';width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-toc[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-toc ol{position:absolute;right:16px;top:calc(100% + 6px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;margin:0;padding:.35rem 0;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-toc li+li{border-top:1px solid rgba(244,240,232,.07)}
+.kit-toc a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.6rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-toc a span{flex:0 0 1.4rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-toc a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+@media (hover:hover){.kit-home:hover{color:#F4D27A}.kit-toc summary:hover{border-color:#E8B840}.kit-toc a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}.kit-pager a:hover{border-color:#E8B840}}
+@media (max-width:520px){.kit-here{font-size:0}.kit-here b{margin:0;font-size:.82rem}}
+
+.kit-pager{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;padding:28px max(16px,calc((100% - 960px)/2));background:#0E0C14;border-top:1px solid rgba(200,152,48,.25);font-family:'Noto Sans JP',sans-serif}
+.kit-pager a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:64px;padding:.8rem 1.1rem;border:1px solid rgba(200,152,48,.32);border-radius:2px;color:#F4F0E8;text-decoration:none}
+.kit-pager .kit-pager-next{text-align:right}
+.kit-pager .kit-pager-home{align-items:center;color:#E8B840;font-size:.85rem;font-weight:700}
+.kit-pager-dir{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.14em;color:#C9C2B4}
+.kit-pager-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+@media (max-width:640px){.kit-pager{grid-template-columns:1fr;grid-template-areas:"next" "prev" "home"}.kit-pager-next{grid-area:next}.kit-pager-prev{grid-area:prev}.kit-pager-home{grid-area:home}.kit-pager .kit-pager-next{text-align:left}.kit-pager>span:empty{display:none}}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.kit-bar :focus-visible,.kit-pager :focus-visible{outline-color:#E8B840}
+
+
+/* volume switcher (the volume name in the bar) */
+.kit-vols{flex:1;min-width:0}
+.kit-vols summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.55rem;min-height:44px;max-width:100%;width:max-content;padding:0 .5rem;margin-left:-.5rem;border-radius:2px;user-select:none}
+.kit-vols summary::-webkit-details-marker{display:none}
+.kit-vols summary::after{content:'';flex:none;width:.4rem;height:.4rem;border-right:1.5px solid #E8B840;border-bottom:1.5px solid #E8B840;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+.kit-vols[open] summary::after{transform:translateY(1px) rotate(-135deg)}
+.kit-vols .kit-here{flex:0 1 auto}
+.kit-vols ol{position:absolute;left:16px;top:calc(100% + 6px);width:min(360px,calc(100vw - 32px));max-height:min(75vh,640px);overflow:auto;margin:0;padding:.25rem 0 .5rem;list-style:none;background:#15121C;border:1px solid rgba(200,152,48,.35);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.kit-vols .kit-vols-cat{padding:.8rem 1rem .3rem;font-size:.72rem;letter-spacing:.2em;color:#C9C2B4}
+.kit-vols .kit-vols-cat:not(:first-child){border-top:1px solid rgba(244,240,232,.08);margin-top:.25rem}
+.kit-vols a{display:flex;align-items:baseline;gap:.8rem;min-height:44px;padding:.55rem 1rem;color:#E4DED2;text-decoration:none;line-height:1.5}
+.kit-vols a span{flex:0 0 1.5rem;font-family:'Cinzel',serif;font-size:.78rem;color:#E8B840;text-align:right}
+.kit-vols a[aria-current]{color:#E8B840;background:rgba(200,152,48,.1)}
+.kit-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (hover:hover){.kit-vols summary:hover{background:rgba(200,152,48,.1)}.kit-vols a:hover{background:rgba(200,152,48,.12);color:#F4F0E8}}
+</style>
+</head>
+<body>
+<nav class="kit-bar" aria-label="シリーズ内の移動"><a class="kit-home" href="index.html"><span aria-hidden="true">←</span>目次</a><details class="kit-vols"><summary><span class="kit-here">二軒目 Vol.5<b>医学と病の歴史</b></span><span class="kit-sr">（巻を選ぶ）</span></summary><ol aria-label="全巻"><li class="kit-vols-cat" aria-hidden="true">三大宗教</li><li><a href="buddhism_history.html"><span>1</span>仏教の歴史</a></li><li><a href="christianity_history.html"><span>2</span>キリスト教の歴史</a></li><li><a href="islam_history.html"><span>3</span>イスラム教の歴史</a></li><li class="kit-vols-cat" aria-hidden="true">思想</li><li><a href="philosophy_history.html"><span>4</span>哲学史</a></li><li><a href="political_thought_history.html"><span>5</span>政治思想史</a></li><li><a href="economic_thought_history.html"><span>6</span>経済思想史</a></li><li class="kit-vols-cat" aria-hidden="true">歴史</li><li><a href="world_history.html"><span>7</span>世界史概論</a></li><li><a href="japan_history.html"><span>8</span>日本史</a></li><li><a href="science_history.html"><span>9</span>科学史</a></li><li class="kit-vols-cat" aria-hidden="true">芸術・文化</li><li><a href="western_art_history.html"><span>10</span>西洋美術史</a></li><li><a href="music_history.html"><span>11</span>音楽史</a></li><li><a href="world_literature_history.html"><span>12</span>世界文学史</a></li><li><a href="architecture_history.html"><span>13</span>建築史</a></li><li class="kit-vols-cat" aria-hidden="true">人間科学</li><li><a href="psychology_history.html"><span>14</span>心理学史</a></li><li><a href="sociology_history.html"><span>15</span>社会学史</a></li><li><a href="technology_history.html"><span>16</span>テクノロジー史</a></li><li class="kit-vols-cat" aria-hidden="true">日本の魂</li><li><a href="japanese_aesthetics_history.html"><span>17</span>日本の美意識史</a></li><li><a href="bushido_japanese_ethics.html"><span>18</span>武士道と日本人の倫理観</a></li><li><a href="japanese_literature_history.html"><span>19</span>日本文学史</a></li><li><a href="japan_modern_contemporary_history.html"><span>20</span>日本の近現代史</a></li><li class="kit-vols-cat" aria-hidden="true">二軒目</li><li><a href="alcohol_history.html"><span>1</span>酒の世界史</a></li><li><a href="china_history.html"><span>2</span>中国史と中国思想</a></li><li><a href="mythology_history.html"><span>3</span>神話の世界</a></li><li><a href="geopolitics.html"><span>4</span>地政学</a></li><li><a href="medicine_history.html" aria-current="page"><span>5</span>医学と病の歴史</a></li></ol></details><details class="kit-toc"><summary>章を選ぶ</summary><ol><li><a href="#ch-1"><span>1</span>医学と病の歴史を学ぶとはどういうことか</a></li><li><a href="#ch-2"><span>2</span>古代——神の罰から体液説へ</a></li><li><a href="#ch-3"><span>3</span>中世〜近世——疫病の時代</a></li><li><a href="#ch-4"><span>4</span>近代——細菌の発見と予防の誕生</a></li><li><a href="#ch-5"><span>5</span>20世紀——奇跡の薬と新しい病</a></li><li><a href="#ch-6"><span>6</span>現代——パンデミックとこれからの医学</a></li><li><a href="#ch-7"><span>7</span>医学と病の歴史タイムライン</a></li><li><a href="#ch-8"><span>8</span>医学の核心概念10選</a></li><li><a href="#ch-9"><span>＊</span>歴史を変えた感染症 完全比較表</a></li><li><a href="#ch-10"><span>＊</span>居酒屋実戦テスト</a></li></ol></details></nav>
+<header class="hero">
+  <div class="hero-tag">居酒屋で語れる教養シリーズ 二軒目 Vol.5</div>
+  <h1>医学と病の歴史</h1>
+  <p class="hero-sub">ペスト、天然痘、コレラ、そしてパンデミック——病は戦争よりも多くの命を奪い、歴史の流れを変えてきた。医学は、その病に人類が挑み続けた記録だ。</p>
+  <div class="hero-stats"><div><b>1796年</b><span>ジェンナーの種痘</span></div><div><b>1928年</b><span>ペニシリンの発見</span></div><div><b>1980年</b><span>天然痘の根絶宣言</span></div><div><b>∞</b><span>飲み会明けの二日酔い</span></div></div>
+</header>
+<main>
+<section class="ch" id="ch-1" aria-labelledby="ch-1-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 1</div><h2 id="ch-1-h">医学と病の歴史を学ぶとはどういうことか</h2><p>病は、戦争よりも多くの命を奪ってきた</p></header><div class="angles"><div class="angle"><div class="lbl">HISTORY</div><h3>病が歴史を変えた</h3><p>黒死病は中世ヨーロッパの社会を揺さぶり、天然痘はアステカやインカの崩壊を早めた。歴史を動かしたのは、英雄より病だったことも多い。</p></div><div class="angle"><div class="lbl">SCIENCE</div><h3>迷信から科学へ</h3><p>悪い空気、体液の乱れ、神の罰。病の原因が目に見えない微生物だとわかったのは、ほんの150年ほど前のことだ。</p></div><div class="angle"><div class="lbl">SOCIETY</div><h3>病は社会を映す</h3><p>ハンセン病の患者の隔離、疫病のたびに探されるスケープゴート。病は、社会のゆがみや差別も映し出してきた。</p></div><div class="angle"><div class="lbl">TODAY</div><h3>寿命の革命</h3><p>大正時代の日本人の平均寿命は40歳代前半だった。今は80歳を超える。上下水道、ワクチン、抗生物質が、人の一生を倍近くに延ばした。</p></div></div><p class="tip"><strong>居酒屋ポイント：</strong>「芸術は長く、人生は短し」の元は、医学の父ヒポクラテスの言葉。本当は「医術を身につけるには長い時間がかかるが、人生は短い」という意味だ。芸術の話ではなく、医者の修業の話だった。</p></div></section><section class="ch alt" id="ch-2" aria-labelledby="ch-2-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 2</div><h2 id="ch-2-h">古代——神の罰から体液説へ</h2><p>紀元前2000年頃〜10世紀。祈りと呪術の中から、観察する医学が生まれた</p></header><div class="band"><div class="band-label">ANCIENT WEST · 紀元前1600年頃〜2世紀</div><h3>祈りから観察へ</h3><p class="band-desc">病を神の罰と考える時代に、体を観察して原因を探る医者たちが現れた。</p><div class="cols"><div class="entry"><h4>古代エジプトの医学</h4><div class="meta">紀元前1600年頃</div><div class="key">パピルスの医学書</div><p>『エドウィン・スミス・パピルス』には、けがや骨折の診断と治療が、呪術ではなく観察にもとづいて書かれている。</p></div><div class="entry"><h4>ヒポクラテス</h4><div class="meta">紀元前460年頃〜紀元前370年頃・ギリシャ</div><div class="key">医学の父</div><p>病を神の罰ではなく、自然の原因によるものと考え、観察と記録を重んじた。医師の倫理を誓う「ヒポクラテスの誓い」は、今も医学教育で引き合いに出される。</p></div><div class="entry"><h4>ガレノス</h4><div class="meta">129年頃〜216年頃・ローマ</div><div class="key">体液説</div><p>血液・粘液・黄胆汁・黒胆汁の四つの体液のバランスが崩れると病になる、という説を体系化した。その権威は1000年以上ゆらがなかった。</p></div></div></div><div class="band"><div class="band-label">ANCIENT EAST · 紀元前後〜10世紀</div><h3>東洋の医学</h3><div class="cols"><div class="entry"><h4>『黄帝内経』</h4><div class="meta">中国・紀元前後</div><div class="key">漢方の原典</div><p>陰陽五行と気の流れで体を説明した、中国医学の最古の古典。鍼灸や漢方の土台になった。</p></div><div class="entry"><h4>アーユルヴェーダ</h4><div class="meta">古代インド</div><div class="key">生命の知恵</div><p>体質とバランスを重んじるインドの伝統医学。今もインドでは、公的な医療制度の一部として認められている。</p></div><div class="entry"><h4>『医心方』</h4><div class="meta">984年・日本</div><div class="key">現存最古の医学書</div><p>丹波康頼が中国の医学書を集めて編んだ、日本に現存する最古の医学書。国宝に指定されている。</p></div></div></div></div></section><section class="ch" id="ch-3" aria-labelledby="ch-3-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 3</div><h2 id="ch-3-h">中世〜近世——疫病の時代</h2><p>14〜16世紀。見えない敵が、大陸を越えて人を襲った</p></header><div class="band"><div class="band-label">BLACK DEATH · 14世紀</div><h3>黒死病</h3><p class="band-desc">1347年、ペストはヨーロッパに上陸し、わずか数年で大陸を覆った。</p><div class="cols"><div class="entry"><h4>黒死病</h4><div class="meta">1347〜1351年頃</div><div class="key">ヨーロッパの3人に1人以上</div><p>ペスト菌によるパンデミックで、ヨーロッパの人口の3分の1から半分が亡くなったとされる。ネズミに寄生するノミを介して人へ広がった。</p></div><div class="entry"><h4>検疫の始まり</h4><div class="meta">14世紀・地中海の港</div><div class="key">40日間の足止め</div><p>ヴェネツィアなどの港で、着いた船を40日間沖に待たせる措置が取られた。英語の quarantine（検疫）は、イタリア語の「40日」に由来する。</p></div><div class="entry"><h4>社会の変化</h4><div class="meta">黒死病のあと</div><div class="key">働き手が足りない</div><p>人口が激減して働き手が不足し、農民の立場が強くなった。中世の身分社会が揺らぐきっかけの一つになった。</p></div></div></div><div class="band"><div class="band-label">NEW WORLD · 15〜16世紀</div><h3>見えない征服者</h3><p class="band-desc">大航海時代は、病が海を越えて世界をめぐる時代でもあった。</p><div class="cols"><div class="entry"><h4>天然痘とアメリカ大陸</h4><div class="meta">16世紀</div><div class="key">免疫のない人々</div><p>ヨーロッパ人が持ち込んだ天然痘や麻疹で、アメリカ大陸の先住民は激減した。アステカ帝国の崩壊も、天然痘の流行が早めた。</p></div><div class="entry"><h4>梅毒</h4><div class="meta">15世紀末〜</div><div class="key">世界を一周した病</div><p>15世紀末にヨーロッパで大流行し、わずか20年ほどで日本にまで達した。各国は「フランス病」「イタリア病」など、隣国の名前で呼んだ。</p></div><div class="entry"><h4>ヴェサリウス</h4><div class="meta">1543年</div><div class="key">解剖学の革命</div><p>自ら人体を解剖し、『人体の構造』でガレノスの誤りを正した。この年は、コペルニクスの地動説の本が出た年でもある。</p></div></div></div></div></section><section class="ch alt" id="ch-4" aria-labelledby="ch-4-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 4</div><h2 id="ch-4-h">近代——細菌の発見と予防の誕生</h2><p>18〜19世紀。病は「かかってから治す」から「かかる前に防ぐ」へ</p></header><div class="band"><div class="band-label">PREVENTION · 18〜19世紀</div><h3>かかる前に防ぐ</h3><div class="cols"><div class="entry"><h4>ジェンナーの種痘</h4><div class="meta">1796年・イギリス</div><div class="key">ワクチンの始まり</div><p>牛痘にかかった人は天然痘にかからない、という言い伝えに目を付け、牛痘を接種して天然痘を防いだ。ワクチンの語源は、ラテン語の「牛（vacca）」だ。</p></div><div class="entry"><h4>ジョン・スノウ</h4><div class="meta">1854年・ロンドン</div><div class="key">疫学の誕生</div><p>コレラ患者の家を地図に書き込み、ある井戸のポンプが原因だと突き止めた。ポンプの取っ手を外させると、流行は収まっていった。</p></div><div class="entry"><h4>ナイチンゲール</h4><div class="meta">1820〜1910年・イギリス</div><div class="key">看護と統計</div><p>クリミア戦争の野戦病院で衛生を改善し、死亡率を大きく下げた。その成果を独自のグラフで示した、統計の先駆者でもある。</p></div></div></div><div class="band"><div class="band-label">GERMS · 19世紀後半</div><h3>犯人は微生物だった</h3><p class="band-desc">顕微鏡の向こうに、病の正体が見つかった。</p><div class="cols"><div class="entry"><h4>パスツール</h4><div class="meta">1822〜1895年・フランス</div><div class="key">微生物学</div><p>病気の多くが微生物によって起こることを示し、狂犬病のワクチンを開発した。予防接種全般を「ワクチン」と呼んだのも、ジェンナーへの敬意からだ。</p></div><div class="entry"><h4>コッホ</h4><div class="meta">1843〜1910年・ドイツ</div><div class="key">病原体の特定</div><p>結核菌（1882年）やコレラ菌を発見し、特定の病気と特定の病原体を結びつける方法を確立した。</p></div><div class="entry"><h4>北里柴三郎</h4><div class="meta">1853〜1931年・日本</div><div class="key">破傷風と血清療法</div><p>コッホのもとで破傷風菌の培養に成功し、血清療法を開発した。1894年には香港でペスト菌を発見。2024年からの千円札の顔だ。</p></div></div></div><p class="tip"><strong>居酒屋ポイント：</strong>世界で初めて全身麻酔で手術をしたのは、1804年の日本の外科医・華岡青洲だといわれる。欧米で麻酔手術が広まる40年ほど前のことだ。</p></div></section><section class="ch" id="ch-5" aria-labelledby="ch-5-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 5</div><h2 id="ch-5-h">20世紀——奇跡の薬と新しい病</h2><p>抗生物質とワクチンが病を追い詰め、新しい病が現れた</p></header><div class="band"><div class="band-label">MIRACLE DRUGS · 1918〜1953年</div><h3>大流行と奇跡の薬</h3><div class="cols"><div class="entry"><h4>スペイン風邪</h4><div class="meta">1918〜1920年</div><div class="key">史上最悪級のパンデミック</div><p>インフルエンザの大流行で、世界で数千万人が亡くなったとされる。第一次世界大戦の戦死者より多い。</p></div><div class="entry"><h4>ペニシリン</h4><div class="meta">1928年発見・1940年代に実用化</div><div class="key">抗生物質の誕生</div><p>フレミングが、青カビの周りだけ細菌が育たないことに気づいた。第二次世界大戦中に大量生産され、数えきれない命を救った。</p></div><div class="entry"><h4>DNAの二重らせん</h4><div class="meta">1953年</div><div class="key">生命の設計図</div><p>ワトソンとクリックがDNAの構造を解き明かした。その陰には、決定的なX線写真を撮ったロザリンド・フランクリンの貢献があった。</p></div></div></div><div class="band"><div class="band-label">VICTORIES &amp; NEW THREATS · 1980年〜</div><h3>勝利と、新しい敵</h3><div class="cols"><div class="entry"><h4>天然痘の根絶</h4><div class="meta">1980年</div><div class="key">人類が初めて消した病</div><p>世界保健機関（WHO）の予防接種作戦で、1980年に根絶が宣言された。人の病気で根絶できたのは、今も天然痘だけだ。</p></div><div class="entry"><h4>エイズ</h4><div class="meta">1981年〜</div><div class="key">偏見との闘い</div><p>1981年に最初の症例が報告された。偏見と闘いながら治療薬が開発され、今では治療を続ければ長く生きられる病気になった。</p></div><div class="entry"><h4>薬剤耐性菌</h4><div class="meta">21世紀</div><div class="key">効かなくなる抗生物質</div><p>抗生物質の使いすぎで、薬が効かない細菌が増えている。「静かなパンデミック」と呼ばれる、21世紀の大きな課題だ。</p></div></div></div></div></section><section class="ch alt" id="ch-6" aria-labelledby="ch-6-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 6</div><h2 id="ch-6-h">現代——パンデミックとこれからの医学</h2><p>2000年代〜現在。速く広がる病と、速く応える科学</p></header><div class="band"><div class="band-label">TODAY · 2006年〜</div><h3>21世紀の医学</h3><div class="cols"><div class="entry"><h4>iPS細胞</h4><div class="meta">2006年・京都大学</div><div class="key">再生医療の扉</div><p>山中伸弥が、皮膚などの細胞から、さまざまな細胞になれる幹細胞を作り出した。2012年にノーベル生理学・医学賞を受けた。</p></div><div class="entry"><h4>新型コロナウイルス</h4><div class="meta">2020年〜</div><div class="key">21世紀のパンデミック</div><p>世界中で都市が封鎖され、日常が止まった。一方で、わずか1年ほどでワクチンが実用化された。</p></div><div class="entry"><h4>mRNAワクチン</h4><div class="meta">2020年</div><div class="key">数十年の研究の結実</div><p>カリコーとワイスマンの地道な研究が土台になった。二人は2023年のノーベル生理学・医学賞を受けた。</p></div></div></div><p class="tip"><strong>居酒屋ポイント：</strong>人類の寿命を一番延ばしたのは、名医でも新薬でもなく上下水道だ、とよく言われる。きれいな水と下水の処理で、コレラや赤痢のような病が激減したからだ。</p></div></section><section class="ch" id="ch-7" aria-labelledby="ch-7-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 7</div><h2 id="ch-7-h">医学と病の歴史タイムライン</h2><p>4000年を、17の出来事で</p></header><ol class="timeline"><li><div class="yr">紀元前1600年頃</div><div><h4>『エドウィン・スミス・パピルス』</h4><p>観察にもとづく外科の記録。</p></div></li><li><div class="yr">紀元前400年頃</div><div><h4>ヒポクラテスの医学</h4><p>病を自然の原因で説明する。</p></div></li><li><div class="yr">2世紀</div><div><h4>ガレノスの体液説</h4><p>1000年以上続く権威に。</p></div></li><li><div class="yr">984年</div><div><h4>丹波康頼『医心方』</h4><p>日本に現存する最古の医学書。</p></div></li><li><div class="yr">1347年</div><div><h4>黒死病がヨーロッパへ</h4><p>人口の3分の1以上が亡くなる。</p></div></li><li><div class="yr">1543年</div><div><h4>ヴェサリウス『人体の構造』</h4><p>解剖学の革命。</p></div></li><li><div class="yr">1796年</div><div><h4>ジェンナーの種痘</h4><p>ワクチンの始まり。</p></div></li><li><div class="yr">1804年</div><div><h4>華岡青洲の全身麻酔手術</h4><p>世界初とされる。</p></div></li><li><div class="yr">1854年</div><div><h4>ジョン・スノウのコレラ地図</h4><p>疫学の誕生。</p></div></li><li><div class="yr">1882年</div><div><h4>コッホが結核菌を発見</h4><p>病原体の時代へ。</p></div></li><li><div class="yr">1894年</div><div><h4>北里柴三郎とイェルサンがペスト菌を発見</h4><p>香港での流行のさなかに。</p></div></li><li><div class="yr">1918年</div><div><h4>スペイン風邪の大流行</h4><p>世界で数千万人が死亡。</p></div></li><li><div class="yr">1928年</div><div><h4>フレミングがペニシリンを発見</h4><p>抗生物質の時代へ。</p></div></li><li><div class="yr">1953年</div><div><h4>DNAの二重らせん構造の解明</h4><p>分子生物学の始まり。</p></div></li><li><div class="yr">1980年</div><div><h4>天然痘の根絶宣言</h4><p>人類が初めて病を消した。</p></div></li><li><div class="yr">2006年</div><div><h4>iPS細胞の作製</h4><p>再生医療への道。</p></div></li><li><div class="yr">2020年</div><div><h4>新型コロナのパンデミックとmRNAワクチン</h4><p>1年でワクチンが実用化。</p></div></li></ol></div></section><section class="ch alt" id="ch-8" aria-labelledby="ch-8-h"><div class="wrap"><header class="ch-head"><div class="badge">CHAPTER 8</div><h2 id="ch-8-h">医学の核心概念10選</h2><p>これを知っていれば「詳しい人」と思われる10のキーワード</p></header><div class="concepts"><div class="concept"><h4>体液説<small>Humorism</small></h4><p>四つの体液のバランスで健康と病気が決まるとした古代の説。性格もこれで説明した。</p><p class="izk">「英語の humor（ユーモア）も melancholy（憂鬱）も、体液説の名残。humor はもともと"体液"という意味」</p></div><div class="concept"><h4>細菌説<small>Germ theory</small></h4><p>多くの病気は、体に入り込んだ微生物が起こすという考え方。19世紀後半に確立した。</p><p class="izk">「医者が手を洗うのが当たり前になったのは19世紀。最初に手洗いを訴えたゼンメルワイスは、当時は相手にされなかった」</p></div><div class="concept"><h4>免疫<small>Immunity</small></h4><p>一度かかった病気に、二度目はかかりにくくなる体の仕組み。ワクチンはこの仕組みを利用する。</p><p class="izk">「"免疫"は"疫（はやりやまい）を免れる"。言葉そのものが仕組みの説明になっている」</p></div><div class="concept"><h4>ワクチン<small>Vaccine</small></h4><p>弱めた病原体や、その一部の情報を体に入れて、免疫に予習をさせる方法。</p><p class="izk">「ワクチンは体の"避難訓練"。本番の前に一度練習しておく」</p></div><div class="concept"><h4>抗生物質<small>Antibiotics</small></h4><p>細菌の増殖を抑える薬。ウイルスには効かない。</p><p class="izk">「風邪に抗生物質は効かない。風邪のほとんどはウイルスだから。むしろ使いすぎると耐性菌を増やす」</p></div><div class="concept"><h4>疫学<small>Epidemiology</small></h4><p>病気が、どこで、誰に、なぜ広がるのかを集団で調べる学問。</p><p class="izk">「疫学は"病気の探偵"。ジョン・スノウは、地図一枚で犯人の井戸を突き止めた」</p></div><div class="concept"><h4>パンデミック<small>Pandemic</small></h4><p>感染症が世界的に大流行すること。ある地域での流行はエピデミックと呼ぶ。</p><p class="izk">「pan は"すべて"、demos は"人々"。"すべての人々の病"という意味」</p></div><div class="concept"><h4>検疫<small>Quarantine</small></h4><p>感染が疑われる人や物を一定期間隔離して、病の侵入を防ぐ仕組み。</p><p class="izk">「quarantine の語源はイタリア語の"40日"。中世の港の待機期間がそのまま英語になった」</p></div><div class="concept"><h4>公衆衛生<small>Public health</small></h4><p>上下水道、ごみ処理、予防接種など、社会全体で病気を防ぐ取り組み。</p><p class="izk">「一人の名医より、一本の下水道。寿命を延ばしたのは地味なインフラだった」</p></div><div class="concept"><h4>プラセボ効果<small>Placebo effect</small></h4><p>薬の成分が入っていない偽薬でも、効くと信じることで症状が和らぐことがある現象。</p><p class="izk">「新薬の試験では、本物と偽物を比べる。"効いた気がする"分を差し引くためだ」</p></div></div></div></section><section class="ch" id="ch-9" aria-labelledby="ch-9-h"><div class="wrap"><header class="ch-head"><div class="badge">SPECIAL</div><h2 id="ch-9-h">歴史を変えた感染症 完全比較表</h2><p>「その病気、今はどうなってる？」に答えられる</p></header><div class="table-wrap"><table><thead><tr><th scope="col">病名</th><th scope="col">原因</th><th scope="col">うつり方</th><th scope="col">大流行した時代</th><th scope="col">今は</th></tr></thead><tbody><tr><td>ペスト</td><td>ペスト菌（細菌）</td><td>ノミ・ネズミ、患者のせきなど</td><td>14世紀の黒死病</td><td>抗生物質で治療できる</td></tr><tr><td>天然痘</td><td>天然痘ウイルス</td><td>飛沫・接触</td><td>古代〜20世紀</td><td>1980年に根絶</td></tr><tr><td>コレラ</td><td>コレラ菌（細菌）</td><td>汚れた水・食べ物</td><td>19世紀に世界的流行</td><td>上下水道の整った国ではまれ</td></tr><tr><td>結核</td><td>結核菌（細菌）</td><td>空気感染</td><td>19〜20世紀の「国民病」</td><td>今も世界で多くの命を奪う</td></tr><tr><td>マラリア</td><td>マラリア原虫</td><td>蚊が媒介</td><td>古代から現在まで</td><td>アフリカを中心に毎年数十万人が死亡</td></tr><tr><td>インフルエンザ</td><td>インフルエンザウイルス</td><td>飛沫</td><td>1918年のスペイン風邪</td><td>ワクチンと治療薬があるが毎年流行</td></tr><tr><td>エイズ</td><td>HIV（ウイルス）</td><td>血液・性行為など</td><td>1980年代〜</td><td>治療を続ければ長く生きられる</td></tr><tr><td>新型コロナ</td><td>新型コロナウイルス</td><td>飛沫・エアロゾル</td><td>2020年〜</td><td>ワクチンと治療薬がある</td></tr></tbody></table></div><p class="note">※ 細菌には抗生物質が効くが、ウイルスには効かない。表の「原因」の欄を見れば、どの病気に抗生物質が使えるかがわかる。</p></div></section><section class="ch alt" id="ch-10" aria-labelledby="ch-10-h"><div class="wrap"><header class="ch-head"><div class="badge">FINAL CHAPTER</div><h2 id="ch-10-h">居酒屋実戦テスト</h2><p>隣の席で聞こえてきたら、こう返せ</p></header><dl class="qa"><div><dt><span>Q1</span>「風邪に抗生物質って効かないの？」</dt><dd>効かない。抗生物質は細菌をやっつける薬で、風邪の原因のほとんどはウイルスだからだ。効かないのに飲み続けると、薬の効かない耐性菌を増やす手助けをしてしまう。</dd></div><div><dt><span>Q2</span>「スペイン風邪って、スペインから始まったの？」</dt><dd>違う。発生源ははっきりしていない。第一次世界大戦中で各国が報道を規制するなか、中立国だったスペインは流行を自由に報じた。そのせいで「スペインの病気」だと思われてしまった。</dd></div><div><dt><span>Q3</span>「ワクチンって、なんで&quot;ワクチン&quot;っていうの？」</dt><dd>ラテン語の「牛（vacca）」から。ジェンナーが牛痘を使って天然痘を防いだことにちなみ、パスツールが予防接種全般をワクチンと呼んだ。</dd></div><div><dt><span>Q4</span>「新しい千円札の北里柴三郎って、何をした人？」</dt><dd>破傷風菌の培養に成功して血清療法を開発し、香港ではペスト菌を発見した細菌学者。北里研究所を作り、慶應義塾の医学部の初代学部長も務めた。「日本の近代医学の父」と呼ばれる。</dd></div><div><dt><span>Q5</span>「二日酔いに効く薬って、ないの？」</dt><dd>確実に効く薬は、まだない。原因はアルコールが分解されてできるアセトアルデヒド、脱水、睡眠の質の低下など、一つではないからだ。日本人の約4割はアセトアルデヒドを分解しにくい体質だといわれる。結局は、水を飲んで寝るのがいちばん。</dd></div></dl></div></section>
+</main>
+<nav class="kit-pager" aria-label="前後の巻"><a class="kit-pager-prev" href="geopolitics.html"><span class="kit-pager-dir">← 前の巻 二軒目 Vol.4</span><span class="kit-pager-title">地政学</span></a><a class="kit-pager-home" href="index.html">目次へ戻る</a><span></span></nav>
+<footer class="footer">
+  <p class="footer-quote">「観察の場では、チャンスは備えある心にのみ訪れる」<cite>ルイ・パスツール</cite></p>
+  <p class="footer-series">知の巨人への道 — 居酒屋で語れる教養シリーズ 二軒目 Vol.5</p>
+</footer>
+<script>
+(function(){var d=document.querySelector('.kit-toc');if(!d)return;
+d.addEventListener('click',function(e){if(e.target.closest('a'))d.open=false;});
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+if(!('IntersectionObserver'in window))return;var links={};
+d.querySelectorAll('a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;
+for(var k in links)links[k].removeAttribute('aria-current');var a=links[en.target.id];if(a)a.setAttribute('aria-current','true');});},{rootMargin:'-40% 0px -55% 0px'});
+for(var k in links){var s=document.getElementById(k);if(s)io.observe(s);}})();
+</script>
+<script>
+(function(){var d=document.querySelector('.kit-vols');if(!d)return;
+document.addEventListener('click',function(e){if(d.open&&!d.contains(e.target))d.open=false;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&d.open){d.open=false;d.querySelector('summary').focus();}});
+d.addEventListener('toggle',function(){if(d.open){var c=d.querySelector('[aria-current]');if(c)c.scrollIntoView({block:'nearest'});}});})();
+</script>
+</body>
+</html>
